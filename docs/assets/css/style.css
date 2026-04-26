@@ -155,3 +155,51 @@ a:hover {
   color: #fff;
   text-shadow: 0 0 12px rgba(255,255,255,1);
 }
+
+
+<style>
+  body {
+    font-family: sans-serif;
+    line-height: 1.8;
+    margin: 2rem auto;
+    max-width: 900px;
+    background: #ffffff;
+    color: #222;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #0078ff; /* 07風の青 */
+    text-align: center;
+  }
+
+  details {
+    margin: 1.5rem 0;
+    padding: 1.2rem;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    background: #fafafa;
+    transition: 0.2s;
+  }
+
+  details:hover {
+    background: #f0f8ff; /* ほんのり青み → オシャレ */
+  }
+
+  summary {
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #ff4fb8; /* アクセントのピンク */
+  }
+
+  h2, h3 {
+    color: #0078ff;
+    margin-top: 1.2rem;
+  }
+
+  ul {
+    margin-left: 1.2rem;
+  }
+</style>
