@@ -208,3 +208,10 @@ details[open] li:hover {
   padding: 2px 4px;
   border-radius: 4px;
 }
+
+
+.hero__text,
+details p {
+  max-width: 60ch; /* 文字数ベースで幅を制限 */
+  line-height: 1.7; /* 読みやすさUP */
+}
