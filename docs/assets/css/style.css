@@ -192,3 +192,19 @@ details ul {
   margin-left: 1.2rem;
   font-size: 0.9rem;
 }
+
+
+/* ▼ summary にカーソルを乗せたときネオン色にする */
+details summary:hover {
+  color: #a8f3ff;  /* ネオンブルー */
+  text-shadow: 0 0 12px rgba(120,240,255,1);
+}
+
+/* ▼ 展開されたテキストにカーソルを乗せたとき背景マーカー */
+details[open] p:hover,
+details[open] ul:hover,
+details[open] li:hover {
+  background: rgba(255, 255, 255, 0.15); /* 半透明のマーカー */
+  padding: 2px 4px;
+  border-radius: 4px;
+}
