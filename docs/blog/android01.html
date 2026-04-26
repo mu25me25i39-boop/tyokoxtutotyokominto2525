@@ -9,6 +9,7 @@
 
 <body>
 
+<!-- ▼ 上部だけ背景（blog07 と同じ） -->
 <header class="hero">
   <div class="hero__overlay">
     <h1 class="hero__title">Android：端末の種類と選び方</h1>
@@ -16,8 +17,8 @@
   </div>
 </header>
 
-<!-- ▼ 記事本文（blog07 と同じレイアウト） -->
-<main style="padding: 2rem; max-width: 70ch; margin: 0 auto;">
+<!-- ▼ 本文は hero の外に出す（blog07 と同じ黒背景） -->
+<main class="article-container">
 
   <h2>Androidの特徴</h2>
   <p>
@@ -26,6 +27,7 @@
     「ノートPC並みの性能を持つゲーミング機種」まで、
     幅広いコンセプトの端末を選べるのが最大の強みです。
   </p>
+
   <p>
     セキュリティ重視なら Pixel＋GrapheneOS、<br>
     性能重視なら ゲーミングスマホ（RedMagic / ROG Phone / Black Shark 等）。<br><br>
@@ -35,32 +37,27 @@
   <h2>セキュリティAndroid（Pixel＋強化OS）</h2>
 
   <h3>Google Pixel：素のAndroid＋長期サポート</h3>
-  <p>
-    セキュリティを重視するなら、まず検討すべきは Google純正の Pixelシリーズ。
-  </p>
+  <p>セキュリティを重視するなら、まず検討すべきは Google純正の Pixelシリーズ。</p>
+
   <ul>
     <li>最新Androidを最速で受け取れる</li>
     <li>Titan M / M2 チップで起動プロセスを保護</li>
     <li>権限管理が細かい</li>
     <li>ロックダウンモードなど標準機能が強力</li>
   </ul>
-  <p>通常利用で「安全なAndroidがほしい」なら、素のPixelで十分。</p>
 
   <h3>GrapheneOS：Pixel専用のセキュリティ特化ROM</h3>
   <p>
     GrapheneOS は Pixel専用のセキュリティ特化ROM。<br>
     無料のオープンソースで、市販の高額セキュリティスマホ級の防御力を狙う。
   </p>
+
   <ul>
     <li>対象はPixelのみ</li>
     <li>カーネル・サンドボックス強化</li>
     <li>Googleサービスを必要最低限に制御</li>
     <li>暗号化・権限管理が標準より細かい</li>
   </ul>
-  <p>
-    ただし導入は中級〜上級者向け。<br>
-    ブートローダー解放やROM書き換えが必要。
-  </p>
 
   <h3>まとめ（セキュリティAndroid）</h3>
   <ul>
@@ -75,6 +72,7 @@
     最新ゲーミングAndroidは 16〜24GB RAM、1TBストレージなどPC級スペック。<br>
     Snapdragon 8 Gen 3 など最上位SoCがゲーム性能を左右。
   </p>
+
   <p>
     144〜165Hzディスプレイ、冷却、トリガーなど iPhoneとは別方向の特化。
   </p>
@@ -85,7 +83,6 @@
     <li>冷却ファン内蔵モデルあり</li>
     <li>ゲーム特化UIとトリガー搭載</li>
   </ul>
-  <p>「性能盛りたい」「長時間ゲームしたい」人向け。</p>
 
   <h3>ROG Phone（ASUS）</h3>
   <ul>
