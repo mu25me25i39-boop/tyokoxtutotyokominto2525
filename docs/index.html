@@ -16,7 +16,7 @@
     <p class="hero__text">deep character on / 2.34e-9122511</p>
   </div>
 
-  <!-- ▼ 白文字だけのメニュー（ネオン光る） -->
+  <!-- ▼ 白文字メニュー（ネオン光る・クリックで下へ飛ぶ） -->
   <nav class="hero__menu">
     <a href="#desc">このサイトの説明</a>
     <a href="#img">フリー画像</a>
@@ -25,11 +25,37 @@
   </nav>
 </header>
 
-<!-- ▼ 以下はページ下部の本体（必要なら残す） -->
-<section id="desc"><h2>このサイトの説明</h2></section>
-<section id="img"><h2>フリー画像</h2></section>
-<section id="music"><h2>フリー音楽</h2></section>
-<section id="voice"><h2>フリー音声</h2></section>
+<!-- ▼ ここから下が “展開される中身” -->
+<section id="desc">
+  <details>
+    <summary>このサイトの説明</summary>
+    <p>創作と記録をまとめたアーカイブサイトです。</p>
+  </details>
+</section>
+
+<section id="img">
+  <details>
+    <summary>フリー画像</summary>
+    <p>画像素材のページへ移動します。</p>
+  </details>
+</section>
+
+<section id="music">
+  <details>
+    <summary>フリー音楽</summary>
+    <ul>
+      <li>BGM</li>
+      <li>曲</li>
+    </ul>
+  </details>
+</section>
+
+<section id="voice">
+  <details>
+    <summary>フリー音声</summary>
+    <p>音声素材を準備中です。</p>
+  </details>
+</section>
 
 </body>
 </html>
