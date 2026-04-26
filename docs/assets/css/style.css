@@ -87,3 +87,92 @@ body {
   text-shadow: 0 0 12px rgba(120,240,255,1);
   transform: translateX(4px);
 }
+/* リセット */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #050510;
+  color: #fff;
+  font-family: system-ui, sans-serif;
+}
+
+/* ▼ ヒーロー画像 */
+.hero {
+  min-height: 100vh;
+  background-image: url("../img/hero-miku.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* スマホで女の子を見えるように */
+@media (max-width: 600px) {
+  .hero {
+    background-position: top;
+  }
+}
+
+/* 暗くして文字を読みやすく */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8));
+  pointer-events: none;
+}
+
+.hero__overlay {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* ネオンタイトル */
+.hero__title {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  color: #a8f3ff;
+  text-shadow: 0 0 12px rgba(120,240,255,1);
+}
+
+/* サブテキスト */
+.hero__text {
+  margin-top: 0.5rem;
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  color: #ffb7f8;
+  text-shadow: 0 0 8px rgba(255,120,230,1);
+}
+
+/* ▼ 白文字メニュー（ボックスなし・ネオン光る） */
+.hero__menu {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hero__menu a {
+  color: #ffffff;
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  text-decoration: none;
+  text-shadow: 0 0 6px rgba(255,255,255,0.4);
+  transition: 0.2s;
+}
+
+/* ホバーでネオン光る */
+.hero__menu a:hover {
+  color: #a8f3ff;
+  text-shadow: 0 0 12px rgba(120,240,255,1);
+  transform: translateX(4px);
+}
