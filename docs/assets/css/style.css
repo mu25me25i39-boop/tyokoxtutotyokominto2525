@@ -16,7 +16,7 @@ body {
   min-height: 100vh;
   background-image: url("../img/hero-miku.jpg");
   background-size: cover;
-  background-position: top center;   /* ← スマホで顔が出る */
+  background-position: top center; /* スマホで顔が出る */
   background-repeat: no-repeat;
   position: relative;
 }
@@ -41,130 +41,28 @@ body {
   padding-top: 5rem;
 }
 
-/* ▼ 文字をもっと大きく */
+/* ▼ タイトル・サブテキスト（大きめ） */
 .hero__title {
-  font-size: clamp(2.6rem, 7vw, 10rem));   /* ← 大きくした */
+  font-size: clamp(2.6rem, 7vw, 10rem);
   color: #a8f3ff;
   text-shadow: 0 0 14px rgba(120,240,255,1);
 }
 
 .hero__text {
   margin-top: 0.8rem;
-  font-size: clamp(1.2rem, 4vw, 4.4rem);  /* ← 大きくした */
+  font-size: clamp(1.2rem, 4vw, 4.4rem);
   color: #ffb7f8;
   text-shadow: 0 0 10px rgba(255,120,230,1);
+  max-width: 60ch;
+  line-height: 1.7;
 }
 
-/* ▼ 画像上のアコーディオン（ボックスなし） */
+/* ▼ アコーディオン */
 .hero__accordion {
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
   gap: 14px;
-}
-
-details {
-  background: transparent;   /* ← ボックス禁止 */
-  color: #fff;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-details summary {
-  list-style: none;
-  cursor: pointer;
-  font-size: clamp(1.4rem, 4vw, 2rem);  /* ← 大きくした */
-  text-shadow: 0 0 8px rgba(255,255,255,0.4);
-}
-
-details summary::-webkit-details-marker {
-  display: none;
-}
-
-details p,
-details ul {
-  margin-left: 1.4rem;
-  font-size: 2.2rem;   /* ← 大きくした */
-}
-
-/* ▼ スマホ調整 */
-@media (max-width: 600px) {
-  .hero__overlay {
-    padding-top: 3rem;
-  }
-  details summary {
-    font-size: 1.4rem;
-  }
-  details p,
-  details ul {
-    font-size: 1rem;
-  }
-}
-/* リセット */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background: #050510;
-  color: #fff;
-  font-family: system-ui, sans-serif;
-}
-
-/* ▼ ヒーロー画像 */
-.hero {
-  min-height: 100vh;
-  background-image: url("../img/hero-miku.jpg");
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
-  position: relative;
-}
-
-/* 暗くして文字を読みやすく */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8));
-  pointer-events: none;
-}
-
-.hero__overlay {
-  position: relative;
-  z-index: 2;
-  padding: 2rem;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding-top: 5rem;
-}
-
-/* ネオンタイトル */
-.hero__title {
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  color: #a8f3ff;
-  text-shadow: 0 0 12px rgba(120,240,255,1);
-}
-
-.hero__text {
-  margin-top: 0.5rem;
-  font-size: clamp(1rem, 3vw, 1.4rem);
-  color: #ffb7f8;
-  text-shadow: 0 0 8px rgba(255,120,230,1);
-}
-
-/* ▼ 画像上のアコーディオン（ボックスなし） */
-.hero__accordion {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
 }
 
 details {
@@ -179,8 +77,8 @@ details {
 details summary {
   list-style: none;
   cursor: pointer;
-  font-size: clamp(2rem, 3vw, 2.6rem);
-  text-shadow: 0 0 6px rgba(255,255,255,0.4);
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  text-shadow: 0 0 8px rgba(255,255,255,0.4);
 }
 
 details summary::-webkit-details-marker {
@@ -189,29 +87,37 @@ details summary::-webkit-details-marker {
 
 details p,
 details ul {
-  margin-left: 1.2rem;
-  font-size: 0.9rem;
+  margin-left: 1.4rem;
+  font-size: 2.2rem;
+  max-width: 60ch;
+  line-height: 1.7;
 }
 
-
-/* ▼ summary にカーソルを乗せたときネオン色にする */
+/* ▼ summary ホバーでネオン */
 details summary:hover {
-  color: #a8f3ff;  /* ネオンブルー */
+  color: #a8f3ff;
   text-shadow: 0 0 12px rgba(120,240,255,1);
 }
 
-/* ▼ 展開されたテキストにカーソルを乗せたとき背景マーカー */
+/* ▼ 展開テキストのホバー */
 details[open] p:hover,
 details[open] ul:hover,
 details[open] li:hover {
-  background: rgba(255, 255, 255, 0.15); /* 半透明のマーカー */
+  background: rgba(255, 255, 255, 0.15);
   padding: 2px 4px;
   border-radius: 4px;
 }
 
-
-.hero__text,
-details p {
-  max-width: 60ch; /* 文字数ベースで幅を制限 */
-  line-height: 1.7; /* 読みやすさUP */
+/* ▼ スマホ調整 */
+@media (max-width: 600px) {
+  .hero__overlay {
+    padding-top: 3rem;
+  }
+  details summary {
+    font-size: 1.4rem;
+  }
+  details p,
+  details ul {
+    font-size: 1rem;
+  }
 }
