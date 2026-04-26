@@ -21,6 +21,12 @@ body {
   position: relative;
 }
 
+/* スマホで女の子が見えるようにする */
+@media (max-width: 600px) {
+  .hero {
+    background-position: top;
+  }
+}
 
 /* 画像を暗くして文字を読みやすくする */
 .hero::before {
@@ -44,39 +50,39 @@ body {
   min-height: 100vh;
 }
 
-/* 中央のタイトル */
+/* ネオンライトのタイトル（大きく） */
 .hero__title {
-  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-size: clamp(2rem, 6vw, 3.2rem);
   letter-spacing: 0.18em;
-  text-transform: uppercase;
+  text-transform: none;
   color: #a8f3ff;
-  text-shadow: 0 0 8px rgba(120, 240, 255, 0.8);
+  text-shadow: 0 0 12px rgba(120, 240, 255, 1);
 }
 
-/* 中央のサブテキスト */
+/* サブテキスト（大きく） */
 .hero__text {
   margin-top: 0.6rem;
-  font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+  font-size: clamp(1rem, 3vw, 1.4rem);
   letter-spacing: 0.12em;
   color: #ffb7f8;
-  text-shadow: 0 0 6px rgba(255, 120, 230, 0.7);
+  text-shadow: 0 0 8px rgba(255, 120, 230, 0.9);
   white-space: nowrap;
 }
 
-/* 左下メニュー（画像と同じ配置） */
+/* 左下メニュー（画像と同じ位置） */
 .hero__menu {
   position: absolute;
   bottom: 20px;
   left: 20px;
   z-index: 2;
   color: #fff;
-  font-size: clamp(0.8rem, 2vw, 1rem);
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
   line-height: 1.6;
-  opacity: 0.85;
+  opacity: 0.9;
   text-shadow: 0 0 6px rgba(255,255,255,0.4);
 }
 
-/* ▼ 以下は元のアコーディオン用（必要最低限だけ残す） */
+/* ▼ 以下はアコーディオン */
 details {
   background: #fff;
   color: #000;
