@@ -16,7 +16,7 @@ body {
   min-height: 100vh;
   background-image: url("../img/hero-miku.jpg");
   background-size: cover;
-  background-position: top center;   /* ← スマホで顔が出る */
+  background-position: top center;
   background-repeat: no-repeat;
   position: relative;
 }
@@ -37,15 +37,8 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-}
-
-/* スマホで文字が顔にかぶらないように */
-@media (max-width: 600px) {
-  .hero__overlay {
-    justify-content: flex-start;
-    padding-top: 5rem;
-  }
+  justify-content: flex-start;
+  padding-top: 5rem;
 }
 
 /* ネオンタイトル */
@@ -55,7 +48,6 @@ body {
   text-shadow: 0 0 12px rgba(120,240,255,1);
 }
 
-/* サブテキスト */
 .hero__text {
   margin-top: 0.5rem;
   font-size: clamp(1rem, 3vw, 1.4rem);
@@ -63,41 +55,19 @@ body {
   text-shadow: 0 0 8px rgba(255,120,230,1);
 }
 
-/* ▼ 白文字メニュー（ネオン光る） */
-.hero__menu {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  z-index: 3;
+/* ▼ 画像上のアコーディオン（ボックスなし） */
+.hero__accordion {
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-}
-
-.hero__menu a {
-  color: #ffffff;
-  font-size: clamp(1rem, 3vw, 1.3rem);
-  text-decoration: none;
-  text-shadow: 0 0 6px rgba(255,255,255,0.4);
-  transition: 0.2s;
-}
-
-.hero__menu a:hover {
-  color: #a8f3ff;
-  text-shadow: 0 0 12px rgba(120,240,255,1);
-  transform: translateX(4px);
-}
-
-/* ▼ 下の展開部分（ボックス消す） */
-section {
-  padding: 20px;
+  gap: 12px;
 }
 
 details {
-  background: transparent;   /* ← ボックス消す */
+  background: transparent;
   color: #fff;
   padding: 0;
-  margin: 0 0 12px;
+  margin: 0;
   border-radius: 0;
   box-shadow: none;
 }
