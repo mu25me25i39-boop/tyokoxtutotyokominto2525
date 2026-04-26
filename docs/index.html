@@ -3,40 +3,37 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portfolio</title>
+<title>ラプラスのアーカイブ</title>
 
 <style>
 body {
-  font-family: sans-serif;
   margin: 0;
   padding: 0;
+  font-family: sans-serif;
   background: #f5f5f5;
   text-align: center;
 }
 
-/* タイトル */
 h1 {
   margin-top: 40px;
   font-size: 28px;
 }
 
-/* カードを並べるエリア */
-.card-container {
+.card-wrap {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
   padding: 40px 0;
-  flex-wrap: wrap;
 }
 
-/* カード本体 */
 .card {
   width: 260px;
-  background: white;
+  background: #fff;
   border-radius: 12px;
   padding: 20px;
   text-decoration: none;
-  color: black;
+  color: #000;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   transition: 0.2s;
 }
@@ -47,9 +44,9 @@ h1 {
 }
 
 .card-title {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 .card-desc {
@@ -61,26 +58,44 @@ h1 {
 
 <body>
 
-<h1>Portfolio</h1>
+<h1>ラプラスのアーカイブ</h1>
 
-<div class="card-container">
+<div class="card-wrap">
 
-  <!-- カード①：画像 -->
-  <a class="card" href="works/image-gallery/index.html">
-    <div class="card-title">画像</div>
-    <div class="card-desc">イラスト・写真・GIFなど</div>
+  <!-- 画像 A -->
+  <a class="card" href="image/a.html">
+    <div class="card-title">画像 A</div>
+    <div class="card-desc">イラスト・写真など</div>
   </a>
 
-  <!-- カード②：音楽 -->
-  <a class="card" href="works/music-gallery/index.html">
-    <div class="card-title">音楽</div>
-    <div class="card-desc">ボーカル曲・BGM素材</div>
+  <!-- 画像 B -->
+  <a class="card" href="image/b.html">
+    <div class="card-title">画像 B</div>
+    <div class="card-desc">GIF・生成画像など</div>
   </a>
 
-  <!-- カード③：ブログ -->
-  <a class="card" href="blog/index.html">
-    <div class="card-title">ブログ</div>
-    <div class="card-desc">記事一覧へ</div>
+  <!-- 音楽 A -->
+  <a class="card" href="music/a.html">
+    <div class="card-title">音楽 A</div>
+    <div class="card-desc">ボーカル曲</div>
+  </a>
+
+  <!-- 音楽 B -->
+  <a class="card" href="music/b.html">
+    <div class="card-title">音楽 B</div>
+    <div class="card-desc">BGM素材</div>
+  </a>
+
+  <!-- ブログ A -->
+  <a class="card" href="blog/a.html">
+    <div class="card-title">ブログ A</div>
+    <div class="card-desc">技術系（Windows / Android）</div>
+  </a>
+
+  <!-- ブログ B -->
+  <a class="card" href="blog/b.html">
+    <div class="card-title">ブログ B</div>
+    <div class="card-desc">日常 / セキュリティなど</div>
   </a>
 
 </div>
