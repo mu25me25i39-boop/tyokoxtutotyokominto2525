@@ -21,6 +21,141 @@ body {
   position: relative;
 }
 
+/* スマホで女の子を見えるように */
+@media (max-width: 600px) {
+  .hero {
+    background-position: top;
+  }
+}
+
+/* 画像を暗くして文字を読みやすくする */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.15), transparent 60%),
+              linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9));
+  pointer-events: none;
+}
+
+.hero__overlay {
+  position: relative;
+  z-index: 1;
+  padding: 2rem 1.5rem 3rem;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 100vh;
+}
+
+/* ネオンタイトル（大きく） */
+.hero__title {
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  letter-spacing: 0.18em;
+  color: #a8f3ff;
+  text-shadow: 0 0 12px rgba(120, 240, 255, 1);
+}
+
+/* サブテキスト */
+.hero__text {
+  margin-top: 0.6rem;
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  letter-spacing: 0.12em;
+  color: #ffb7f8;
+  text-shadow: 0 0 8px rgba(255, 120, 230, 0.9);
+  white-space: nowrap;
+}
+
+/* 左下メニュー（クリック可能） */
+.hero__menu {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 2;
+  line-height: 1.7;
+}
+
+.hero__menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  text-shadow: 0 0 6px rgba(255,255,255,0.4);
+}
+
+.hero__menu a:hover {
+  opacity: 0.7;
+}
+
+/* ▼ アコーディオン */
+details {
+  background: #fff;
+  color: #000;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.card {
+  flex: 1;
+  min-width: 120px;
+  background: #fafafa;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+
+.card-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.card-desc {
+  font-size: 13px;
+  opacity: 0.7;
+}
+/* 全体リセット */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #050510;
+  color: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ▼ ヒーロー画像 */
+.hero {
+  min-height: 100vh;
+  background-image: url("../img/hero-miku.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
 /* スマホで女の子が見えるようにする */
 @media (max-width: 600px) {
   .hero {
