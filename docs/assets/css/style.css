@@ -16,16 +16,9 @@ body {
   min-height: 100vh;
   background-image: url("../img/hero-miku.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: top center;   /* ← 修正済み */
   background-repeat: no-repeat;
   position: relative;
-}
-
-/* スマホで女の子を見えるように */
-@media (max-width: 600px) {
-  .hero {
-    background-position: top;
-  }
 }
 
 /* 暗くして文字を読みやすく */
@@ -99,4 +92,12 @@ details {
   padding: 15px;
   border-radius: 10px;
   margin-bottom: 20px;
+}
+
+/* ▼ スマホで文字が顔にかぶらないように */
+@media (max-width: 600px) {
+  .hero__overlay {
+    justify-content: flex-start;
+    padding-top: 5rem;
+  }
 }
