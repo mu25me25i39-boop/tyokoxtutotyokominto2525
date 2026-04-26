@@ -17,53 +17,31 @@
     <p class="hero__text">deep character on / 2.34e-9122511</p>
   </div>
 
-  <!-- 左下のメニュー（クリック可能） -->
+  <!-- ▼ 画像の上に置くアコーディオン（クリックで開く） -->
   <div class="hero__menu">
-    <p><a href="#desc">このサイトの説明</a></p>
-    <p><a href="#img">フリー画像</a></p>
-    <p><a href="#music">フリー音楽</a></p>
-    <p><a href="#voice">フリー音声</a></p>
+
+    <details>
+      <summary>このサイトの説明</summary>
+      <p>創作と記録をまとめたアーカイブサイトです。</p>
+    </details>
+
+    <details>
+      <summary>フリー画像</summary>
+      <p>画像素材のページへ移動します。</p>
+    </details>
+
+    <details>
+      <summary>フリー音楽</summary>
+      <p>音楽素材のページへ移動します。</p>
+    </details>
+
+    <details>
+      <summary>フリー音声</summary>
+      <p>音声素材を準備中です。</p>
+    </details>
+
   </div>
 </header>
-
-<!-- ▼ 以下はアコーディオン（ID付き） -->
-<details id="desc">
-  <summary>このサイトの説明</summary>
-  <p>創作と記録をまとめたアーカイブサイトです。</p>
-</details>
-
-<details id="img">
-  <summary>フリー画像</summary>
-  <div class="card-wrap">
-    <a class="card" href="images/a.html">
-      <div class="card-title">画像A</div>
-      <div class="card-desc">イラスト・写真</div>
-    </a>
-    <a class="card" href="images/b.html">
-      <div class="card-title">画像B</div>
-      <div class="card-desc">GIF・生成画像</div>
-    </a>
-  </div>
-</details>
-
-<details id="music">
-  <summary>フリー音楽</summary>
-  <div class="card-wrap">
-    <a class="card" href="music/a.html">
-      <div class="card-title">音楽A</div>
-      <div class="card-desc">ボーカル曲</div>
-    </a>
-    <a class="card" href="music/b.html">
-      <div class="card-title">音楽B</div>
-      <div class="card-desc">BGM素材</div>
-    </a>
-  </div>
-</details>
-
-<details id="voice">
-  <summary>フリー音声</summary>
-  <p>音声素材を準備中です。</p>
-</details>
 
 </body>
 </html>
