@@ -170,7 +170,7 @@ a:hover {
   h1 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
-    color: #0078ff; /* 07風の青 */
+    color: #0078ff;
     text-align: center;
   }
 
@@ -184,14 +184,14 @@ a:hover {
   }
 
   details:hover {
-    background: #f0f8ff; /* ほんのり青み → オシャレ */
+    background: #f0f8ff;
   }
 
   summary {
     font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
-    color: #ff4fb8; /* アクセントのピンク */
+    color: #ff4fb8;
   }
 
   h2, h3 {
