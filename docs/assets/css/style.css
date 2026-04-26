@@ -86,7 +86,7 @@ details summary::-webkit-details-marker {
 details p,
 details ul {
   margin-left: 1.4rem;
-  font-size: 1.1rem;   /* ← 大きくした */
+  font-size: 2.2rem;   /* ← 大きくした */
 }
 
 /* ▼ スマホ調整 */
