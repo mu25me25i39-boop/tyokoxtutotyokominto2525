@@ -137,5 +137,11 @@ details[open] li:hover {
   .blog-grid {
     grid-template-columns: 1fr;
   }
+
+  .back-home {
+  display: inline-block;
+  margin-top: 3rem;
+}
+
 }
 
