@@ -179,7 +179,7 @@ details {
 details summary {
   list-style: none;
   cursor: pointer;
-  font-size: clamp(1rem, 3vw, 3.9rem);
+  font-size: clamp(1rem, 3vw, 2.6rem);
   text-shadow: 0 0 6px rgba(255,255,255,0.4);
 }
 
