@@ -121,3 +121,21 @@ details[open] li:hover {
     font-size: 1rem;
   }
 }
+
+
+
+
+/* ▼ ブログ一覧ページのグリッド（PC用） */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* ▼ スマホは縦並び */
+@media (max-width: 800px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
