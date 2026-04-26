@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Android：端末の種類と選び方 - ラプラスのアーカイブ</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="hero__overlay">
+
+    <h1 class="hero__title">Android：端末の種類と選び方</h1>
+    <p class="hero__text">Android端末の特徴と選び方まとめ</p>
+
+    <div class="hero__accordion">
+      <div class="article-body" style="font-size:1.2rem; line-height:1.8; max-width:70ch;">
+
+        <p>Android：端末の種類と選び方<br>
+        Androidの特徴<br>
+        Androidの良さ（セキュリティ特化・性能特化）</p>
+
+        <p>Androidスマートフォンは、同じOSでありながら、 「機関級セキュリティを目指した機種」から「ノートPC並みの性能を持つゲーミング機種」まで、 幅広いコンセプトの端末を選べるのが最大の強みです。<br>
+        セキュリティ重視なら Pixel＋GrapheneOS などの構成、 性能重視なら ゲーミングスマホ（RedMagic / ROG Phone / Black Shark 等） など、自分の用途に合わせた「特化型」を選択できます。</p>
+
+        <p>ここでは、セキュリティ寄りのAndroid と 性能寄りのAndroid（ゲーミング） に分けて代表的な選択肢を紹介します。</p>
+
+        <h2>セキュリティAndroid（Pixel＋強化OS）</h2>
+
+        <h3>Google Pixel：素のAndroid＋長期サポート</h3>
+
+        <p>セキュリティを重視するなら、まず検討すべきは Google純正の Pixelシリーズ です。</p>
+
+        <p>Pixelのセキュリティ面の特徴</p>
+
+        <ul>
+          <li>Google純正の最新Androidを最速で受け取りやすい（OSアップデート・セキュリティパッチが長期・高頻度）。</li>
+          <li>専用セキュリティチップTitan M / Titan M2による起動プロセスやロック画面の保護。</li>
+          <li>アプリごとの権限細分化（カメラ・マイク・位置情報などをワンタップでブロック）。</li>
+          <li>ロックダウンモード・自動ロック・デバイス暗号化など、標準機能だけでも高い防御力。</li>
+        </ul>
+
+        <p>通常利用で「セキュリティの高いAndroid端末がほしい」という人は、 素のPixelをそのまま使うだけで十分高い安全性を得られます。</p>
+
+        <h3>GrapheneOS：Pixel専用のセキュリティ特化ROM</h3>
+
+        <p>GrapheneOS は、Pixel専用に開発されている セキュリティ特化ROMです。無料で利用できるオープンソースプロジェクトで、 一般販売されている「高額なセキュリティスマホ」に匹敵する水準を狙っています。</p>
+
+        <p>GrapheneOSのポイント</p>
+
+        <ul>
+          <li>対象端末はPixelのみ： 他社Androidには基本的に非対応。</li>
+          <li>カーネルやアプリサンドボックスを強化し、権限・メモリ保護をさらに厳格化。</li>
+          <li>Googleサービスと距離を置いた設計（必要なサービスだけを厳選して追加可能）。</li>
+          <li>暗号化・ロック画面・ネットワーク権限など、標準Androidよりも制御が細かい。</li>
+        </ul>
+
+        <p>市販の「超高額セキュリティスマホ」の多くは、 カスタムAndroid＋追加ハードで数十万円以上しますが、Pixel本体＋GrapheneOSなら 一般的なハイエンドAndroidと同等の本体価格で、近いコンセプトを実現できます。</p>
+
+        <p>ただし、この構成はGoogleの公式サポート対象外となります。ハードウェア故障時の保証はPixel本体のものは利用できますが、OSに関する問題は自己解決やコミュニティへの相談が基本となるため、中級〜上級者向けと言えるでしょう。</p>
+
+        <p>また、導入にはブートローダー解放やROM書き換えなどの手順が必要なため、 中級〜上級者向けです。インストール方法や対応モデルを公式ドキュメントで必ず確認してください。</p>
+
+        <h3>まとめ（セキュリティAndroid）</h3>
+
+        <ul>
+          <li>「手軽さ＋セキュリティ」なら：そのままPixel純正OS。</li>
+          <li>「徹底的にセキュリティ特化」なら：Pixel ＋ GrapheneOS構成を検討。</li>
+        </ul>
+
+        <h2>性能Android（ゲーミングスマホ）</h2>
+
+        <h3>ゲーミングAndroidの特徴</h3>
+
+        <p>最新のゲーミングAndroidは、 メモリ 16GB〜24GB・ストレージ 1TBクラスといった、 ノートPC級のスペックを持つモデルも珍しくありません。これらの性能を支える心臓部がSoC（System on a Chip、通称CPU）であり、特にSnapdragonの最上位モデル（例：Snapdragon 8 Gen 3）の世代が、そのままゲームの快適さに直結します。</p>
+
+        <p>フレームレート重視のディスプレイ（144Hz〜165Hz）、高性能冷却、カスタムトリガーなど、 iPhoneとは違う方向で性能特化しています。</p>
+
+        <h3>REDMAGIC（レッドマジック）</h3>
+
+        <p>特徴</p>
+
+        <ul>
+          <li>Snapdragon最上位クラス＋最大 16GB〜24GB RAM / 1TB ストレージ構成のモデルも存在。</li>
+          <li>本体に冷却ファン内蔵（モデルによる）で、長時間高負荷でも性能を維持しやすい。</li>
+          <li>側面トリガーボタンやゲーム用UIなど、ゲーム特化機能が豊富。</li>
+        </ul>
+
+        <p>「とにかく性能を盛りたい」「長時間ゲームを動かしたい」という人向け。</p>
+
+        <h3>ROG Phone（ASUS）</h3>
+
+        <p>特徴</p>
+
+        <ul>
+          <li>高リフレッシュレートAMOLED、上位Snapdragon、大容量バッテリーを搭載。</li>
+          <li>外付けクーラー・ゲームパッドなど純正アクセサリが豊富。</li>
+          <li>ゲームモードでCPU/GPUの動作モードを細かくチューニング可能。</li>
+        </ul>
+
+        <h3>Black Shark（ブラックシャーク）</h3>
+
+        <p>特徴と注意点</p>
+
+        <ul>
+          <li>ゲーミング機としてのスペックは高く、価格は比較的抑えめ（コスパ寄り）。</li>
+          <li>中国系メーカー製であり、プリインストールアプリや権限設定の確認は必須。</li>
+          <li>日本で正規展開していないモデルも多く、保証やアップデート面は自己責任。</li>
+        </ul>
+
+        <h3>その他のゲーミング系</h3>
+
+        <ul>
+          <li>POCO / Redmi（Xiaomi系）</li>
+          <li>Galaxy Sシリーズ / S Ultra</li>
+        </ul>
+
+        <h3>ゲーミングスマホ購入時の注意</h3>
+
+        <ul>
+          <li>サイズ・重量</li>
+          <li>バッテリー消費</li>
+          <li>発熱</li>
+          <li>カメラ性能</li>
+          <li>アクセサリ互換性</li>
+          <li>アップデート頻度</li>
+        </ul>
+
+        <h3>グローバル版購入時の注意</h3>
+
+        <ul>
+          <li>対応バンド</li>
+          <li>SIMロック</li>
+          <li>おサイフケータイ（FeliCa）</li>
+          <li>技適</li>
+          <li>サポート・保証</li>
+        </ul>
+
+        <h3>まとめ（性能Android）</h3>
+
+        <ul>
+          <li>「日本向け＋ゲーム重視＋安心感」 → REDMAGIC日本版 / ROG Phone日本版 / Galaxy Sシリーズ</li>
+          <li>「価格重視＋性能重視（自己責任強め）」 → Black Shark グローバル版など</li>
+        </ul>
+
+        <p>※共通のポイント： どのゲーミングスマホを選ぶ場合でも、まずはOSアップデートとセキュリティパッチの配信状況、 プリインストールアプリや権限設定を確認し、不要なものは無効化・削除してから利用することで安全性が大きく向上します。</p>
+
+      </div>
+    </div>
+
+    <p style="margin-top: 3rem;">
+      <a href="../blog.html" class="back-home">← ブログ一覧に戻る</a>
+    </p>
+
+  </div>
+</header>
+
+</body>
+</html>
