@@ -1,3 +1,6 @@
 body {
+  margin: 0;
+  padding: 20px;
+  font-family: sans-serif;
   background: url("../img/bg.jpg") no-repeat center center / cover;
 }
