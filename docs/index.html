@@ -13,28 +13,26 @@
 <!-- ▼ ヒーロー画像（背景） -->
 <header class="hero">
   <div class="hero__overlay">
-    <h1 class="hero__title">ZIMY ARCHIVE</h1>
+    <h1 class="hero__title">ラプラスのアーカイブ</h1>
     <p class="hero__text">deep character on / 2.34e-9122511</p>
   </div>
 
-  <!-- 左下のメニュー（画像と同じ配置） -->
+  <!-- 左下のメニュー（クリック可能） -->
   <div class="hero__menu">
-    <p>ラプラスのアーカイブ</p>
-    <p>&gt; このサイトの説明</p>
-    <p>&gt; フリー画像</p>
-    <p>&gt; フリー音楽</p>
-    <p>&gt; フリー音声</p>
+    <p><a href="#desc">このサイトの説明</a></p>
+    <p><a href="#img">フリー画像</a></p>
+    <p><a href="#music">フリー音楽</a></p>
+    <p><a href="#voice">フリー音声</a></p>
   </div>
 </header>
 
-<!-- ▼ 以下は元のコンテンツ（アコーディオン） -->
-
-<details>
+<!-- ▼ 以下はアコーディオン（ID付き） -->
+<details id="desc">
   <summary>このサイトの説明</summary>
   <p>創作と記録をまとめたアーカイブサイトです。</p>
 </details>
 
-<details>
+<details id="img">
   <summary>フリー画像</summary>
   <div class="card-wrap">
     <a class="card" href="images/a.html">
@@ -48,7 +46,7 @@
   </div>
 </details>
 
-<details>
+<details id="music">
   <summary>フリー音楽</summary>
   <div class="card-wrap">
     <a class="card" href="music/a.html">
@@ -62,18 +60,9 @@
   </div>
 </details>
 
-<details>
-  <summary>ブログ</summary>
-  <div class="card-wrap">
-    <a class="card" href="blog/a.html">
-      <div class="card-title">ブログA</div>
-      <div class="card-desc">技術系</div>
-    </a>
-    <a class="card" href="blog/b.html">
-      <div class="card-title">ブログB</div>
-      <div class="card-desc">日常・その他</div>
-    </a>
-  </div>
+<details id="voice">
+  <summary>フリー音声</summary>
+  <p>音声素材を準備中です。</p>
 </details>
 
 </body>
