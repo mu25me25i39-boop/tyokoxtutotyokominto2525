@@ -144,4 +144,15 @@ details[open] li:hover {
 }
 
 }
+/* ▼ リンク色をサイトの世界観に統一（青リンクを消す） */
+a {
+  color: #a8f3ff; /* ネオン水色 */
+  text-decoration: none;
+  text-shadow: 0 0 8px rgba(120,240,255,0.8);
+}
+
+a:hover {
+  color: #fff;
+  text-shadow: 0 0 12px rgba(255,255,255,1);
+}
 
