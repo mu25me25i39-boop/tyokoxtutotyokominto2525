@@ -1,2 +1,83 @@
-<h1>test</h1>
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ホーム</title>
 
+<style>
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f5f5f5;
+  text-align: center;
+}
+
+/* カードを並べるエリア */
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 0;
+  flex-wrap: wrap;
+}
+
+/* カード本体 */
+.card {
+  width: 260px;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  text-decoration: none;
+  color: black;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-desc {
+  font-size: 14px;
+  opacity: 0.7;
+}
+</style>
+</head>
+
+<body>
+
+<h1>サイトメニュー</h1>
+
+<div class="card-container">
+
+  <!-- カード① -->
+  <a class="card" href="works/music-gallery/index.html">
+    <div class="card-title">音楽ギャラリー</div>
+    <div class="card-desc">あなたの音楽作品へ</div>
+  </a>
+
+  <!-- カード② -->
+  <a class="card" href="works/image-gallery/index.html">
+    <div class="card-title">画像ギャラリー</div>
+    <div class="card-desc">イラスト・写真など</div>
+  </a>
+
+  <!-- カード③ -->
+  <a class="card" href="blog/article1.html">
+    <div class="card-title">ブログ</div>
+    <div class="card-desc">記事一覧へ</div>
+  </a>
+
+</div>
+
+</body>
+</html>
