@@ -65,7 +65,7 @@
   background: #e8ffe8;
 }
 
-
+/* ▼ 戻るボタン（横並び対応） */
 .back-row {
   display: flex;
   gap: 1rem;
@@ -86,3 +86,6 @@
 }
 
 .back-btn:hover {
+  background: #e0f2ff;
+  color: #005fcc;
+}
