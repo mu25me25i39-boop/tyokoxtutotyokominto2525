@@ -156,26 +156,7 @@ a:hover {
   text-shadow: 0 0 12px rgba(255,255,255,1);
 }
 
-.back-row {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
 
-.back-btn {
-  padding: 0.6rem 1.2rem;
-  border-radius: 6px;
-  background: #f0f8ff;
-  color: #0078ff;
-  text-decoration: none;
-  font-weight: bold;
-  border: 1px solid #cde6ff;
-  transition: 0.2s;
-}
-
-.back-btn:hover {
   background: #e0f2ff;
   color: #005fcc;
 }
