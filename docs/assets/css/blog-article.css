@@ -1,3 +1,4 @@
+/* ▼ 共通（07風） */
 .blog-article {
   font-family: sans-serif;
   line-height: 1.8;
@@ -42,4 +43,24 @@
 
 .blog-article ul {
   margin-left: 1.2rem;
+}
+
+/* ▼ テーマ：重要（黄色） */
+.theme-yellow {
+  background: #fff9d6;
+}
+
+/* ▼ テーマ：注意（赤） */
+.theme-red {
+  background: #ffe5e5;
+}
+
+/* ▼ テーマ：まとめ（青） */
+.theme-blue {
+  background: #e9f3ff;
+}
+
+/* ▼ テーマ：セキュリティ（緑） */
+.theme-green {
+  background: #e8ffe8;
 }
