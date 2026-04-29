@@ -1,13 +1,18 @@
-/* ▼ 共通（07風） */
+/* =========================================
+   ▼ 共通（07風） - 記事コンテナ
+========================================= */
 .blog-article {
   font-family: sans-serif;
   line-height: 1.8;
   margin: 2rem auto;
   max-width: 900px;
+  padding: 2rem;
   background: #ffffff;
   color: #222;
+  border-radius: 10px;
 }
 
+/* タイトル */
 .blog-article h1 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
@@ -15,6 +20,19 @@
   text-align: center;
 }
 
+/* 見出し */
+.blog-article h2,
+.blog-article h3 {
+  color: #0078ff;
+  margin-top: 1.2rem;
+}
+
+/* リスト */
+.blog-article ul {
+  margin-left: 1.2rem;
+}
+
+/* details */
 .blog-article details {
   margin: 1.5rem 0;
   padding: 1.2rem;
@@ -35,37 +53,28 @@
   color: #ff4fb8;
 }
 
-.blog-article h2,
-.blog-article h3 {
-  color: #0078ff;
-  margin-top: 1.2rem;
-}
-
-.blog-article ul {
-  margin-left: 1.2rem;
-}
-
-/* ▼ テーマ：重要（黄色） */
-.theme-yellow {
+/* =========================================
+   ▼ テーマ背景（body に付与）
+========================================= */
+body.theme-yellow {
   background: #fff9d6;
 }
 
-/* ▼ テーマ：注意（赤） */
-.theme-red {
+body.theme-red {
   background: #ffe5e5;
 }
 
-/* ▼ テーマ：まとめ（青） */
-.theme-blue {
+body.theme-blue {
   background: #e9f3ff;
 }
 
-/* ▼ テーマ：セキュリティ（緑） */
-.theme-green {
+body.theme-green {
   background: #e8ffe8;
 }
 
-/* ▼ 戻るボタン（横並び対応） */
+/* =========================================
+   ▼ 戻るボタン（横並び）
+========================================= */
 .back-row {
   display: flex;
   gap: 1rem;
