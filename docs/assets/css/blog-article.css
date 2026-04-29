@@ -98,3 +98,46 @@ body.theme-green {
   background: #e0f2ff;
   color: #005fcc;
 }
+
+/* =========================================
+   ▼ 展開型サブタイトル（非日常オシャンティー）
+========================================= */
+.blog-article details {
+  margin: 1.8rem 0;
+  padding: 1.2rem 1.4rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(6px);
+  transition: 0.25s ease;
+}
+
+.blog-article details[open] {
+  background: rgba(255,255,255,0.75);
+  border-color: rgba(255,255,255,0.45);
+}
+
+.blog-article summary {
+  font-size: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #ff4fb8;
+  letter-spacing: 0.5px;
+  list-style: none;
+}
+
+.blog-article summary::-webkit-details-marker {
+  display: none;
+}
+
+/* summary の前にアイコン風の装飾 */
+.blog-article summary::before {
+  content: "✦ ";
+  color: #ff4fb8;
+  font-weight: bold;
+}
+
+/* 開いた時の summary */
+.blog-article details[open] summary {
+  color: #0078ff;
+}
