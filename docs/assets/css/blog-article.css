@@ -130,9 +130,11 @@ body.theme-green  { background: #e8ffe8; }
 }
 
 /* =========================================
-   ▼ PC最適化（文章幅を広げる & 見出し中央揃え）
+   ▼ PC最適化（中央揃え & 幅調整）
 ========================================= */
 @media (min-width: 768px) {
+
+  /* 本文の幅を中央に */
   .blog-article p,
   .blog-article ul,
   .blog-article li,
@@ -143,10 +145,10 @@ body.theme-green  { background: #e8ffe8; }
     margin-right: auto;
   }
 
-  /* ← PCでは見出しを中央揃えに戻す */
+  /* 見出しは中央揃え */
   .blog-article h2,
   .blog-article h3 {
-    text-align: center;
+    text-align: center !important;
   }
 }
 
@@ -156,9 +158,9 @@ body.theme-green  { background: #e8ffe8; }
 @media (max-width: 767px) {
 
   .blog-article {
-    margin: 0 !important;
+    margin: 0;
     padding: 1rem;
-    max-width: 100% !important;
+    max-width: 100%;
     font-size: 0.9rem;
   }
 
@@ -196,13 +198,5 @@ body.theme-green  { background: #e8ffe8; }
 
   .blog-article ul {
     padding-left: 20px;
-  }
-}
-
-/* PCで見出しを中央揃えに戻す */
-@media (min-width: 768px) {
-  .blog-article h2,
-  .blog-article h3 {
-    text-align: center;
   }
 }
