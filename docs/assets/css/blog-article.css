@@ -141,3 +141,13 @@ body.theme-green {
 .blog-article details[open] summary {
   color: #0078ff;
 }
+
+.article-img-full {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px 0;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
