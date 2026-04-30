@@ -145,7 +145,7 @@ body.theme-green  { background: #e8ffe8; }
 }
 
 /* =========================================
-   ▼ スマホ最適化（完全左寄せ）
+   ▼ スマホ最適化（完全左寄せ＋文字小さめ）
 ========================================= */
 @media (max-width: 767px) {
 
@@ -154,6 +154,28 @@ body.theme-green  { background: #e8ffe8; }
     margin: 0 !important;
     padding: 1rem;
     max-width: 100% !important;
+    font-size: 0.9rem; /* ← 全体の文字を小さく */
+  }
+
+  /* タイトルも左寄せ＋小さめ */
+  .blog-article h1 {
+    text-align: left;
+    padding-left: 8px;
+    font-size: 1.6rem;
+  }
+
+  /* 見出し（h2 / h3）もスマホ用に調整 */
+  .blog-article h2 {
+    font-size: 1.3rem;
+  }
+
+  .blog-article h3 {
+    font-size: 1.15rem;
+  }
+
+  /* summary（展開タイトル）もスマホ用に調整 */
+  .blog-article summary {
+    font-size: 1.1rem;
   }
 
   /* テキスト幅を画面いっぱいに */
@@ -172,37 +194,5 @@ body.theme-green  { background: #e8ffe8; }
   /* 箇条書きを左揃え */
   .blog-article ul {
     padding-left: 20px;
-  }
-
-  /* タイトルも左寄せに */
-  .blog-article h1 {
-    text-align: left;
-    padding-left: 8px;
-  }
-}
-@media (max-width: 767px) {
-
-  /* 全体の文字を少し小さく */
-  .blog-article {
-    font-size: 0.9rem;
-  }
-
-  /* タイトルもスマホ用に少し小さく */
-  .blog-article h1 {
-    font-size: 1.6rem;
-  }
-
-  /* 見出し（h2 / h3）も調整 */
-  .blog-article h2 {
-    font-size: 1.3rem;
-  }
-
-  .blog-article h3 {
-    font-size: 1.15rem;
-  }
-
-  /* summary（展開タイトル）もスマホ用に調整 */
-  .blog-article summary {
-    font-size: 1.1rem;
   }
 }
