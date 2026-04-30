@@ -97,21 +97,10 @@
 /* =========================================
    ▼ テーマ背景（body に付与）
 ========================================= */
-body.theme-yellow {
-  background: #fff9d6;
-}
-
-body.theme-red {
-  background: #ffe5e5;
-}
-
-body.theme-blue {
-  background: #e9f3ff;
-}
-
-body.theme-green {
-  background: #e8ffe8;
-}
+body.theme-yellow { background: #fff9d6; }
+body.theme-red    { background: #ffe5e5; }
+body.theme-blue   { background: #e9f3ff; }
+body.theme-green  { background: #e8ffe8; }
 
 /* =========================================
    ▼ 戻るボタン（横並び）
@@ -156,13 +145,15 @@ body.theme-green {
 }
 
 /* =========================================
-   ▼ スマホ最適化（見やすさ重視）
+   ▼ スマホ最適化（完全左寄せ）
 ========================================= */
 @media (max-width: 767px) {
 
-  /* 記事コンテナの余白を縮小（見やすく） */
+  /* 記事コンテナを完全左寄せ */
   .blog-article {
+    margin: 0 !important;
     padding: 1rem;
+    max-width: 100% !important;
   }
 
   /* テキスト幅を画面いっぱいに */
@@ -172,8 +163,8 @@ body.theme-green {
   .blog-article h2,
   .blog-article h3 {
     max-width: 100%;
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 8px;
+    padding-right: 8px;
     margin-left: 0;
     margin-right: 0;
   }
@@ -182,20 +173,36 @@ body.theme-green {
   .blog-article ul {
     padding-left: 20px;
   }
-}
 
-@media (max-width: 767px) {
-  .blog-article {
-    margin: 0;
-    padding: 1rem;
-    max-width: 100%;
+  /* タイトルも左寄せに */
+  .blog-article h1 {
+    text-align: left;
+    padding-left: 8px;
   }
 }
-
 @media (max-width: 767px) {
+
+  /* 全体の文字を少し小さく */
   .blog-article {
-    margin: 0 !important;
-    padding: 1rem;
-    max-width: 100% !important;
+    font-size: 0.9rem;
+  }
+
+  /* タイトルもスマホ用に少し小さく */
+  .blog-article h1 {
+    font-size: 1.6rem;
+  }
+
+  /* 見出し（h2 / h3）も調整 */
+  .blog-article h2 {
+    font-size: 1.3rem;
+  }
+
+  .blog-article h3 {
+    font-size: 1.15rem;
+  }
+
+  /* summary（展開タイトル）もスマホ用に調整 */
+  .blog-article summary {
+    font-size: 1.1rem;
   }
 }
