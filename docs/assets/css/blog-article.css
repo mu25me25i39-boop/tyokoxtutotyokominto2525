@@ -30,27 +30,68 @@
 /* リスト */
 .blog-article ul {
   margin-left: 1.2rem;
+  padding-left: 1.2em;
 }
 
-/* details */
+.blog-article li {
+  line-height: 1.7;
+}
+
+/* =========================================
+   ▼ 展開型サブタイトル（07風オシャンティー）
+========================================= */
 .blog-article details {
-  margin: 1.5rem 0;
-  padding: 1.2rem;
-  border: 1px solid #e5e5e5;
-  border-radius: 10px;
-  background: #fafafa;
-  transition: 0.2s;
+  margin: 1.8rem 0;
+  padding: 1.2rem 1.4rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(6px);
+  transition: 0.25s ease;
 }
 
 .blog-article details:hover {
-  background: #f0f8ff;
+  background: rgba(255,255,255,0.65);
+}
+
+.blog-article details[open] {
+  background: rgba(255,255,255,0.75);
+  border-color: rgba(255,255,255,0.45);
 }
 
 .blog-article summary {
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 1.25rem;
+  font-weight: 600;
   cursor: pointer;
   color: #ff4fb8;
+  letter-spacing: 0.5px;
+  list-style: none;
+}
+
+.blog-article summary::-webkit-details-marker {
+  display: none;
+}
+
+.blog-article summary::before {
+  content: "✦ ";
+  color: #ff4fb8;
+  font-weight: bold;
+}
+
+.blog-article details[open] summary {
+  color: #0078ff;
+}
+
+/* =========================================
+   ▼ 画像（横幅いっぱい）
+========================================= */
+.article-img-full {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px 0;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
 /* =========================================
@@ -100,75 +141,45 @@ body.theme-green {
 }
 
 /* =========================================
-   ▼ 展開型サブタイトル（非日常オシャンティー）
+   ▼ PC最適化（文章幅を広げる）
 ========================================= */
-.blog-article details {
-  margin: 1.8rem 0;
-  padding: 1.2rem 1.4rem;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.25);
-  background: rgba(255,255,255,0.55);
-  backdrop-filter: blur(6px);
-  transition: 0.25s ease;
-}
-
-.blog-article details[open] {
-  background: rgba(255,255,255,0.75);
-  border-color: rgba(255,255,255,0.45);
-}
-
-.blog-article summary {
-  font-size: 1.25rem;
-  font-weight: 600;
-  cursor: pointer;
-  color: #ff4fb8;
-  letter-spacing: 0.5px;
-  list-style: none;
-}
-
-.blog-article summary::-webkit-details-marker {
-  display: none;
-}
-
-/* summary の前にアイコン風の装飾 */
-.blog-article summary::before {
-  content: "✦ ";
-  color: #ff4fb8;
-  font-weight: bold;
-}
-
-/* 開いた時の summary */
-.blog-article details[open] summary {
-  color: #0078ff;
-}
-
-.article-img-full {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: 20px 0;
-  border-radius: 8px;
-  object-fit: cover;
-}
-
-/* PC の文章幅を広げる（70ch） */
 @media (min-width: 768px) {
   .blog-article p,
   .blog-article ul,
   .blog-article li,
   .blog-article h2,
   .blog-article h3 {
-    max-width: 70ch; /* ← 60ch → 70ch に拡張 */
+    max-width: 70ch;
     margin-left: auto;
     margin-right: auto;
   }
 }
 
-/* 箇条書きを左寄せに見せる */
-.blog-article ul {
-  padding-left: 1.2em; /* ← 左の余白を自然に */
-}
+/* =========================================
+   ▼ スマホ最適化（見やすさ重視）
+========================================= */
+@media (max-width: 767px) {
 
-.blog-article li {
-  line-height: 1.7;
+  /* 記事コンテナの余白を縮小（見やすく） */
+  .blog-article {
+    padding: 1rem;
+  }
+
+  /* テキスト幅を画面いっぱいに */
+  .blog-article p,
+  .blog-article ul,
+  .blog-article li,
+  .blog-article h2,
+  .blog-article h3 {
+    max-width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* 箇条書きを左揃え */
+  .blog-article ul {
+    padding-left: 20px;
+  }
 }
