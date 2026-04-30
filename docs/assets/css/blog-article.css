@@ -151,3 +151,24 @@ body.theme-green {
   object-fit: cover;
 }
 
+/* PC の文章幅を広げる（70ch） */
+@media (min-width: 768px) {
+  .blog-article p,
+  .blog-article ul,
+  .blog-article li,
+  .blog-article h2,
+  .blog-article h3 {
+    max-width: 70ch; /* ← 60ch → 70ch に拡張 */
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* 箇条書きを左寄せに見せる */
+.blog-article ul {
+  padding-left: 1.2em; /* ← 左の余白を自然に */
+}
+
+.blog-article li {
+  line-height: 1.7;
+}
