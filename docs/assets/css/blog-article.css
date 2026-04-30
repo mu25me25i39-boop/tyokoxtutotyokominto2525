@@ -130,7 +130,7 @@ body.theme-green  { background: #e8ffe8; }
 }
 
 /* =========================================
-   ▼ PC最適化（文章幅を広げる）
+   ▼ PC最適化（文章幅を広げる & 見出し中央揃え）
 ========================================= */
 @media (min-width: 768px) {
   .blog-article p,
@@ -142,6 +142,12 @@ body.theme-green  { background: #e8ffe8; }
     margin-left: auto;
     margin-right: auto;
   }
+
+  /* ← PCでは見出しを中央揃えに戻す */
+  .blog-article h2,
+  .blog-article h3 {
+    text-align: center;
+  }
 }
 
 /* =========================================
@@ -149,36 +155,33 @@ body.theme-green  { background: #e8ffe8; }
 ========================================= */
 @media (max-width: 767px) {
 
-  /* 記事コンテナを完全左寄せ */
   .blog-article {
     margin: 0 !important;
     padding: 1rem;
     max-width: 100% !important;
-    font-size: 0.9rem; /* ← 全体の文字を小さく */
+    font-size: 0.9rem;
   }
 
-  /* タイトルも左寄せ＋小さめ */
   .blog-article h1 {
     text-align: left;
     padding-left: 8px;
     font-size: 1.6rem;
   }
 
-  /* 見出し（h2 / h3）もスマホ用に調整 */
   .blog-article h2 {
     font-size: 1.3rem;
+    text-align: left;
   }
 
   .blog-article h3 {
     font-size: 1.15rem;
+    text-align: left;
   }
 
-  /* summary（展開タイトル）もスマホ用に調整 */
   .blog-article summary {
     font-size: 1.1rem;
   }
 
-  /* テキスト幅を画面いっぱいに */
   .blog-article p,
   .blog-article ul,
   .blog-article li,
@@ -191,7 +194,6 @@ body.theme-green  { background: #e8ffe8; }
     margin-right: 0;
   }
 
-  /* 箇条書きを左揃え */
   .blog-article ul {
     padding-left: 20px;
   }
