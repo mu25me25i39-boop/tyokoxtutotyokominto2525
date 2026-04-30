@@ -183,3 +183,12 @@ body.theme-green {
     padding-left: 20px;
   }
 }
+
+@media (max-width: 767px) {
+  .blog-article {
+    margin: 0;
+    padding: 1rem;
+    max-width: 100%;
+  }
+}
+
