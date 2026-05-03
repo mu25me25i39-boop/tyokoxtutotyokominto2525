@@ -16,31 +16,31 @@ body {
   max-width: 900px;
   margin: 0 auto;
   padding: 1rem;
+  display: grid;
+  gap: 1.5rem;
 }
 
-/* ▼ カード本体 */
+/* ▼ カード本体（背景画像＋モザイク） */
 .music-card {
-  background-image: var(--bg);
   background-size: cover;
   background-position: center;
   border-radius: 12px;
   border: 1px solid #222;
-  margin-bottom: 1.5rem;
   padding: 1rem;
   position: relative;
   overflow: hidden;
 
-  /* 閉じているとき：モザイク＋暗い */
+  /* 閉じているときのモザイク */
   filter: blur(3px) brightness(0.5);
   transition: 0.3s;
 }
 
-/* ▼ 展開時：鮮明 */
+/* ▼ 展開時：背景鮮明 */
 .music-card.open {
   filter: blur(0px) brightness(1);
 }
 
-/* ▼ ヘッダー（タイトル＋詳細） */
+/* ▼ タイトル＋詳細ボタン */
 .card-header {
   position: relative;
   z-index: 2;
@@ -55,7 +55,6 @@ body {
   color: #00d0ff;
 }
 
-/* ▼ 詳細ボタン */
 .toggle-btn {
   padding: 0.4rem 1rem;
   background: #ff4fb8;
@@ -66,11 +65,7 @@ body {
   font-weight: bold;
 }
 
-.toggle-btn:hover {
-  background: #ff7acb;
-}
-
-/* ▼ 展開部分 */
+/* ▼ 展開部分（最初は非表示） */
 .card-detail {
   display: none;
   margin-top: 1rem;
@@ -86,12 +81,6 @@ body {
   display: block;
 }
 
-.card-detail p {
-  color: #ddd;
-  margin-bottom: 1rem;
-}
-
-/* ▼ DOWNLOAD */
 .download-btn {
   display: inline-block;
   padding: 0.5rem 1.2rem;
@@ -103,11 +92,6 @@ body {
   margin-right: 0.5rem;
 }
 
-.download-btn:hover {
-  background: #33dcff;
-}
-
-/* ▼ 閉じる */
 .close-btn {
   padding: 0.5rem 1.2rem;
   background: #444;
@@ -116,8 +100,4 @@ body {
   border: none;
   cursor: pointer;
   font-weight: bold;
-}
-
-.close-btn:hover {
-  background: #666;
 }
