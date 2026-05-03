@@ -14,75 +14,81 @@
 <div class="music-list">
 
   <!-- ▼ カード1 -->
-  <div class="music-card">
+  <div class="music-card" data-bg="assets/img/music01.jpg">
     <div class="card-header">
       <h2>囚ワレノ花</h2>
-      <button class="toggle-btn" data-target="track01">詳細を見る</button>
+      <button class="toggle-btn">詳細を見る</button>
     </div>
 
-    <div id="track01" class="card-detail">
+    <div class="card-detail">
       <p>
         狂おしいほどの独占欲に囚われた少女が、  
         愛する彼女を甘美な檻に閉じ込める耽美な物語。
       </p>
 
       <a href="download/track01.html" class="download-btn">DOWNLOAD</a>
-      <button class="close-btn" data-target="track01">閉じる</button>
+      <button class="close-btn">閉じる</button>
     </div>
   </div>
 
   <!-- ▼ カード2 -->
-  <div class="music-card">
+  <div class="music-card" data-bg="assets/img/music02.jpg">
     <div class="card-header">
       <h2>熱に沈む</h2>
-      <button class="toggle-btn" data-target="track02">詳細を見る</button>
+      <button class="toggle-btn">詳細を見る</button>
     </div>
 
-    <div id="track02" class="card-detail">
+    <div class="card-detail">
       <p>
         静かに熱へ沈んでいくような、耽美で退廃的な世界観の楽曲。
       </p>
 
       <a href="download/track02.html" class="download-btn">DOWNLOAD</a>
-      <button class="close-btn" data-target="track02">閉じる</button>
+      <button class="close-btn">閉じる</button>
     </div>
   </div>
 
   <!-- ▼ カード3 -->
-  <div class="music-card">
+  <div class="music-card" data-bg="assets/img/music03.jpg">
     <div class="card-header">
       <h2>空想愛</h2>
-      <button class="toggle-btn" data-target="track03">詳細を見る</button>
+      <button class="toggle-btn">詳細を見る</button>
     </div>
 
-    <div id="track03" class="card-detail">
+    <div class="card-detail">
       <p>
         現実と妄想の境界で揺れる、甘くて少し痛い恋の物語。
       </p>
 
       <a href="download/track03.html" class="download-btn">DOWNLOAD</a>
-      <button class="close-btn" data-target="track03">閉じる</button>
+      <button class="close-btn">閉じる</button>
     </div>
   </div>
 
 </div>
 
 <script>
-  // 詳細を見る → 展開
-  document.querySelectorAll('.toggle-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const id = btn.dataset.target;
-      document.getElementById(id).classList.add('open');
-    });
-  });
+// ▼ 初期状態：背景をモザイク＋暗くする
+document.querySelectorAll('.music-card').forEach(card => {
+  const bg = card.dataset.bg;
+  card.style.backgroundImage = `url(${bg})`;
+});
 
-  // 閉じる → 非表示
-  document.querySelectorAll('.close-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const id = btn.dataset.target;
-      document.getElementById(id).classList.remove('open');
-    });
+// ▼ 詳細を見る → 展開
+document.querySelectorAll('.toggle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.music-card');
+    card.classList.add('open');
   });
+});
+
+// ▼ 閉じる → 閉じる
+document.querySelectorAll('.close-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.music-card');
+    card.classList.remove('open');
+  });
+});
 </script>
 
 </body>
