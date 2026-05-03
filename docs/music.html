@@ -11,98 +11,76 @@
 
 <h1 class="title">Music Archive</h1>
 
-<div class="music-grid">
+<div class="music-list">
 
-  <!-- ▼ カード1：囚ワレノ花 -->
-  <div class="music-card" style="background-image: url('assets/img/music01.jpg');">
-    <div class="card-overlay">
+  <!-- ▼ カード1 -->
+  <div class="music-card">
+    <div class="card-header">
       <h2>囚ワレノ花</h2>
-      <button class="detail-btn" data-modal="modal-track01">詳細を見る</button>
+      <button class="toggle-btn" data-target="track01">詳細を見る</button>
     </div>
-  </div>
 
-  <!-- ▼ カード2：熱に沈む -->
-  <div class="music-card" style="background-image: url('assets/img/music02.jpg');">
-    <div class="card-overlay">
-      <h2>熱に沈む</h2>
-      <button class="detail-btn" data-modal="modal-track02">詳細を見る</button>
-    </div>
-  </div>
+    <div id="track01" class="card-detail">
+      <p>
+        狂おしいほどの独占欲に囚われた少女が、  
+        愛する彼女を甘美な檻に閉じ込める耽美な物語。
+      </p>
 
-  <!-- ▼ カード3：空想愛 -->
-  <div class="music-card" style="background-image: url('assets/img/music03.jpg');">
-    <div class="card-overlay">
-      <h2>空想愛</h2>
-      <button class="detail-btn" data-modal="modal-track03">詳細を見る</button>
-    </div>
-  </div>
-
-</div>
-
-<!-- ▼ モーダル：囚ワレノ花 -->
-<div id="modal-track01" class="modal">
-  <div class="modal-inner">
-    <h2>囚ワレノ花</h2>
-    <p>
-      狂おしいほどの独占欲に囚われた少女が、<br>
-      愛する彼女を甘美な檻に閉じ込める耽美な物語。
-    </p>
-    <div class="modal-buttons">
       <a href="download/track01.html" class="download-btn">DOWNLOAD</a>
-      <button class="close-btn">閉じる</button>
+      <button class="close-btn" data-target="track01">閉じる</button>
     </div>
   </div>
-</div>
 
-<!-- ▼ モーダル：熱に沈む -->
-<div id="modal-track02" class="modal">
-  <div class="modal-inner">
-    <h2>熱に沈む</h2>
-    <p>
-      静かに熱へ沈んでいくような、耽美で退廃的な世界観の楽曲。
-    </p>
-    <div class="modal-buttons">
+  <!-- ▼ カード2 -->
+  <div class="music-card">
+    <div class="card-header">
+      <h2>熱に沈む</h2>
+      <button class="toggle-btn" data-target="track02">詳細を見る</button>
+    </div>
+
+    <div id="track02" class="card-detail">
+      <p>
+        静かに熱へ沈んでいくような、耽美で退廃的な世界観の楽曲。
+      </p>
+
       <a href="download/track02.html" class="download-btn">DOWNLOAD</a>
-      <button class="close-btn">閉じる</button>
+      <button class="close-btn" data-target="track02">閉じる</button>
     </div>
   </div>
-</div>
 
-<!-- ▼ モーダル：空想愛 -->
-<div id="modal-track03" class="modal">
-  <div class="modal-inner">
-    <h2>空想愛</h2>
-    <p>
-      現実と妄想の境界で揺れる、甘くて少し痛い恋の物語。
-    </p>
-    <div class="modal-buttons">
+  <!-- ▼ カード3 -->
+  <div class="music-card">
+    <div class="card-header">
+      <h2>空想愛</h2>
+      <button class="toggle-btn" data-target="track03">詳細を見る</button>
+    </div>
+
+    <div id="track03" class="card-detail">
+      <p>
+        現実と妄想の境界で揺れる、甘くて少し痛い恋の物語。
+      </p>
+
       <a href="download/track03.html" class="download-btn">DOWNLOAD</a>
-      <button class="close-btn">閉じる</button>
+      <button class="close-btn" data-target="track03">閉じる</button>
     </div>
   </div>
+
 </div>
 
 <script>
-  // 詳細ボタン → モーダル表示
-  document.querySelectorAll('.detail-btn').forEach(btn => {
+  // 詳細を見る → 展開
+  document.querySelectorAll('.toggle-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      const id = btn.getAttribute('data-modal');
-      const modal = document.getElementById(id);
-      if (modal) modal.classList.add('is-open');
+      const id = btn.dataset.target;
+      document.getElementById(id).classList.add('open');
     });
   });
 
-  // 閉じるボタン → モーダル非表示
-  document.querySelectorAll('.modal .close-btn').forEach(btn => {
+  // 閉じる → 非表示
+  document.querySelectorAll('.close-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      btn.closest('.modal').classList.remove('is-open');
-    });
-  });
-
-  // モーダル背景クリックでも閉じる
-  document.querySelectorAll('.modal').forEach(m => {
-    m.addEventListener('click', e => {
-      if (e.target === m) m.classList.remove('is-open');
+      const id = btn.dataset.target;
+      document.getElementById(id).classList.remove('open');
     });
   });
 </script>
