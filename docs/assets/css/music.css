@@ -12,125 +12,82 @@ body {
   color: #00d0ff;
 }
 
-/* ▼ カード一覧のグリッド */
-.music-grid {
-  max-width: 1100px;
-  margin: 0 auto 3rem;
-  padding: 0 1rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-}
-
-/* ▼ カード本体（背景画像） */
-.music-card {
-  position: relative;
-  height: 200px;
-  border-radius: 12px;
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-  border: 1px solid #222;
-  transition: 0.3s;
-}
-
-.music-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 15px rgba(0, 208, 255, 0.5);
-}
-
-/* ▼ カードの暗いオーバーレイ */
-.card-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+.music-list {
+  max-width: 900px;
+  margin: 0 auto;
   padding: 1rem;
 }
 
-.card-overlay h2 {
-  margin: 0 0 0.6rem;
-  font-size: 1.3rem;
+/* ▼ カード本体 */
+.music-card {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+}
+
+/* ▼ カードヘッダー（タイトル＋詳細ボタン） */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h2 {
+  margin: 0;
   color: #00d0ff;
 }
 
-/* ▼ 詳細ボタン */
-.detail-btn {
-  display: inline-block;
+/* ▼ 詳細を見るボタン */
+.toggle-btn {
   padding: 0.4rem 1rem;
   background: #ff4fb8;
   color: #fff;
   border-radius: 6px;
   border: none;
-  font-weight: bold;
   cursor: pointer;
-  transition: 0.2s;
+  font-weight: bold;
 }
 
-.detail-btn:hover {
+.toggle-btn:hover {
   background: #ff7acb;
 }
 
-/* ▼ モーダル共通 */
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
+/* ▼ 展開部分（最初は非表示） */
+.card-detail {
   display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #333;
 }
 
-.modal.is-open {
-  display: flex;
+.card-detail.open {
+  display: block;
 }
 
-.modal-inner {
-  background: #111;
-  border-radius: 12px;
-  border: 1px solid #333;
-  max-width: 480px;
-  width: 90%;
-  padding: 1.5rem;
-  box-shadow: 0 0 18px rgba(0, 208, 255, 0.4);
-}
-
-.modal-inner h2 {
-  margin-top: 0;
-  color: #00d0ff;
-}
-
-.modal-inner p {
-  font-size: 0.95rem;
+.card-detail p {
   color: #ddd;
+  margin-bottom: 1rem;
 }
 
-/* ▼ モーダル内ボタン */
-.modal-buttons {
-  margin-top: 1.5rem;
-  display: flex;
-  gap: 0.8rem;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-}
-
+/* ▼ DOWNLOADボタン */
 .download-btn {
+  display: inline-block;
   padding: 0.5rem 1.2rem;
   background: #00d0ff;
   color: #000;
   border-radius: 6px;
   text-decoration: none;
   font-weight: bold;
-  transition: 0.2s;
+  margin-right: 0.5rem;
 }
 
 .download-btn:hover {
   background: #33dcff;
 }
 
+/* ▼ 閉じるボタン */
 .close-btn {
   padding: 0.5rem 1.2rem;
   background: #444;
@@ -139,7 +96,6 @@ body {
   border: none;
   cursor: pointer;
   font-weight: bold;
-  transition: 0.2s;
 }
 
 .close-btn:hover {
