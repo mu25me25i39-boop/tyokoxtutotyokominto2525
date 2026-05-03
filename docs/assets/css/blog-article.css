@@ -1,179 +1,122 @@
-/* =========================================
-   ▼ 共通（07風） - 記事コンテナ
-========================================= */
-.blog-article {
+body {
+  background: #000;
+  color: #fff;
+  margin: 0;
   font-family: sans-serif;
-  line-height: 1.8;
-  margin: 2rem auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin: 2rem 0;
+  color: #00d0ff;
+}
+
+.music-list {
   max-width: 900px;
-  padding: 2rem;
-  background: #ffffff;
-  color: #222;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* ▼ カード本体（背景画像＋モザイク） */
+.music-card {
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  border: 1px solid #222;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+
+  /* 閉じているときのモザイク */
+  filter: blur(3px) brightness(0.5);
+  transition: 0.3s;
+}
+
+/* ▼ 展開時：背景鮮明 */
+.music-card.open {
+  filter: blur(0px) brightness(1);
+}
+
+/* ▼ カードヘッダー（タイトル＋詳細ボタン） */
+.card-header {
+  position: relative;
+  z-index: 2;
+  backdrop-filter: blur(4px);
+  background: rgba(0,0,0,0.4);
+  padding: 1rem;
   border-radius: 10px;
 }
 
-/* タイトル */
-.blog-article h1 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  color: #0078ff;
-  text-align: center;
+.card-header h2 {
+  margin: 0;
+  color: #00d0ff;
 }
 
-/* 見出し */
-.blog-article h2,
-.blog-article h3 {
-  color: #0078ff;
-  margin-top: 1.2rem;
-}
-
-/* リスト */
-.blog-article ul {
-  margin-left: 1.2rem;
-  padding-left: 1.2em;
-}
-
-.blog-article li {
-  line-height: 1.7;
-}
-
-/* =========================================
-   ▼ 展開型サブタイトル（07風オシャンティー）
-========================================= */
-.blog-article details {
-  margin: 1.8rem 0;
-  padding: 1.2rem 1.4rem;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.25);
-  background: rgba(255,255,255,0.55);
-  backdrop-filter: blur(6px);
-  transition: 0.25s ease;
-}
-
-.blog-article details:hover {
-  background: rgba(255,255,255,0.65);
-}
-
-.blog-article details[open] {
-  background: rgba(255,255,255,0.75);
-  border-color: rgba(255,255,255,0.45);
-}
-
-.blog-article summary {
-  font-size: 1.25rem;
-  font-weight: 600;
+/* ▼ 詳細ボタン */
+.toggle-btn {
+  padding: 0.4rem 1rem;
+  background: #ff4fb8;
+  color: #fff;
+  border-radius: 6px;
+  border: none;
   cursor: pointer;
-  color: #ff4fb8;
-  letter-spacing: 0.5px;
-  list-style: none;
-}
-
-.blog-article summary::-webkit-details-marker {
-  display: none;
-}
-
-.blog-article summary::before {
-  content: "✦ ";
-  color: #ff4fb8;
   font-weight: bold;
 }
 
-.blog-article details[open] summary {
-  color: #0078ff;
+.toggle-btn:hover {
+  background: #ff7acb;
 }
 
-/* =========================================
-   ▼ 画像（横幅いっぱい）
-========================================= */
-.article-img-full {
-  width: 100%;
-  height: auto;
+/* ▼ 展開部分（最初は非表示） */
+.card-detail {
+  display: none;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(0,0,0,0.6);
+  border-radius: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ▼ 展開時に表示 */
+.music-card.open .card-detail {
   display: block;
-  margin: 20px 0;
-  border-radius: 8px;
-  object-fit: cover;
 }
 
-/* =========================================
-   ▼ テーマ背景（body に付与）
-========================================= */
-body.theme-yellow { background: #fff9d6; }
-body.theme-red    { background: #ffe5e5; }
-body.theme-blue   { background: #e9f3ff; }
-body.theme-green  { background: #e8ffe8; }
-
-/* =========================================
-   ▼ 戻るボタン（横並び）
-========================================= */
-.back-row {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
-  justify-content: center;
-  flex-wrap: wrap;
+.card-detail p {
+  color: #ddd;
+  margin-bottom: 1rem;
 }
 
-.back-btn {
-  padding: 0.6rem 1.2rem;
+/* ▼ DOWNLOADボタン */
+.download-btn {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  background: #00d0ff;
+  color: #000;
   border-radius: 6px;
-  background: #f0f8ff;
-  color: #0078ff;
   text-decoration: none;
   font-weight: bold;
-  border: 1px solid #cde6ff;
-  transition: 0.2s;
+  margin-right: 0.5rem;
 }
 
-.back-btn:hover {
-  background: #e0f2ff;
-  color: #005fcc;
+.download-btn:hover {
+  background: #33dcff;
 }
 
-/* =========================================
-   ▼ スマホ最適化（完全左寄せ＋文字小さめ）
-========================================= */
-@media (max-width: 767px) {
+/* ▼ 閉じるボタン */
+.close-btn {
+  padding: 0.5rem 1.2rem;
+  background: #444;
+  color: #fff;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-  .blog-article {
-    margin: 0;
-    padding: 1rem;
-    max-width: 100%;
-    font-size: 0.9rem;
-  }
-
-  .blog-article h1 {
-    text-align: left;
-    padding-left: 8px;
-    font-size: 1.6rem;
-  }
-
-  .blog-article h2 {
-    font-size: 1.3rem;
-    text-align: left;
-  }
-
-  .blog-article h3 {
-    font-size: 1.15rem;
-    text-align: left;
-  }
-
-  .blog-article summary {
-    font-size: 1.1rem;
-  }
-
-  .blog-article p,
-  .blog-article ul,
-  .blog-article li,
-  .blog-article h2,
-  .blog-article h3 {
-    max-width: 100%;
-    padding-left: 8px;
-    padding-right: 8px;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .blog-article ul {
-    padding-left: 20px;
-  }
+.close-btn:hover {
+  background: #666;
 }
