@@ -22,37 +22,53 @@ body {
   gap: 1.5rem;
 }
 
-/* ▼ カード本体 */
+/* ▼ カード本体（背景画像） */
 .music-card {
-  display: block;
-  background: #111;
+  position: relative;
+  height: 200px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s;
   border: 1px solid #222;
-  border-radius: 10px;
-  padding: 1rem;
-  text-decoration: none;
-  color: #fff;
-  transition: 0.2s;
 }
 
 .music-card:hover {
-  transform: translateY(-4px);
-  border-color: #00d0ff;
-  box-shadow: 0 0 12px rgba(0, 208, 255, 0.5);
+  transform: scale(1.03);
+  box-shadow: 0 0 15px rgba(0, 208, 255, 0.5);
 }
 
-.music-card img {
-  width: 100%;
-  border-radius: 8px;
-  margin-bottom: 0.8rem;
+/* ▼ カードの暗いオーバーレイ */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1rem;
 }
 
-.music-card h2 {
-  font-size: 1.2rem;
+.card-overlay h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.3rem;
   color: #00d0ff;
-  margin-bottom: 0.4rem;
 }
 
-.music-card p {
-  font-size: 0.9rem;
-  color: #ccc;
+/* ▼ 詳細ボタン */
+.detail-btn {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: #ff4fb8;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.detail-btn:hover {
+  background: #ff7acb;
 }
