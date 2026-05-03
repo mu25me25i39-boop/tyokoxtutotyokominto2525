@@ -1,0 +1,102 @@
+/* ▼ 全体 */
+body {
+  background: #000;
+  color: #fff;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* ▼ Hero（blog.html と同じ構造） */
+.hero {
+  position: relative;
+  padding: 4rem 1rem;
+  text-align: center;
+  background: url('../img/music-hero.jpg') center/cover no-repeat;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.hero__title {
+  position: relative;
+  font-size: 2.5rem;
+  color: #00d0ff;
+}
+
+.hero__text {
+  position: relative;
+  font-size: 1.2rem;
+  color: #ff4fb8;
+}
+
+/* ▼ カードグリッド */
+.music-grid {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+/* ▼ カード本体 */
+.music-card {
+  display: block;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 10px;
+  padding: 1rem;
+  text-decoration: none;
+  color: #fff;
+  transition: 0.2s;
+}
+
+.music-card:hover {
+  transform: translateY(-4px);
+  border-color: #00d0ff;
+}
+
+.music-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.music-card h2 {
+  font-size: 1.3rem;
+  color: #00d0ff;
+  margin-bottom: 0.5rem;
+}
+
+.music-card p {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+/* ▼ 戻るボタン（blog-article.css と統一） */
+.back-row {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem auto;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.back-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  background: #111;
+  color: #00d0ff;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid #003d66;
+  transition: 0.2s;
+}
+
+.back-btn:hover {
+  background: #002233;
+}
