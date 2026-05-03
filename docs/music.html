@@ -21,29 +21,8 @@
     </div>
 
     <div class="card-detail">
-      <p>
-        狂おしいほどの独占欲に囚われた少女が、  
-        愛する彼女を甘美な檻に閉じ込める耽美な物語。
-      </p>
-
-      <a href="download/track01.html" class="download-btn">DOWNLOAD</a>
-      <button class="close-btn">閉じる</button>
-    </div>
-  </div>
-
-  <!-- ▼ カード2 -->
-  <div class="music-card" data-bg="assets/img/music02.jpg">
-    <div class="card-header">
-      <h2>熱に沈む</h2>
-      <button class="toggle-btn">詳細を見る</button>
-    </div>
-
-    <div class="card-detail">
-      <p>
-        静かに熱へ沈んでいくような、耽美で退廃的な世界観の楽曲。
-      </p>
-
-      <a href="download/track02.html" class="download-btn">DOWNLOAD</a>
+      <p>テスト用の説明文です。</p>
+      <a href="#" class="download-btn">DOWNLOAD</a>
       <button class="close-btn">閉じる</button>
     </div>
   </div>
@@ -51,25 +30,23 @@
 </div>
 
 <script>
-// ▼ 初期：背景画像セット
+// 背景画像セット
 document.querySelectorAll('.music-card').forEach(card => {
   const bg = card.dataset.bg;
-  card.style.backgroundImage = `url(${bg})`;
+  card.style.setProperty('--bg', `url(${bg})`);
 });
 
-// ▼ 詳細を見る → 展開
+// 詳細を見る
 document.querySelectorAll('.toggle-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    const card = btn.closest('.music-card');
-    card.classList.add('open');
+    btn.closest('.music-card').classList.add('open');
   });
 });
 
-// ▼ 閉じる → 閉じる
+// 閉じる
 document.querySelectorAll('.close-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    const card = btn.closest('.music-card');
-    card.classList.remove('open');
+    btn.closest('.music-card').classList.remove('open');
   });
 });
 </script>
