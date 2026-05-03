@@ -68,10 +68,10 @@
 </div>
 
 <script>
-// ▼ 初期状態：背景をモザイク＋暗くする
+// ▼ 初期背景（モザイク状態）
 document.querySelectorAll('.music-card').forEach(card => {
   const bg = card.dataset.bg;
-  card.style.backgroundImage = `url(${bg})`;
+  card.style.setProperty('--bg', `url(${bg})`);
 });
 
 // ▼ 詳細を見る → 展開
