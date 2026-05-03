@@ -20,18 +20,34 @@ body {
 
 /* ▼ カード本体 */
 .music-card {
-  background: #111;
+  background-image: var(--bg);
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
   border: 1px solid #222;
-  border-radius: 10px;
   margin-bottom: 1.5rem;
   padding: 1rem;
+  position: relative;
+  overflow: hidden;
+
+  /* 閉じているとき：モザイク＋暗い */
+  filter: blur(3px) brightness(0.5);
+  transition: 0.3s;
 }
 
-/* ▼ カードヘッダー（タイトル＋詳細ボタン） */
+/* ▼ 展開時：鮮明 */
+.music-card.open {
+  filter: blur(0px) brightness(1);
+}
+
+/* ▼ ヘッダー（タイトル＋詳細） */
 .card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  position: relative;
+  z-index: 2;
+  backdrop-filter: blur(4px);
+  background: rgba(0,0,0,0.4);
+  padding: 1rem;
+  border-radius: 10px;
 }
 
 .card-header h2 {
@@ -39,7 +55,7 @@ body {
   color: #00d0ff;
 }
 
-/* ▼ 詳細を見るボタン */
+/* ▼ 詳細ボタン */
 .toggle-btn {
   padding: 0.4rem 1rem;
   background: #ff4fb8;
@@ -54,15 +70,19 @@ body {
   background: #ff7acb;
 }
 
-/* ▼ 展開部分（最初は非表示） */
+/* ▼ 展開部分 */
 .card-detail {
   display: none;
   margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid #333;
+  padding: 1rem;
+  background: rgba(0,0,0,0.6);
+  border-radius: 10px;
+  position: relative;
+  z-index: 2;
 }
 
-.card-detail.open {
+/* ▼ 展開時に表示 */
+.music-card.open .card-detail {
   display: block;
 }
 
@@ -71,7 +91,7 @@ body {
   margin-bottom: 1rem;
 }
 
-/* ▼ DOWNLOADボタン */
+/* ▼ DOWNLOAD */
 .download-btn {
   display: inline-block;
   padding: 0.5rem 1.2rem;
@@ -87,7 +107,7 @@ body {
   background: #33dcff;
 }
 
-/* ▼ 閉じるボタン */
+/* ▼ 閉じる */
 .close-btn {
   padding: 0.5rem 1.2rem;
   background: #444;
