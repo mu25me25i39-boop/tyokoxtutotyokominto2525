@@ -48,30 +48,13 @@
     </div>
   </div>
 
-  <!-- ▼ カード3 -->
-  <div class="music-card" data-bg="assets/img/music03.jpg">
-    <div class="card-header">
-      <h2>空想愛</h2>
-      <button class="toggle-btn">詳細を見る</button>
-    </div>
-
-    <div class="card-detail">
-      <p>
-        現実と妄想の境界で揺れる、甘くて少し痛い恋の物語。
-      </p>
-
-      <a href="download/track03.html" class="download-btn">DOWNLOAD</a>
-      <button class="close-btn">閉じる</button>
-    </div>
-  </div>
-
 </div>
 
 <script>
-// ▼ 初期背景（モザイク状態）
+// ▼ 初期：背景画像セット
 document.querySelectorAll('.music-card').forEach(card => {
   const bg = card.dataset.bg;
-  card.style.setProperty('--bg', `url(${bg})`);
+  card.style.backgroundImage = `url(${bg})`;
 });
 
 // ▼ 詳細を見る → 展開
