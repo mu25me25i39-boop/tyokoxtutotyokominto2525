@@ -1,13 +1,37 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: url('../assets/cover.webp') no-repeat center center fixed;
+  background-size: cover;
+  transition: background-image 0.4s ease;
+  color: white;
+}
+
+header {
+  background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+  text-align: center;
+  padding: 2em 1em 1em;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  padding-bottom: 100px;
+}
+
+/* ▼ カード本体 */
 .card {
   position: relative;
   width: 250px;
   border-radius: 15px;
   overflow: hidden;
-  backdrop-filter: blur(10px);
   transition: 0.3s;
 }
 
-/* 背景レイヤー（ここだけモザイク） */
+/* ▼ 背景レイヤー（ここだけモザイク） */
 .card .overlay {
   position: absolute;
   inset: 0;
@@ -18,21 +42,19 @@
   z-index: 0;
 }
 
-/* 展開時：背景鮮明 */
+/* ▼ 展開時：背景鮮明 */
 .card.expanded .overlay {
   filter: blur(2px) brightness(0.9);
 }
 
-/* 中身（モザイクなし） */
+/* ▼ 中身（モザイクなし） */
 .card .content {
   position: relative;
   z-index: 2;
   padding: 20px;
   text-align: center;
-}
-
-.card h2 {
-  margin-bottom: 10px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 15px;
 }
 
 .toggle-btn,
@@ -51,13 +73,29 @@
   border: none;
 }
 
-/* 詳細部分（最初は非表示） */
-.card .detail {
+/* ▼ 詳細部分（最初は非表示） */
+.detail {
   display: none;
   margin-top: 10px;
 }
 
-/* 展開時に表示 */
+/* ▼ 展開時に表示 */
 .card.expanded .detail {
   display: block;
+}
+
+/* ▼ フッター */
+.fixed-footer-nav {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.6);
+  padding: 8px 20px;
+  border-radius: 20px;
+  display: flex;
+  gap: 8px;
+  z-index: 1000;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
