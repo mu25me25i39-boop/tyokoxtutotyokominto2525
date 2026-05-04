@@ -17,7 +17,7 @@ body {
   padding: 1rem;
 }
 
-/* ▼ カード本体（背景レイヤーを分離） */
+/* ▼ カード本体 */
 .music-card {
   position: relative;
   border-radius: 12px;
@@ -40,7 +40,7 @@ body {
   z-index: 0;
 }
 
-/* ▼ 展開時：背景を鮮明に */
+/* ▼ 展開時：背景鮮明 */
 .music-card.open::before {
   filter: blur(0px) brightness(1);
 }
@@ -84,6 +84,12 @@ body {
   display: block;
 }
 
+.card-detail p {
+  color: #ddd;
+  margin-bottom: 1rem;
+}
+
+/* ▼ DOWNLOAD */
 .download-btn {
   display: inline-block;
   padding: 0.5rem 1.2rem;
@@ -94,6 +100,7 @@ body {
   margin-right: 0.5rem;
 }
 
+/* ▼ 閉じる */
 .close-btn {
   padding: 0.5rem 1.2rem;
   background: #444;
