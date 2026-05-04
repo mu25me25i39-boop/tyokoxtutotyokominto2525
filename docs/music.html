@@ -4,144 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>音楽ギャラリー｜無料ダウンロード素材集</title>
-
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background: url('../assets/cover.webp') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-    }
-
-    header {
-      background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
-      text-align: center;
-      padding: 2em 1em 1em;
-    }
-
-    header h1 {
-      font-size: 2em;
-      margin-bottom: 0.3em;
-    }
-
-    header p {
-      font-size: 1em;
-      opacity: 0.8;
-      margin-bottom: 1.5em;
-    }
-
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 20px;
-      padding-bottom: 100px;
-    }
-
-    /* ▼ カード本体 */
-    .card {
-      position: relative;
-      width: 250px;
-      border-radius: 15px;
-      overflow: hidden;
-      transition: 0.3s;
-    }
-
-    /* ▼ 背景レイヤー（ここだけモザイク） */
-    .card .overlay {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      filter: blur(10px) brightness(0.6);
-      transition: 0.3s;
-      z-index: 0;
-    }
-
-    /* ▼ 展開時：背景鮮明 */
-    .card.expanded .overlay {
-      filter: blur(2px) brightness(0.9);
-    }
-
-    /* ▼ 中身（モザイクなし） */
-    .card .content {
-      position: relative;
-      z-index: 2;
-      padding: 20px;
-      text-align: center;
-      background: rgba(0,0,0,0.4);
-      border-radius: 15px;
-    }
-
-    .card h2 {
-      margin-bottom: 10px;
-    }
-
-    .toggle-btn,
-    .close-btn,
-    .card a {
-      display: block;
-      width: 80%;
-      margin: 8px auto;
-      padding: 10px;
-      font-weight: bold;
-      color: white;
-      background: rgba(0,0,0,0.5);
-      border-radius: 8px;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-    }
-
-    /* ▼ 詳細部分（最初は非表示） */
-    .detail {
-      display: none;
-      margin-top: 10px;
-    }
-
-    /* ▼ 展開時に表示 */
-    .card.expanded .detail {
-      display: block;
-    }
-
-    /* ▼ フッター */
-    .fixed-footer-nav {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.6);
-      padding: 8px 20px;
-      border-radius: 20px;
-      display: flex;
-      gap: 8px;
-      z-index: 1000;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-      max-width: 95vw;
-      justify-content: center;
-      flex-wrap: nowrap;
-    }
-
-    .fixed-footer-nav a {
-      flex: 1 1 auto;
-      text-align: center;
-      min-width: 90px;
-      max-width: 100px;
-      font-size: 14px;
-      padding: 8px 10px;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.1);
-      color: white;
-      text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.15);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-  </style>
+  <link rel="stylesheet" href="music.css">
 </head>
 
 <body>
@@ -154,9 +17,8 @@
 <div class="gallery">
 
   <!-- ▼ カード1 -->
-  <div class="card" data-bg="../assets/img/MUSIC01.png">
+  <div class="card" data-bg="/assets/img/MUSIC01.png">
     <div class="overlay"></div>
-
     <div class="content">
       <h2>囚ワレノ花</h2>
       <button class="toggle-btn">▼ 詳細を見る</button>
@@ -171,9 +33,8 @@
   </div>
 
   <!-- ▼ カード2 -->
-  <div class="card" data-bg="assets/img/MUSIC01.png">
+  <div class="card" data-bg="../assets/thumb_10.webp">
     <div class="overlay"></div>
-
     <div class="content">
       <h2>きみのいない午後</h2>
       <button class="toggle-btn">▼ 詳細を見る</button>
@@ -189,22 +50,50 @@
 
 </div>
 
-<!-- ▼ JS（ここに置くのが正解） -->
+<!-- ▼ JS（HTML 内に残す） -->
 <script>
+const defaultBg = "url('../assets/cover.webp')";
+
+// 背景画像を overlay に適用
 document.querySelectorAll('.card').forEach(card => {
   const bg = card.dataset.bg;
   card.querySelector('.overlay').style.backgroundImage = `url(${bg})`;
 });
 
+// 詳細ボタン（開閉 + 背景変更）
 document.querySelectorAll('.toggle-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    btn.closest('.card').classList.add('expanded');
+    const card = btn.closest('.card');
+    const bg = card.dataset.bg;
+
+    // すでに開いている → 閉じる
+    if (card.classList.contains('expanded')) {
+      card.classList.remove('expanded');
+      document.body.style.backgroundImage = defaultBg;
+      return;
+    }
+
+    // 他のカードを閉じる
+    document.querySelectorAll('.card.expanded').forEach(openCard => {
+      openCard.classList.remove('expanded');
+    });
+
+    // このカードを開く
+    card.classList.add('expanded');
+
+    // ページ全体の背景を更新
+    document.body.style.backgroundImage = `url(${bg})`;
   });
 });
 
+// 閉じるボタン
 document.querySelectorAll('.close-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    btn.closest('.card').classList.remove('expanded');
+    const card = btn.closest('.card');
+    card.classList.remove('expanded');
+
+    // 背景を元に戻す
+    document.body.style.backgroundImage = defaultBg;
   });
 });
 </script>
@@ -217,23 +106,3 @@ document.querySelectorAll('.close-btn').forEach(btn => {
 
 </body>
 </html>
-<div class="card" data-bg="../assets/thumb_01.webp">
-  <div class="overlay"></div>
-
-  <div class="content">
-    <h2>囚ワレノ花</h2>
-    <button class="toggle-btn">▼ 詳細を見る</button>
-
-    <div class="detail">
-      <p>
-        狂おしいほどの独占欲に囚われた少女が、
-        愛する彼女を甘美な檻に閉じ込める耽美な物語。
-      </p>
-
-      <a href="../videos/囚ワレノ花.mp4" target="_blank">歌詞付き</a>
-      <a href="../music/囚ワレノ花.mp3" target="_blank">音声DL</a>
-
-      <button class="close-btn">▲ 閉じる</button>
-    </div>
-  </div>
-</div>
