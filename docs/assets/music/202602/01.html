@@ -21,7 +21,100 @@
       <button class="toggle-btn">▼ 詳細を開く</button>
 
       <div class="detail">
-  <video src="溶けるピンクと孤独な夜.mp4" 
+  <video src=<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>音楽ギャラリー｜単曲ページ</title>
+  <link rel="stylesheet" href="../../../assets/css/music.css">
+</head>
+
+<body>
+
+<div class="gallery">
+
+   <!-- 1枚だけの巨大カード -->
+  <div class="card" data-bg="../../img/hero-miku.jpg" style="width: min(900px, 95vw);">
+    <div class="overlay"></div>
+
+    <div class="content">
+      <h2>溶けるピンクと孤独な夜</h2>
+
+      <button class="toggle-btn">▼ 詳細を開く</button>
+
+      <div class="detail">
+  <video src="溶けるピンクと孤独な夜.mp4"
+         controls 
+         style="width:100%; border-radius:12px; margin-bottom:15px;">
+  </video>
+        <p>
+    世界はいつか消える。だからこそ、消える前の一瞬にすべてを賭ける。ネオンの光、溶ける氷、青白い画面の光景が織りなす現代の孤独の中で、語り手は「君」という毒に身を委ねる。依存と独占欲が混ざり合い、愛は自己を溶かしていく。生きることよりも、君と溺れる刹那を選ぶ者たちの物語。
+        </p>
+
+        <a href="溶けるピンクと孤独な夜.mp3" target="_blank">DOWNLOAD</a>
+
+        <button class="close-btn">▲ 閉じる</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const defaultBg = "url('../assets/cover.webp')";
+
+// 背景画像を overlay に適用
+document.querySelectorAll('.card').forEach(card => {
+  const bg = card.dataset.bg;
+  card.querySelector('.overlay').style.backgroundImage = `url(${bg})`;
+});
+
+// 詳細ボタン（開閉 + 背景変更）
+document.querySelectorAll('.toggle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.card');
+    const bg = card.dataset.bg;
+
+    // すでに開いている → 閉じる
+    if (card.classList.contains('expanded')) {
+      card.classList.remove('expanded');
+      document.body.style.backgroundImage = defaultBg;
+      return;
+    }
+
+    // 他のカードを閉じる（今回は1枚だけだが汎用）
+    document.querySelectorAll('.card.expanded').forEach(openCard => {
+      openCard.classList.remove('expanded');
+    });
+
+    // このカードを開く
+    card.classList.add('expanded');
+
+    // ページ全体の背景を更新
+    document.body.style.backgroundImage = `url(${bg})`;
+  });
+});
+
+// 閉じるボタン
+document.querySelectorAll('.close-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.card');
+    card.classList.remove('expanded');
+
+    // 背景を元に戻す
+    document.body.style.backgroundImage = defaultBg;
+  });
+});
+</script>
+
+<div class="fixed-footer-nav">
+  <a href="../../../index.html">トップページ</a>
+  <a href="../../../music.html">音楽素材</a>
+</div>
+
+</body>
+</html>
          controls 
          style="width:100%; border-radius:12px; margin-bottom:15px;">
   </video>
