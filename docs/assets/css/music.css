@@ -1,10 +1,8 @@
 body {
   margin: 0;
   font-family: sans-serif;
-  background: url('../assets/cover.webp') no-repeat center center fixed;
-  background-size: cover;
-  transition: background-image 0.4s ease;
-  color: white;
+  background: #000;      /* ← 黒背景で統一 */
+  color: #00d0ff;        /* ← ネオンブルー文字 */
 }
 
 header {
@@ -31,7 +29,7 @@ header {
   transition: 0.3s;
 }
 
-/* ▼ 背景レイヤー（ここだけモザイク） */
+/* ▼ 背景レイヤー（モザイク） */
 .card .overlay {
   position: absolute;
   inset: 0;
@@ -53,7 +51,7 @@ header {
   z-index: 2;
   padding: 20px;
   text-align: center;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.75); /* ← 黒強めに統一 */
   border-radius: 15px;
 }
 
@@ -99,16 +97,3 @@ header {
   backdrop-filter: blur(6px);
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
-/* 全体を黒背景＋ネオンブルー文字に */
-body {
-  margin: 0;
-  font-family: sans-serif;
-  background: #000;
-  color: #00d0ff;
-}
-
-/* カード内部を黒く強調 */
-.card .content {
-  background: rgba(0,0,0,0.75);
-}
-
