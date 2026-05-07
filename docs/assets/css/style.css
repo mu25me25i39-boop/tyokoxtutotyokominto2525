@@ -74,7 +74,7 @@ details {
   box-shadow: none;
 }
 
-/* ▼ summary（カテゴリ名）を一回り小さく最適化 */
+/* ▼ summary（カテゴリ名） */
 details summary {
   list-style: none;
   cursor: pointer;
@@ -86,28 +86,10 @@ details summary::-webkit-details-marker {
   display: none;
 }
 
-/* ▼ 展開テキスト（小さめに最適化） */
-details p,
-details ul {
-  margin-left: 1.4rem;
-  font-size: 1.2rem;
-  max-width: 60ch;
-  line-height: 1.7;
-}
-
 /* ▼ summary ホバーでネオン */
 details summary:hover {
   color: #a8f3ff;
   text-shadow: 0 0 12px rgba(120,240,255,1);
-}
-
-/* ▼ 展開テキストのホバー */
-details[open] p:hover,
-details[open] ul:hover,
-details[open] li:hover {
-  background: rgba(255, 255, 255, 0.15);
-  padding: 2px 4px;
-  border-radius: 4px;
 }
 
 /* ▼ スマホ調整 */
@@ -117,10 +99,6 @@ details[open] li:hover {
   }
   details summary {
     font-size: 1.4rem;
-  }
-  details p,
-  details ul {
-    font-size: 1rem;
   }
 }
 
@@ -138,15 +116,15 @@ details[open] li:hover {
   }
 }
 
-/* ▼ ホームに戻るボタン（全画面共通） */
+/* ▼ ホームに戻るボタン */
 .back-home {
   display: inline-block;
   margin-top: 3rem;
 }
 
-/* ▼ リンク色をサイトの世界観に統一（青リンクを消す） */
+/* ▼ リンク色を世界観に統一 */
 a {
-  color: #a8f3ff; /* ネオン水色 */
+  color: #a8f3ff;
   text-decoration: none;
   text-shadow: 0 0 8px rgba(120,240,255,0.8);
 }
@@ -156,36 +134,27 @@ a:hover {
   text-shadow: 0 0 12px rgba(255,255,255,1);
 }
 
-
-  background: #e0f2ff;
-  color: #005fcc;
-}
-
 /* ▼ details 内を“カード風”にしてスマホで見やすく */
 details[open] {
   padding: 1rem 1.2rem;
   background: rgba(0,0,0,0.35);
   border-left: 2px solid #a8f3ff;
   border-radius: 8px;
+  margin-bottom: 1rem;
 }
 
-/* ▼ details の中の文章に余白を追加（読みやすさUP） */
+/* ▼ details の中の文章（読みやすさUP） */
 details p,
 details ul {
   margin-left: 0;
   margin-top: 0.6rem;
   padding-left: 0.4rem;
   line-height: 1.8;
+  opacity: 0.95;
 }
 
-/* ▼ セクション間の余白を増やしてスマホで整える */
+/* ▼ セクション間の余白を整える */
 .hero__accordion details {
   padding-bottom: 0.8rem;
   border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-details p {
-  line-height: 1.8;
-  margin-top: 0.4rem;
-  opacity: 0.95;
 }
