@@ -343,6 +343,72 @@
   <p>再度Fastbootモードに入り、flash-all.batをやり直すことで復旧できる場合があります。それでもダメな場合は、XやRedditのr/GrapheneOSで相談してください。</p>
 
 </details>
+<details>
+  <summary>【参考】上級者向け：Platform‑Tools を使った手動フラッシュ手順（非推奨）</summary>
+
+  <p>※ この手順は上級者向けです。初心者は <a href="https://flash.android.com" target="_blank" rel="noopener noreferrer">Android Flash Tool</a> を使用してください。</p>
+
+  <h3>必要なもの</h3>
+  <ul>
+    <li>USBケーブル（データ通信対応）</li>
+    <li>パソコン（Windows / macOS / Linux）</li>
+    <li>Pixel端末</li>
+    <li>
+      Android Platform Tools（ADB/Fastboot）  
+      → <a href="https://developer.android.com/tools/releases/platform-tools?hl=ja" target="_blank" rel="noopener noreferrer">公式ダウンロード</a>
+    </li>
+    <li>
+      Pixel用ファクトリーイメージ（純正ROM）  
+      → <a href="https://developers.google.com/android/images" target="_blank" rel="noopener noreferrer">Google公式 Factory Images</a>
+    </li>
+  </ul>
+
+  <h3>Pixel端末側の準備</h3>
+  <ul>
+    <li>電源を切る</li>
+    <li>電源＋音量下を同時押し → Fastbootモードで起動</li>
+  </ul>
+
+  <h3>パソコン側の準備（ダウンロード＆展開）</h3>
+  <ul>
+    <li>Platform‑Tools を展開</li>
+    <li>Factory Image を展開</li>
+    <li>両方のフォルダを同じ場所にまとめる（例：デスクトップ）</li>
+  </ul>
+
+  <p>フォルダ配置例：</p>
+  <img src="/attachments/VFHdGUxsf6MkeWSPfb87Z.png" alt="Platform-ToolsとFactory Imageの配置例" />
+
+  <h3>アンロック & フラッシュ手順</h3>
+  <ul>
+    <li>USBケーブルでPixelをPCに接続</li>
+    <li>フォルダの空き領域で Shift + 右クリック → 「ターミナルで開く」</li>
+  </ul>
+
+  <img src="/attachments/XD5qb7PPLScL9W113VNqv.png" alt="Shift+右クリックでターミナルを開く" />
+
+  <ul>
+    <li>認識確認（PowerShell）：<code>.\fastboot devices</code></li>
+    <li>認識確認（cmd）：<code>fastboot devices</code></li>
+    <li>※ GrapheneOSから戻す場合、通常はアンロック済みのため <code>fastboot flashing unlock</code> は不要</li>
+    <li>flash-all.bat（macOS/Linuxは flash-all.sh）を実行</li>
+  </ul>
+
+  <img src="/attachments/HjDGk8yKFZayyJ2cGqww9.png" alt="fastboot コマンド実行例" />
+
+  <h3>再ロック（重要）</h3>
+  <ul>
+    <li>書き込み完了後、Fastbootモードに入る</li>
+    <li>PowerShell：<code>.\fastboot flashing lock</code></li>
+    <li>cmd：<code>fastboot flashing lock</code></li>
+  </ul>
+
+  <p>※ 再ロックしないと起動時に警告が表示され続けます。</p>
+
+  <h3>文鎮化した場合</h3>
+  <p>再度Fastbootモードに入り、flash-all.batをやり直すことで復旧できる場合があります。それでもダメな場合は、XやRedditの r/GrapheneOS で相談してください。</p>
+
+</details>
 
 
   <div class="back-row">
