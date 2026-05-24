@@ -114,3 +114,15 @@ body {
   font-family: sans-serif;
 }
 
+
+.compare-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.compare-table th,
+.compare-table td {
+  border: 1px solid #ccc;
+  padding: 6px 8px;
+}
+
