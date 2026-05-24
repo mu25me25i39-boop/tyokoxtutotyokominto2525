@@ -1,122 +1,108 @@
 body {
-  background: #000;
-  color: #fff;
   margin: 0;
-  font-family: sans-serif;
+  font-family: "Segoe UI", "Hiragino Sans", sans-serif;
+  background: url("../assets/img/bg-anime.jpg") center/cover no-repeat fixed;
+  color: #fff;
+  overflow-x: hidden;
 }
 
-.title {
+/* 全体に薄い暗幕をかけて文字を浮かせる */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  z-index: -1;
+}
+
+/* タイトル */
+.title, h1 {
   text-align: center;
-  font-size: 2.2rem;
-  margin: 2rem 0;
-  color: #00d0ff;
+  font-size: 2.4rem;
+  margin: 2.5rem 0 1.5rem;
+  color: #ff8cf0;
+  text-shadow: 0 0 12px #ff4fb8, 0 0 24px #00d0ff;
+  letter-spacing: 0.05em;
 }
 
-.music-list {
+/* セクションカード */
+details {
   max-width: 900px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-/* ▼ カード本体（背景画像＋モザイク） */
-.music-card {
-  background-size: cover;
-  background-position: center;
+  margin: 1.2rem auto;
+  background: rgba(0, 0, 40, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 12px;
-  border: 1px solid #222;
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  position: relative;
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.2);
   overflow: hidden;
-
-  /* 閉じているときのモザイク */
-  filter: blur(3px) brightness(0.5);
   transition: 0.3s;
 }
 
-/* ▼ 展開時：背景鮮明 */
-.music-card.open {
-  filter: blur(0px) brightness(1);
+details[open] {
+  background: rgba(0, 0, 60, 0.6);
+  box-shadow: 0 0 25px rgba(255, 100, 200, 0.3);
 }
 
-/* ▼ カードヘッダー（タイトル＋詳細ボタン） */
-.card-header {
-  position: relative;
-  z-index: 2;
-  backdrop-filter: blur(4px);
-  background: rgba(0,0,0,0.4);
-  padding: 1rem;
-  border-radius: 10px;
-}
-
-.card-header h2 {
-  margin: 0;
-  color: #00d0ff;
-}
-
-/* ▼ 詳細ボタン */
-.toggle-btn {
-  padding: 0.4rem 1rem;
-  background: #ff4fb8;
-  color: #fff;
-  border-radius: 6px;
-  border: none;
+/* summary見出し */
+summary {
   cursor: pointer;
+  padding: 1rem 1.2rem;
+  font-size: 1.2rem;
   font-weight: bold;
+  color: #00d0ff;
+  background: rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: 0.3s;
 }
 
-.toggle-btn:hover {
-  background: #ff7acb;
+summary:hover {
+  color: #ff7acb;
+  text-shadow: 0 0 8px #ff4fb8;
 }
 
-/* ▼ 展開部分（最初は非表示） */
-.card-detail {
-  display: none;
-  margin-top: 1rem;
-  padding: 1rem;
-  background: rgba(0,0,0,0.6);
-  border-radius: 10px;
-  position: relative;
-  z-index: 2;
-}
-
-/* ▼ 展開時に表示 */
-.music-card.open .card-detail {
-  display: block;
-}
-
-.card-detail p {
+/* 展開部分 */
+details p, details ul {
+  padding: 1rem 1.5rem;
+  line-height: 1.7;
   color: #ddd;
-  margin-bottom: 1rem;
 }
 
-/* ▼ DOWNLOADボタン */
-.download-btn {
-  display: inline-block;
-  padding: 0.5rem 1.2rem;
-  background: #00d0ff;
-  color: #000;
-  border-radius: 6px;
+ul li {
+  margin-bottom: 0.4rem;
+}
+
+/* リンク */
+a {
+  color: #00d0ff;
   text-decoration: none;
   font-weight: bold;
-  margin-right: 0.5rem;
 }
 
-.download-btn:hover {
-  background: #33dcff;
+a:hover {
+  color: #ff7acb;
+  text-shadow: 0 0 6px #ff4fb8;
 }
 
-/* ▼ 閉じるボタン */
-.close-btn {
-  padding: 0.5rem 1.2rem;
-  background: #444;
-  color: #fff;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
+/* 戻るボタン */
+.back-row {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.back-btn {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  margin: 0.5rem;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid #00d0ff;
+  border-radius: 8px;
+  color: #00d0ff;
   font-weight: bold;
+  transition: 0.3s;
 }
 
-.close-btn:hover {
-  background: #666;
+.back-btn:hover {
+  background: #00d0ff;
+  color: #000;
+  box-shadow: 0 0 10px #33dcff;
 }
