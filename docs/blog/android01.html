@@ -4,6 +4,168 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../assets/css/blog-article.css">
+  <title>セキュリティAndroid比較：Pixel・GrapheneOS・専用セキュリティ端末</title>
+</head>
+
+<body class="theme-blue">
+
+<div class="blog-article">
+
+  <h1>セキュリティAndroid：Pixel・GrapheneOS・専用セキュリティ端末の比較</h1>
+
+  <!-- ▼ Pixel -->
+  <details open>
+    <summary>Google Pixel：素のAndroid＋長期サポート</summary>
+
+    <h3>概要</h3>
+    <p>セキュリティを重視するなら、まず検討すべきは Google純正の Pixelシリーズ です。</p>
+    <p>公式サイト：<a href="https://store.google.com/">Google Pixel（Google ストア）</a></p>
+
+    <h3>Pixelのセキュリティ面の特徴</h3>
+    <ul>
+      <li>Google純正の最新Androidを最速で受け取りやすい（OSアップデート・セキュリティパッチが長期・高頻度）。</li>
+      <li>専用セキュリティチップ Titan M / Titan M2 による起動プロセスやロック画面の保護。</li>
+      <li>アプリごとの権限細分化（カメラ・マイク・位置情報などをワンタップでブロック）。</li>
+      <li>ロックダウンモード・自動ロック・デバイス暗号化など、標準機能だけでも高い防御力。</li>
+    </ul>
+
+    <p>通常利用で「セキュリティの高いAndroid端末がほしい」という人は、素のPixelをそのまま使うだけで十分高い安全性を得られます。</p>
+
+  </details>
+
+  <!-- ▼ GrapheneOS -->
+  <details>
+    <summary>GrapheneOS：Pixel専用のセキュリティ特化ROM</summary>
+
+    <h3>概要</h3>
+    <p>GrapheneOS は、Pixel専用に開発されているセキュリティ特化ROMです。無料で利用できるオープンソースプロジェクトで、一般販売されている「高額なセキュリティスマホ」に匹敵する水準を狙っています。</p>
+    <p>公式サイト：<a href="https://grapheneos.org/">GrapheneOS 公式</a></p>
+
+    <h3>GrapheneOSのポイント</h3>
+    <ul>
+      <li>対象端末はPixelのみ：他社Androidには基本的に非対応。</li>
+      <li>カーネルやアプリサンドボックスを強化し、権限・メモリ保護をさらに厳格化。</li>
+      <li>Googleサービスと距離を置いた設計（必要なサービスだけを厳選して追加可能）。</li>
+      <li>暗号化・ロック画面・ネットワーク権限など、標準Androidよりも制御が細かい。</li>
+    </ul>
+
+    <p>市販の「超高額セキュリティスマホ」の多くは、カスタムAndroid＋追加ハードで数十万円以上しますが、Pixel本体＋GrapheneOSなら一般的なハイエンドAndroidと同等の本体価格で、近いコンセプトを実現できます。</p>
+
+    <p>ただし、この構成はGoogleの公式サポート対象外となります。ハードウェア故障時の保証はPixel本体のものは利用できますが、OSに関する問題は自己解決やコミュニティへの相談が基本となるため、中級〜上級者向けと言えるでしょう。</p>
+
+    <p>また、導入にはブートローダー解放やROM書き換えなどの手順が必要なため、中級〜上級者向けです。インストール方法や対応モデルを公式ドキュメントで必ず確認してください。</p>
+
+  </details>
+
+  <!-- ▼ 専用セキュリティ端末 -->
+  <details>
+    <summary>その他：専用セキュリティスマホ（高額モデル・KaliOS系など）</summary>
+
+    <h3>概要</h3>
+    <p>Pixel＋GrapheneOSよりさらにセキュリティ特化した「専用セキュリティ端末」も存在します。これらは一般向けではなく、企業・政府・研究機関向けに設計されており、価格は数十万円〜100万円超のモデルもあります。</p>
+
+    <h3>代表例</h3>
+    <ul>
+      <li><strong>Purism Librem 5</strong>：ハードウェアキルスイッチ搭載（カメラ・マイク・無線を物理的に遮断）。</li>
+      <li><strong>Silent Circle Blackphone</strong>：暗号化通話・暗号化メッセージに特化した独自OS。</li>
+      <li><strong>KaliOS系端末</strong>：セキュリティ研究者向け。ペネトレーションテスト用ツールを搭載。</li>
+      <li><strong>その他の政府向け暗号スマホ</strong>：一般販売されない専用モデルも多数。</li>
+    </ul>
+
+    <h3>特徴</h3>
+    <ul>
+      <li>物理キルスイッチ・独自暗号化チップなど、ハードウェアレベルで強化。</li>
+      <li>Googleサービス非搭載が基本。</li>
+      <li>一般アプリが動かない場合が多い。</li>
+      <li>価格が非常に高い（20〜100万円以上）。</li>
+    </ul>
+
+    <p>一般ユーザーが日常利用するには不向きですが、「最高レベルのセキュリティ端末」というカテゴリとして存在します。</p>
+
+  </details>
+
+  <!-- ▼ 比較表 -->
+  <details open>
+    <summary>比較表：Pixel / GrapheneOS / 専用セキュリティ端末</summary>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th>Pixel純正OS</th>
+          <th>GrapheneOS</th>
+          <th>専用セキュリティ端末</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>価格帯</td>
+          <td>7〜15万円</td>
+          <td>Pixel本体価格のみ（7〜15万円）</td>
+          <td>20〜100万円以上</td>
+        </tr>
+        <tr>
+          <td>導入難易度</td>
+          <td>低い（そのまま使える）</td>
+          <td>高い（ROM導入が必要）</td>
+          <td>購入後すぐ利用可能</td>
+        </tr>
+        <tr>
+          <td>Googleサービス</td>
+          <td>完全対応</td>
+          <td>必要なものだけ追加可能</td>
+          <td>基本非搭載</td>
+        </tr>
+        <tr>
+          <td>セキュリティ強度</td>
+          <td>高い</td>
+          <td>非常に高い（最強クラス）</td>
+          <td>最高レベル（ハードも強化）</td>
+        </tr>
+        <tr>
+          <td>アプリ互換性</td>
+          <td>完全互換</td>
+          <td>ほぼ互換（制限あり）</td>
+          <td>低い（一般アプリ不可も多い）</td>
+        </tr>
+        <tr>
+          <td>対象ユーザー</td>
+          <td>一般ユーザー</td>
+          <td>中級〜上級者</td>
+          <td>企業・政府・研究者</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </details>
+
+  <!-- ▼ まとめ -->
+  <details open>
+    <summary>まとめ（セキュリティAndroid）</summary>
+
+    <ul>
+      <li><strong>手軽さ＋セキュリティ</strong> → Pixel純正OS</li>
+      <li><strong>徹底的にセキュリティ特化</strong> → Pixel ＋ GrapheneOS</li>
+      <li><strong>最高レベルの防御・企業向け</strong> → 専用セキュリティ端末（高額）</li>
+    </ul>
+
+  </details>
+
+  <div class="back-row">
+    <a href="../blog.html" class="back-btn">ブログ一覧</a>
+    <a href="../index.html" class="back-btn">ホーム</a>
+  </div>
+
+</div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/blog-article.css">
   <title>Android：端末の種類と選び方</title>
 </head>
 
