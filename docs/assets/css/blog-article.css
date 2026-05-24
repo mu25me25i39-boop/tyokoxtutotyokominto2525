@@ -108,7 +108,7 @@ a:hover {
 }
 
 body {
-  background: url("../assets/img/hero-miku.jpg") center/cover no-repeat fixed;
+  background: url("../img/hero-miku.jpg") center/cover no-repeat fixed;
   color: #fff;
   margin: 0;
   font-family: sans-serif;
