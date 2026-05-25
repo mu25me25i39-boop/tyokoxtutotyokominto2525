@@ -126,3 +126,15 @@ body {
   padding: 6px 8px;
 }
 
+<style>
+.blog-img-full {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px 0;
+  border-radius: 8px;
+}
+</style>
+
+<img src="/attachments/HGC6mwisS19rbwGxKJQDN.png" alt="Platform-Toolsフォルダの例" class="blog-img-full">
+
