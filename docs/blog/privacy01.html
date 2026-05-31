@@ -148,7 +148,7 @@
     <li>Proton側は暗号化されたゴミデータしか保持しない</li>
   </ul>
 
-  <p>そのため：</p>
+  <p>そのため</p>
   <ul>
     <li>AIスキャン → 不可能</li>
     <li>広告最適化 → 不可能</li>
@@ -181,9 +181,9 @@
   <h3>■ 必須設定（まず最初にやるべき項目）</h3>
 
   <h4>● 広告ID → オフ</h4>
-  <p><strong>設定 → プライバシーとセキュリティ → 全般</strong></p>
+  <p><strong>設定 → プライバシーとセキュリティ → 推奨事項＆オファー</strong></p>
   <ul>
-    <li>「アプリが広告IDを使用できるようにする」をオフ</li>
+    <li> 「広告識別子」＋「パーソナライズされたオファー」をオフ</li>
   </ul>
 
   <h4>● 位置情報 → 必要な時だけオン</h4>
@@ -216,39 +216,66 @@
   </ul>
 
   <h4>● 検索 → クラウド検索オフ</h4>
-  <p><strong>設定 → プライバシーとセキュリティ → 検索のアクセス許可</strong></p>
+  <p><strong>設定 → プライバシーとセキュリティ → 検索</strong></p>
   <ul>
-    <li>「クラウドコンテンツ検索」→ 全てオフ</li>
+    <li>「Microsoft アカウント」+「職場または学校アカウント」→ 全てオフ</li>
   </ul>
 
   <h4>● アクティビティ履歴 → 全オフ</h4>
-  <p><strong>設定 → プライバシーとセキュリティ → アクティビティ履歴</strong></p>
+  <p><strong>設定 → プライバシーとセキュリティ →推奨事項＆オファー</strong></p>
   <ul>
-    <li>「このデバイスでのアクティビティ履歴を保存する」→ オフ</li>
-    <li>「アクティビティ履歴をMicrosoftに送信する」→ オフ</li>
+    <li> 「スタートメニューと検索結果を改善する」→ オフ</li>
   </ul>
 
   <hr>
 
   <h3>■ 追加設定（上級者向け）</h3>
 
-  <h4>● 不要サービスの無効化（PowerShell）</h4>
-  <p>以下のようなサービスはプライバシーに不要で、停止すると通信量が減る。</p>
-  <ul>
-    <li>Connected User Experiences and Telemetry</li>
-    <li>Diagnostics Tracking Service</li>
-  </ul>
-  <p>※ 具体的な停止コマンドは別章でまとめる。</p>
+<h4>● 不要サービスの無効化</h4>
+<p>以下のサービスは Windows の利用状況を Microsoft に送信するテレメトリ機能で、停止すると裏通信が減りプライバシーが向上する。</p>
 
-  <h4>● DNSを Proton DNS / NextDNS に変更</h4>
-  <p><strong>設定 → ネットワークとインターネット → アダプターのオプション → IPv4</strong></p>
-  <ul>
-    <li>Proton DNS → 76.223.127.10 / 76.223.127.12</li>
-    <li>NextDNS → アカウント専用DNSを入力</li>
-  </ul>
+<ul>
+  <li><strong>Connected User Experiences and Telemetry（DiagTrack）</strong><br>
+      Windows の利用状況・操作ログ・アプリ使用データを送信する中心サービス。</li>
+
+  <li><strong>Diagnostics Tracking Service</strong><br>
+      旧名称。現在は DiagTrack に統合されており、同様に診断データを送信する。</li>
+</ul>
+
+<p><strong>サービス画面の開き方：</strong><br>
+Windowsキー → 検索で「services.msc」→ Enter</p>
+
+
+  <h4>● DNSを Proton DNS / NextDNS に変更（IPv4設定）</h4>
+
+<p><strong>DNS設定画面の開き方</strong><br>
+Windowsキー + R → 「ncpa.cpl」と入力 → Enter<br>
+→ 使用中のアダプターを右クリック → プロパティ → IPv4 → プロパティ</p>
+
+<p><strong>設定方針：</strong><br>
+IPアドレスは必ず「自動」のまま（DHCP）。<br>
+DNSだけ手動で変更する。ここを間違えるとネットが切れるので注意。</p>
+
+<ul>
+  <li><strong>IPアドレス：</strong>「IPアドレスを自動的に取得する」（変更しない）</li>
+  <li><strong>DNSサーバー：</strong>「次のDNSサーバーのアドレスを使う」を選択して手動入力</li>
+</ul>
+
+<p><strong>Proton DNS（誰でも利用可／Proton契約不要）</strong><br>
+優先DNS：<code>76.223.127.10</code><br>
+代替DNS：<code>76.223.127.12</code></p>
+
+<p><strong>NextDNS</strong><br>
+NextDNS管理画面で発行される自分専用のIPv4アドレスを入力する。</p>
+
+<p><strong>効果</strong><br>
+ISPやGoogleではなく、Proton DNS / NextDNSが名前解決を担当するため、<br>
+アクセス履歴がISPに残りにくくなり、広告・トラッカーもDNSレベルで遮断される。<br>
+IPは自動のままなのでネットワークは安定し、Proton VPNのON/OFFにも影響しない。</p>
+
 
   <h4>● Edge のテレメトリ完全オフ</h4>
-  <p><strong>Edge → 設定 → プライバシー、検索、サービス</strong></p>
+  <p><strong>Edge(を開く) → 設定 → プライバシー/検索/サービス</strong></p>
   <ul>
     <li>「閲覧データをMicrosoftに送信」→ オフ</li>
     <li>「パーソナライズ広告」→ オフ</li>
