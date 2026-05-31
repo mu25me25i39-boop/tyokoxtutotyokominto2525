@@ -193,10 +193,13 @@
 </details>
 
 <!-- 7 -->
+<!-- ▼ 7. winget（PowerShell）でのLibreWolf導入・更新 -->
 <details>
   <summary>7. winget（PowerShell）でのLibreWolf導入・更新</summary>
 
   <p>Windowsでは、ブラウザ更新を公式サイトからダウンロードするのではなく、<strong>winget</strong>で行うことで偽サイト対策になる。</p>
+
+  <p><strong>PowerShellで以下の3行をそのまま実行：</strong></p>
 
   <pre><code>winget upgrade Microsoft.PowerShell
 winget install LibreWolf.LibreWolf
@@ -209,7 +212,34 @@ winget upgrade LibreWolf.LibreWolf
     <li>更新もコマンドで完結</li>
   </ul>
 
+  <h3>■ 余談：コマンドプロンプトより PowerShell が安全な理由</h3>
+
+  <p>Windowsには「コマンドプロンプト（cmd）」と「PowerShell」の2種類のシェルがあるが、<strong>セキュリティ面ではPowerShellが圧倒的に優れている。</strong></p>
+
+  <h4>● コマンドプロンプト（cmd）の問題点</h4>
+  <ul>
+    <li>Windows 95 時代の古い設計</li>
+    <li>セキュリティ機能がほぼ存在しない</li>
+    <li>署名チェックなしでスクリプトが実行される</li>
+    <li>エラー情報が少なく、危険な動作に気づきにくい</li>
+  </ul>
+
+  <h4>● PowerShell が安全な理由</h4>
+  <ul>
+    <li><strong>実行ポリシー</strong>（未署名スクリプトを防ぐ）</li>
+    <li><strong>コード署名</strong>（信頼できるスクリプトのみ実行）</li>
+    <li><strong>詳細なエラーログ</strong>（不正動作を検知しやすい）</li>
+    <li><strong>管理者権限の制御が正確</strong></li>
+    <li><strong>winget が正式対応しているのは PowerShell</strong></li>
+  </ul>
+
+  <p>つまり、<strong>安全にソフトを更新したいなら PowerShell 一択</strong>である。  
+  cmdで winget を動かすこともできるが、セキュリティチェックが弱く、現代のWindows管理には向かない。</p>
+
+  <p>📸 PowerShell実行例（画像挿入位置）</p>
+
 </details>
+
 
 <!-- 8 -->
 <details>
