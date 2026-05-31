@@ -461,7 +461,7 @@ IPは自動のままなのでネットワークは安定し、Proton VPNのON/OF
 <!-- ▼ 7. winget（PowerShell）でのLibreWolf導入・更新 -->
 <details>
   <summary>7. winget（PowerShell）でのLibreWolf導入・更新</summary>
-
+  <a href="https://learn.microsoft.com/ja-jp/powershell/scripting/install/install-powershell?view=powershell-7.6" target="_blank" rel="noopener noreferrer"> PowerShell【インストール】</a>
   <p>Windowsでは、ブラウザ更新を公式サイトからダウンロードするのではなく、<strong>winget</strong>で行うことで偽サイト対策になる。PowerShellを使うことで、安全に署名付きパッケージを取得できる。</p>
 
   <h3>■ 初回インストール時に実行する3行</h3>
@@ -489,10 +489,9 @@ winget upgrade LibreWolf.LibreWolf
     <li>PowerShell の更新（安全性のため）</li>
     <li>LibreWolf の更新</li>
   </ul>
-<p>PowerShellでLibreWolfを安全に更新する例</p>
+PowerShellでLibreWolfを安全に更新する例
    <img src="../assets/img/lebrewolf01.png" alt="wingetでLibreWolfを更新するPowerShell画面" style="width:100%; height:auto; border-radius:8px;">
-<p>このように <code>winget upgrade LibreWolf.LibreWolf</code> を実行することで、公式サーバーから署名付きパッケージを安全に取得できる。</p>
-  <p>つまり、<strong>インストールは最初の1回だけ</strong>でよく、  
+<p>このように <code>winget upgrade LibreWolf.LibreWolf</code> を実行することで、公式サーバーから署名付きパッケージを安全に取得できる。要は<strong>インストールは最初の1回だけ</strong>でよく、  
   2回目以降は「PowerShell更新」と「LibreWolf更新」の2つだけで十分。</p>
 
   <h3>■ なぜ PowerShell を使うのか（cmd との違い）</h3>
