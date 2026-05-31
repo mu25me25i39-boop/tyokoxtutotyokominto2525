@@ -408,8 +408,7 @@ IPは自動のままなのでネットワークは安定し、Proton VPNのON/OF
     <li>Firefoxベースで高速</li>
   </ul>
 
-  <p><strong>注意点：</strong><br>
-  LibreWolf はプライバシー強化が非常に強いため、  
+  <p><strong>注意点：</strong>LibreWolf はプライバシー強化が非常に強いため、  
   一部の動画サイト・決済サイト・企業サイトで動作が制限される場合がある。</p>
 
   <p>そのため、<strong>Windows専用の「プライバシー特化ブラウザ」として使うのが最適。</strong></p>
@@ -444,14 +443,6 @@ IPは自動のままなのでネットワークは安定し、Proton VPNのON/OF
   <p>画像・URLのメタデータ削除系の拡張機能は、  
   <strong>Firefox本体の「プライバシー強化設定」で代替可能</strong>なため、基本的に不要。</p>
 
-  <p>どうしても必要な場合のみ：</p>
-  <ul>
-    <li><strong>ClearURLs</strong>（URLトラッキング除去）</li>
-  </ul>
-
-  <p>ただし、入れすぎると指紋がユニーク化するため、  
-  <strong>ClearURLs 以外のメタデータ系拡張は推奨しない。</strong></p>
-
   <h3>■ 結論：ブラウザはこう使う</h3>
 
   <ul>
@@ -480,11 +471,6 @@ IPは自動のままなのでネットワークは安定し、Proton VPNのON/OF
 winget install LibreWolf.LibreWolf
 winget upgrade LibreWolf.LibreWolf
 </code></pre>
-  
-<p>PowerShellでLibreWolfを安全に更新する例</p>
-   <img src="../assets/img/lebrewolfOS01.png" alt="wingetでLibreWolfを更新するPowerShell画面" style="width:100%; height:auto; border-radius:8px;">
-<p>このように <code>winget upgrade LibreWolf.LibreWolf</code> を実行することで、公式サーバーから署名付きパッケージを安全に取得できる。</p>
-
   <ul>
     <li>PowerShellを最新化（安全性の確保）</li>
     <li>LibreWolfを安全にインストール</li>
@@ -499,12 +485,13 @@ winget upgrade LibreWolf.LibreWolf
   <pre><code>winget upgrade Microsoft.PowerShell
 winget upgrade LibreWolf.LibreWolf
 </code></pre>
-
   <ul>
     <li>PowerShell の更新（安全性のため）</li>
     <li>LibreWolf の更新</li>
   </ul>
-
+<p>PowerShellでLibreWolfを安全に更新する例</p>
+   <img src="../assets/img/lebrewolf01.png" alt="wingetでLibreWolfを更新するPowerShell画面" style="width:100%; height:auto; border-radius:8px;">
+<p>このように <code>winget upgrade LibreWolf.LibreWolf</code> を実行することで、公式サーバーから署名付きパッケージを安全に取得できる。</p>
   <p>つまり、<strong>インストールは最初の1回だけ</strong>でよく、  
   2回目以降は「PowerShell更新」と「LibreWolf更新」の2つだけで十分。</p>
 
