@@ -126,7 +126,794 @@
 <!-- 3 -->
 <details>
   <summary>3. Proton（通信・クラウド・パスワード）</summary>
- <p><a href="https://proton.me/ja" target="_blank" rel="noopener noreferrer">Proton【公式】</a></p>
+ <p><a href="https://proton.me/ja" target="_blank" rel="noopener noreferrer">Proton【公式】</a><!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/blog-article.css">
+  <title>プライバシー保護の強化【2026年版】</title>
+</head>
+
+<body class="theme-blue">
+
+<div class="blog-article">
+
+<h1>プライバシー保護の強化【2026年版】<br>Windows / Android を便利に使いながら、プライバシーとセキュリティを最大化する方法</h1>
+
+<!-- 1 -->
+<details>
+  <summary>1. なぜプライバシー対策が必要なのか（2026年版）</summary>
+
+  <p>2026年現在、Microsoft（Windows）と Google（Android）は世界トップクラスのセキュリティを持つ一方で、ユーザー行動データの収集量が年々増加している。</p>
+
+収集されるデータ例
+  <ul>
+    <li>広告IDによる行動追跡</li>
+    <li>アプリ利用履歴</li>
+    <li>位置情報</li>
+    <li>入力履歴（IME）</li>
+    <li>クラウド同期データ</li>
+    <li>ブラウザのテレメトリ</li>
+    <li>デバイス識別子</li>
+    <li>OS利用状況（クラッシュレポート・診断データ）</li>
+  </ul>
+
+  <p>つまり、<strong>「セキュリティが強い＝プライバシーが守られている」ではない。</strong></p>
+
+  <p>この記事では、<strong>OSはそのまま使い続けながら、プライバシーだけ最大限強化する構成</strong>を紹介する。</p>
+
+</details>
+
+<!-- 2 -->
+<details>
+  <summary>2. 最強の現実的構成（Proton × ATOK × ESET）</summary>
+
+ <p>この3つは役割が完全に分離しており、互いの弱点を補完する。  
+  現代のプライバシー対策では、<strong>通信・入力・端末防御を別ベンダーに分けること</strong>が最も重要である。 </p>
+
+  「セキュリティソフト付属のVPN」や「ブラウザ内蔵パスワード管理」は便利だが、  
+  1社にすべてのデータを握られる<strong>単一障害点（Single Point of Failure）</strong>になる。  
+  通信・入力・端末防御を分離することで、1社が侵害されても全体が破られない構成になる。</p>
+
+  <h3>■ 役割分離の構成表（枠線つき）</h3>
+
+  <table style="border-collapse: collapse; width: 100%;">
+    <thead>
+      <tr>
+        <th style="border: 1px solid #ccc; padding: 8px;">防御領域</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">担当</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">説明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">通信・クラウド・パスワード</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">Proton</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">ゼロログ・ゼロアクセス暗号化（AI検閲なし）</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">入力データ（IME）</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">ATOK</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">ローカル変換で入力内容を外部に送らない</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">端末防御</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">ESET Premium</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">軽量・高検出率・VPNなしでProtonと競合しない</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>■ 1年料金・端末数の目安</h3>
+
+  <table style="border-collapse: collapse; width: 100%; margin-top: 1rem;">
+    <thead>
+   
+      <!-- Proton -->
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;"><a href="https://proton.me/ja/pricing" target="_blank" rel="noopener noreferrer">Proton Unlimited</a></td>
+        <td style="border: 1px solid #ccc; padding: 8px;">約15,000〜17,000円</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">10台（VPNは同時接続10台）</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">
+          VPN・Mail・Drive・Pass・Calendar が全部入り。  
+          ゼロログ・ゼロアクセス暗号化でAI検閲なし。
+        </td>
+      </tr>
+
+      <!-- ATOK -->
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;"><a href="https://www.atok.com/" target="_blank" rel="noopener noreferrer">ATOK Passport</a></td>
+        <td style="border: 1px solid #ccc; padding: 8px;">約6,600～7,920円</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">10台（Windows / Android 合計）</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">
+          ローカル変換で入力内容を外部に送らない。  
+          日本企業でデータが海外に渡らない。
+        </td>
+      </tr>
+
+      <!-- ESET Premium -->
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;"><a href="https://www.eset.com/jp/home/protection-plans/" target="_blank" rel="noopener noreferrer">ESET Premium</a></td>
+        <td style="border: 1px solid #ccc; padding: 8px;">約6,500〜7,500円</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">1〜3台</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">
+          軽量・高検出率。VPNなしでProtonと競合しない。  
+          端末防御に特化した最適プラン。
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>結論：ESET(Premium)が最適。</strong><br>
+  ESETとProtonと役割が分離できるため、  
+  構成（Proton × ATOK × ESETプレミアム）と最も相性が良い。</p>
+
+</details>
+
+<!-- 3 -->
+<details>
+  <summary>3. Proton（通信・クラウド・パスワード）</summary>
+ <p> <h3><a href="https://proton.me/ja" target="_blank" rel="noopener noreferrer">Proton【公式】</a> </h3></p>
+  <p>Protonは「VPN」「メール」「パスワード管理」「クラウド」「DNS」を提供する企業だが、GoogleやMicrosoftと決定的に違う点がある。</p>
+
+  <h3>■ Google / Microsoft のクラウドは AI に読まれる</h3>
+  <ul>
+    <li>写真 → 自動タグ付け</li>
+    <li>文書 → AI解析</li>
+    <li>メール → スパム判定＋広告最適化</li>
+    <li>ファイル → 違法性チェック（AI検閲）</li>
+  </ul>
+
+  <p>つまり、<strong>クラウドに置いた瞬間、内容はAIに読まれる前提</strong>で設計されている。</p>
+
+  <h3>■ Proton Drive の決定的な違い</h3>
+  <p><strong>Protonは技術的にユーザーのファイルを読めない。</strong></p>
+
+  <ul>
+    <li>ゼロアクセス暗号化</li>
+    <li>復号鍵はユーザー端末のみ</li>
+    <li>Proton側は暗号化されたゴミデータしか保持しない</li>
+  </ul>
+
+  <p>そのため</p>
+  <ul>
+    <li>AIスキャン → 不可能</li>
+    <li>広告最適化 → 不可能</li>
+    <li>社員が覗く → 不可能</li>
+    <li>政府要求 → 技術的に提出不可</li>
+  </ul>
+
+  <h3>■ Proton Mail / Pass / VPN / DNS も同じ思想</h3>
+  <p>Protonは「ゼロ知識」を前提に設計されている。</p>
+
+  <ul>
+    <li>Proton Mail → E2E暗号化</li>
+    <li>Proton Pass → パスワードをProton側が読めない</li>
+    <li>Proton VPN → ログなし（スイス法＋技術的ノーログ）</li>
+    <li>Proton DNS → トラッキング遮断</li>
+  </ul>
+
+  <p><strong>Google/Microsoftとは思想も設計も真逆。</strong></p>
+
+</details>
+
+<!-- 4 -->
+<details>
+  <summary>4. Windowsのプライバシー設定</summary>
+
+  <p>Windows は初期設定のままだと、広告ID・位置情報・クラウド同期・テレメトリなど、  
+  多くのデータが Microsoft に送信される。  
+  (Windows11 Proの場合)以下の設定を推奨する。</p>
+
+  <h3>■ 必須設定（まず最初にやるべき項目）</h3>
+
+  <h4>● 広告ID → オフ</h4>
+  <p><strong>設定 → プライバシーとセキュリティ → 推奨事項＆オファー</strong></p>
+  <ul>
+    <li> 「広告識別子」＋「パーソナライズされたオファー」をオフ</li>
+  </ul>
+
+  <h4>● 位置情報 → 必要な時だけオン</h4>
+  <p><strong>設定 → プライバシーとセキュリティ → 位置情報</strong></p>
+  <ul>
+    <li>位置情報サービス → オフ</li>
+    <li>アプリごとに「使用中のみ」を選択</li>
+  </ul>
+
+  <h4>● テレメトリ（診断データ） → 最小</h4>
+  <p><strong>設定 → プライバシーとセキュリティ → 診断とフィードバック</strong></p>
+  <ul>
+    <li>「必須の診断データ」のみにする</li>
+    <li>「カスタマーエクスペリエンス向上プログラム」→ オフ</li>
+  </ul>
+
+  <h4>● アプリ権限 → 必要なアプリだけ許可</h4>
+  <p><strong>設定 → プライバシーとセキュリティ → アプリのアクセス許可</strong></p>
+  <ul>
+    <li>カメラ → 必要なアプリだけオン</li>
+    <li>マイク → 必要なアプリだけオン</li>
+    <li>位置情報 → 必要なアプリだけオン</li>
+  </ul>
+
+  <h4>● OneDrive → 自動同期オフ</h4>
+  <p><strong>OneDrive → 設定 → 同期とバックアップ</strong></p>
+  <ul>
+    <li>「フォルダーのバックアップ」→ オフ</li>
+    <li>「写真と動画の自動保存」→ オフ</li>
+  </ul>
+
+  <h4>● 検索 → クラウド検索オフ</h4>
+  <p><strong>設定 → プライバシーとセキュリティ → 検索</strong></p>
+  <ul>
+    <li>「Microsoft アカウント」+「職場または学校アカウント」→ 全てオフ</li>
+  </ul>
+
+  <h4>● アクティビティ履歴 → 全オフ</h4>
+  <p><strong>設定 → プライバシーとセキュリティ →推奨事項＆オファー</strong></p>
+  <ul>
+    <li> 「スタートメニューと検索結果を改善する」→ オフ</li>
+  </ul>
+
+  <hr>
+
+  <h3>■ 追加設定（上級者向け）</h3>
+
+<h4>● 不要サービスの無効化</h4>
+<p>以下のサービスは Windows の利用状況を Microsoft に送信するテレメトリ機能で、停止すると裏通信が減りプライバシーが向上する。</p>
+
+<ul>
+  <li><strong>Connected User Experiences and Telemetry（DiagTrack）</strong><br>
+      Windows の利用状況・操作ログ・アプリ使用データを送信する中心サービス。</li>
+
+  <li><strong>Diagnostics Tracking Service</strong><br>
+      旧名称。現在は DiagTrack に統合されており、同様に診断データを送信する。</li>
+</ul>
+
+<p><strong>サービス画面の開き方</strong><br>
+Windowsキー + R → 「services.msc」→ Enter</p>
+<p>上記の2つを探して右クリック後、停止する。</p>
+
+  <h4>● DNSを Proton DNS / NextDNS に変更（IPv4設定）</h4>
+
+<p><strong>DNS設定画面の開き方</strong><br>
+Windowsキー + R → 「ncpa.cpl」と入力 → Enter<br>
+→ 使用中のアダプターを右クリック → プロパティ → IPv4 → プロパティ</p>
+
+<p><strong>設定方針</strong><br>
+IPアドレスは必ず「自動」のまま（DHCP）。<br>
+DNSだけ手動で変更する。ここを間違えるとネットが切れるので注意。</p>
+
+<ul>
+  <li><strong>IPアドレス：</strong>「IPアドレスを自動的に取得する」（変更しない）</li>
+  <li><strong>DNSサーバー：</strong>「次のDNSサーバーのアドレスを使う」を選択して手動入力</li>
+</ul>
+
+<p><strong>Proton DNS（誰でも利用可／Proton契約不要）</strong><br>
+優先DNS：<code>76.223.127.10</code><br>
+代替DNS：<code>76.223.127.12</code></p>
+
+<p><strong>NextDNS</strong><br>
+NextDNS管理画面で発行される自分専用のIPv4アドレスを入力する。</p>
+
+<p><strong>効果</strong><br>
+ISPやGoogleではなく、Proton DNS / NextDNSが名前解決を担当するため、<br>
+アクセス履歴がISPに残りにくくなり、広告・トラッカーもDNSレベルで遮断される。<br>
+IPは自動のままなのでネットワークは安定し、Proton VPNのON/OFFにも影響しない。</p>
+
+
+  <h4>● Edge のテレメトリ完全オフ</h4>
+  <p><strong>Edge(を開く) → 設定 → プライバシー/検索/サービス</strong></p>
+  <ul>
+    <li>「閲覧データをMicrosoftに送信」→ オフ</li>
+    <li>「パーソナライズ広告」→ オフ</li>
+    <li>「改善のためのデータ送信」→ 全てオフ</li>
+  </ul>
+
+  <h4>● Windows Update の自動再起動制御</h4>
+  <p><strong>設定 → Windows Update → 詳細オプション</strong></p>
+  <ul>
+    <li>「再起動のスケジュール」→ 手動にする</li>
+    <li>「アクティブ時間」→ 長めに設定（例：8:00〜26:00）</li>
+  </ul>
+
+  <p>これらを設定することで、Windows のデータ送信量を大幅に減らし、  
+  プライバシーを最大限に保護できる。</p>
+
+</details>
+
+
+<!-- 5 -->
+<details>
+  <summary>5. Androidのプライバシー設定</summary>
+
+  <p>Android は初期設定のままだと、Google に大量のデータが送信される。  
+  (GooglePixel9aの場合)以下の設定を推奨する。</p>
+
+  <h3>■ Google アクティビティ履歴 → 全オフ</h3>
+  <p><strong>設定 → セキュリティとプライバシー → プライバシー管理 → アクティビティ管理</strong></p>
+  <ul>
+    <li>ウェブとアプリのアクティビティ → オフ</li>
+    <li>位置情報履歴 → オフ</li>
+    <li>YouTube履歴 → オフ</li>
+  </ul>
+
+  <p>※ これらをオンにすると、検索・位置情報・アプリ利用履歴がGoogleに保存され続ける。</p>
+
+  <h3>■ 広告ID → リセット＋無効化</h3>
+  <p><strong>設定 → セキュリティとプライバシー → プライバシー管理 → 広告</strong></p>
+  <ul>
+    <li>「広告IDを削除」または「広告IDをリセット」</li>
+    <li>「広告のパーソナライズを無効化」→ オフ</li>
+  </ul>
+
+  <p>広告IDはアプリ横断の追跡に使われるため、必ず無効化する。</p>
+
+  <h3>■ 位置情報サービス・スキャン → オン/オフ</h3>
+  <p><strong>設定 → セキュリティとプライバシー → プライバシー管理 → 位置情報へのアクセス</strong></p>
+  <ul>
+    <li>原則禁止は「オフ」</li>
+    <li>必要な状況の位置情報サービスだけ「オン」</li>
+  </ul>
+
+  <p>位置情報は最も危険な個人情報の1つ。  
+  常時取得されると生活パターンが丸裸になる。</p>
+
+  <h3>■ 自動バックアップ → 必要最低限</h3>
+  <p><strong>設定 → セキュリティとプライバシー → システムとアップデート → バックアップ</strong></p>
+  <ul>
+    <li>アプリデータ → 必要なものだけ</li>
+    <li>写真 → Googleフォトを使わない場合はオフ</li>
+    <li>SMS・通話履歴 → オフ推奨</li>
+  </ul>
+
+  <p>Googleバックアップは便利だが、  
+  データがGoogleのAIに読み込まれる可能性がある。</p>
+
+  <h3>■ 権限 → カメラ/マイク/ストレージは都度許可</h3>
+  <p><strong>設定 → セキュリティとプライバシー → プライバシー管理 → 権限マネージャー</strong></p>
+  <ul>
+    <li>カメラ → 必要な時だけ許可</li>
+    <li>マイク → 必要な時だけ許可</li>
+    <li>ストレージ → 不要アプリは拒否</li>
+  </ul>
+
+  <p>権限はアプリが最も悪用しやすい部分。  
+  特にカメラ・マイクは常時許可にしない。</p>
+
+  <h3>■ パーソナライズ広告 → 無効化</h3>
+  <p><strong>設定 → Google → 広告</strong></p>
+  <ul>
+    <li>「広告のパーソナライズをオフ」</li>
+  </ul>
+
+  <p>これをオフにすると、Googleがあなたの興味関心を広告に利用できなくなる。</p>
+
+  <h3>■ Chrome → 同期オフ・履歴削除・サードパーティCookie無効</h3>
+  <p><strong>Chrome(を開く) → 設定</strong></p>
+  <ul>
+    <li>プライバシーガイド → 同期全オフ（特に履歴・パスワード）</li>
+    <li>閲覧データを削除 → 閲覧履歴データを削除</li>
+    <li>サードパーティCookie → ブロック</li>
+    <li>ページをプリロードする→ オフ（Googleに送信される）</li>
+  </ul>
+
+  <p>ChromeはGoogleへのデータ送信が最も多いアプリの1つ。  
+  同期を切るだけでプライバシーが大幅に改善する。</p>
+
+  <h3>■ 追加：AndroidのAI機能（Pixelなど）をオフ</h3>
+  <p>PixelなどはAI統合が強いため、  
+  入力内容や画面内容がAI学習に使われる可能性がある。</p>
+
+  <p><strong>これらを設定することで、Androidのデータ送信量を大幅に減らし、  
+  Googleへの依存を最小限にできる。</strong></p>
+
+</details>
+
+<!-- 6 -->
+<details>
+  <summary>6. ブラウザ（AI時代の最重要ポイント）</summary>
+
+  <p>2026年現在、主要ブラウザ（Edge / Chrome）は AI（Copilot / Gemini）と深く統合されている。  
+  AIチャットは便利だが、AI統合ブラウザでは以下のデータがAI学習に使われる可能性がある。</p>
+
+  <ul>
+    <li>検索ワード</li>
+    <li>閲覧ページ</li>
+    <li>入力した文章</li>
+    <li>AIチャットの会話内容</li>
+    <li>ブラウザ利用状況</li>
+  </ul>
+
+  <p><strong>つまり、AI統合ブラウザはプライバシー的に最も危険な領域である。</strong></p>
+
+  <h3>■ LibreWolf（最強のプライバシー特化ブラウザ）</h3>
+<a href="https://librewolf.net/" target="_blank" rel="noopener noreferrer">LibreWolf【公式】</a>
+  <ul>
+    <li>テレメトリ完全無効</li>
+    <li>AI統合なし</li>
+    <li>トラッキング対策が標準</li>
+    <li>Firefoxベースで高速</li>
+  </ul>
+
+  <p><strong>注意点：</strong>LibreWolf はプライバシー強化が非常に強いため、  
+  一部の動画サイト・決済サイト・企業サイトで動作が制限される場合がある。</p>
+
+  <p>そのため、<strong>Windows専用の「プライバシー特化ブラウザ」として使うのが最適。</strong></p>
+
+  <h3>■ Firefox（現実的な最適解）</h3>
+<a href="https://www.firefox.com/ja/" target="_blank" rel="noopener noreferrer">Firefox【公式】</a>
+  <ul>
+    <li>Windows / Android 両対応</li>
+    <li>自動更新が安定</li>
+    <li>拡張機能が豊富</li>
+    <li>AI統合が弱く、設定で完全に無効化可能</li>
+  </ul>
+
+  <p><strong>LibreWolf は Windows のみだが、Firefox は Android でも使える。</strong><br>
+  そのため、<strong>日常ブラウザは Firefox、プライバシー用途は LibreWolf</strong> という使い分けが最適。</p>
+
+  <h3>■ 推奨拡張機能（最小限）</h3>
+
+  <p>拡張機能を入れすぎると指紋（フィンガープリント）がユニークになり逆効果。  
+  以下の<strong>3つだけ</strong>で十分。</p>
+
+  <ul>
+    <li><strong><a href="https://ublockorigin.com/ja" target="_blank" rel="noopener noreferrer">uBlock Origin</a></strong>（広告・トラッカー遮断）</li>
+    <li><strong><a href="https://proton.me/ja/pass/download" target="_blank" rel="noopener noreferrer">Proton Pass</a></strong>（パスワード管理）</li>
+    <li><strong><a href="https://help.eset.com/esu/19/ja-JP/idh_config_bps.html" target="_blank" rel="noopener noreferrer">ESET Browser Protection</a></strong>（フィッシング対策）</li>
+  </ul>
+
+  <p>※ これらはすべて役割が重複せず、あなたの構成（Proton × ATOK × ESET）と完全一致する。</p>
+
+  <h3>■ メタデータ削除系の拡張機能について</h3>
+
+  <p>画像・URLのメタデータ削除系の拡張機能は、  
+  <strong>Firefox本体の「プライバシー強化設定」で代替可能</strong>なため、基本的に不要。</p>
+
+  <h3>■ 結論：ブラウザはこう使う</h3>
+
+  <ul>
+    <li><strong>日常ブラウジング → Firefox</strong></li>
+    <li><strong>プライバシー用途 → LibreWolf</strong></li>
+    <li><strong>拡張機能は最小限（uBlock / ProtonPass / ESET）</strong></li>
+    <li><strong>AI統合ブラウザ（Edge / Chrome）は使用しない</strong></li>
+  </ul>
+
+  <p><strong>これにより、AI時代のブラウザで最も危険な「入力内容のAI学習」を完全に回避できる。</strong></p>
+
+</details>
+
+
+<!-- 7 -->
+<!-- ▼ 7. winget（PowerShell）でのLibreWolf導入・更新 -->
+<details>
+  <summary>7. winget（PowerShell）でのLibreWolf導入・更新</summary>
+  <a href="https://learn.microsoft.com/ja-jp/powershell/scripting/install/install-powershell?view=powershell-7.6" target="_blank" rel="noopener noreferrer"> PowerShell【インストール】</a>
+  <p>Windowsでは、ブラウザ更新を公式サイトからダウンロードするのではなく、<strong>winget</strong>で行うことで偽サイト対策になる。PowerShellを使うことで、安全に署名付きパッケージを取得できる。</p>
+
+  <h3>■ 初回インストール時に実行する3行</h3>
+  <p><strong>PowerShellで以下の3行をそのまま実行：</strong></p>
+
+  <pre><code>winget upgrade Microsoft.PowerShell
+winget install LibreWolf.LibreWolf
+winget upgrade LibreWolf.LibreWolf
+</code></pre>
+  <ul>
+    <li>PowerShellを最新化（安全性の確保）</li>
+    <li>LibreWolfを安全にインストール</li>
+    <li>インストール後に最新版へ更新</li>
+  </ul>
+
+  <h3>■ 重要：2回目以降は3つ全部やる必要はない</h3>
+  <p>LibreWolf を一度インストールした後は、毎回3行すべてを実行する必要はない。</p>
+
+  <p><strong>2回目以降に必要なのはこの2つだけ：</strong></p>
+
+  <pre><code>winget upgrade Microsoft.PowerShell
+winget upgrade LibreWolf.LibreWolf
+</code></pre>
+  <ul>
+    <li>PowerShell の更新（安全性のため）</li>
+    <li>LibreWolf の更新</li>
+  </ul>
+PowerShellでLibreWolfを安全に更新する例
+   <img src="../assets/img/lebrewolf01.png" alt="wingetでLibreWolfを更新するPowerShell画面" style="width:100%; height:auto; border-radius:8px;">
+<p>このように <code>winget upgrade LibreWolf.LibreWolf</code> を実行することで、公式サーバーから署名付きパッケージを安全に取得できる。</p>
+   <p>要は<strong>インストールは最初の1回だけ</strong>でよく、  
+  2回目以降は「PowerShell更新」と「LibreWolf更新」の2つだけで十分。</p>
+
+  <h3>■ なぜ PowerShell を使うのか（cmd との違い）</h3>
+
+  <h4>● コマンドプロンプト（cmd）の問題点</h4>
+  <ul>
+    <li>Windows 95 時代の古い設計</li>
+    <li>セキュリティ機能がほぼ存在しない</li>
+    <li>署名チェックなしでスクリプトが実行される</li>
+    <li>エラー情報が少なく危険な動作に気づきにくい</li>
+  </ul>
+
+  <h4>● PowerShell が安全な理由</h4>
+  <ul>
+    <li><strong>実行ポリシー</strong>（未署名スクリプトを防ぐ）</li>
+    <li><strong>コード署名</strong>（信頼できるスクリプトのみ実行）</li>
+    <li><strong>詳細なエラーログ</strong>（不正動作を検知しやすい）</li>
+    <li><strong>winget が正式対応しているのは PowerShell</strong></li>
+  </ul>
+
+  <p>cmdでも winget は動くが、  
+  <strong>安全性・安定性・ログの正確さの面で PowerShell が圧倒的に優秀。</strong></p>
+
+
+</details>
+
+
+<!-- 8 -->
+<details>
+  <summary>8. IME（入力プライバシー）</summary>
+<a href="https://www.atok.com/" target="_blank" rel="noopener noreferrer">ATOK【公式】</a>
+  <h3>■ Google / Microsoft IME の問題点</h3>
+
+  <p>Google日本語入力・Microsoft IME は、変換精度向上のために<strong>入力データをクラウドへ送信する仕組み</strong>がある。</p>
+
+  <p>送信される可能性があるデータ</p>
+  <ul>
+    <li>入力履歴のクラウド同期</li>
+    <li>変換候補の学習データ</li>
+    <li>統計情報（どの単語をどれくらい使うか）</li>
+    <li>AIモデル改善のための匿名化データ</li>
+  </ul>
+
+  <p><strong>誤解しがちな点：</strong>Google/Microsoft は入力内容を「広告に直接使う」わけではない。  
+  しかし、<strong>AIモデル改善のために入力データが利用される可能性はある。</strong>つまり、<strong>入力内容がAI学習に使われる可能性がある</strong>という点が最も重要である。</p>
+
+  <h3>■ ATOK（ローカル変換）— Google/Microsoft と決定的に違う点</h3>
+
+  <p>ATOK は設定次第で<strong>完全ローカル変換</strong>にできる。</p>
+
+  <ul>
+    <li>入力内容を外部に送らない</li>
+    <li>クラウド変換 → オフ</li>
+    <li>推測変換のクラウド利用 → オフ</li>
+  </ul>
+
+  <p>ATOK の強み</p>
+  <ul>
+    <li>日本企業（ジャストシステム）でデータが海外に渡らない</li>
+    <li>米国企業のAI学習に使われない</li>
+    <li>設定次第で<strong>完全にデータを外に出さないIME</strong>になる</li>
+  </ul>
+
+  <p>注意点として、ATOKもクラウド機能をオンにすればデータ送信は発生するが、  
+  <strong>すべてオフにすれば完全ローカルIMEとして動作する。</strong></p>
+
+  <h3>■ IMEはプライバシー対策の最重要ポイント</h3>
+
+  <p>IMEは OS の中で最も危険な領域である。  
+  なぜなら、入力する</p>
+
+  <ul>
+    <li>パスワード</li>
+    <li>メール内容</li>
+    <li>住所・氏名</li>
+    <li>クレジットカード番号</li>
+    <li>職場の機密文書</li>
+    <li>検索ワード</li>
+    <li>プライベートな会話</li>
+  </ul>
+
+  <p>これらを<strong>すべてリアルタイムで見ることができる唯一のアプリ</strong>だからである。</p>
+
+  <p><strong>IMEはプライバシー対策の中で最重要。  
+  入力内容は最も漏れてはいけない情報である。</strong></p>
+
+</details>
+
+
+<!-- 9 -->
+<details>
+  <summary>9. ESET（端末防御）</summary>
+<a href="https://www.eset.com/jp/" target="_blank" rel="noopener noreferrer"> ESET【公式】</a>
+  <h3>■ ESETの3つのプラン比較（Essential / Premium / Ultimate）</h3>
+
+  <h4>● Essential（エッセンシャル）</h4>
+  <ul>
+    <li>ウイルス・マルウェア防御</li>
+    <li>ランサムウェア対策</li>
+    <li>フィッシング防御</li>
+    <li>ファイアウォール</li>
+  </ul>
+  <p>必要最低限の防御は揃っているが、プライバシー構成としては Premium が最適。</p>
+
+  <h4>● Premium（プレミアム）※推奨</h4>
+  <ul>
+    <li>Essential の全機能</li>
+    <li>パスワードマネージャー</li>
+    <li>暗号化ストレージ（セキュアデータ）</li>
+    <li>高度なデバイス制御</li>
+  </ul>
+  <p><strong>VPNが付かないため Proton VPN と競合しない。</strong><br>
+  端末防御に特化しており、あなたの構成（Proton × ATOK × ESET）と最も相性が良い。</p>
+
+  <h4>● Ultimate（アルティメット）※非推奨</h4>
+  <ul>
+    <li>Premium の全機能</li>
+    <li>VPN（ESET Secure VPN）</li>
+    <li>追加のプライバシーツール</li>
+  </ul>
+  <p>しかし、VPNはProtonの方が圧倒的に強く、Ultimateを選ぶと<strong>1社に通信データが集中する単一障害点</strong>になるため非推奨。</p>
+
+  <h3>■ 結論：Premium（VPNなし）が最適</h3>
+  <ul>
+    <li>VPNが付かないため Proton と競合しない</li>
+    <li>端末防御に集中しており動作が最も軽い</li>
+    <li>プライバシー構成（通信・入力・端末の分離）に完全一致</li>
+  </ul>
+
+  <h3>■ なぜESETは優れているのか（技術的理由）</h3>
+
+  <h4>● ① 軽量エンジン（NOD32）</h4>
+  <p>CPU使用率が低く、バックグラウンド動作が静か。ゲーム・動画編集・ブラウジングの邪魔をしない。</p>
+
+  <h4>● ② 誤検知が少ない</h4>
+  <p>企業利用が多く、誤検知率が極端に低い。正常なアプリを止めにくい。</p>
+
+  <h4>● ③ フィッシング対策が強い</h4>
+  <p>URLフィルタ＋ヒューリスティック解析の2段構えで高精度にブロック。</p>
+
+  <h4>● ④ 動作が安定している</h4>
+  <p>Windowsカーネルに深く干渉しない設計で、クラッシュや競合が少ない。</p>
+
+  <h4>● ⑤ プライバシー構成と相性が良い</h4>
+  <p>通信（Proton）・入力（ATOK）・端末（ESET）の役割分離を実現できる。</p>
+
+</details>
+
+
+  <details>
+  <summary>10. DNS（必須）</summary>
+
+  <p>DNS（Domain Name System）は、インターネットの「住所録」のような仕組みで、  
+  どのサイトにアクセスするかという情報が必ずDNSサーバーに送られる。</p>
+
+  <p>つまり、DNSを誰に預けるかで、以下の情報がすべて見られる可能性がある</p>
+
+  <ul>
+    <li>どのサイトにアクセスしたか</li>
+    <li>アクセスした時間</li>
+    <li>アプリが裏で通信している先</li>
+    <li>広告トラッカーの通信</li>
+  </ul>
+
+  <p>Google DNS や ISP（プロバイダ）のDNSを使うと、  
+  <strong>通信履歴が丸見えになる。</strong></p>
+
+  <h3>■ 推奨DNS（プライバシー重視）</h3>
+
+  <ul>
+    <li><strong>Proton DNS</strong>（ゼロログ・トラッカー遮断）</li>
+    <li><strong>NextDNS</strong>（広告・トラッカー・マルウェア遮断）</li>
+    <li>AdGuard DNS（広告ブロック）</li>
+  </ul>
+
+  <p>DNSを変えるだけで、広告・トラッカー通信が大幅に減る。</p>
+
+  <h3>■ Windowsでの設定方法</h3>
+         <p>※4. Windowsのプライバシー設定で設定したなら同じなので不要</p>
+  <p>「設定 → ネットワークとインターネット → アダプターのオプション → IPv4」から設定する。</p>
+
+  <p><strong>Proton DNS（IPv4）</strong></p>
+
+    <p><strong>Proton DNS（誰でも利用可／Proton契約不要）</strong><br>
+優先DNSサーバー：<code>76.223.127.10</code><br>
+代替DNSサーバー：<code>76.223.127.12</code></p>
+
+  <p><strong>NextDNS（IPv4）</strong><br>
+  ※ NextDNS はアカウント作成後、専用DNSが発行される。</p>
+優先DNS：<code>DNS1: 45.90.28.0</code><br>
+代替DNS：<code>DNS2: 45.90.30.0</code></p>
+
+  <h3>■ DNSを変えると何が起きるのか</h3>
+    <p></p>
+    <ul>
+    <li>広告トラッカーがDNSレベルで遮断される</li>
+    <li>アプリの裏通信が止まる</li>
+    <li>Google / ISP に通信履歴を渡さなくて済む</li>
+    <li>ブラウザ拡張なしでも広告が減る</li>
+  </ul>
+  <p><strong>DNS変更はプライバシー対策の中でも効果が大きい。</strong></p>
+</details>
+
+  
+<!-- 11 -->
+<details>
+  <summary>11. 最終構成まとめ（2026年版）</summary>
+
+  <p>ここまでの設定をすべて組み合わせることで、Windows と Android を日常的に使いながら、  
+  <strong>通信・入力・端末・ブラウザ・DNS・OS設定・更新の全レイヤーでプライバシーを最大化</strong>できる。</p>
+
+  <h3>■ 最強の現実的構成（2026）</h3>
+
+  <table style="border-collapse: collapse; width: 100%; margin-top: 1rem;">
+    <thead>
+      <tr>
+        <th style="border: 1px solid #ccc; padding: 8px;">領域</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">担当</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">理由</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">通信</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">Proton</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">ゼロログ・ゼロアクセス暗号化でAI検閲なし</td>
+      </tr>
+
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">入力（IME）</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">ATOK</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">ローカル変換で入力内容を外部に送らない</td>
+      </tr>
+
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">端末防御</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">ESET Premium</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">軽量・高検出率・VPNなしでProtonと競合しない</td>
+      </tr>
+
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">ブラウザ</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">LibreWolf / Firefox</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">AI統合なし（または無効化可能）・テレメトリ最小・拡張機能最小で指紋対策</td>
+      </tr>
+
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">DNS</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">Proton DNS / NextDNS</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">広告・トラッカー通信をDNSレベルで遮断</td>
+      </tr>
+
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">OS設定</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">Windows / Android</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">テレメトリ・広告ID・クラウド同期を最小化</td>
+      </tr>
+
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">更新</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">winget（PowerShell）</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">偽サイト対策・署名付きパッケージで安全に更新</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <h3>■ この構成が「最強」になる理由</h3>
+  <ul>
+    <li><strong>通信・入力・端末防御を別ベンダーに分離</strong>し、単一障害点を排除</li>
+    <li><strong>AI統合ブラウザ（Edge / Chrome）を避ける</strong>ことで、入力内容・閲覧履歴のAI学習を防止</li>
+    <li><strong>DNSで広告・トラッカーを根本から遮断</strong>し、裏通信を最小化</li>
+    <li><strong>OSレベルのテレメトリ・広告ID・クラウド同期を最小化</strong>して、土台から情報漏洩を抑える</li>
+    <li><strong>wingetで公式署名付きパッケージのみ更新</strong>し、偽サイト・改ざんリスクを回避</li>
+  </ul>
+
+  <p><strong>これで、Windows と Android を便利に使いながら、  
+  プライバシーとセキュリティを最大限守る構成が完成する。</strong></p>
+
+</details>
+
+
+
+<div class="back-row">
+  <a href="../blog.html" class="back-btn">ブログ一覧</a>
+  <a href="../index.html" class="back-btn">ホーム</a>
+</div>
+
+</div>
+
+</body>
+</html></p>
   <p>Protonは「VPN」「メール」「パスワード管理」「クラウド」「DNS」を提供する企業だが、GoogleやMicrosoftと決定的に違う点がある。</p>
 
   <h3>■ Google / Microsoft のクラウドは AI に読まれる</h3>
