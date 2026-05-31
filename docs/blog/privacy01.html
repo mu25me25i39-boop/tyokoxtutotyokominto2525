@@ -245,27 +245,66 @@ winget upgrade LibreWolf.LibreWolf
 <details>
   <summary>8. IME（入力プライバシー）</summary>
 
-  <h3>■ Google / Microsoft IME の問題点</h3>
-  <p>変換精度向上のため、入力内容がクラウドへ送信される仕組みがある。</p>
+  <h3>■ Google / Microsoft IME の問題点（正確な解説）</h3>
 
+  <p>Google日本語入力・Microsoft IME は、変換精度向上のために<strong>入力データをクラウドへ送信する仕組み</strong>がある。</p>
+
+  <p>送信される可能性があるデータ：</p>
   <ul>
     <li>入力履歴のクラウド同期</li>
-    <li>変換候補の学習</li>
-    <li>AIモデル改善のためのデータ収集</li>
+    <li>変換候補の学習データ</li>
+    <li>統計情報（どの単語をどれくらい使うか）</li>
+    <li>AIモデル改善のための匿名化データ</li>
   </ul>
 
-  <p><strong>つまり、入力内容がAI学習に使われる可能性がある。</strong></p>
+  <p><strong>誤解しがちな点：</strong><br>
+  Google/Microsoft は入力内容を「広告に直接使う」わけではない。  
+  しかし、<strong>AIモデル改善のために入力データが利用される可能性はある。</strong></p>
 
-  <h3>■ ATOK（ローカル変換）</h3>
+  <p>つまり、<strong>入力内容がAI学習に使われる可能性がある</strong>という点が最も重要である。</p>
+
+  <h3>■ ATOK（ローカル変換）— Google/Microsoft と決定的に違う点</h3>
+
+  <p>ATOK は設定次第で<strong>完全ローカル変換</strong>にできる。</p>
+
   <ul>
     <li>入力内容を外部に送らない</li>
     <li>クラウド変換 → オフ</li>
     <li>推測変換のクラウド利用 → オフ</li>
   </ul>
 
-  <p><strong>IMEは最重要。入力内容は最も漏れてはいけない情報。</strong></p>
+  <p>ATOK の強み：</p>
+  <ul>
+    <li>日本企業（ジャストシステム）でデータが海外に渡らない</li>
+    <li>米国企業のAI学習に使われない</li>
+    <li>設定次第で<strong>完全にデータを外に出さないIME</strong>になる</li>
+  </ul>
+
+  <p>注意点として、ATOKもクラウド機能をオンにすればデータ送信は発生するが、  
+  <strong>すべてオフにすれば完全ローカルIMEとして動作する。</strong></p>
+
+  <h3>■ IMEはプライバシー対策の最重要ポイント</h3>
+
+  <p>IMEは OS の中で最も危険な領域である。  
+  なぜなら、あなたが入力する：</p>
+
+  <ul>
+    <li>パスワード</li>
+    <li>メール内容</li>
+    <li>住所・氏名</li>
+    <li>クレジットカード番号</li>
+    <li>職場の機密文書</li>
+    <li>検索ワード</li>
+    <li>プライベートな会話</li>
+  </ul>
+
+  <p>これらを<strong>すべてリアルタイムで見ることができる唯一のアプリ</strong>だからである。</p>
+
+  <p><strong>IMEはプライバシー対策の中で最重要。  
+  入力内容は最も漏れてはいけない情報である。</strong></p>
 
 </details>
+
 
 <!-- 9 -->
 <details>
