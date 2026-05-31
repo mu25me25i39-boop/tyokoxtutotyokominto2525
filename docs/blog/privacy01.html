@@ -672,20 +672,81 @@ DNS2: 45.90.30.0
 <details>
   <summary>11. 最終構成まとめ（2026年版）</summary>
 
+  <p>ここまでの設定をすべて組み合わせることで、  
+  Windows と Android を日常的に使いながら、  
+  <strong>通信・入力・端末・ブラウザ・DNS・OS設定の全レイヤーでプライバシーを最大化</strong>できる。</p>
+
+  <h3>■ 最強の現実的構成（2026）</h3>
+
+  <table style="border-collapse: collapse; width: 100%; margin-top: 1rem;">
+    <thead>
+      <tr>
+        <th style="border: 1px solid #ccc; padding: 8px;">領域</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">担当</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">理由</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">通信</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">Proton</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">ゼロログ・ゼロアクセス暗号化でAI検閲なし</td>
+      </tr>
+
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">入力（IME）</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">ATOK</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">ローカル変換で入力内容を外部に送らない</td>
+      </tr>
+
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">端末防御</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">ESET Premium</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">軽量・高検出率・VPNなしでProtonと競合しない</td>
+      </tr>
+
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">ブラウザ</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">LibreWolf / Firefox</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">AI統合なし・テレメトリ最小・拡張機能最小で指紋対策</td>
+      </tr>
+
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">DNS</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">Proton DNS / NextDNS</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">広告・トラッカー通信をDNSレベルで遮断</td>
+      </tr>
+
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">OS設定</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">Windows / Android</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">テレメトリ・広告ID・クラウド同期を最小化</td>
+      </tr>
+
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">更新</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">winget（PowerShell）</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">偽サイト対策・署名付きパッケージで安全更新</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <h3>■ この構成が「最強」になる理由</h3>
   <ul>
-    <li>通信 → Proton（AI検閲なし）</li>
-    <li>入力 → ATOK（クラウド送信なし）</li>
-    <li>端末 → ESET</li>
-    <li>ブラウザ → LibreWolf / Firefox（AI統合なし）</li>
-    <li>DNS → Proton DNS / NextDNS</li>
-    <li>OS → プライバシー設定を最小化</li>
-    <li>拡張機能 → 最小限（指紋対策）</li>
-    <li>wingetで安全に更新</li>
+    <li><strong>通信・入力・端末防御を別ベンダーに分離</strong> → 単一障害点を排除</li>
+    <li><strong>AI統合ブラウザを避ける</strong> → 入力内容・閲覧履歴のAI学習を防止</li>
+    <li><strong>DNSで広告・トラッカーを根本から遮断</strong></li>
+    <li><strong>OSレベルのテレメトリを最小化</strong></li>
+    <li><strong>wingetで安全に更新</strong> → 偽サイト・改ざんリスクを排除</li>
   </ul>
 
-  <p><strong>これで、Windows と Android を便利に使いながら、プライバシーとセキュリティを最大限守る構成が完成する。</strong></p>
+  <p><strong>これで、Windows と Android を便利に使いながら、  
+  プライバシーとセキュリティを最大限守る構成が完成する。</strong></p>
 
 </details>
+
 
 <div class="back-row">
   <a href="../blog.html" class="back-btn">ブログ一覧</a>
