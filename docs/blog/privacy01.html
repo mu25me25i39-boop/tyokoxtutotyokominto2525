@@ -711,9 +711,8 @@ DNS2: 45.90.30.0
 <details>
   <summary>11. 最終構成まとめ（2026年版）</summary>
 
-  <p>ここまでの設定をすべて組み合わせることで、  
-  Windows と Android を日常的に使いながら、  
-  <strong>通信・入力・端末・ブラウザ・DNS・OS設定の全レイヤーでプライバシーを最大化</strong>できる。</p>
+  <p>ここまでの設定をすべて組み合わせることで、Windows と Android を日常的に使いながら、  
+  <strong>通信・入力・端末・ブラウザ・DNS・OS設定・更新の全レイヤーでプライバシーを最大化</strong>できる。</p>
 
   <h3>■ 最強の現実的構成（2026）</h3>
 
@@ -748,7 +747,7 @@ DNS2: 45.90.30.0
       <tr>
         <td style="border: 1px solid #ccc; padding: 8px;">ブラウザ</td>
         <td style="border: 1px solid #ccc; padding: 8px;">LibreWolf / Firefox</td>
-        <td style="border: 1px solid #ccc; padding: 8px;">AI統合なし・テレメトリ最小・拡張機能最小で指紋対策</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">AI統合なし（または無効化可能）・テレメトリ最小・拡張機能最小で指紋対策</td>
       </tr>
 
       <tr>
@@ -766,7 +765,7 @@ DNS2: 45.90.30.0
       <tr>
         <td style="border: 1px solid #ccc; padding: 8px;">更新</td>
         <td style="border: 1px solid #ccc; padding: 8px;">winget（PowerShell）</td>
-        <td style="border: 1px solid #ccc; padding: 8px;">偽サイト対策・署名付きパッケージで安全更新</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">偽サイト対策・署名付きパッケージで安全に更新</td>
       </tr>
 
     </tbody>
@@ -774,17 +773,18 @@ DNS2: 45.90.30.0
 
   <h3>■ この構成が「最強」になる理由</h3>
   <ul>
-    <li><strong>通信・入力・端末防御を別ベンダーに分離</strong> → 単一障害点を排除</li>
-    <li><strong>AI統合ブラウザを避ける</strong> → 入力内容・閲覧履歴のAI学習を防止</li>
-    <li><strong>DNSで広告・トラッカーを根本から遮断</strong></li>
-    <li><strong>OSレベルのテレメトリを最小化</strong></li>
-    <li><strong>wingetで安全に更新</strong> → 偽サイト・改ざんリスクを排除</li>
+    <li><strong>通信・入力・端末防御を別ベンダーに分離</strong>し、単一障害点を排除</li>
+    <li><strong>AI統合ブラウザ（Edge / Chrome）を避ける</strong>ことで、入力内容・閲覧履歴のAI学習を防止</li>
+    <li><strong>DNSで広告・トラッカーを根本から遮断</strong>し、裏通信を最小化</li>
+    <li><strong>OSレベルのテレメトリ・広告ID・クラウド同期を最小化</strong>して、土台から情報漏洩を抑える</li>
+    <li><strong>wingetで公式署名付きパッケージのみ更新</strong>し、偽サイト・改ざんリスクを回避</li>
   </ul>
 
   <p><strong>これで、Windows と Android を便利に使いながら、  
   プライバシーとセキュリティを最大限守る構成が完成する。</strong></p>
 
 </details>
+
 
 
 <div class="back-row">
