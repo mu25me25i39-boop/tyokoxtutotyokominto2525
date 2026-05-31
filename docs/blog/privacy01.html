@@ -172,43 +172,194 @@
 </details>
 
 <!-- 4 -->
-<details>
+<<details>
   <summary>4. Windowsのプライバシー設定（完全版）</summary>
 
-  <h3>■ 必須設定</h3>
+  <p>Windows は初期設定のままだと、広告ID・位置情報・クラウド同期・テレメトリなど、  
+  多くのデータが Microsoft に送信される。  
+  以下では「どこをどう設定すればいいか」を具体的に解説する。</p>
+
+  <h3>■ 必須設定（まず最初にやるべき項目）</h3>
+
+  <h4>● 広告ID → オフ</h4>
+  <p><strong>設定 → プライバシーとセキュリティ → 全般</strong></p>
   <ul>
-    <li>広告ID → オフ</li>
-    <li>位置情報 → 必要な時だけオン</li>
-    <li>テレメトリ → 最小</li>
-    <li>アプリ権限 → カメラ/マイク/位置情報は必要なアプリだけ</li>
-    <li>OneDrive → 自動同期オフ</li>
-    <li>検索 → クラウド検索オフ</li>
-    <li>アクティビティ履歴 → 全オフ</li>
+    <li>「アプリが広告IDを使用できるようにする」をオフ</li>
   </ul>
+
+  <h4>● 位置情報 → 必要な時だけオン</h4>
+  <p><strong>設定 → プライバシーとセキュリティ → 位置情報</strong></p>
+  <ul>
+    <li>位置情報サービス → オフ</li>
+    <li>アプリごとに「使用中のみ」を選択</li>
+  </ul>
+
+  <h4>● テレメトリ（診断データ） → 最小</h4>
+  <p><strong>設定 → プライバシーとセキュリティ → 診断とフィードバック</strong></p>
+  <ul>
+    <li>「必須の診断データ」のみにする</li>
+    <li>「カスタマーエクスペリエンス向上プログラム」→ オフ</li>
+  </ul>
+
+  <h4>● アプリ権限 → 必要なアプリだけ許可</h4>
+  <p><strong>設定 → プライバシーとセキュリティ → アプリのアクセス許可</strong></p>
+  <ul>
+    <li>カメラ → 必要なアプリだけオン</li>
+    <li>マイク → 必要なアプリだけオン</li>
+    <li>位置情報 → 必要なアプリだけオン</li>
+  </ul>
+
+  <h4>● OneDrive → 自動同期オフ</h4>
+  <p><strong>OneDrive → 設定 → 同期とバックアップ</strong></p>
+  <ul>
+    <li>「フォルダーのバックアップ」→ オフ</li>
+    <li>「写真と動画の自動保存」→ オフ</li>
+  </ul>
+
+  <h4>● 検索 → クラウド検索オフ</h4>
+  <p><strong>設定 → プライバシーとセキュリティ → 検索のアクセス許可</strong></p>
+  <ul>
+    <li>「クラウドコンテンツ検索」→ 全てオフ</li>
+  </ul>
+
+  <h4>● アクティビティ履歴 → 全オフ</h4>
+  <p><strong>設定 → プライバシーとセキュリティ → アクティビティ履歴</strong></p>
+  <ul>
+    <li>「このデバイスでのアクティビティ履歴を保存する」→ オフ</li>
+    <li>「アクティビティ履歴をMicrosoftに送信する」→ オフ</li>
+  </ul>
+
+  <hr>
 
   <h3>■ 追加設定（上級者向け）</h3>
+
+  <h4>● 不要サービスの無効化（PowerShell）</h4>
+  <p>以下のようなサービスはプライバシーに不要で、停止すると通信量が減る。</p>
   <ul>
-    <li>不要サービスの無効化（PowerShell）</li>
-    <li>DNSをProton DNS / NextDNSに変更</li>
-    <li>Edgeのテレメトリ完全オフ</li>
-    <li>Windows Updateの自動再起動制御</li>
+    <li>Connected User Experiences and Telemetry</li>
+    <li>Diagnostics Tracking Service</li>
+  </ul>
+  <p>※ 具体的な停止コマンドは別章でまとめる。</p>
+
+  <h4>● DNSを Proton DNS / NextDNS に変更</h4>
+  <p><strong>設定 → ネットワークとインターネット → アダプターのオプション → IPv4</strong></p>
+  <ul>
+    <li>Proton DNS → 76.223.127.10 / 76.223.127.12</li>
+    <li>NextDNS → アカウント専用DNSを入力</li>
   </ul>
 
+  <h4>● Edge のテレメトリ完全オフ</h4>
+  <p><strong>Edge → 設定 → プライバシー、検索、サービス</strong></p>
+  <ul>
+    <li>「閲覧データをMicrosoftに送信」→ オフ</li>
+    <li>「パーソナライズ広告」→ オフ</li>
+    <li>「改善のためのデータ送信」→ 全てオフ</li>
+  </ul>
+
+  <h4>● Windows Update の自動再起動制御</h4>
+  <p><strong>設定 → Windows Update → 詳細オプション</strong></p>
+  <ul>
+    <li>「再起動のスケジュール」→ 手動にする</li>
+    <li>「アクティブ時間」→ 長めに設定（例：8:00〜26:00）</li>
+  </ul>
+
+  <p>これらを設定することで、Windows のデータ送信量を大幅に減らし、  
+  プライバシーを最大限に保護できる。</p>
+
 </details>
+
 
 <!-- 5 -->
 <details>
   <summary>5. Androidのプライバシー設定（完全版）</summary>
 
+  <p>Android は初期設定のままだと、Google に大量のデータが送信される。  
+  以下では「どこをどう設定すればいいか」を具体的に解説する。</p>
+
+  <h3>■ Google アクティビティ履歴 → 全オフ</h3>
+  <p><strong>設定 → Google → データとプライバシー</strong></p>
   <ul>
-    <li>Google アクティビティ履歴 → 全オフ</li>
-    <li>広告ID → リセット＋無効化</li>
-    <li>位置情報 → アプリごとに「使用中のみ」</li>
-    <li>自動バックアップ → 必要最低限</li>
-    <li>権限 → カメラ/マイク/ストレージは都度許可</li>
-    <li>パーソナライズ広告 → 無効化</li>
-    <li>Chrome → 同期オフ・履歴削除・サードパーティCookie無効</li>
+    <li>ウェブとアプリのアクティビティ → オフ</li>
+    <li>位置情報履歴 → オフ</li>
+    <li>YouTube履歴 → オフ</li>
   </ul>
+
+  <p>※ これらをオンにすると、検索・位置情報・アプリ利用履歴がGoogleに保存され続ける。</p>
+
+  <h3>■ 広告ID → リセット＋無効化</h3>
+  <p><strong>設定 → プライバシー → 広告</strong></p>
+  <ul>
+    <li>「広告IDを削除」または「広告IDをリセット」</li>
+    <li>「広告のパーソナライズを無効化」→ オフ</li>
+  </ul>
+
+  <p>広告IDはアプリ横断の追跡に使われるため、必ず無効化する。</p>
+
+  <h3>■ 位置情報 → アプリごとに「使用中のみ」</h3>
+  <p><strong>設定 → 位置情報 → アプリの権限</strong></p>
+  <ul>
+    <li>「常に許可」は原則禁止</li>
+    <li>必要なアプリだけ「使用中のみ」</li>
+    <li>不要アプリは「許可しない」</li>
+  </ul>
+
+  <p>位置情報は最も危険な個人情報の1つ。  
+  常時取得されると生活パターンが丸裸になる。</p>
+
+  <h3>■ 自動バックアップ → 必要最低限</h3>
+  <p><strong>設定 → Google → バックアップ</strong></p>
+  <ul>
+    <li>アプリデータ → 必要なものだけ</li>
+    <li>写真 → Googleフォトを使わない場合はオフ</li>
+    <li>SMS・通話履歴 → オフ推奨</li>
+  </ul>
+
+  <p>Googleバックアップは便利だが、  
+  データがGoogleのAIに読み込まれる可能性がある。</p>
+
+  <h3>■ 権限 → カメラ/マイク/ストレージは都度許可</h3>
+  <p><strong>設定 → プライバシー → 権限マネージャー</strong></p>
+  <ul>
+    <li>カメラ → 必要な時だけ許可</li>
+    <li>マイク → 必要な時だけ許可</li>
+    <li>ストレージ → 不要アプリは拒否</li>
+  </ul>
+
+  <p>権限はアプリが最も悪用しやすい部分。  
+  特にカメラ・マイクは常時許可にしない。</p>
+
+  <h3>■ パーソナライズ広告 → 無効化</h3>
+  <p><strong>設定 → Google → 広告</strong></p>
+  <ul>
+    <li>「広告のパーソナライズをオフ」</li>
+  </ul>
+
+  <p>これをオフにすると、Googleがあなたの興味関心を広告に利用できなくなる。</p>
+
+  <h3>■ Chrome → 同期オフ・履歴削除・サードパーティCookie無効</h3>
+  <p><strong>Chrome → 設定</strong></p>
+  <ul>
+    <li>同期 → 全オフ（特に履歴・パスワード）</li>
+    <li>プライバシーとセキュリティ → 閲覧履歴データを削除</li>
+    <li>サードパーティCookie → ブロック</li>
+    <li>「ページ予測」→ オフ（Googleに送信される）</li>
+  </ul>
+
+  <p>ChromeはGoogleへのデータ送信が最も多いアプリの1つ。  
+  同期を切るだけでプライバシーが大幅に改善する。</p>
+
+  <h3>■ 追加：AndroidのAI機能（Pixelなど）をオフ</h3>
+  <p><strong>設定 → プライバシー → AndroidシステムのAI</strong></p>
+  <ul>
+    <li>「デバイス内のAI処理」→ オフ</li>
+    <li>「クラウドAI」→ オフ</li>
+  </ul>
+
+  <p>PixelなどはAI統合が強いため、  
+  入力内容や画面内容がAI学習に使われる可能性がある。</p>
+
+  <p><strong>これらを設定することで、Androidのデータ送信量を大幅に減らし、  
+  Googleへの依存を最小限にできる。</strong></p>
 
 </details>
 
@@ -445,6 +596,78 @@ winget upgrade LibreWolf.LibreWolf
 
 </details>
 
+
+  <details>
+  <summary>10. DNS（必須）</summary>
+
+  <p>DNS（Domain Name System）は、インターネットの「住所録」のような仕組みで、  
+  どのサイトにアクセスするかという情報が必ずDNSサーバーに送られる。</p>
+
+  <p>つまり、DNSを誰に預けるかで、以下の情報がすべて見られる可能性がある：</p>
+
+  <ul>
+    <li>どのサイトにアクセスしたか</li>
+    <li>アクセスした時間</li>
+    <li>アプリが裏で通信している先</li>
+    <li>広告トラッカーの通信</li>
+  </ul>
+
+  <p>Google DNS や ISP（プロバイダ）のDNSを使うと、  
+  <strong>あなたの通信履歴が丸見えになる。</strong></p>
+
+  <h3>■ 推奨DNS（プライバシー重視）</h3>
+
+  <ul>
+    <li><strong>Proton DNS</strong>（ゼロログ・トラッカー遮断）</li>
+    <li><strong>NextDNS</strong>（広告・トラッカー・マルウェア遮断）</li>
+    <li>AdGuard DNS（広告ブロック）</li>
+  </ul>
+
+  <p>DNSを変えるだけで、広告・トラッカー通信が大幅に減る。</p>
+
+  <h3>■ Windowsでの設定方法</h3>
+
+  <p>「設定 → ネットワークとインターネット → アダプターのオプション → IPv4」から設定する。</p>
+
+  <p><strong>Proton DNS（IPv4）</strong></p>
+  <pre><code>1. DNS1: 76.223.127.10
+2. DNS2: 76.223.127.12
+</code></pre>
+
+  <p><strong>NextDNS（IPv4）</strong><br>
+  ※ NextDNS はアカウント作成後、専用DNSが発行される。</p>
+
+  <pre><code>例:
+DNS1: 45.90.28.0
+DNS2: 45.90.30.0
+</code></pre>
+
+  <h3>■ Androidでの設定方法</h3>
+
+  <p>「設定 → ネットワークとインターネット → 詳細設定 → プライベートDNS」</p>
+
+  <p><strong>Proton DNS</strong></p>
+  <pre><code>dns.proton.me
+</code></pre>
+
+  <p><strong>NextDNS</strong></p>
+  <pre><code>xxxxxx.dns.nextdns.io
+（※ NextDNSの管理画面で発行される）</code></pre>
+
+  <h3>■ DNSを変えると何が起きるのか</h3>
+
+  <ul>
+    <li>広告トラッカーがDNSレベルで遮断される</li>
+    <li>アプリの裏通信が止まる</li>
+    <li>Google / ISP に通信履歴を渡さなくて済む</li>
+    <li>ブラウザ拡張なしでも広告が減る</li>
+  </ul>
+
+  <p><strong>DNS変更はプライバシー対策の中でも効果が大きい。</strong></p>
+
+</details>
+
+  
 <!-- 11 -->
 <details>
   <summary>11. 最終構成まとめ（2026年版）</summary>
