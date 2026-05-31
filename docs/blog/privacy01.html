@@ -310,26 +310,58 @@ winget upgrade LibreWolf.LibreWolf
 <details>
   <summary>9. ESET（端末防御）</summary>
 
+  <h3>■ ESETの3つのプラン比較（Essential / Premium / Ultimate）</h3>
+
+  <h4>● Essential（エッセンシャル）</h4>
   <ul>
-    <li>マルウェア・ランサムウェア防御が強い</li>
-    <li>動作が軽い</li>
-    <li>フィッシング対策が優秀</li>
-    <li>VPN付きの上位プランは不要（VPNはProtonに任せる）</li>
+    <li>ウイルス・マルウェア防御</li>
+    <li>ランサムウェア対策</li>
+    <li>フィッシング防御</li>
+    <li>ファイアウォール</li>
+  </ul>
+  <p>必要最低限の防御は揃っているが、プライバシー構成としては Premium が最適。</p>
+
+  <h4>● Premium（プレミアム）※推奨</h4>
+  <ul>
+    <li>Essential の全機能</li>
+    <li>パスワードマネージャー</li>
+    <li>暗号化ストレージ（セキュアデータ）</li>
+    <li>高度なデバイス制御</li>
+  </ul>
+  <p><strong>VPNが付かないため Proton VPN と競合しない。</strong><br>
+  端末防御に特化しており、あなたの構成（Proton × ATOK × ESET）と最も相性が良い。</p>
+
+  <h4>● Ultimate（アルティメット）※非推奨</h4>
+  <ul>
+    <li>Premium の全機能</li>
+    <li>VPN（ESET Secure VPN）</li>
+    <li>追加のプライバシーツール</li>
+  </ul>
+  <p>しかし、VPNはProtonの方が圧倒的に強く、Ultimateを選ぶと<strong>1社に通信データが集中する単一障害点</strong>になるため非推奨。</p>
+
+  <h3>■ 結論：Premium（VPNなし）が最適</h3>
+  <ul>
+    <li>VPNが付かないため Proton と競合しない</li>
+    <li>端末防御に集中しており動作が最も軽い</li>
+    <li>プライバシー構成（通信・入力・端末の分離）に完全一致</li>
   </ul>
 
-</details>
+  <h3>■ なぜESETは優れているのか（技術的理由）</h3>
 
-<!-- 10 -->
-<details>
-  <summary>10. DNS（必須）</summary>
+  <h4>● ① 軽量エンジン（NOD32）</h4>
+  <p>CPU使用率が低く、バックグラウンド動作が静か。ゲーム・動画編集・ブラウジングの邪魔をしない。</p>
 
-  <ul>
-    <li>Proton DNS</li>
-    <li>NextDNS（広告・トラッカー遮断）</li>
-    <li>AdGuard DNS</li>
-  </ul>
+  <h4>● ② 誤検知が少ない</h4>
+  <p>企業利用が多く、誤検知率が極端に低い。正常なアプリを止めにくい。</p>
 
-  <p>DNSを変えるだけでトラッキングが激減する。</p>
+  <h4>● ③ フィッシング対策が強い</h4>
+  <p>URLフィルタ＋ヒューリスティック解析の2段構えで高精度にブロック。</p>
+
+  <h4>● ④ 動作が安定している</h4>
+  <p>Windowsカーネルに深く干渉しない設計で、クラッシュや競合が少ない。</p>
+
+  <h4>● ⑤ プライバシー構成と相性が良い</h4>
+  <p>通信（Proton）・入力（ATOK）・端末（ESET）の役割分離を実現できる。</p>
 
 </details>
 
