@@ -41,21 +41,79 @@
 <details>
   <summary>2. 最強の現実的構成（Proton × ATOK × ESET）</summary>
 
-  <p>この3つは役割が完全に分離しており、互いの弱点を補完する。</p>
+  <p>この3つは役割が完全に分離しており、互いの弱点を補完する。  
+  現代のプライバシー対策では、<strong>通信・入力・端末防御を別ベンダーに分けること</strong>が最も重要である。</p>
 
   <p><strong>補強文（あなたの指示を反映）</strong><br>
-  「セキュリティソフト付属のVPN」や「ブラウザ内蔵パスワード管理」は便利だが、<strong>1社にすべてのデータを握られる単一障害点</strong>になる。通信・入力・端末防御のベンダーを分けることこそが、モダンなプライバシー対策の基本である。</p>
+  「セキュリティソフト付属のVPN」や「ブラウザ内蔵パスワード管理」は便利だが、  
+  1社にすべてのデータを握られる<strong>単一障害点（Single Point of Failure）</strong>になる。  
+  通信・入力・端末防御を分離することで、1社が侵害されても全体が破られない構成になる。</p>
 
-  <table>
+  <h3>■ 役割分離の構成表（枠線つき）</h3>
+
+  <table style="border-collapse: collapse; width: 100%;">
     <thead>
-      <tr><th>防御領域</th><th>担当</th><th>説明</th></tr>
+      <tr>
+        <th style="border: 1px solid #ccc; padding: 8px;">防御領域</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">担当</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">説明</th>
+      </tr>
     </thead>
     <tbody>
-      <tr><td>通信・クラウド・パスワード</td><td>Proton</td><td>ゼロログ・ゼロアクセス暗号化</td></tr>
-      <tr><td>入力データ（IME）</td><td>ATOK</td><td>ローカル変換で入力内容を外部に送らない</td></tr>
-      <tr><td>端末防御</td><td>ESET</td><td>軽量・高検出率（VPNなしプランが最適）</td></tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">通信・クラウド・パスワード</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">Proton</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">ゼロログ・ゼロアクセス暗号化（AI検閲なし）</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">入力データ（IME）</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">ATOK</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">ローカル変換で入力内容を外部に送らない</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">端末防御</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">ESET Premium</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">軽量・高検出率・VPNなしでProtonと競合しない</td>
+      </tr>
     </tbody>
   </table>
+
+  <h3>■ ESET のプラン比較（1年料金・端末数の目安）</h3>
+
+  <table style="border-collapse: collapse; width: 100%; margin-top: 1rem;">
+    <thead>
+      <tr>
+        <th style="border: 1px solid #ccc; padding: 8px;">プラン</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">1年料金（目安）</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">端末数</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">特徴</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">Essential</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">約4,900〜5,500円</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">1台</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">基本的なマルウェア防御のみ</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">Premium（推奨）</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">約6,500〜7,500円</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">1〜3台</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">VPNなし・端末防御に特化・Protonと競合しない</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">Ultimate（非推奨）</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">約9,000〜11,000円</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">1〜3台</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">VPN付き（Protonと競合）</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>結論：Premium が最適。</strong><br>
+  VPNが付かず、Protonと役割が完全に分離できるため、  
+  あなたの構成（Proton × ATOK × ESET）と最も相性が良い。</p>
 
 </details>
 
