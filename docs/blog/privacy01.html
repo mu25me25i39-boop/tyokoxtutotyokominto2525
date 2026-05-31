@@ -255,8 +255,9 @@
 <details>
   <summary>7. winget（PowerShell）でのLibreWolf導入・更新</summary>
 
-  <p>Windowsでは、ブラウザ更新を公式サイトからダウンロードするのではなく、<strong>winget</strong>で行うことで偽サイト対策になる。</p>
+  <p>Windowsでは、ブラウザ更新を公式サイトからダウンロードするのではなく、<strong>winget</strong>で行うことで偽サイト対策になる。PowerShellを使うことで、安全に署名付きパッケージを取得できる。</p>
 
+  <h3>■ 初回インストール時に実行する3行</h3>
   <p><strong>PowerShellで以下の3行をそのまま実行：</strong></p>
 
   <pre><code>winget upgrade Microsoft.PowerShell
@@ -265,21 +266,36 @@ winget upgrade LibreWolf.LibreWolf
 </code></pre>
 
   <ul>
-    <li>PowerShellを最新化</li>
-    <li>LibreWolfを安全に導入</li>
-    <li>更新もコマンドで完結</li>
+    <li>PowerShellを最新化（安全性の確保）</li>
+    <li>LibreWolfを安全にインストール</li>
+    <li>インストール後に最新版へ更新</li>
   </ul>
 
-  <h3>■ 余談：コマンドプロンプトより PowerShell が安全な理由</h3>
+  <h3>■ 重要：2回目以降は3つ全部やる必要はない</h3>
+  <p>LibreWolf を一度インストールした後は、毎回3行すべてを実行する必要はない。</p>
 
-  <p>Windowsには「コマンドプロンプト（cmd）」と「PowerShell」の2種類のシェルがあるが、<strong>セキュリティ面ではPowerShellが圧倒的に優れている。</strong></p>
+  <p><strong>2回目以降に必要なのはこの2つだけ：</strong></p>
+
+  <pre><code>winget upgrade Microsoft.PowerShell
+winget upgrade LibreWolf.LibreWolf
+</code></pre>
+
+  <ul>
+    <li>PowerShell の更新（安全性のため）</li>
+    <li>LibreWolf の更新</li>
+  </ul>
+
+  <p>つまり、<strong>インストールは最初の1回だけ</strong>でよく、  
+  2回目以降は「PowerShell更新」と「LibreWolf更新」の2つだけで十分。</p>
+
+  <h3>■ なぜ PowerShell を使うのか（cmd との違い）</h3>
 
   <h4>● コマンドプロンプト（cmd）の問題点</h4>
   <ul>
     <li>Windows 95 時代の古い設計</li>
     <li>セキュリティ機能がほぼ存在しない</li>
     <li>署名チェックなしでスクリプトが実行される</li>
-    <li>エラー情報が少なく、危険な動作に気づきにくい</li>
+    <li>エラー情報が少なく危険な動作に気づきにくい</li>
   </ul>
 
   <h4>● PowerShell が安全な理由</h4>
@@ -287,12 +303,11 @@ winget upgrade LibreWolf.LibreWolf
     <li><strong>実行ポリシー</strong>（未署名スクリプトを防ぐ）</li>
     <li><strong>コード署名</strong>（信頼できるスクリプトのみ実行）</li>
     <li><strong>詳細なエラーログ</strong>（不正動作を検知しやすい）</li>
-    <li><strong>管理者権限の制御が正確</strong></li>
     <li><strong>winget が正式対応しているのは PowerShell</strong></li>
   </ul>
 
-  <p>つまり、<strong>安全にソフトを更新したいなら PowerShell 一択</strong>である。  
-  cmdで winget を動かすこともできるが、セキュリティチェックが弱く、現代のWindows管理には向かない。</p>
+  <p>cmdでも winget は動くが、  
+  <strong>安全性・安定性・ログの正確さの面で PowerShell が圧倒的に優秀。</strong></p>
 
   <p>📸 PowerShell実行例（画像挿入位置）</p>
 
