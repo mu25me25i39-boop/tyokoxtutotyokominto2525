@@ -172,11 +172,11 @@
 
 <!-- 4 -->
 <details>
-  <summary>4. Windowsのプライバシー設定（完全版）</summary>
+  <summary>4. Windowsのプライバシー設定</summary>
 
   <p>Windows は初期設定のままだと、広告ID・位置情報・クラウド同期・テレメトリなど、  
   多くのデータが Microsoft に送信される。  
-  以下では「どこをどう設定すればいいか」を具体的に解説する。</p>
+  (Windows11 Proの場合)以下の設定を推奨する。</p>
 
   <h3>■ 必須設定（まず最初にやるべき項目）</h3>
 
@@ -300,7 +300,7 @@ IPは自動のままなのでネットワークは安定し、Proton VPNのON/OF
   <summary>5. Androidのプライバシー設定</summary>
 
   <p>Android は初期設定のままだと、Google に大量のデータが送信される。  
-  以下では「どこをどう設定すればいいか」を具体的に解説する。</p>
+  (GooglePixel9aの場合)以下の設定を推奨する。</p>
 
   <h3>■ Google アクティビティ履歴 → 全オフ</h3>
   <p><strong>設定 → セキュリティとプライバシー → プライバシー管理 → アクティビティ管理</strong></p>
@@ -524,7 +524,7 @@ winget upgrade LibreWolf.LibreWolf
 <details>
   <summary>8. IME（入力プライバシー）</summary>
 
-  <h3>■ Google / Microsoft IME の問題点（正確な解説）</h3>
+  <h3>■ Google / Microsoft IME の問題点</h3>
 
   <p>Google日本語入力・Microsoft IME は、変換精度向上のために<strong>入力データをクラウドへ送信する仕組み</strong>がある。</p>
 
@@ -536,11 +536,8 @@ winget upgrade LibreWolf.LibreWolf
     <li>AIモデル改善のための匿名化データ</li>
   </ul>
 
-  <p><strong>誤解しがちな点</strong><br>
-  Google/Microsoft は入力内容を「広告に直接使う」わけではない。  
-  しかし、<strong>AIモデル改善のために入力データが利用される可能性はある。</strong></p>
-
-  <p>つまり、<strong>入力内容がAI学習に使われる可能性がある</strong>という点が最も重要である。</p>
+  <p><strong>誤解しがちな点：</strong>Google/Microsoft は入力内容を「広告に直接使う」わけではない。  
+  しかし、<strong>AIモデル改善のために入力データが利用される可能性はある。</strong>つまり、<strong>入力内容がAI学習に使われる可能性がある</strong>という点が最も重要である。</p>
 
   <h3>■ ATOK（ローカル変換）— Google/Microsoft と決定的に違う点</h3>
 
@@ -674,21 +671,24 @@ winget upgrade LibreWolf.LibreWolf
   <p>DNSを変えるだけで、広告・トラッカー通信が大幅に減る。</p>
 
   <h3>■ Windowsでの設定方法</h3>
-
+         <p>※4. Windowsのプライバシー設定で設定したなら同じなので不要</p>
   <p>「設定 → ネットワークとインターネット → アダプターのオプション → IPv4」から設定する。</p>
 
   <p><strong>Proton DNS（IPv4）</strong></p>
-  <pre><code>1. DNS1: 76.223.127.10
-2. DNS2: 76.223.127.12
-</code></pre>
+
+    <p><strong>Proton DNS（誰でも利用可／Proton契約不要）</strong><br>
+優先DNS：<code>1. DNS1: 76.223.127.10</code><br>
+代替DNS：<code>2. DNS2: 76.223.127.12</code></p>
+
+
 
   <p><strong>NextDNS（IPv4）</strong><br>
   ※ NextDNS はアカウント作成後、専用DNSが発行される。</p>
 
-  <pre><code>例:
-DNS1: 45.90.28.0
-DNS2: 45.90.30.0
-</code></pre>
+  <pre><code>例
+  優先DNS：<code>DNS1: 45.90.28.0</code><br>
+代替DNS：<code>DNS2: 45.90.30.0</code></p>
+
 
   <h3>■ Androidでの設定方法</h3>
 
