@@ -367,10 +367,9 @@
 <details>
   <summary>6. ブラウザ（AI時代の最重要ポイント）</summary>
 
-  <h3>■ Edge / Chrome の問題点（AI統合）</h3>
-  <p>2026年現在、Edge と Chrome は AI（Copilot / Gemini）と深く統合されている。</p>
+  <p>2026年現在、主要ブラウザ（Edge / Chrome）は AI（Copilot / Gemini）と深く統合されている。  
+  AIチャットは便利だが、AI統合ブラウザでは以下のデータがAI学習に使われる可能性がある。</p>
 
-  <p>AIチャットは便利だが、以下がAI学習に使われる可能性がある：</p>
   <ul>
     <li>検索ワード</li>
     <li>閲覧ページ</li>
@@ -379,34 +378,74 @@
     <li>ブラウザ利用状況</li>
   </ul>
 
-  <p><strong>つまり、AI統合ブラウザはプライバシー的に最も危険。</strong></p>
+  <p><strong>つまり、AI統合ブラウザはプライバシー的に最も危険な領域である。</strong></p>
 
-  <h3>■ LibreWolf（最強）</h3>
+  <h3>■ LibreWolf（最強のプライバシー特化ブラウザ）</h3>
+
   <ul>
     <li>テレメトリ完全無効</li>
     <li>AI統合なし</li>
     <li>トラッキング対策が標準</li>
+    <li>Firefoxベースで高速</li>
   </ul>
+
+  <p><strong>注意点：</strong><br>
+  LibreWolf はプライバシー強化が非常に強いため、  
+  一部の動画サイト・決済サイト・企業サイトで動作が制限される場合がある。</p>
+
+  <p>そのため、<strong>Windows専用の「プライバシー特化ブラウザ」として使うのが最適。</strong></p>
 
   <h3>■ Firefox（現実的な最適解）</h3>
+
   <ul>
     <li>Windows / Android 両対応</li>
-    <li>自動更新</li>
+    <li>自動更新が安定</li>
     <li>拡張機能が豊富</li>
+    <li>AI統合が弱く、設定で完全に無効化可能</li>
   </ul>
 
-  <h3>推奨拡張機能（最小限）</h3>
+  <p><strong>LibreWolf は Windows のみだが、Firefox は Android でも使える。</strong><br>
+  そのため、<strong>日常ブラウザは Firefox、プライバシー用途は LibreWolf</strong> という使い分けが最適。</p>
+
+  <h3>■ 推奨拡張機能（最小限）</h3>
+
+  <p>拡張機能を入れすぎると指紋（フィンガープリント）がユニークになり逆効果。  
+  以下の<strong>3つだけ</strong>で十分。</p>
+
   <ul>
-    <li>uBlock Origin</li>
-    <li>LocalCDN</li>
-    <li>ClearURLs</li>
-    <li>Cookie AutoDelete</li>
-    <li>CanvasBlocker</li>
+    <li><strong>uBlock Origin</strong>（広告・トラッカー遮断）</li>
+    <li><strong>Proton Pass</strong>（パスワード管理）</li>
+    <li><strong>ESET Browser Protection</strong>（フィッシング対策）</li>
   </ul>
 
-  <p><strong>拡張機能を入れすぎると指紋がユニークになり逆効果。</strong></p>
+  <p>※ これらはすべて役割が重複せず、あなたの構成（Proton × ATOK × ESET）と完全一致する。</p>
+
+  <h3>■ メタデータ削除系の拡張機能について</h3>
+
+  <p>画像・URLのメタデータ削除系の拡張機能は、  
+  <strong>Firefox本体の「プライバシー強化設定」で代替可能</strong>なため、基本的に不要。</p>
+
+  <p>どうしても必要な場合のみ：</p>
+  <ul>
+    <li><strong>ClearURLs</strong>（URLトラッキング除去）</li>
+  </ul>
+
+  <p>ただし、入れすぎると指紋がユニーク化するため、  
+  <strong>ClearURLs 以外のメタデータ系拡張は推奨しない。</strong></p>
+
+  <h3>■ 結論：ブラウザはこう使う</h3>
+
+  <ul>
+    <li><strong>日常ブラウジング → Firefox</strong></li>
+    <li><strong>プライバシー用途 → LibreWolf</strong></li>
+    <li><strong>拡張機能は最小限（uBlock / ProtonPass / ESET）</strong></li>
+    <li><strong>AI統合ブラウザ（Edge / Chrome）は使用しない</strong></li>
+  </ul>
+
+  <p><strong>これにより、AI時代のブラウザで最も危険な「入力内容のAI学習」を完全に回避できる。</strong></p>
 
 </details>
+
 
 <!-- 7 -->
 <!-- ▼ 7. winget（PowerShell）でのLibreWolf導入・更新 -->
