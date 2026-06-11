@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: sans-serif;
-  background: #000;      /* ← 黒背景で統一 */
+background: #000 url('.../img/hero-miku.jpg') center/cover no-repeat 
   color: #00d0ff;        /* ← ネオンブルー文字 */
 }
 
