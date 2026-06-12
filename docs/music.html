@@ -48,34 +48,45 @@
 
 <!-- ▼ JS（HTML 内に残す） -->
 <script>
-
-
 const defaultBg = "#000 url('assets/img/hero-miku.jpg') center center / cover no-repeat fixed";
 
-// 詳細ボタン（開閉 + 背景変更）
+// ▼ カードのモザイク背景を反映
+document.querySelectorAll('.card').forEach(card => {
+  const bg = card.dataset.bg;
+  const overlay = card.querySelector('.overlay');
+  if (overlay && bg) {
+    overlay.style.backgroundImage = `url(${bg})`;
+  }
+});
+
+// ▼ 詳細ボタン（開閉 + 背景変更）
 document.querySelectorAll('.toggle-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const card = btn.closest('.card');
     const bg = card.dataset.bg;
 
+    // すでに開いている → 閉じる
     if (card.classList.contains('expanded')) {
       card.classList.remove('expanded');
       document.body.style.background = defaultBg;
       return;
     }
 
+    // 他のカードを閉じる
     document.querySelectorAll('.card.expanded').forEach(openCard => {
       openCard.classList.remove('expanded');
     });
 
+    // このカードを開く
     card.classList.add('expanded');
 
+    // ページ全体の背景を更新
     document.body.style.background =
       `#000 url(${bg}) center center / cover no-repeat fixed`;
   });
 });
 
-// 閉じるボタン
+// ▼ 閉じるボタン
 document.querySelectorAll('.close-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const card = btn.closest('.card');
@@ -84,9 +95,10 @@ document.querySelectorAll('.close-btn').forEach(btn => {
   });
 });
 
-
-
+// ▼ 初期背景を適用
+document.body.style.background = defaultBg;
 </script>
+
 
 <a href="index.html" class="back-home">← ホームに戻る</a>
 
