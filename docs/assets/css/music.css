@@ -1,8 +1,7 @@
-
 body {
   margin: 0;
   font-family: sans-serif;
-  background: #000 url('assets/img/hero-miku.jpg') center center / cover no-repeat fixed;
+  background: #000 url('../img/hero-miku.jpg') center center / cover no-repeat fixed;
   color: #00d0ff; /* ← ネオンブルー文字 */
 }
 
