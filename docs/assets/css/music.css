@@ -29,9 +29,13 @@ header {
   width: 250px;
   border-radius: 15px;
   overflow: hidden;
-  transition: 0.3s;
   background: rgba(0,0,0,0.4);
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  
+  /* 【修正】高さを中身（.content）のサイズに100%強制同期させます */
+  display: flex;
+  flex-direction: column;
+  height: max-content;
 }
 
 /* ▼ 黒幕（最背面） */
@@ -58,12 +62,12 @@ header {
   transform: translateZ(0);
   will-change: transform;
 
-  /* 【ここを修正】最初は画像を透明にして完全に隠します */
+  /* 【修正】閉じている時は画像が絶対に見えないよう完全に透明化 */
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-/* 【ここを追加】カードが開いた時だけ、背景画像をフワッと表示します */
+/* カードが開いた時だけ、背景画像を浮き上がらせる */
 .card.expanded .overlay {
   opacity: 1;
 }
@@ -76,6 +80,8 @@ header {
   text-align: center;
   background: rgba(0,0,0,0.75);
   border-radius: 15px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* ▼ 詳細（高さで展開） */
@@ -89,6 +95,7 @@ header {
 .card.expanded .detail {
   max-height: 500px;
   opacity: 1;
+  margin-top: 15px; /* 開いた時の上の余白 */
 }
 
 /* ▼ ボタン類 */
