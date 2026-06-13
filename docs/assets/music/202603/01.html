@@ -3,61 +3,95 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>音楽ギャラリー｜特設ページ</title>
+  <title>音楽ギャラリー｜単曲ページ</title>
   <link rel="stylesheet" href="../../../assets/css/music.css">
   
   <style>
-    /* 元のカードの幅（ギャラリーと同じ幅）を維持 */
+    /* カード全体の高さを画面内に収め、はみ出しを防ぐ */
     .card {
-      width: 250px !important; /* ギャラリーページと同じ幅に固定 */
-      margin: 0 auto; /* 中央配置 */
-    }
-
-    /* 【スクロール対応】動画、文章、その他の要素すべてを 
-      カードの枠内でスクロール可能にする 
-    */
-    .card .detail {
+      max-height: 85vh; 
       display: flex !important;
       flex-direction: column !important;
-      max-height: 85vh; /* 画面からはみ出さないよう高さを制限 */
-      flex: 1;
-      overflow-y: auto; /* ここを設定することで、すべての要素をスクロール可能にします */
-      padding-right: 5px;
     }
 
-    /* 中身の並び順を上から固定 [1.動画 → 2.開閉ボタン → 3.文脈文]
-      ※元の「愛殺」カードと同じ順番 
-    */
+    /* 詳細が開いたときの中身全体（動画・複数曲リスト・文章）を綺麗にスクロールさせる */
+    .card .detail {
+      flex: 1;
+      overflow-y: auto; /* これでDOWNLOADボタンや他の曲までスルスル下に見にいけます */
+      padding-right: 8px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 中身の配置順序を上から固定 [1.動画 → 2.複数曲リスト → 3.文脈文] */
     .card .detail video { 
       order: 1; 
       width: 100%; 
       border-radius: 12px; 
       margin-bottom: 15px;
-      flex-shrink: 0; /* 動画が潰れないように固定 */
+      flex-shrink: 0; 
     }
     
-    .card .toggle-btn { 
-      order: 2; /* 開閉ボタンを2番目に配置（JSで文字を切り替えるため） */
-      margin-bottom: 15px !important;
+    .card .detail .music-list-container { 
+      order: 2; 
     }
-
+    
     .card .detail p { 
-      order: 3; /* 文章を最後に配置 */
-      margin: 10px 0 15px 0;
+      order: 3; 
+      margin: 15px 0 25px 0;
       text-align: left;
       line-height: 1.6;
     }
-    
-    /* 【復元】元の Downloadボタンを文章のすぐ下に配置 
-    */
-    .card .detail .download-link { 
-      order: 4; /* 文章の下に配置 */
-      margin: 10px auto 20px auto !important; /* 下部に余白を作って押し上げ */
+
+    /* --- 複数曲ダウンロードリスト用のオシャレスタイル --- */
+    .music-list-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 15px 0;
+      background: rgba(0, 0, 0, 0.4); 
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 208, 255, 0.15);
     }
 
-    /* 【復元】下部ナビゲーションボタンを画面中央最下部にきれいに並べる
-      （元のback-homeデザインを流用）
-    */
+    /* 曲名とDOWNLOADボタンを左右に整列 */
+    .music-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .music-item:last-child {
+      border-bottom: none; 
+      padding-bottom: 0;
+    }
+
+    /* 曲名のネオン風文字設定 */
+    .music-title {
+      color: #00d0ff;
+      font-size: 0.95rem;
+      font-weight: bold;
+      text-shadow: 0 0 5px rgba(0, 208, 255, 0.6);
+      text-align: left;
+      padding-right: 10px;
+    }
+
+    /* リスト内の各DOWNLOADボタンのスタイル */
+    .music-item .download-link {
+      margin: 0 !important;
+      padding: 6px 15px !important;
+      font-size: 0.8rem !important;
+      white-space: nowrap;
+      display: inline-block;
+      color: #fff;
+      border: 1px solid #fff;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+
+    /* --- 下部ナビゲーションボタンの中央固定 --- */
     .fixed-footer-nav {
       position: fixed;
       bottom: 30px;
@@ -95,7 +129,7 @@
 
 <div class="gallery">
 
-  <div class="card" data-bg="../../img/hero-miku.jpg">
+  <div class="card" data-bg="../../img/hero-miku.jpg" style="width: min(900px, 95vw);">
     <div class="overlay"></div>
 
     <div class="content">
@@ -107,11 +141,28 @@
 
         <video src="01-1.mp4" controls></video>
 
+        <div class="music-list-container">
+          
+          <div class="music-item">
+            <span class="music-title">01. 溶けるピンクと孤独な夜</span>
+            <a href="溶けるピンクと孤独な夜.mp3" target="_blank" class="download-link">DOWNLOAD</a>
+          </div>
+
+          <div class="music-item">
+            <span class="music-title">02. 愛殺 (2026 Remaster)</span>
+            <a href="愛殺.mp3" target="_blank" class="download-link">DOWNLOAD</a>
+          </div>
+
+          <div class="music-item">
+            <span class="music-title">03. 孤独な夜の残り香</span>
+            <a href="孤独な夜の残り香.mp3" target="_blank" class="download-link">DOWNLOAD</a>
+          </div>
+
+        </div>
+
         <p>
           世界はいつか消える。だからこそ、消える前の一瞬にすべてを賭ける。ネオンの光、溶ける氷、青白い画面の光景が織りなす現代の孤独の中で、語り手は「君」という毒に身を委ねる。依存と独占欲が混ざり合い、愛は自己を溶かしていく。生きることよりも、君と溺れる刹那を選ぶ者たちの物語。
         </p>
-
-        <a href="溶けるピンクと孤独な夜.mp3" target="_blank" class="download-link">DOWNLOAD</a>
 
       </div>
     </div>
