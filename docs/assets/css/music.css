@@ -56,6 +56,8 @@ header {
   border-radius: 15px;
 }
 
+.card:not(.expanded) .overlay
+
 .toggle-btn,
 .close-btn,
 .card a {
