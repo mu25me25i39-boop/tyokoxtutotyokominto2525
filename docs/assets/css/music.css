@@ -20,7 +20,7 @@ header {
   justify-content: center;
   gap: 20px;
   padding: 20px;
-  padding-bottom: 100px;
+  padding-bottom: 120px; /* ナビゲーションと被らないように余白を少し確保 */
 }
 
 /* ▼ カード本体 */
@@ -99,6 +99,10 @@ header {
   overflow: hidden;
   opacity: 0;
   transition: max-height 0.4s ease, opacity 0.3s ease;
+  
+  /* 並び順変更に伴い、上部に少しスペースをあける */
+  display: flex;
+  flex-direction: column;
 }
 
 .card.expanded .detail {
@@ -106,19 +110,45 @@ header {
   opacity: 1;
 }
 
-/* 詳細文のテキスト */
+/* 詳細文のテキスト（文脈） */
 .detail p {
   color: #ffffff;
   font-size: 0.9rem;
   line-height: 1.6;
-  margin: 15px 0;
+  margin: 10px 0 0 0;
   padding: 0 5px;
   text-shadow: 1px 1px 3px #000, -1px -1px 3px #000, 1px -1px 3px #000, -1px 1px 3px #000;
+  order: 2; /* リンクの後に表示させる */
 }
 
-/* ▼ ボタン類 */
-.toggle-btn,
-.card a {
+/* 動画・試聴リンクボタン */
+.card .detail .music-link {
+  display: block;
+  width: 85%;
+  margin: 15px auto 5px;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(0, 208, 255, 0.3); 
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  transition: 0.2s ease;
+  order: 1; /* タイトル・開閉ボタンの直後に表示させる */
+}
+
+.card .detail .music-link:hover {
+  background: rgba(0, 208, 255, 0.2);
+  border-color: #00d0ff;
+  box-shadow: 0 0 10px rgba(0, 208, 255, 0.4);
+  color: #00d0ff;
+}
+
+/* ▼ メインの開閉ボタン */
+.toggle-btn {
   display: block;
   width: 85%;
   margin: 10px auto;
@@ -135,21 +165,26 @@ header {
   transition: 0.2s ease;
 }
 
-/* ボタンホバー時 */
-.toggle-btn:hover,
-.card a:hover {
+.toggle-btn:hover {
   background: rgba(0, 208, 255, 0.2);
   border-color: #00d0ff;
   box-shadow: 0 0 10px rgba(0, 208, 255, 0.4);
   color: #00d0ff;
 }
 
-/* ▼ ホームボタン */
-.back-home {
+/* ▼ 下部ナビゲーションエリア（画面中央下に一括固定） */
+.bottom-navigation {
   position: fixed;
-  bottom: 40px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  gap: 15px; /* ボタン同士の間隔 */
+  z-index: 1000;
+}
+
+/* 共通ネオンボタンデザイン */
+.nav-btn {
   display: inline-block;
   padding: 10px 20px;
   color: #00d0ff;
@@ -157,13 +192,14 @@ header {
   border-radius: 10px;
   text-decoration: none;
   font-weight: bold;
-  background: rgba(0,0,0,0.4);
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 10px #00d0ff, 0 0 20px #00d0ff inset;
   transition: 0.2s;
-  z-index: 1000;
+  white-space: nowrap; /* スマホ等で文字が折り返さないように */
 }
 
-.back-home:hover {
+.nav-btn:hover {
   background: #00d0ff;
   color: #000;
   box-shadow: 0 0 20px #00d0ff, 0 0 30px #00d0ff inset;
