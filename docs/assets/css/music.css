@@ -23,7 +23,7 @@ header {
   padding-bottom: 100px;
 }
 
-/* ▼ カード本体（半透明＋ガラス効果） */
+/* ▼ カード本体（ガラス効果＋黒幕分離） */
 .card {
   position: relative;
   width: 250px;
@@ -31,37 +31,36 @@ header {
   overflow: hidden;
   transition: 0.3s;
   background: rgba(0,0,0,0.4);
-  backdrop-filter: blur(8px);
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
   isolation: isolate;
-  z-index: 0;
 }
 
-/* ▼ 背景レイヤー（モザイク＋黒統一） */
+/* ▼ 背景レイヤー（ぼかし専用） */
 .card .overlay {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
-  background-color: rgba(0,0,0,0.55); /* ← 均一な黒レイヤー */
   backdrop-filter: blur(8px);
-  transition: 0.3s;
+  z-index: 0;
+}
+
+/* ▼ 黒幕（透け防止・均一化） */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.75); /* 均一な黒 */
   z-index: 1;
+  transition: background 0.3s ease;
 }
 
-/* ▼ 非展開カード（黒く沈む・彩度保持） */
-.card:not(.expanded) .overlay {
-  filter: brightness(0.8);
-  opacity: 0.9;
+/* ▼ 展開時：黒幕を薄くして背景を見せる */
+.card.expanded::before {
+  background: rgba(0,0,0,0.45);
 }
 
-/* ▼ 展開時（明るく・ぼかし弱く） */
-.card.expanded .overlay {
-  filter: brightness(1.0);
-  opacity: 0.6;
-}
-
-/* ▼ 中身（モザイクなし） */
+/* ▼ 中身（最前面） */
 .card .content {
   position: relative;
   z-index: 2;
