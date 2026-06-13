@@ -1,6 +1,4 @@
-/* ==========================================
-   ▼ 1. 全体共通設定（どちらのページでも共通）
-   ========================================== */
+/* ▼ 全体設定 */
 body {
   font-family: sans-serif;
   background: #000 url('../img/hero-miku.jpg') center center / cover no-repeat fixed;
@@ -8,39 +6,24 @@ body {
   margin: 0;
 }
 
+/* ▼ ヘッダー */
 header {
   background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
   text-align: center;
   padding: 2em 1em 1em;
 }
 
-h1, h2 {
-  margin: 0;
-  padding: 0;
-}
-
-/* 通常の記事ページなどの一般的な文章のスタイル（位置や順序は壊しません） */
-p {
-  color: #ffffff;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin: 15px 0;
-  text-shadow: 1px 1px 3px #000, -1px -1px 3px #000, 1px -1px 3px #000, -1px 1px 3px #000;
-}
-
-
-/* ==========================================
-   ▼ 2. 音楽ギャラリー（カード用）専用設定
-   ========================================== */
+/* ▼ ギャラリー配置 */
 .gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
   padding: 20px;
-  padding-bottom: 140px; /* 下部ボタンと被らないための余白 */
+  padding-bottom: 100px;
 }
 
+/* ▼ カード本体 */
 .card {
   position: relative;
   width: 250px;
@@ -49,11 +32,12 @@ p {
   background: rgba(0, 0, 0, 0.4); 
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
   transition: 0.3s;
+  
   display: grid;
   grid-template-rows: 1fr;
 }
 
-/* 背景フィルター用のマスク */
+/* ▼ 黒幕（最背面） */
 .card .mask {
   position: absolute;
   inset: 0;
@@ -62,10 +46,13 @@ p {
   transition: background 0.3s ease;
   pointer-events: none;
 }
+
+/* 展開した時 */
 .card.expanded .mask {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.7) 100%);
 }
 
+/* ▼ 背景画像（黒幕の下） */
 .card .overlay {
   position: absolute;
   inset: 0;
@@ -78,8 +65,13 @@ p {
   opacity: 0.7; 
   transition: opacity 0.3s ease;
 }
-.card.expanded .overlay { opacity: 0.95; }
 
+/* 展開した時 */
+.card.expanded .overlay {
+  opacity: 0.95; 
+}
+
+/* ▼ 中身（最前面） */
 .card .content {
   position: relative;
   z-index: 2;
@@ -88,130 +80,93 @@ p {
   background: transparent; 
 }
 
-/* カードの中のメインタイトル */
+/* タイトル（ネオン発光） */
 .card .content h2 {
   font-size: 1.15rem; 
   font-weight: bold;
   color: #00d0ff;
   margin: 0 0 15px 0;
-  text-shadow: 0 0 4px #000, 0 0 8px #000, 0 0 12px rgba(0, 208, 255, 0.6);
+  padding: 0;
+  text-shadow: 
+    0 0 4px #000, 
+    0 0 8px #000,
+    0 0 12px rgba(0, 208, 255, 0.6);
 }
 
-/* アコーディオン展開エリア */
-.card .detail {
+/* ▼ 詳細（高さで展開） */
+.detail {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
   transition: max-height 0.4s ease, opacity 0.3s ease;
-  
-  /* カードの中だけ「動画 ➡ 文章」の縦並びに強制制限 */
-  display: flex;
-  flex-direction: column;
 }
+
 .card.expanded .detail {
   max-height: 500px;
   opacity: 1;
 }
 
-/* カード内の文章（文脈）だけを順序2（下側）にする */
-.card .detail p {
-  margin: 10px 0 0 0;
+/* 詳細文のテキスト */
+.detail p {
+  color: #ffffff;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 15px 0;
   padding: 0 5px;
-  order: 2; 
+  text-shadow: 1px 1px 3px #000, -1px -1px 3px #000, 1px -1px 3px #000, -1px 1px 3px #000;
 }
 
-
-/* ==========================================
-   ▼ 3. ボタン関連スタイル（通常ボタン ＆ 試聴ボタン）
-   ========================================== */
-/* カード内の開閉ボタンや試聴ボタンの標準デザイン */
+/* ▼ ボタン類 */
 .toggle-btn,
-.music-link,
-.card .content a {
+.close-btn,
+.card a {
   display: block;
   width: 85%;
-  max-width: 220px;
   margin: 10px auto;
   padding: 10px;
   font-weight: bold;
   font-size: 0.85rem;
-  color: #fff !important;
+  color: #fff;
   background: rgba(0, 0, 0, 0.65);
-  border: 1px solid rgba(0, 208, 255, 0.3) !important; 
+  border: 1px solid rgba(0, 208, 255, 0.3); 
   border-radius: 8px;
   text-decoration: none;
   cursor: pointer;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
   transition: 0.2s ease;
-  text-align: center;
-  box-sizing: border-box;
 }
 
-/* カード内の試聴用リンクを順序1（上側）に指定 */
-.card .detail .music-link,
-.card .detail a {
-  order: 1;
-  margin: 15px auto 5px;
-}
-
+/* ボタンホバー時 */
 .toggle-btn:hover,
-.music-link:hover,
-.card .content a:hover {
+.close-btn:hover,
+.card a:hover {
   background: rgba(0, 208, 255, 0.2);
-  border-color: #00d0ff !important;
+  border-color: #00d0ff;
   box-shadow: 0 0 10px rgba(0, 208, 255, 0.4);
-  color: #00d0ff !important;
+  color: #00d0ff;
 }
 
-
-/* ==========================================
-   ▼ 4. ナビゲーション関連（下部固定ネオンボタン）
-   ========================================== */
-/* 単体の「ホームに戻る」ボタン、および「2つ並ぶナビゲーション」をどちらも画面中央最下部に完全固定 */
-.back-home,
-.bottom-navigation {
+/* ▼ ホームボタン（中央配置） */
+.back-home {
   position: fixed;
-  bottom: 30px;
+  bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1000;
-}
-
-/* 2つ並べる外枠の横並び設定 */
-.bottom-navigation {
-  display: flex;
-  gap: 15px;
-  width: max-content;
-}
-
-/* サイバーネオン仕様のボタンデザイン（単体配置・2つ並び、どちらのHTML記述にも強制適用） */
-.back-home,
-.nav-btn,
-.bottom-navigation a {
   display: inline-block;
   padding: 10px 20px;
-  color: #00d0ff !important;
-  border: 2px solid #00d0ff !important;
+  color: #00d0ff;
+  border: 2px solid #00d0ff;
   border-radius: 10px;
   text-decoration: none;
   font-weight: bold;
-  font-size: 0.9rem;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0,0,0,0.4);
   box-shadow: 0 0 10px #00d0ff, 0 0 20px #00d0ff inset;
   transition: 0.2s;
-  white-space: nowrap; 
-  text-align: center;
-  
-  /* positionやleftのバグを打ち消し、真ん中に固定するための初期化 */
-  position: static;
-  transform: none;
+  z-index: 1000;
 }
 
-/* ホバーエフェクト */
-.back-home:hover,
-.nav-btn:hover,
-.bottom-navigation a:hover {
+.back-home:hover {
   background: #00d0ff;
-  color: #000 !important;
+  color: #000;
   box-shadow: 0 0 20px #00d0ff, 0 0 30px #00d0ff inset;
 }
