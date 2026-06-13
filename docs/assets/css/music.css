@@ -140,6 +140,148 @@ header {
   color: #000;
   box-shadow: 0 0 20px #00d0ff, 0 0 30px #00d0ff inset;
 }
+/* ▼ 全体設定 */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #000 url('../img/hero-miku.jpg') center center / cover no-repeat fixed;
+  color: #00d0ff;
+}
+
+/* ▼ ヘッダー */
+header {
+  background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+  text-align: center;
+  padding: 2em 1em 1em;
+}
+
+/* ▼ ギャラリー配置 */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  padding-bottom: 100px;
+}
+
+/* ▼ カード本体（ガラス効果＋黒幕分離） */
+.card {
+  position: relative;
+  width: 250px;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: 0.3s;
+  background: rgba(0,0,0,0.4);
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  isolation: isolate;
+}
+
+/* ▼ 背景レイヤー（ぼかし専用） */
+.card .overlay {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(8px);
+  z-index: 0;
+}
+
+/* ▼ 黒幕（透け防止・均一化） */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.75); /* 均一な黒 */
+  z-index: 1;
+  transition: background 0.3s ease;
+}
+
+/* ▼ 展開時：黒幕を薄くして背景を見せる */
+.card.expanded::before {
+  background: rgba(0,0,0,0.45);
+}
+
+/* ▼ 中身（最前面） */
+.card .content {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  text-align: center;
+  background: rgba(0,0,0,0.75);
+  border-radius: 15px;
+}
+
+/* ▼ ボタン類 */
+.toggle-btn,
+.close-btn,
+.card a {
+  display: block;
+  width: 80%;
+  margin: 8px auto;
+  padding: 10px;
+  font-weight: bold;
+  color: white;
+  background: rgba(0,0,0,0.5);
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+
+/* ▼ 詳細部分（最初は非表示） */
+.detail {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* ▼ 展開時のみ表示 */
+.card.expanded .detail {
+  display: block;
+  opacity: 1;
+}
+
+/* ▼ フッター（固定ナビ） */
+.fixed-footer-nav {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.6);
+  padding: 8px 20px;
+  border-radius: 20px;
+  display: flex;
+  gap: 8px;
+  z-index: 1000;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* ▼ ホームボタン中央固定 */
+.back-home {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+  padding: 10px 20px;
+  color: #00d0ff;
+  border: 2px solid #00d0ff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  background: rgba(0,0,0,0.4);
+  box-shadow: 0 0 10px #00d0ff, 0 0 20px #00d0ff inset;
+  transition: 0.2s;
+  z-index: 1000;
+}
+
+.back-home:hover {
+  background: #00d0ff;
+  color: #000;
+  box-shadow: 0 0 20px #00d0ff, 0 0 30px #00d0ff inset;
+}
 
 
 .card {
