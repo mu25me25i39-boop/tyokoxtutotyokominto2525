@@ -140,3 +140,50 @@ header {
   color: #000;
   box-shadow: 0 0 20px #00d0ff, 0 0 30px #00d0ff inset;
 }
+
+
+.card {
+  position: relative;
+  width: 250px;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: 0.3s;
+  background: rgba(0,0,0,0.4);
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  isolation: isolate;
+}
+
+/* ▼ 背景レイヤー（ぼかし専用） */
+.card .overlay {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(8px);
+  z-index: 0;
+}
+
+/* ▼ 黒幕（透け防止・均一化） */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.75); /* 均一な黒 */
+  z-index: 2; /* ← overlay より前に強制配置 */
+  transition: background 0.3s ease;
+}
+
+/* ▼ 展開時：黒幕を薄くして背景を見せる */
+.card.expanded::before {
+  background: rgba(0,0,0,0.45);
+}
+
+/* ▼ 中身（最前面） */
+.card .content {
+  position: relative;
+  z-index: 3; /* ← 黒幕より前に固定 */
+  padding: 20px;
+  text-align: center;
+  background: rgba(0,0,0,0.75);
+  border-radius: 15px;
+}
