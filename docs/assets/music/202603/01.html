@@ -7,37 +7,47 @@
   <link rel="stylesheet" href="../../../assets/css/music.css">
   
   <style>
-    /* カード内を上から順番に強制整列 */
-    .card .content {
+    /* カード全体のレイアウトを固定 */
+    .card {
+      max-height: 85vh; /* 画面からはみ出さないようにカード全体の高さを制限 */
+      display: flex !important;
+      flex-direction: column !important;
+    }
+
+    /* スクロール対象を「開閉ボタンの下の中身すべて」に設定 */
+    .card .detail {
+      flex: 1;
+      overflow-y: auto; /* ここを設定することで、動画・文章・DOWNLOADすべてをスクロール可能にします */
+      padding-right: 5px;
       display: flex;
       flex-direction: column;
     }
-    .card .content h2 { order: 1; }
-    .card .toggle-btn { order: 2; margin-bottom: 15px; }
-    .card .detail { 
-      order: 3; 
-      display: flex;
-      flex-direction: column;
+
+    /* 中身の並び順を上から固定 [1. 動画 → 2. 文脈 → 3. DOWNLOAD] */
+    .card .detail video { 
+      order: 1; 
+      width: 100%; 
+      border-radius: 12px; 
+      margin-bottom: 15px;
+      flex-shrink: 0; /* 動画が潰れないように固定 */
     }
     
-    /* 開いた時の中身の並び順 [1.動画 → 2.文脈 → 3.ダウンロード] */
-    .card .detail video { order: 1; }
-    .card .detail p { order: 2; }
-    .card .detail a { order: 3; }
-
-    /* 【スクロール対応】文脈が長くなっても下部ボタンを押し出さないよう、スクロールで読めるように制限 */
-    .card .detail p {
-      max-height: 150px;  /* 長い文章の最大高さ。これを超えるとスクロールになります */
-      overflow-y: auto;   /* 縦スクロールを表示 */
-      padding-right: 8px;
-      text-align: left;   /* 長文を読みやすくするため左寄せに設定 */
+    .card .detail p { 
+      order: 2; 
       margin: 10px 0 15px 0;
+      text-align: left;
+      line-height: 1.6;
+    }
+    
+    .card .detail .download-link { 
+      order: 3; 
+      margin: 10px auto 20px auto !important; /* 下部に余白を作って押し上げ */
     }
 
-    /* 下部の2つのボタンを、前回の「ホームに戻る」と同じ仕様で画面中央最下部に並べる設定 */
+    /* 下部ナビゲーションボタンを画面中央最下部にきれいに並べる */
     .fixed-footer-nav {
       position: fixed;
-      bottom: 40px;
+      bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -45,7 +55,8 @@
       z-index: 1000;
       width: max-content;
     }
-    /* もともとの .back-home（または footerリンク）のネオンデザインを2つに等しく流用 */
+    
+    /* 2つのボタンにサイバーネオン仕様を適用 */
     .fixed-footer-nav a {
       display: inline-block;
       padding: 10px 20px;
@@ -59,6 +70,7 @@
       transition: 0.2s;
       white-space: nowrap;
     }
+    
     .fixed-footer-nav a:hover {
       background: #00d0ff;
       color: #000;
@@ -81,10 +93,7 @@
 
       <div class="detail">
 
-        <video src="01-1.mp4"
-               controls
-               style="width:100%; border-radius:12px; margin-bottom:15px;">
-        </video>
+        <video src="01-1.mp4" controls></video>
 
         <p>
           世界はいつか消える。だからこそ、消える前の一瞬にすべてを賭ける。ネオンの光、溶ける氷、青白い画面の光景が織りなす現代の孤独の中で、語り手は「君」という毒に身を委ねる。依存と独占欲が混ざり合い、愛は自己を溶かしていく。生きることよりも、君と溺れる刹那を選ぶ者たちの物語。
@@ -115,19 +124,13 @@ document.querySelectorAll('.toggle-btn').forEach(btn => {
 
     if (card.classList.contains('expanded')) {
       card.classList.remove('expanded');
-      btn.textContent = '▼ 詳細を開く'; // 閉じたら文字を戻す
+      btn.textContent = '▼ 詳細を開く';
       document.body.style.backgroundImage = defaultBg;
       return;
     }
 
-    document.querySelectorAll('.card.expanded').forEach(openCard => {
-      openCard.classList.remove('expanded');
-      const otherBtn = openCard.querySelector('.toggle-btn');
-      if (otherBtn) otherBtn.textContent = '▼ 詳細を開く';
-    });
-
     card.classList.add('expanded');
-    btn.textContent = '▲ 閉じる'; // 開いたら文字を「閉じる」に変える
+    btn.textContent = '▲ 閉じる';
     if (bg) document.body.style.backgroundImage = `url(${bg})`;
   });
 });
