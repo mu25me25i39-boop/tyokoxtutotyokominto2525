@@ -29,7 +29,7 @@ header {
   width: 250px;
   border-radius: 15px;
   overflow: hidden;
-  background: rgba(0,0,0,0.4); /* 元のうっすらとした半透明背景 */
+  background: rgba(0,0,0,0.4); /* うっすらとした半透明背景 */
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
   transition: 0.3s;
 }
@@ -74,7 +74,7 @@ header {
   z-index: 2;
   padding: 20px;
   text-align: center;
-  background: rgba(0,0,0,0.75); /* 【修正】元の半透明背景をここに戻しました */
+  background: rgba(0,0,0,0.75); /* 元の半透明背景 */
   border-radius: 15px;
 }
 
