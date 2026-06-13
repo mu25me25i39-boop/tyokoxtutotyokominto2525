@@ -8,14 +8,14 @@
   
   <style>
     /* 【スクロールの修正】
-       カード自体の幅（width）や高さは一切制限せず、元のmusic.cssのサイズを完全維持。
-       中身の「.detail」だけにスクロールを効かせることで、拡大縮小しなくても
-       最初から100%全開のまま、すべての曲と文章が下までスルスル見られるようになります。
+       カード自体の幅や全体のレイアウトは一切いじらず、元のmusic.cssを完全維持。
+       中身の「.detail」に適切な高さを与えることで、画面を縮小しなくても
+       最初から枠内でスルスルと下まで全要素がスクロールして見られるようになります。
     */
     .card .detail {
-      display: block !important;    /* 崩れの原因だったflexを廃止 */
-      max-height: 500px;            /* 枠からはみ出さない適度な高さに固定 */
-      overflow-y: auto !important;  /* これで確実に縦スクロールバーが出現します */
+      display: block !important;    /* 崩れの原因だったflexを排除 */
+      max-height: 480px;            /* 画面内に収まる最適な高さに固定 */
+      overflow-y: auto !important;  /* これで枠内の右側に縦スクロールバーが確実に出現します */
       padding-right: 10px;
       opacity: 1 !important;        /* 最初から100%全展開 */
     }
@@ -64,20 +64,20 @@
       padding-right: 15px;
     }
 
-    /* ① 長く伸びるのを防止したDOWNLOADボタンの専用指定 */
+    /* ① 長く伸びるのを防止したDOWNLOADボタンの専用指定（改行せずキュッと収めます） */
     .music-item .download-link {
       display: inline-block !important;
-      width: auto !important;         /* 横いっぱいに長く伸びるのを強制ストップ */
+      width: auto !important;         /* 横いっぱいに長く伸びるのをストップ */
       min-width: 110px !important;    /* ボタンとしての綺麗な最小幅 */
       text-align: center !important;
-      margin: 0 !important;           /* 余計な外白をリセット */
-      padding: 8px 15px !important;   /* ボタンらしい手頃なサイズ感に */
+      margin: 0 !important;           
+      padding: 8px 15px !important;   /* 手頃なサイズ感に固定 */
       font-size: 0.8rem !important;
-      white-space: nowrap !important; /* 絶対に改行させず1行に収める */
+      white-space: nowrap !important; /* 途中で改行させず1行に収める */
       box-sizing: border-box !important;
     }
 
-    /* --- 下部ナビゲーションボタンの中央固定 --- */
+    /* --- 下部ナビゲーションボタン（絶対に消さずそのまま維持） --- */
     .fixed-footer-nav {
       position: fixed;
       bottom: 30px;
@@ -153,3 +153,11 @@
   </div>
 
 </div>
+
+<div class="fixed-footer-nav">
+  <a href="../../../index.html">トップページ</a>
+  <a href="../../../music.html">音楽素材</a>
+</div>
+
+</body>
+</html>
