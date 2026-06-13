@@ -7,24 +7,28 @@
   <link rel="stylesheet" href="../../../assets/css/music.css">
   
   <style>
-    /* 【重要】.card自体のwidth（横幅）は一切指定せず、
-      元のmusic.cssのサイズを完全にそのまま適用しています。
+    /* 【スクロールの修正】
+      カード全体の最大高さを画面の高さ（85vh）に制限し、
+      中身がはみ出さずに、枠内でスルスルとスクロールできるようにします。
     */
     .card {
-      max-height: 85vh; 
+      max-height: 85vh !important;
       display: flex !important;
       flex-direction: column !important;
     }
 
-    /* 最初から中身（detail）を全開にして、この枠内をスクロール対象にする */
+    /* 【全展開・スクロールエリアの確保】
+      開閉ボタンなしで最初から100%表示（opacity: 1）にし、
+      動画、複数曲リスト、文章、DOWNLOADすべてをこの中で縦スクロール可能にします。
+    */
     .card .detail {
       display: flex !important;
       flex-direction: column !important;
       max-height: none !important; /* 元のCSSの制限を強制解除 */
-      opacity: 1 !important;        /* 最初から100%表示 */
+      opacity: 1 !important;        /* 最初から全開で表示 */
       flex: 1;
-      overflow-y: auto;             /* 全要素をカード内でスクロール可能に */
-      padding-right: 5px;
+      overflow-y: auto !important;  /* これで確実に枠内スクロールが機能します */
+      padding-right: 8px;
     }
 
     /* 中身の配置順序を上から固定 [1.動画 → 2.複数曲リスト → 3.文脈文] */
@@ -48,7 +52,7 @@
       gap: 12px;
       margin: 10px 0;
       background: rgba(0, 0, 0, 0.4); 
-      padding: 12px;
+      padding: 15px;
       border-radius: 10px;
       border: 1px solid rgba(0, 208, 255, 0.15);
     }
@@ -69,18 +73,18 @@
     /* 曲名のネオン風文字設定 */
     .music-title {
       color: #00d0ff;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: bold;
       text-shadow: 0 0 5px rgba(0, 208, 255, 0.6);
       text-align: left;
-      padding-right: 8px;
+      padding-right: 10px;
     }
 
     /* リスト内の各DOWNLOADボタンのスタイル */
     .music-item .download-link {
       margin: 0 !important;
-      padding: 5px 10px !important;
-      font-size: 0.75rem !important;
+      padding: 6px 15px !important;
+      font-size: 0.8rem !important;
       white-space: nowrap;
       display: inline-block;
       color: #fff;
@@ -127,7 +131,7 @@
 
 <div class="gallery">
 
-  <div class="card" data-bg="../../img/hero-miku.jpg">
+  <div class="card" data-bg="../../img/hero-miku.jpg" style="width: min(900px, 95vw);">
     <div class="overlay"></div>
 
     <div class="content">
@@ -157,7 +161,7 @@
         </div>
 
         <p>
-          世界はいつか消える。だからこそ、消える前の一瞬にすべてを賭ける。ネオンの光, 溶ける氷、青白い画面の光景が織りなす現代の孤独の中で、語り手は「君」という毒に身を委ねる。依存と独占欲が混ざり合い、愛は自己を溶かしていく。生きることよりも、君と溺れる刹那を選ぶ者たちの物語。
+          世界はいつか消える。だからこそ、消える前の一瞬にすべてを賭ける。ネオンの光、溶ける氷、青白い画面の光景が織りなす現代の孤独の中で、語り手は「君」という毒に身を委ねる。依存と独占欲が混ざり合い、愛は自己を溶かしていく。生きることよりも、君と溺れる刹那を選ぶ者たちの物語。
         </p>
 
       </div>
