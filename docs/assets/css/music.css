@@ -28,24 +28,15 @@ header {
   position: relative;
   width: 250px;
   border-radius: 15px;
-  overflow: hidden;
+  overflow: visible; /* ← hiddenを外す */
   transition: 0.3s;
   background: rgba(0,0,0,0.4);
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
   isolation: isolate;
+  transform: translateZ(0); /* ← GPU再描画を強制 */
 }
 
-/* ▼ 背景レイヤー（ぼかし専用） */
-.card .overlay {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  backdrop-filter: blur(8px);
-  z-index: 0;
-}
-
-/* ▼ 黒幕（透け防止） */
+/* ▼ 黒幕（透け防止・均一化） */
 .card::before {
   content: "";
   position: absolute;
@@ -53,11 +44,25 @@ header {
   background: rgba(0,0,0,0.75);
   z-index: 1;
   transition: background 0.3s ease;
+  will-change: background, opacity; /* ← 再描画を安定化 */
 }
 
-/* ▼ 展開時：黒幕を薄くする */
+/* ▼ 展開時：黒幕を薄くして背景を見せる */
 .card.expanded::before {
   background: rgba(0,0,0,0.45);
+}
+
+/* ▼ 詳細部分（高さで展開） */
+.detail {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.card.expanded .detail {
+  max-height: 500px;
+  opacity: 1;
 }
 
 /* ▼ 中身 */
