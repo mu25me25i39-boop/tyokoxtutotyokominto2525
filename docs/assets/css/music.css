@@ -29,7 +29,7 @@ header {
   width: 250px;
   border-radius: 15px;
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.4); /* 【変更】ベースの黒を薄くして画像を通しやすく */
+  background: rgba(0, 0, 0, 0.4); 
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
   transition: 0.3s;
   
@@ -41,7 +41,7 @@ header {
 .card .mask {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.2); /* 【変更】閉じている時のマスクを極限まで薄く */
+  background: rgba(0, 0, 0, 0.2); 
   z-index: 1;
   transition: background 0.3s ease;
   pointer-events: none;
@@ -49,7 +49,7 @@ header {
 
 /* 展開した時 */
 .card.expanded .mask {
-  background: rgba(0, 0, 0, 0.1); /* 【変更】開いた時はほぼ透明にして画像全開に */
+  background: rgba(0, 0, 0, 0.1); 
 }
 
 /* ▼ 背景画像（黒幕の下） */
@@ -59,16 +59,14 @@ header {
   background-size: cover;
   background-position: center;
   z-index: 0;
-  filter: blur(6px); /* 【微調整】ぼかしを少し弱めて画像がより認識しやすく */
+  filter: blur(6px); 
   transform: translateZ(0);
   will-change: transform;
-
-  /* 【重要】閉じている時でもこれまでの「倍近く」クッキリ見えるように（0.35 → 0.7） */
   opacity: 0.7; 
   transition: opacity 0.3s ease;
 }
 
-/* 【重要】展開した時はほぼ100%画像がそのまま見えるように（0.9 → 0.98） */
+/* 展開した時 */
 .card.expanded .overlay {
   opacity: 0.98; 
 }
@@ -80,6 +78,15 @@ header {
   padding: 20px;
   text-align: center;
   background: transparent; 
+}
+
+/* 【追加】タイトルの文字を読みやすくする黒背景 */
+.card .content h2 {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.6); /* 黒い半透明の座布団 */
+  padding: 5px 12px;
+  border-radius: 6px;
+  margin: 10px 0;
 }
 
 /* ▼ 詳細（高さで展開） */
@@ -96,6 +103,15 @@ header {
   margin-top: 15px;
 }
 
+/* 【追加】詳細文のテキストを読みやすくする黒背景 */
+.detail p {
+  background: rgba(0, 0, 0, 0.6); /* 黒い半透明の座布団 */
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: #fff; /* 青文字だと見づらい場合は白文字に、青のままが良ければ削除してください */
+  line-height: 1.5;
+}
+
 /* ▼ ボタン類 */
 .toggle-btn,
 .close-btn,
@@ -106,7 +122,7 @@ header {
   padding: 10px;
   font-weight: bold;
   color: white;
-  background: rgba(0,0,0,0.6); /* 文字を読みやすくするためボタンは黒を維持 */
+  background: rgba(0,0,0,0.7); /* ボタンも少し濃くして見やすく */
   border-radius: 8px;
   text-decoration: none;
   cursor: pointer;
