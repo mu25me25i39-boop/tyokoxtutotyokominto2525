@@ -25,7 +25,6 @@
       <div class="detail">
         <p>世界はいつか消える。だからこそ、消える前の一瞬にすべてを賭ける。</p>
         <a href="https://mu25me25i39-boop.github.io/tyokoxtutotyokominto2525/assets/music/202602/01.html" target="_blank">音の世界へ</a>
-        <button class="close-btn">▲ 閉じる</button>
       </div>
     </div>
   </div>
@@ -39,7 +38,6 @@
       <div class="detail">
         <p>依存と独占欲が混ざり合い、愛は自己を溶かしていく。</p>
         <a href="https://mu25me25i39-boop.github.io/tyokoxtutotyokominto2525/assets/music/202603/01.html" target="_blank">音の世界へ</a>
-        <button class="close-btn">▲ 閉じる</button>
       </div>
     </div>
   </div>
@@ -56,35 +54,33 @@ document.querySelectorAll('.card').forEach(card => {
   if (overlay && bg) overlay.style.backgroundImage = `url(${bg})`;
 });
 
-// 【修正】詳細を見るボタンの処理
+// ボタンのトグル処理
 document.querySelectorAll('.toggle-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const card = btn.closest('.card');
     const bg = card.dataset.bg;
     
-    // すでに自分が開いているかチェック
+    // 自分がすでに開いているかチェック
     const isExpanded = card.classList.contains('expanded');
     
-    // 一旦、すべてのカードを閉じる
-    document.querySelectorAll('.card.expanded').forEach(c => c.classList.remove('expanded'));
+    // 他の開いているカードをすべて閉じ、ボタンの文字も元に戻す
+    document.querySelectorAll('.card.expanded').forEach(c => {
+      c.classList.remove('expanded');
+      const tBtn = c.querySelector('.toggle-btn');
+      if (tBtn) tBtn.textContent = '▼ 詳細を見る';
+    });
     
     if (isExpanded) {
-      // 自分が開いていた場合は、全体背景をデフォルトに戻す
+      // 開いていた場合は閉じて背景を戻す
+      card.classList.remove('expanded');
+      btn.textContent = '▼ 詳細を見る';
       document.body.style.background = defaultBg;
     } else {
-      // 自分がいま閉じていた場合は、開いて背景を変える
+      // 閉じていた場合は開いて文字を切り替える
       card.classList.add('expanded');
+      btn.textContent = '▲ 閉じる';
       document.body.style.background = `#000 url(${bg}) center center / cover no-repeat fixed`;
     }
-  });
-});
-
-// 閉じるボタンの処理（元からあるボタンの挙動も残しています）
-document.querySelectorAll('.close-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const card = btn.closest('.card');
-    card.classList.remove('expanded');
-    document.body.style.background = defaultBg;
   });
 });
 
