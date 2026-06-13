@@ -29,59 +29,51 @@ header {
   width: 250px;
   border-radius: 15px;
   overflow: hidden;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.75); /* 最初からしっかり暗い背景にする */
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
-  
-  /* 【修正】高さを中身（.content）のサイズに100%強制同期させます */
-  display: flex;
-  flex-direction: column;
-  height: max-content;
+  transition: 0.3s;
 }
 
-/* ▼ 黒幕（最背面） */
+/* ▼ 黒幕（開いた時だけ透過を下げる） */
 .card .mask {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.75);
-  z-index: 0;
+  background: rgba(0,0,0,0);
+  z-index: 1;
   transition: background 0.3s ease;
+  pointer-events: none; /* ボタンの邪魔をしないように設定 */
 }
 
 .card.expanded .mask {
   background: rgba(0,0,0,0.45);
 }
 
-/* ▼ 背景画像（黒幕の上） */
+/* ▼ 背景画像 */
 .card .overlay {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
-  z-index: 1;
+  z-index: 0;
   filter: blur(8px);
   transform: translateZ(0);
   will-change: transform;
 
-  /* 【修正】閉じている時は画像が絶対に見えないよう完全に透明化 */
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  /* 【重要】閉じている時は存在自体を完全に消す */
+  display: none; 
 }
 
-/* カードが開いた時だけ、背景画像を浮き上がらせる */
+/* 【重要】開いた時だけ画像を出現させる */
 .card.expanded .overlay {
-  opacity: 1;
+  display: block;
 }
 
 /* ▼ 中身（最前面） */
 .card .content {
   position: relative;
-  z-index: 2;
+  z-index: 2; /* マスクや画像より確実に上に配置 */
   padding: 20px;
   text-align: center;
-  background: rgba(0,0,0,0.75);
-  border-radius: 15px;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 /* ▼ 詳細（高さで展開） */
@@ -95,7 +87,7 @@ header {
 .card.expanded .detail {
   max-height: 500px;
   opacity: 1;
-  margin-top: 15px; /* 開いた時の上の余白 */
+  margin-top: 15px;
 }
 
 /* ▼ ボタン類 */
