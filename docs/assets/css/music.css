@@ -20,7 +20,7 @@ header {
   justify-content: center;
   gap: 20px;
   padding: 20px;
-  padding-bottom: 120px; /* ナビゲーションと被らないように余白を少し確保 */
+  padding-bottom: 120px; /* ナビゲーションと被らないための余白 */
 }
 
 /* ▼ カード本体 */
@@ -32,7 +32,6 @@ header {
   background: rgba(0, 0, 0, 0.4); 
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
   transition: 0.3s;
-  
   display: grid;
   grid-template-rows: 1fr;
 }
@@ -81,7 +80,7 @@ header {
 }
 
 /* タイトル（ネオン発光） */
-.card .content h2 {
+.card .content h2, h2 {
   font-size: 1.15rem; 
   font-weight: bold;
   color: #00d0ff;
@@ -91,6 +90,7 @@ header {
     0 0 4px #000, 
     0 0 8px #000,
     0 0 12px rgba(0, 208, 255, 0.6);
+  text-align: center;
 }
 
 /* ▼ 詳細（高さで展開） */
@@ -99,8 +99,6 @@ header {
   overflow: hidden;
   opacity: 0;
   transition: max-height 0.4s ease, opacity 0.3s ease;
-  
-  /* 並び順変更に伴い、上部に少しスペースをあける */
   display: flex;
   flex-direction: column;
 }
@@ -111,65 +109,61 @@ header {
 }
 
 /* 詳細文のテキスト（文脈） */
-.detail p {
+.detail p, p {
   color: #ffffff;
   font-size: 0.9rem;
   line-height: 1.6;
-  margin: 10px 0 0 0;
+  margin: 10px 0;
   padding: 0 5px;
   text-shadow: 1px 1px 3px #000, -1px -1px 3px #000, 1px -1px 3px #000, -1px 1px 3px #000;
-  order: 2; /* リンクの後に表示させる */
+  text-align: center;
+}
+.card .detail p {
+  order: 2; /* カード内ではリンクの後に表示 */
 }
 
-/* 動画・試聴リンクボタン */
-.card .detail .music-link {
+/* ▼ ボタン類の共通オシャンティーデザイン（どんなボタンでも適用） */
+.toggle-btn,
+.close-btn,
+.music-link,
+.card a,
+button {
   display: block;
   width: 85%;
-  margin: 15px auto 5px;
-  padding: 10px;
-  font-weight: bold;
-  font-size: 0.85rem;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.65);
-  border: 1px solid rgba(0, 208, 255, 0.3); 
-  border-radius: 8px;
-  text-decoration: none;
-  cursor: pointer;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-  transition: 0.2s ease;
-  order: 1; /* タイトル・開閉ボタンの直後に表示させる */
-}
-
-.card .detail .music-link:hover {
-  background: rgba(0, 208, 255, 0.2);
-  border-color: #00d0ff;
-  box-shadow: 0 0 10px rgba(0, 208, 255, 0.4);
-  color: #00d0ff;
-}
-
-/* ▼ メインの開閉ボタン */
-.toggle-btn {
-  display: block;
-  width: 85%;
+  max-width: 220px;
   margin: 10px auto;
   padding: 10px;
   font-weight: bold;
   font-size: 0.85rem;
-  color: #fff;
+  color: #fff !important;
   background: rgba(0, 0, 0, 0.65);
-  border: 1px solid rgba(0, 208, 255, 0.3); 
+  border: 1px solid rgba(0, 208, 255, 0.3) !important; 
   border-radius: 8px;
   text-decoration: none;
   cursor: pointer;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
   transition: 0.2s ease;
+  text-align: center;
+  box-sizing: border-box;
 }
 
-.toggle-btn:hover {
+/* カード内の試聴リンク専用の位置調整 */
+.card .detail .music-link, 
+.card .detail a {
+  order: 1; 
+  margin: 15px auto 5px;
+}
+
+/* ボタンホバー時 */
+.toggle-btn:hover,
+.close-btn:hover,
+.music-link:hover,
+.card a:hover,
+button:hover {
   background: rgba(0, 208, 255, 0.2);
-  border-color: #00d0ff;
+  border-color: #00d0ff !important;
   box-shadow: 0 0 10px rgba(0, 208, 255, 0.4);
-  color: #00d0ff;
+  color: #00d0ff !important;
 }
 
 /* ▼ 下部ナビゲーションエリア（画面中央下に一括固定） */
@@ -179,16 +173,19 @@ header {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 15px; /* ボタン同士の間隔 */
+  gap: 15px; 
   z-index: 1000;
+  width: max-content;
 }
 
-/* 共通ネオンボタンデザイン */
-.nav-btn {
+/* 共通ネオンボタン（ホームページへ・音楽一覧・ホームに戻る などすべてに対応） */
+.nav-btn,
+.back-home,
+.bottom-navigation a {
   display: inline-block;
   padding: 10px 20px;
-  color: #00d0ff;
-  border: 2px solid #00d0ff;
+  color: #00d0ff !important;
+  border: 2px solid #00d0ff !important;
   border-radius: 10px;
   text-decoration: none;
   font-weight: bold;
@@ -196,11 +193,14 @@ header {
   background: rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 10px #00d0ff, 0 0 20px #00d0ff inset;
   transition: 0.2s;
-  white-space: nowrap; /* スマホ等で文字が折り返さないように */
+  white-space: nowrap; 
+  text-align: center;
 }
 
-.nav-btn:hover {
+.nav-btn:hover,
+.back-home:hover,
+.bottom-navigation a:hover {
   background: #00d0ff;
-  color: #000;
+  color: #000 !important;
   box-shadow: 0 0 20px #00d0ff, 0 0 30px #00d0ff inset;
 }
