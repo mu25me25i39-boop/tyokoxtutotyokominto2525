@@ -28,31 +28,46 @@ header {
   position: relative;
   width: 250px;
   border-radius: 15px;
-  overflow: visible; /* ← hiddenを外す */
+  overflow: hidden;
   transition: 0.3s;
   background: rgba(0,0,0,0.4);
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
-  isolation: isolate;
-  transform: translateZ(0); /* ← GPU再描画を強制 */
 }
 
-/* ▼ 黒幕（透け防止・均一化） */
-.card::before {
-  content: "";
+/* ▼ 黒幕（最背面） */
+.card .mask {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.75);
-  z-index: 1;
+  z-index: 0;
   transition: background 0.3s ease;
-  will-change: background, opacity; /* ← 再描画を安定化 */
 }
 
-/* ▼ 展開時：黒幕を薄くして背景を見せる */
-.card.expanded::before {
+.card.expanded .mask {
   background: rgba(0,0,0,0.45);
 }
 
-/* ▼ 詳細部分（高さで展開） */
+/* ▼ 背景画像（黒幕の上） */
+.card .overlay {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  z-index: 1;
+}
+
+/* ▼ 中身（最前面） */
+.card .content {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  text-align: center;
+  background: rgba(0,0,0,0.75);
+  border-radius: 15px;
+}
+
+/* ▼ 詳細（高さで展開） */
 .detail {
   max-height: 0;
   overflow: hidden;
@@ -63,16 +78,6 @@ header {
 .card.expanded .detail {
   max-height: 500px;
   opacity: 1;
-}
-
-/* ▼ 中身 */
-.card .content {
-  position: relative;
-  z-index: 2;
-  padding: 20px;
-  text-align: center;
-  background: rgba(0,0,0,0.75);
-  border-radius: 15px;
 }
 
 /* ▼ ボタン類 */
@@ -92,20 +97,7 @@ header {
   border: none;
 }
 
-/* ▼ 詳細（高さで展開する方式に変更） */
-.detail {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.4s ease, opacity 0.3s ease;
-}
-
-.card.expanded .detail {
-  max-height: 500px;
-  opacity: 1;
-}
-
-/* ▼ フッター */
+/* ▼ フッター（固定ナビ） */
 .fixed-footer-nav {
   position: fixed;
   bottom: 20px;
@@ -121,7 +113,7 @@ header {
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-/* ▼ ホームボタン */
+/* ▼ ホームボタン中央固定 */
 .back-home {
   position: fixed;
   bottom: 40px;
