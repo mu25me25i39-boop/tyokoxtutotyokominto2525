@@ -7,33 +7,40 @@
   <link rel="stylesheet" href="../../../assets/css/music.css">
   
   <style>
-    /* 【スクロールの修正】
-       カード自体の幅や全体のレイアウトは一切いじらず、元のmusic.cssを完全維持。
-       中身の「.detail」に適切な高さを与えることで、画面を縮小しなくても
-       最初から枠内でスルスルと下まで全要素がスクロールして見られるようになります。
+    /* 【高さの修正】
+       高さを固定（max-heightなど）するのを完全にやめました。
+       中身の動画や曲リスト、文章のボリュームに応じて、カードが下方向へ自然に伸びるようになります。
     */
-    .card .detail {
-      display: block !important;    /* 崩れの原因だったflexを排除 */
-      max-height: 480px;            /* 画面内に収まる最適な高さに固定 */
-      overflow-y: auto !important;  /* これで枠内の右側に縦スクロールバーが確実に出現します */
-      padding-right: 10px;
-      opacity: 1 !important;        /* 最初から100%全展開 */
+    .card {
+      height: auto !important;
+      max-height: none !important;
+      min-height: min-content;
+      display: block !important;
+      padding-bottom: 40px; /* カード最下部と文章の間に適切な余白を確保 */
     }
 
-    /* 最初から全開にするため、不要になった要素の余白を微調整 */
+    /* 内包エリアもスクロールバーを出さず、そのまま下へ突き抜けるように展開 */
+    .card .detail {
+      display: block !important;
+      height: auto !important;
+      max-height: none !important;
+      overflow: visible !important; /* スクロールバーを完全撤去 */
+      opacity: 1 !important;
+    }
+
     .card .detail video { 
       width: 100%; 
       border-radius: 12px; 
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
     
     .card .detail p { 
-      margin: 20px 0;
+      margin: 25px 0 0 0;
       text-align: left;
       line-height: 1.6;
     }
 
-    /* --- ① DOWNLOADボタンが長く伸びるのを防ぐ複数曲エリア --- */
+    /* --- 複数曲ダウンロードリスト用のスタイル --- */
     .music-list-container {
       margin: 20px 0;
       background: rgba(0, 0, 0, 0.4); 
@@ -42,19 +49,17 @@
       border: 1px solid rgba(0, 208, 255, 0.15);
     }
 
-    /* 曲名とDOWNLOADボタンの行 */
     .music-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 0;
+      padding: 12px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
     .music-item:last-child {
       border-bottom: none; 
     }
 
-    /* 曲名の文字設定 */
     .music-title {
       color: #00d0ff;
       font-size: 0.95rem;
@@ -64,20 +69,20 @@
       padding-right: 15px;
     }
 
-    /* ① 長く伸びるのを防止したDOWNLOADボタンの専用指定（改行せずキュッと収めます） */
+    /* DOWNLOADボタンが長く伸びるのを防ぐ設定 */
     .music-item .download-link {
       display: inline-block !important;
-      width: auto !important;         /* 横いっぱいに長く伸びるのをストップ */
-      min-width: 110px !important;    /* ボタンとしての綺麗な最小幅 */
+      width: auto !important;
+      min-width: 110px !important;
       text-align: center !important;
       margin: 0 !important;           
-      padding: 8px 15px !important;   /* 手頃なサイズ感に固定 */
+      padding: 8px 15px !important;
       font-size: 0.8rem !important;
-      white-space: nowrap !important; /* 途中で改行させず1行に収める */
+      white-space: nowrap !important;
       box-sizing: border-box !important;
     }
 
-    /* --- 下部ナビゲーションボタン（絶対に消さずそのまま維持） --- */
+    /* --- 下部ナビゲーションボタン（位置を最適化） --- */
     .fixed-footer-nav {
       position: fixed;
       bottom: 30px;
@@ -107,6 +112,11 @@
       background: #00d0ff;
       color: #000;
       box-shadow: 0 0 20px #00d0ff, 0 0 30px #00d0ff inset;
+    }
+
+    /* 縦に長くなったカードが最下部の固定ボタンと重なって文字が読めなくなるのを防ぐ余白 */
+    body {
+      padding-bottom: 120px !important;
     }
   </style>
 </head>
