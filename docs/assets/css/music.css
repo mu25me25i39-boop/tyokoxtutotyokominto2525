@@ -29,11 +29,10 @@ header {
   width: 250px;
   border-radius: 15px;
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.75); /* ベースの黒背景 */
+  background: rgba(0, 0, 0, 0.4); /* 【変更】ベースの黒を薄くして画像を通しやすく */
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
   transition: 0.3s;
   
-  /* 【重要】中の absolute 要素が突き抜けないように grid で高さを固定 */
   display: grid;
   grid-template-rows: 1fr;
 }
@@ -42,15 +41,15 @@ header {
 .card .mask {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4); /* 閉じている時は少し透過させて画像を薄く見せる */
+  background: rgba(0, 0, 0, 0.2); /* 【変更】閉じている時のマスクを極限まで薄く */
   z-index: 1;
   transition: background 0.3s ease;
   pointer-events: none;
 }
 
-/* 展開した時は黒幕をさらに薄くして、画像を際立たせる */
+/* 展開した時 */
 .card.expanded .mask {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.1); /* 【変更】開いた時はほぼ透明にして画像全開に */
 }
 
 /* ▼ 背景画像（黒幕の下） */
@@ -60,27 +59,26 @@ header {
   background-size: cover;
   background-position: center;
   z-index: 0;
-  filter: blur(8px);
+  filter: blur(6px); /* 【微調整】ぼかしを少し弱めて画像がより認識しやすく */
   transform: translateZ(0);
   will-change: transform;
 
-  /* 【重要】閉じている時は画像自体の透明度を「薄く」する */
-  opacity: 0.35; 
+  /* 【重要】閉じている時でもこれまでの「倍近く」クッキリ見えるように（0.35 → 0.7） */
+  opacity: 0.7; 
   transition: opacity 0.3s ease;
 }
 
-/* 【重要】展開した時は画像を「濃く（くっきり）」する */
+/* 【重要】展開した時はほぼ100%画像がそのまま見えるように（0.9 → 0.98） */
 .card.expanded .overlay {
-  opacity: 0.9; 
+  opacity: 0.98; 
 }
 
 /* ▼ 中身（最前面） */
 .card .content {
   position: relative;
-  z-index: 2; /* 黒幕や画像より確実に上 */
+  z-index: 2;
   padding: 20px;
   text-align: center;
-  /* 2重にかかっていた重い背景色を排除して透明に */
   background: transparent; 
 }
 
@@ -108,7 +106,7 @@ header {
   padding: 10px;
   font-weight: bold;
   color: white;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.6); /* 文字を読みやすくするためボタンは黒を維持 */
   border-radius: 8px;
   text-decoration: none;
   cursor: pointer;
