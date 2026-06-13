@@ -8,89 +8,73 @@
   
   <style>
     /* 【スクロールの修正】
-      カード全体の最大高さを画面の高さ（85vh）に制限し、
-      中身がはみ出さずに、枠内でスルスルとスクロールできるようにします。
-    */
-    .card {
-      max-height: 85vh !important;
-      display: flex !important;
-      flex-direction: column !important;
-    }
-
-    /* 【全展開・スクロールエリアの確保】
-      開閉ボタンなしで最初から100%表示（opacity: 1）にし、
-      動画、複数曲リスト、文章、DOWNLOADすべてをこの中で縦スクロール可能にします。
+       カード自体の幅（width）や高さは一切制限せず、元のmusic.cssのサイズを完全維持。
+       中身の「.detail」だけにスクロールを効かせることで、拡大縮小しなくても
+       最初から100%全開のまま、すべての曲と文章が下までスルスル見られるようになります。
     */
     .card .detail {
-      display: flex !important;
-      flex-direction: column !important;
-      max-height: none !important; /* 元のCSSの制限を強制解除 */
-      opacity: 1 !important;        /* 最初から全開で表示 */
-      flex: 1;
-      overflow-y: auto !important;  /* これで確実に枠内スクロールが機能します */
-      padding-right: 8px;
+      display: block !important;    /* 崩れの原因だったflexを廃止 */
+      max-height: 500px;            /* 枠からはみ出さない適度な高さに固定 */
+      overflow-y: auto !important;  /* これで確実に縦スクロールバーが出現します */
+      padding-right: 10px;
+      opacity: 1 !important;        /* 最初から100%全展開 */
     }
 
-    /* 中身の配置順序を上から固定 [1.動画 → 2.複数曲リスト → 3.文脈文] */
+    /* 最初から全開にするため、不要になった要素の余白を微調整 */
     .card .detail video { 
       width: 100%; 
       border-radius: 12px; 
-      margin-bottom: 15px;
-      flex-shrink: 0; 
+      margin-bottom: 20px;
     }
     
     .card .detail p { 
-      margin: 15px 0 25px 0;
+      margin: 20px 0;
       text-align: left;
       line-height: 1.6;
     }
 
-    /* --- 複数曲ダウンロードリスト用のスタイル --- */
+    /* --- ① DOWNLOADボタンが長く伸びるのを防ぐ複数曲エリア --- */
     .music-list-container {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin: 10px 0;
+      margin: 20px 0;
       background: rgba(0, 0, 0, 0.4); 
       padding: 15px;
       border-radius: 10px;
       border: 1px solid rgba(0, 208, 255, 0.15);
     }
 
-    /* 曲名とDOWNLOADボタンを左右に整列 */
+    /* 曲名とDOWNLOADボタンの行 */
     .music-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 10px;
+      padding: 10px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
     .music-item:last-child {
       border-bottom: none; 
-      padding-bottom: 0;
     }
 
-    /* 曲名のネオン風文字設定 */
+    /* 曲名の文字設定 */
     .music-title {
       color: #00d0ff;
       font-size: 0.95rem;
       font-weight: bold;
       text-shadow: 0 0 5px rgba(0, 208, 255, 0.6);
       text-align: left;
-      padding-right: 10px;
+      padding-right: 15px;
     }
 
-    /* リスト内の各DOWNLOADボタンのスタイル */
+    /* ① 長く伸びるのを防止したDOWNLOADボタンの専用指定 */
     .music-item .download-link {
-      margin: 0 !important;
-      padding: 6px 15px !important;
+      display: inline-block !important;
+      width: auto !important;         /* 横いっぱいに長く伸びるのを強制ストップ */
+      min-width: 110px !important;    /* ボタンとしての綺麗な最小幅 */
+      text-align: center !important;
+      margin: 0 !important;           /* 余計な外白をリセット */
+      padding: 8px 15px !important;   /* ボタンらしい手頃なサイズ感に */
       font-size: 0.8rem !important;
-      white-space: nowrap;
-      display: inline-block;
-      color: #fff;
-      border: 1px solid #fff;
-      border-radius: 4px;
-      text-decoration: none;
+      white-space: nowrap !important; /* 絶対に改行させず1行に収める */
+      box-sizing: border-box !important;
     }
 
     /* --- 下部ナビゲーションボタンの中央固定 --- */
@@ -169,11 +153,3 @@
   </div>
 
 </div>
-
-<div class="fixed-footer-nav">
-  <a href="../../../index.html">トップページ</a>
-  <a href="../../../music.html">音楽素材</a>
-</div>
-
-</body>
-</html>
