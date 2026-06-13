@@ -41,7 +41,8 @@ header {
 .card .mask {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.2); 
+  /* 【オシャン化】上から下へじわっと消えるグラデーションにして、上部のタイトルを自然に浮かび上がらせます */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0.5) 100%);
   z-index: 1;
   transition: background 0.3s ease;
   pointer-events: none;
@@ -49,7 +50,8 @@ header {
 
 /* 展開した時 */
 .card.expanded .mask {
-  background: rgba(0, 0, 0, 0.1); 
+  /* 開いた時は少しだけ全体を暗くして、中の白い説明文を読みやすくします */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.7) 100%);
 }
 
 /* ▼ 背景画像（黒幕の下） */
@@ -59,7 +61,7 @@ header {
   background-size: cover;
   background-position: center;
   z-index: 0;
-  filter: blur(6px); 
+  filter: blur(5px); /* ぼかしを少しだけシャープにしてイラスト感をアップ */
   transform: translateZ(0);
   will-change: transform;
   opacity: 0.7; 
@@ -68,25 +70,30 @@ header {
 
 /* 展開した時 */
 .card.expanded .overlay {
-  opacity: 0.98; 
+  opacity: 0.95; 
 }
 
 /* ▼ 中身（最前面） */
 .card .content {
   position: relative;
   z-index: 2;
-  padding: 20px;
+  padding: 25px 20px; /* ゆったりとした近未来的な余白感 */
   text-align: center;
   background: transparent; 
 }
 
-/* 【追加】タイトルの文字を読みやすくする黒背景 */
+/* タイトル（ネオン発光） */
 .card .content h2 {
-  display: inline-block;
-  background: rgba(0, 0, 0, 0.6); /* 黒い半透明の座布団 */
-  padding: 5px 12px;
-  border-radius: 6px;
-  margin: 10px 0;
+  font-size: 1.35rem;
+  font-weight: bold;
+  color: #00d0ff;
+  margin: 0 0 15px 0;
+  padding: 0;
+  /* 【ここがポイント】文字の後ろに黒い影と、水色のネオン発光を仕込んで背景に負けないクッキリ感を出します */
+  text-shadow: 
+    0 0 4px #000, 
+    0 0 8px #000,
+    0 0 12px rgba(0, 208, 255, 0.6);
 }
 
 /* ▼ 詳細（高さで展開） */
@@ -100,16 +107,17 @@ header {
 .card.expanded .detail {
   max-height: 500px;
   opacity: 1;
-  margin-top: 15px;
 }
 
-/* 【追加】詳細文のテキストを読みやすくする黒背景 */
+/* 詳細文のテキスト */
 .detail p {
-  background: rgba(0, 0, 0, 0.6); /* 黒い半透明の座布団 */
-  padding: 8px 12px;
-  border-radius: 8px;
-  color: #fff; /* 青文字だと見づらい場合は白文字に、青のままが良ければ削除してください */
-  line-height: 1.5;
+  color: #ffffff;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 15px 0;
+  padding: 0 5px;
+  /* 白文字の後ろに薄い黒のボカシ影を入れて、画像と重なっても読めるようにします */
+  text-shadow: 1px 1px 3px #000, -1px -1px 3px #000, 1px -1px 3px #000, -1px 1px 3px #000;
 }
 
 /* ▼ ボタン類 */
@@ -117,16 +125,29 @@ header {
 .close-btn,
 .card a {
   display: block;
-  width: 80%;
-  margin: 8px auto;
+  width: 85%;
+  margin: 10px auto;
   padding: 10px;
   font-weight: bold;
-  color: white;
-  background: rgba(0,0,0,0.7); /* ボタンも少し濃くして見やすく */
+  font-size: 0.85rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(0, 208, 255, 0.3); /* ボタンの輪郭にうっすらサイバーなラインを追加 */
   border-radius: 8px;
   text-decoration: none;
   cursor: pointer;
-  border: none;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  transition: 0.2s ease;
+}
+
+/* ボタンホバー時 */
+.toggle-btn:hover,
+.close-btn:hover,
+.card a:hover {
+  background: rgba(0, 208, 255, 0.2);
+  border-color: #00d0ff;
+  box-shadow: 0 0 10px rgba(0, 208, 255, 0.4);
+  color: #00d0ff;
 }
 
 /* ▼ ホームボタン */
