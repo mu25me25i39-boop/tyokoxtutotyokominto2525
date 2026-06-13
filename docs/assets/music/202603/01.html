@@ -7,6 +7,209 @@
   <link rel="stylesheet" href="../../../assets/css/music.css">
   
   <style>
+    /* カード全体のレイアウトを固定（画面からはみ出さない） */
+    .card {
+      max-height: 85vh; 
+      display: flex !important;
+      flex-direction: column !important;
+    }
+
+    /* 詳細が開いたときの中身全体をスクロール対象にする */
+    .card .detail {
+      flex: 1;
+      overflow-y: auto; /* 動画・リスト・文章すべてをスルスル動かせる設定 */
+      padding-right: 8px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 中身の並び順を上から固定 [1. 動画 → 2. 複数曲リスト → 3. 文脈文] */
+    .card .detail video { 
+      order: 1; 
+      width: 100%; 
+      border-radius: 12px; 
+      margin-bottom: 5px;
+      flex-shrink: 0; 
+    }
+    
+    .card .detail .music-list-container { 
+      order: 2; 
+    }
+    
+    .card .detail p { 
+      order: 3; 
+      margin: 15px 0 25px 0;
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    /* --- 複数曲ダウンロードリスト用のオシャレスタイル --- */
+    .music-list-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 15px 0 5px 0;
+      background: rgba(0, 0, 0, 0.4); /* 背景を少し暗くして文字を見やすく */
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 208, 255, 0.15);
+    }
+
+    /* 1曲ごとの行（曲名とDOWNLOADボタンを左右に整列） */
+    .music-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .music-item:last-child {
+      border-bottom: none; /* 最後の曲の線は消す */
+      padding-bottom: 0;
+    }
+
+    /* 曲名のネオン風文字設定 */
+    .music-title {
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: bold;
+      text-shadow: 0 0 5px rgba(0, 208, 255, 0.6);
+      text-align: left;
+      padding-right: 10px;
+    }
+
+    /* リスト内のDOWNLOADボタンの専用サイズ */
+    .music-item .download-link {
+      margin: 0 !important;
+      padding: 6px 15px !important;
+      font-size: 0.8rem !important;
+      white-space: nowrap;
+    }
+
+    /* --- 下部ナビゲーションボタンの中央固定 --- */
+    .fixed-footer-nav {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 15px;
+      z-index: 1000;
+      width: max-content;
+    }
+    
+    /* 元のネオンデザインを流用 */
+    .fixed-footer-nav a {
+      display: inline-block;
+      padding: 10px 20px;
+      color: #00d0ff;
+      border: 2px solid #00d0ff;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 10px #00d0ff, 0 0 20px #00d0ff inset;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+    
+    .fixed-footer-nav a:hover {
+      background: #00d0ff;
+      color: #000;
+      box-shadow: 0 0 20px #00d0ff, 0 0 30px #00d0ff inset;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="gallery">
+
+  <div class="card" data-bg="../../img/hero-miku.jpg" style="width: min(900px, 95vw);">
+    <div class="overlay"></div>
+
+    <div class="content">
+      <h2>溶けるピンクと孤独な夜</h2>
+
+      <button class="toggle-btn">▼ 詳細を開く</button>
+
+      <div class="detail">
+
+        <video src="01-1.mp4" controls></video>
+
+        <div class="music-list-container">
+          
+          <div class="music-item">
+            <span class="music-title">01. 溶けるピンクと孤独な夜</span>
+            <a href="溶けるピンクと孤独な夜.mp3" target="_blank" class="download-link">DOWNLOAD</a>
+          </div>
+
+          <div class="music-item">
+            <span class="music-title">02. 愛殺 (2026 Remaster)</span>
+            <a href="愛殺.mp3" target="_blank" class="download-link">DOWNLOAD</a>
+          </div>
+
+          <div class="music-item">
+            <span class="music-title">03. 孤独な夜の残り香 (Bonus Track)</span>
+            <a href="孤独な夜の残り香.mp3" target="_blank" class="download-link">DOWNLOAD</a>
+          </div>
+
+        </div>
+
+        <p>
+          世界はいつか消える。だからこそ、消える前の一瞬にすべてを賭ける。ネオンの光、溶ける氷、青白い画面の光景が織りなす現代の孤独の中で、語り手は「君」という毒に身を委ねる。依存と独占欲が混ざり合い、愛は自己を溶かしていく。生きることよりも、君と溺れる刹那を選ぶ者たちの物語。
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const defaultBg = "url('../assets/cover.webp')";
+
+// 背景画像を overlay に適用
+document.querySelectorAll('.card').forEach(card => {
+  const bg = card.dataset.bg;
+  if (bg) card.querySelector('.overlay').style.backgroundImage = `url(${bg})`;
+});
+
+// 詳細ボタン（開閉 + 文字切り替え + 背景変更）
+document.querySelectorAll('.toggle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.card');
+    const bg = card.dataset.bg;
+
+    if (card.classList.contains('expanded')) {
+      card.classList.remove('expanded');
+      btn.textContent = '▼ 詳細を開く';
+      document.body.style.backgroundImage = defaultBg;
+      return;
+    }
+
+    card.classList.add('expanded');
+    btn.textContent = '▲ 閉じる';
+    if (bg) document.body.style.backgroundImage = `url(${bg})`;
+  });
+});
+</script>
+
+<div class="fixed-footer-nav">
+  <a href="../../../index.html">トップページ</a>
+  <a href="../../../music.html">音楽素材</a>
+</div>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>音楽ギャラリー｜単曲ページ</title>
+  <link rel="stylesheet" href="../../../assets/css/music.css">
+  
+  <style>
     /* カード全体のレイアウトを固定 */
     .card {
       max-height: 85vh; /* 画面からはみ出さないようにカード全体の高さを制限 */
