@@ -49,22 +49,37 @@
 <script>
 const defaultBg = "#000 url('assets/img/hero-miku.jpg') center center / cover no-repeat fixed";
 
+// 初期背景画像の読み込み
 document.querySelectorAll('.card').forEach(card => {
   const bg = card.dataset.bg;
   const overlay = card.querySelector('.overlay');
   if (overlay && bg) overlay.style.backgroundImage = `url(${bg})`;
 });
 
+// 【修正】詳細を見るボタンの処理
 document.querySelectorAll('.toggle-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const card = btn.closest('.card');
     const bg = card.dataset.bg;
+    
+    // すでに自分が開いているかチェック
+    const isExpanded = card.classList.contains('expanded');
+    
+    // 一旦、すべてのカードを閉じる
     document.querySelectorAll('.card.expanded').forEach(c => c.classList.remove('expanded'));
-    card.classList.add('expanded');
-    document.body.style.background = `#000 url(${bg}) center center / cover no-repeat fixed`;
+    
+    if (isExpanded) {
+      // 自分が開いていた場合は、全体背景をデフォルトに戻す
+      document.body.style.background = defaultBg;
+    } else {
+      // 自分がいま閉じていた場合は、開いて背景を変える
+      card.classList.add('expanded');
+      document.body.style.background = `#000 url(${bg}) center center / cover no-repeat fixed`;
+    }
   });
 });
 
+// 閉じるボタンの処理（元からあるボタンの挙動も残しています）
 document.querySelectorAll('.close-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const card = btn.closest('.card');
