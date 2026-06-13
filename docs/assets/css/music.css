@@ -29,17 +29,9 @@ header {
   width: 250px;
   border-radius: 15px;
   overflow: hidden;
-  transition: max-height 0.4s ease, box-shadow 0.3s;
+  transition: 0.3s;
   background: rgba(0,0,0,0.4);
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
-  
-  /* 【重要】閉じている時の最大高さを設定（タイトルとボタンが収まるサイズ） */
-  max-height: 135px; 
-}
-
-/* 開いた時にカードの高さ制限を広げる */
-.card.expanded {
-  max-height: 600px; /* 十分に中身が入る高さ */
 }
 
 /* ▼ 黒幕（最背面） */
@@ -65,13 +57,13 @@ header {
   filter: blur(8px);
   transform: translateZ(0);
   will-change: transform;
-  
-  /* 【重要】閉じている時は画像も見えないように透明にする */
+
+  /* 【ここを修正】最初は画像を透明にして完全に隠します */
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-/* 開いた時だけ背景画像を表示する */
+/* 【ここを追加】カードが開いた時だけ、背景画像をフワッと表示します */
 .card.expanded .overlay {
   opacity: 1;
 }
@@ -84,8 +76,6 @@ header {
   text-align: center;
   background: rgba(0,0,0,0.75);
   border-radius: 15px;
-  height: 100%;
-  box-sizing: border-box;
 }
 
 /* ▼ 詳細（高さで展開） */
@@ -99,7 +89,6 @@ header {
 .card.expanded .detail {
   max-height: 500px;
   opacity: 1;
-  margin-top: 15px;
 }
 
 /* ▼ ボタン類 */
@@ -117,13 +106,6 @@ header {
   text-decoration: none;
   cursor: pointer;
   border: none;
-  transition: background 0.2s;
-}
-
-.toggle-btn:hover,
-.close-btn:hover,
-.card a:hover {
-  background: rgba(0,208,255,0.3);
 }
 
 /* ▼ ホームボタン */
