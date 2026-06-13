@@ -29,41 +29,41 @@ header {
   width: 250px;
   border-radius: 15px;
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.75); /* 最初からしっかり暗い背景にする */
+  background: rgba(0,0,0,0.4); /* 元のうっすらとした半透明背景 */
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
   transition: 0.3s;
 }
 
-/* ▼ 黒幕（開いた時だけ透過を下げる） */
+/* ▼ 黒幕（最背面） */
 .card .mask {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0);
-  z-index: 1;
+  background: rgba(0,0,0,0.75);
+  z-index: 0;
   transition: background 0.3s ease;
-  pointer-events: none; /* ボタンの邪魔をしないように設定 */
+  pointer-events: none;
 }
 
 .card.expanded .mask {
   background: rgba(0,0,0,0.45);
 }
 
-/* ▼ 背景画像 */
+/* ▼ 背景画像（黒幕の上） */
 .card .overlay {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
-  z-index: 0;
+  z-index: 1;
   filter: blur(8px);
   transform: translateZ(0);
   will-change: transform;
 
-  /* 【重要】閉じている時は存在自体を完全に消す */
+  /* 【解決のキモ】閉じている時は存在自体を完全に消すことで、下へのはみ出しを強制カットします */
   display: none; 
 }
 
-/* 【重要】開いた時だけ画像を出現させる */
+/* カードが開いた時だけ、背景画像を出現させる */
 .card.expanded .overlay {
   display: block;
 }
@@ -71,9 +71,11 @@ header {
 /* ▼ 中身（最前面） */
 .card .content {
   position: relative;
-  z-index: 2; /* マスクや画像より確実に上に配置 */
+  z-index: 2;
   padding: 20px;
   text-align: center;
+  background: rgba(0,0,0,0.75); /* 【修正】元の半透明背景をここに戻しました */
+  border-radius: 15px;
 }
 
 /* ▼ 詳細（高さで展開） */
