@@ -170,3 +170,21 @@ header {
   color: #000;
   box-shadow: 0 0 20px #00d0ff, 0 0 30px #00d0ff inset;
 }
+
+/* スマホ画面（画面幅768px以下）用の調整 */
+@media (max-width: 768px) {
+  
+  /* ① 動画のサイズがはみ出さないように自動追従させる */
+  .card .detail video {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    object-fit: contain !important; /* 動画全体が枠内にきれいに収まるようにする設定 */
+  }
+
+  /* ② カード自体の左右の余白を削り、スマホの横幅いっぱいに広げる */
+  .card {
+    width: 95vw !important; /* 画面幅の95%を使い、はみ出しを防ぐ */
+    padding: 15px !important; /* 内側の余白をスマホ用に少し狭める */
+  }
+}
