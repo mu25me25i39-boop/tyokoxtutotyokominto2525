@@ -8,8 +8,7 @@
   
   <style>
     /* 【高さの修正】
-       高さを固定（max-heightなど）するのを完全にやめました。
-       中身の動画や曲リスト、文章のボリュームに応じて、カードが下方向へ自然に伸びるようになります。
+       高さを固定せず、中身の動画や曲リストの量に合わせて、カードが下方向へ自動で伸びるようにします。
     */
     .card {
       height: auto !important;
@@ -20,7 +19,7 @@
     }
 
     /* 内包エリアもスクロールバーを出さず、そのまま下へ突き抜けるように展開 */
-    .card .detail {
+    .card .愛殺 {
       display: block !important;
       height: auto !important;
       max-height: none !important;
@@ -28,19 +27,27 @@
       opacity: 1 !important;
     }
 
-    .card .detail video { 
-      width: 100%; 
+    /* 【スマホ対応】
+       動画が半分に切れるバグを解決。高さを自動調整にし、正しい比率（16:9）を維持して画面幅にフィットさせます。
+    */
+    .card .愛殺 video { 
+      width: 100% !important; 
+      height: auto !important;         /* 高さを横幅に自動追従させる */
+      max-height: 100% !important;
+      object-fit: contain !important;  /* 動画が切り取られず、絶対に全部映るようにする */
+      aspect-ratio: 16 / 9 !important; /* 動画の標準的な比率（16:9）を強制維持 */
       border-radius: 12px; 
       margin-bottom: 25px;
+      display: block !important;
     }
     
-    .card .detail p { 
+    .card .愛殺 p { 
       margin: 25px 0 0 0;
       text-align: left;
       line-height: 1.6;
     }
 
-    /* --- 複数曲ダウンロードリスト用のスタイル --- */
+    /* --- DOWNLOADボタンが長く伸びるのを防ぐ複数曲エリア --- */
     .music-list-container {
       margin: 20px 0;
       background: rgba(0, 0, 0, 0.4); 
@@ -69,7 +76,7 @@
       padding-right: 15px;
     }
 
-    /* DOWNLOADボタンが長く伸びるのを防ぐ設定 */
+    /* DOWNLOADボタンのサイズを綺麗に固定（横に長く伸びないよう制限） */
     .music-item .download-link {
       display: inline-block !important;
       width: auto !important;
@@ -117,6 +124,13 @@
     /* 縦に長くなったカードが最下部の固定ボタンと重なって文字が読めなくなるのを防ぐ余白 */
     body {
       padding-bottom: 120px !important;
+    }
+
+    /* スマホ画面（幅768px以下）での追加調整 */
+    @media (max-width: 768px) {
+      .card {
+        width: 95vw !important; /* カードの横幅をスマホ画面にフィットさせる */
+      }
     }
   </style>
 </head>
