@@ -2,6 +2,60 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <title>ジンギスカン情報局 - リアルタイム</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f9; padding: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .feed-item { margin-bottom: 10px; padding: 5px; border-bottom: 1px solid #eee; }
+        a { color: #007bff; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <h1>ジンギスカン リアルタイム・トラッカー</h1>
+    <div class="grid">
+        <!-- 1. X (Twitter) -->
+        <div class="card">
+            <h2>X (Twitter)</h2>
+            <a class="twitter-timeline" href="https://twitter.com/zingisukan_2525">Tweets by zingisukan_2525</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+
+        <!-- 2. TikTok (埋め込み用) -->
+        <div class="card">
+            <h2>TikTok 最新投稿</h2>
+            <!-- RSS.appのWidgetコードを下記に貼り付けてください -->
+            <p>RSS.appで発行した「Get Code」をここに貼り付けると表示されます。</p>
+        </div>
+
+        <!-- 3. ニュース検索テキスト一覧 -->
+        <div class="card" id="news-feed">
+            <h2>最新関連ニュース</h2>
+            <div class="content">読み込み中...</div>
+        </div>
+    </div>
+
+    <script>
+        // ニュース取得スクリプト
+        const newsRss = 'https://api.rss2json.com/v1/api.json?rss_url=https://news.google.com/rss/search?q=ジンギスカン&hl=ja&gl=JP';
+        
+        fetch(newsRss)
+            .then(res => res.json())
+            .then(data => {
+                const container = document.querySelector('#news-feed .content');
+                container.innerHTML = data.items.slice(0, 8).map(item => `
+                    <div class="feed-item">
+                        <a href="${item.link}" target="_blank">${item.title}</a>
+                    </div>
+                `).join('');
+            });
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
     <title>ジンギスカン リアルタイム・トラッカー</title>
     <style>
         body { font-family: sans-serif; background-color: #f4f4f9; padding: 20px; }
