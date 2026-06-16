@@ -2,41 +2,54 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <title>闇バイト・犯罪情報 リアルタイム監視</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; padding: 20px; }
-        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1 { font-size: 1.5rem; color: #333; margin-bottom: 20px; }
-        .item { padding: 15px; border-left: 5px solid #007bff; background: #f9f9f9; margin-bottom: 10px; border-radius: 4px; }
-        .item:hover { background: #eef6ff; }
-        .title { font-weight: bold; display: block; margin-bottom: 5px; }
-        .tag { font-size: 0.8rem; background: #eee; padding: 2px 8px; border-radius: 10px; color: #555; }
+        body { font-family: sans-serif; background: #f0f2f5; padding: 20px; }
+        .container { max-width: 900px; margin: auto; }
+        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        h1 { color: #d32f2f; }
+        .item { padding: 10px 0; border-bottom: 1px solid #eee; }
+        a { text-decoration: none; color: #333; font-weight: bold; }
+        a:hover { color: #d32f2f; }
+        .date { font-size: 0.8em; color: #888; display: block; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>🌍 世界の災害リアルタイム速報</h1>
-    <div id="feed">取得中...</div>
+    <h1>⚠️ 闇バイト情報 リアルタイム監視</h1>
+    
+    <!-- ニュースフィードエリア -->
+    <div class="card" id="news-feed">
+        <h2>最新のニュース・警戒情報</h2>
+        <div id="content">データを取得中...</div>
+    </div>
 </div>
 
 <script>
-    const rssUrl = 'https://www.gdacs.org/xml/rss.xml';
-    fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`)
-        .then(res => res.json())
-        .then(data => {
-            const container = document.getElementById('feed');
-            container.innerHTML = data.items.map(item => {
-                // タイトルから国名を推測（末尾のin ~ を取得）
-                const match = item.title.match(/in (.*)$/);
-                const country = match ? match[1] : '世界';
-                return `
-                    <div class="item">
-                        <span class="tag">📍 ${country}</span>
-                        <a href="${item.link}" target="_blank" class="title">${item.title}</a>
-                    </div>
-                `;
-            }).join('');
-        });
+    // 警察やニュースサイトの「闇バイト」関連検索結果をRSSで統合
+    const feeds = [
+        'https://news.google.com/rss/search?q=闇バイト&hl=ja&gl=JP&ceid=JP:ja',
+        'https://news.google.com/rss/search?q=強盗 指示役&hl=ja&gl=JP&ceid=JP:ja'
+    ];
+
+    async function loadFeeds() {
+        const container = document.getElementById('content');
+        container.innerHTML = '';
+        
+        for (let url of feeds) {
+            const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`);
+            const data = await res.json();
+            
+            data.items.slice(0, 5).forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'item';
+                div.innerHTML = `<span class="date">${item.pubDate}</span><a href="${item.link}" target="_blank">${item.title}</a>`;
+                container.appendChild(div);
+            });
+        }
+    }
+    loadFeeds();
 </script>
 </body>
 </html>
