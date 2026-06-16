@@ -2,6 +2,49 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <title>世界中のリアルタイム災害情報</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #f4f4f9; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .disaster-item { border-bottom: 1px solid #eee; padding: 10px 0; }
+        .country { font-weight: bold; color: #d9534f; margin-right: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>世界中のリアルタイム災害速報</h1>
+    <div class="card" id="disaster-feed">
+        <div class="content">データを取得中...</div>
+    </div>
+
+    <script>
+        // GDACSのRSSフィードURL
+        const rssUrl = 'https://www.gdacs.org/xml/rss.xml';
+        const api = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+
+        fetch(api)
+            .then(res => res.json())
+            .then(data => {
+                const container = document.querySelector('#disaster-feed .content');
+                container.innerHTML = data.items.map(item => {
+                    // RSSから国名や地域情報を抽出して表示
+                    return `
+                        <div class="disaster-item">
+                            <span class="country">${item.author || '不明'}</span>
+                            <a href="${item.link}" target="_blank">${item.title}</a>
+                        </div>
+                    `;
+                }).join('');
+            })
+            .catch(() => {
+                document.querySelector('#disaster-feed .content').innerText = "情報の取得に失敗しました。";
+            });
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
     <title>ジンギスカン情報局 - リアルタイム</title>
     <style>
         body { font-family: sans-serif; background: #f4f4f9; padding: 20px; }
