@@ -2,41 +2,58 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>未来人ニュースフィード</title>
+    <title>ジンギスカン情報ダッシュボード</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
-        #news-container { margin-top: 20px; }
-        .news-item { border-bottom: 1px solid #ccc; padding: 10px 0; }
-        .news-item a { text-decoration: none; color: #007bff; font-weight: bold; }
+        body { font-family: 'Helvetica Neue', sans-serif; background: #f4f4f9; padding: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h2 { border-bottom: 2px solid #333; padding-bottom: 10px; }
+        .feed-item { margin-bottom: 10px; padding: 5px; border-bottom: 1px solid #eee; }
+        a { color: #007bff; text-decoration: none; }
     </style>
 </head>
 <body>
 
-    <h1>未来人に関する最新ニュース</h1>
-    <div id="news-container">読み込み中...</div>
+    <h1>ジンギスカン リアルタイム・フィード</h1>
+    <div class="grid">
+        <!-- 配信者情報の取得エリア -->
+        <div class="card" id="streamer-feed">
+            <h2>配信者：ジンギスカン</h2>
+            <div class="content">読み込み中...</div>
+        </div>
+
+        <!-- 一般ニュース情報の取得エリア -->
+        <div class="card" id="news-feed">
+            <h2>グルメ・ニュース</h2>
+            <div class="content">読み込み中...</div>
+        </div>
+    </div>
 
     <script>
-        // RSSフィードをJSONに変換するサービス(rss2json)を使用
-        const rssUrl = 'https://news.google.com/rss/search?q=未来人&hl=ja&gl=JP&ceid=JP:ja';
-        const api = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+        // RSSフィードURL（例：ニコニコ生放送やニュースRSS）
+        const feeds = {
+            streamer: 'https://api.rss2json.com/v1/api.json?rss_url=https://sp.live.nicovideo.jp/search?keyword=ジンギスカン&rss=1',
+            news: 'https://api.rss2json.com/v1/api.json?rss_url=https://news.google.com/rss/search?q=ジンギスカン&hl=ja&gl=JP'
+        };
 
-        fetch(api)
-            .then(res => res.json())
-            .then(data => {
-                const container = document.getElementById('news-container');
-                container.innerHTML = ''; // ローディング表示を消す
-                
-                data.items.forEach(item => {
-                    const div = document.createElement('div');
-                    div.className = 'news-item';
-                    div.innerHTML = `<a href="${item.link}" target="_blank">${item.title}</a><br><small>${item.pubDate}</small>`;
-                    container.appendChild(div);
-                });
-            })
-            .catch(err => {
-                document.getElementById('news-container').innerText = 'ニュースの取得に失敗しました。';
-                console.error(err);
-            });
+        async function fetchFeed(url, elementId) {
+            try {
+                const res = await fetch(url);
+                const data = await res.json();
+                const container = document.querySelector(`#${elementId} .content`);
+                container.innerHTML = data.items.slice(0, 5).map(item => `
+                    <div class="feed-item">
+                        <a href="${item.link}" target="_blank">${item.title}</a><br>
+                        <small>${new Date(item.pubDate).toLocaleString()}</small>
+                    </div>
+                `).join('');
+            } catch (e) {
+                document.querySelector(`#${elementId} .content`).innerText = "読み込みエラー";
+            }
+        }
+
+        fetchFeed(feeds.streamer, 'streamer-feed');
+        fetchFeed(feeds.news, 'news-feed');
     </script>
 </body>
 </html>
