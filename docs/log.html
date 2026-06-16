@@ -2,69 +2,33 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>ジンギスカン ネット情報追跡ボード</title>
+    <title>ジンギスカン リアルタイム・トラッカー</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; background: #f9f9f9; }
-        .dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .widget { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-        iframe { width: 100%; height: 400px; border: none; }
+        body { font-family: sans-serif; background-color: #f4f4f9; padding: 20px; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
+        .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); height: 600px; overflow-y: auto; }
+        h2 { border-bottom: 2px solid #333; padding-bottom: 10px; margin-top: 0; }
     </style>
 </head>
 <body>
-    <h1>ジンギスカン ネット動向</h1>
-    
-    <div class="dashboard">
-        <!-- 1. X (Twitter) 検索結果 -->
-        <div class="widget">
-            <h2>X (Twitter) リアルタイム</h2>
-            <a class="twitter-timeline" href="https://twitter.com/search?q=ジンギスカン">Tweets about ジンギスカン</a>
+
+    <h1>ジンギスカン：リアルタイム・アクティビティ</h1>
+
+    <div class="grid-container">
+        <div class="card">
+            <h2>X (Twitter)</h2>
+            <a class="twitter-timeline" href="https://twitter.com/zingisukan_2525?ref_src=twsrc%5Etfw">Tweets by zingisukan_2525</a>
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
 
-        <!-- 2. Google ニュース検索 -->
-        <div class="widget">
-            <h2>Google ニュース・速報</h2>
-            <iframe src="https://news.google.com/rss/search?q=ジンギスカン&hl=ja&gl=JP&ceid=JP:ja" style="width:100%;height:300px;"></iframe>
-            <p><small>※最新の報道・記事</small></p>
-        </div>
-    </div>
-</body>
-</html><!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>ジンギスカンさん 更新情報まとめ</title>
-    <style>
-        body { font-family: sans-serif; background: #f0f2f5; padding: 20px; }
-        .feed-container { display: flex; flex-wrap: wrap; gap: 20px; }
-        .feed-box { background: white; width: 300px; padding: 15px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        h2 { font-size: 1.2rem; color: #333; }
-        iframe { width: 100%; height: 500px; border: none; }
-    </style>
-</head>
-<body>
-
-    <h1>ジンギスカンさん アクティビティ</h1>
-    <div class="feed-container">
-        <!-- Twitter(X) -->
-        <div class="feed-box">
-            <h2>X (Twitter)</h2>
-            <a href="https://twitter.com/zingisukan_2525" target="_blank">@zingisukan_2525</a>
-            <!-- RSS.app等で発行したWidgetコードをここに貼る -->
-        </div>
-        
-        <!-- TikTok -->
-        <div class="feed-box">
+        <div class="card">
             <h2>TikTok</h2>
-            <a href="https://www.tiktok.com/@zingisukan_kick" target="_blank">@zingisukan_kick</a>
-            <!-- RSS.app等で発行したWidgetコードをここに貼る -->
+            <p>ここにTikTokのRSS埋め込みコードを貼り付けてください</p>
         </div>
 
-        <!-- Kick -->
-        <div class="feed-box">
-            <h2>Kick</h2>
-            <a href="https://kick.com/zingisukan2525" target="_blank">Kick 配信ページ</a>
-            <!-- RSS.app等で発行したWidgetコードをここに貼る -->
+        <div class="card">
+            <h2>Kick (Live)</h2>
+            <p>ここにKickのRSS埋め込みコードを貼り付けてください</p>
         </div>
     </div>
 
