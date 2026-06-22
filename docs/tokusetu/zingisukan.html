@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>音楽ギャラリー｜特別特設ページ</title>
+  <title>ジンギスカン特設サイト</title>
   <link rel="stylesheet" href="../../../assets/css/music.css">
   
   <style>
@@ -18,7 +18,7 @@
       background: #050510;
       font-family: sans-serif;
       overflow-x: hidden;
-      padding-bottom: 160px !important; /* SNSボタン追加に伴い下部余白を少し拡張 */
+      padding-bottom: 160px !important; /* 下部ボタン用の余白 */
       position: relative;
     }
 
@@ -36,7 +36,7 @@
       opacity: 0.3;
     }
 
-    /* 左右のクリック可能なエリア（赤いところ） */
+    /* 左右のクリック可能なエリア */
     .nav-side-zone {
       position: fixed;
       top: 0;
@@ -81,13 +81,25 @@
       max-height: none !important;
     }
 
-    /* タイトルの光彩 */
+    /* メインサイトタイトル（追加） */
+    .site-main-title {
+      text-align: center; 
+      color: #ff007f; 
+      text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f; 
+      font-size: 2.2rem; 
+      margin-top: 15px; 
+      margin-bottom: 5px; 
+      font-weight: bold;
+    }
+
+    /* 曲タイトルの光彩 */
     .content h2 {
       text-align: center;
       color: #fff;
       text-shadow: 0 0 10px #00d0ff, 0 0 20px #00d0ff;
-      font-size: 1.8rem;
-      margin-bottom: 20px;
+      font-size: 1.5rem;
+      margin-top: 0;
+      margin-bottom: 25px;
     }
 
     /* 動画プレイヤー */
@@ -110,7 +122,7 @@
       text-align: left;
       line-height: 1.6;
       color: #ddd;
-      min-height: 80px; /* テキスト切り替え時に高さがガタつかないように最低高さを確保 */
+      min-height: 80px; 
       transition: opacity 0.3s ease-in-out;
     }
 
@@ -136,7 +148,7 @@
       border-bottom: none; 
     }
 
-    /* 現在選択されている曲のハイライト（黄色エリア） */
+    /* 現在選択されている曲のハイライト */
     .music-item.active {
       background: rgba(0, 208, 255, 0.15);
       border-left: 3px solid #00d0ff;
@@ -178,7 +190,7 @@
       color: #000;
     }
 
-    /* --- 追加：SNSリンクまとめボタン（カード内下部） --- */
+    /* SNSリンクまとめボタン */
     .sns-links-container {
       display: flex;
       justify-content: center;
@@ -201,7 +213,6 @@
       color: #fff;
     }
 
-    /* 各SNSのブランドカラー風配色 */
     .sns-btn.twitter  { background: #14171A; border: 1px solid #333; }
     .sns-btn.kick     { background: #53fc18; color: #000; }
     .sns-btn.tiktok   { background: #010101; border: 1px solid #ee1d52; }
@@ -247,14 +258,17 @@
       .card { width: 90vw !important; }
       .nav-side-zone { width: 10vw; font-size: 1.2rem; }
       .sns-links-container { flex-wrap: wrap; }
+      .site-main-title { font-size: 1.8rem; }
     }
   </style>
 </head>
 
 <body>
 
+<!-- うっすら背景が映るスライダー -->
 <div class="bg-slider" id="bgSlider"></div>
 
+<!-- 左右のクリックエリア -->
 <div class="nav-side-zone nav-left" onclick="changeTrack(-1)">◀</div>
 <div class="nav-side-zone nav-right" onclick="changeTrack(1)">▶</div>
 
@@ -262,12 +276,18 @@
   <div class="card" style="width: min(850px, 95vw);">
     <div class="content">
       
+      <!-- 特設サイトメインタイトル（お勧め配置） -->
+      <h1 class="site-main-title">ジンギスカン特設サイト</h1>
+
+      <!-- 曲名タイトル（JSで動的変更） -->
       <h2 id="mainTitle">01. 愛殺</h2>
 
       <div class="music-wrapper">
         
+        <!-- 動画プレイヤー（JSで動的変更） -->
         <video id="mainVideo" src="02-1.webm" controls></video>
 
+        <!-- 曲リスト一覧 -->
         <div class="music-list-container">
           
           <div class="music-item active" id="item-0">
@@ -292,10 +312,12 @@
         
         </div>
 
+        <!-- 各曲の説明文エリア（JSで動的変更） -->
         <p id="mainDescription">
           世界はいつか消える。だからこそ、消える前の一瞬にすべてを賭ける。ネオンの光、溶ける氷、青白い画面の光景が織りなす現代の孤独の中で、語り手は「君」という毒に身を委ねる。依存と独占欲が混ざり合い、愛は自己を溶かしていく。生きることよりも、君と溺れる刹那を選ぶ者たちの物語。
         </p>
 
+        <!-- SNSリンクまとめボタン -->
         <div class="sns-links-container">
           <a href="https://twitter.com/あなたのユーザー名" target="_blank" class="sns-btn twitter">X (Twitter)</a>
           <a href="https://kick.com/あなたのユーザー名" target="_blank" class="sns-btn kick">Kick</a>
@@ -307,13 +329,14 @@
   </div>
 </div>
 
+<!-- 下部固定ナビゲーションボタン -->
 <div class="fixed-footer-nav">
   <a href="../../../index.html">トップページ</a>
   <a href="../../../music.html">音楽素材</a>
 </div>
 
 <script>
-  // 各バージョンのデータ（タイトル、動画、背景、説明文）
+  // 各トラックのデータ管理（説明文を各曲固有のものへ変換可能）
   const tracks = [
     {
       title: "01. 愛殺",
@@ -370,15 +393,15 @@
     videoEl.src = currentData.video;
     videoEl.load();
 
-    // 3. 説明文の変更
+    // 3. 説明文の変更（フェード付き）
     const descEl = document.getElementById('mainDescription');
-    descEl.style.opacity = 0; // 一度フェードアウトさせてからテキストを変更
+    descEl.style.opacity = 0;
     setTimeout(() => {
       descEl.innerText = currentData.description;
       descEl.style.opacity = 1;
     }, 200);
 
-    // 4. リストのハイライト
+    // 4. リストのハイライト適用
     for (let i = 0; i < tracks.length; i++) {
       const item = document.getElementById(`item-${i}`);
       if (i === currentIndex) {
