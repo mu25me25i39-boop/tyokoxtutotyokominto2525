@@ -81,7 +81,7 @@
       max-height: none !important;
     }
 
-    /* メインサイトタイトル（追加） */
+    /* メインサイトタイトル */
     .site-main-title {
       text-align: center; 
       color: #ff007f; 
@@ -276,11 +276,11 @@
   <div class="card" style="width: min(850px, 95vw);">
     <div class="content">
       
-      <!-- 特設サイトメインタイトル（お勧め配置） -->
+      <!-- 特設サイトメインタイトル -->
       <h1 class="site-main-title">ジンギスカン特設サイト</h1>
 
       <!-- 曲名タイトル（JSで動的変更） -->
-      <h2 id="mainTitle">01. 30〜70歳のワンチャン</h2>
+      <h2 id="mainTitle">01. ガチ恋無差別オーディション ～砂糖水とオムツの向こう側～</h2>
 
       <div class="music-wrapper">
         
@@ -291,33 +291,32 @@
         <div class="music-list-container">
           
           <div class="music-item active" id="item-0">
-            <span class="music-title">01.30〜70歳のワンチャン</span>
-            <a href="o-dexisyon.aac" target="_blank" class="download-link">DOWNLOAD</a>
+            <span class="music-title">01. ガチ恋無差別オーディション ～砂糖水とオムツの向こう側～</span>
+            <a href="o-dexisyon.acc" target="_blank" class="download-link">DOWNLOAD</a>
           </div>
 
           <div class="music-item" id="item-1">
-            <span class="music-title">02.砂糖水</span>
-            <a href="愛殺02.aac" target="_blank" class="download-link">DOWNLOAD</a>
+            <span class="music-title">02. まさたか君から学ぶ砂糖水</span>
+            <a href="satomizu.aac" target="_blank" class="download-link">DOWNLOAD</a>
           </div>
 
           <div class="music-item" id="item-2">
-            <span class="music-title">03. 愛殺 -Caged Bird-</span>
-            <a href="愛殺03.aac" target="_blank" class="download-link">DOWNLOAD</a>
+            <span class="music-title">03. トリプル・バニー・パニック！</span>
+            <a href="bani.aac" target="_blank" class="download-link">DOWNLOAD</a>
           </div>
-
         
         </div>
 
         <!-- 各曲の説明文エリア（JSで動的変更） -->
         <p id="mainDescription">
-          世界はいつか消える。だからこそ、消える前の一瞬にすべてを賭ける。ネオンの光、溶ける氷、青白い画面の光景が織りなす現代の孤独の中で、語り手は「君」という毒に身を委ねる。依存と独占欲が混ざり合い、愛は自己を溶かしていく。生きることよりも、君と溺れる刹那を選ぶ者たちの物語。
+          2026.6.18 彼女オーディション開催！に向けての募集イメージソング。
         </p>
 
         <!-- SNSリンクまとめボタン -->
         <div class="sns-links-container">
           <a href="https://x.com/zingisukan_2525" target="_blank" class="sns-btn twitter">X (Twitter)</a>
-          <a href="https://www.tiktok.com/@zingisukan_kick?is_from_webapp=1&sender_device=pc" target="_blank" class="sns-btn kick">Kick</a>
-          <a href="https://www.tiktok.com/@zingisukan_kick?is_from_webapp=1&sender_device=pc" target="_blank" class="sns-btn tiktok">TikTok</a>
+          <a href="https://kick.com/zingisukan2525" target="_blank" class="sns-btn kick">Kick</a>
+          <a href="https://www.tiktok.com/@zingisukan_kick" target="_blank" class="sns-btn tiktok">TikTok</a>
         </div>
 
       </div>
@@ -332,31 +331,25 @@
 </div>
 
 <script>
-  // 各トラックのデータ管理（説明文を各曲固有のものへ変換可能）
+  // 各トラックのデータ管理（ご提示の情報を正確に適用）
   const tracks = [
     {
-      title: "01. 30〜70歳のワンチャン",
+      title: "01. ガチ恋無差別オーディション ～砂糖水とオムツの向こう側～",
       video: "o-dexisyon.webm",
       bg: "../../img/hero-miku.jpg",
-      description: "2026.6.18 彼女オーディション開催！のテーマソング。"
+      description: "2026.6.18 彼女オーディション開催！に向けての募集イメージソング。"
     },
     {
-      title: "02. 愛殺 -Sacrifice-",
-      video: "02-2.webm",
+      title: "02. まさたか君から学ぶ砂糖水",
+      video: "satomizu.webm",
       bg: "../../img/hero-miku2.jpg",
-      description: "【02. 曲説明文】ここにSacrifice（サクリファイス）バージョンの独自テキストを記述します。アレンジの違いや、曲調に込めたもうひとつのストーリーなどを自由に書き換えてください。"
+      description: "水のように砂糖水をガブ飲みする男、まさたか君が教える砂糖水のテーマソング。"
     },
     {
-      title: "03. 愛殺 -Caged Bird-",
-      video: "02-3.webm",
+      title: "03. トリプル・バニー・パニック！",
+      video: "bani.webm",
       bg: "../../img/hero-miku3.jpg",
-      description: "【03. 曲説明文】ここにCaged Bird（籠の鳥）バージョンの独自テキストを記述します。囚われた感情や、静かに狂っていくメロディの背景にある世界観を表現する文章に変えてください。"
-    },
-    {
-      title: "04. 愛殺 -End of the World-",
-      video: "02-4.webm",
-      bg: "../../img/hero-miku4.jpg",
-      description: "【04. 曲説明文】ここにEnd of the World（世界の終わり）バージョンの独自テキストを記述します。崩壊していく世界と、最後に残る2人の結末を連想させる終末感の漂う紹介文などに向いています。"
+      description: "2026.2.4 すすきので3人のバニーガール美女と夢の時間を過ごした想い出ソング。"
     }
   ];
 
