@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>音楽ギャラリー｜特別特設ページ</title>
+  <link rel="stylesheet" href="../../../assets/css/music.css">
+  
+  <style>
+    /* ベーススタイル */
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #050510;
+      font-family: sans-serif;
+      overflow-x: hidden;
+      padding-bottom: 120px !important;
+      position: relative;
+    }
+
+    /* うっすら背景画像を重ねるためのコンテナ */
+    .bg-slider {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      background-size: cover;
+      background-position: center;
+      transition: background-image 0.8s ease-in-out;
+      opacity: 0.3; /* うっすら映るように透明度を調整 */
+    }
+
+    /* 【赤いところ】 左右のクリック可能なエリア */
+    .nav-side-zone {
+      position: fixed;
+      top: 0;
+      width: 15vw; /* 画面端から15%の幅をクリック領域にする */
+      height: 100vh;
+      z-index: 10;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.2);
+      font-size: 2rem;
+      user-select: none;
+      transition: background 0.3s, color 0.3s;
+    }
+    .nav-side-zone:hover {
+      background: rgba(0, 208, 255, 0.05);
+      color: rgba(0, 208, 255, 0.6);
+    }
+    .nav-left { left: 0; }
+    .nav-right { right: 0; }
+
+    /* 中央のカード構造 */
+    .card {
+      height: auto !important;
+      max-height: none !important;
+      min-height: min-content;
+      display: block !important;
+      padding-bottom: 40px;
+      background: rgba(10, 10, 25, 0.75);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 208, 255, 0.2);
+      border-radius: 16px;
+      position: relative;
+      z-index: 5;
+      box-shadow: 0 0 30px rgba(0, 208, 255, 0.1);
+    }
+
+    /* 内包エリア */
+    .card .music-wrapper {
+      display: block !important;
+      height: auto !important;
+      max-height: none !important;
+    }
+
+    /* タイトルの光彩（黄色エリア1） */
+    .content h2 {
+      text-align: center;
+      color: #fff;
+      text-shadow: 0 0 10px #00d0ff, 0 0 20px #00d0ff;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      transition: opacity 0.3s;
+    }
+
+    /* 動画プレイヤー（黄色エリア2） */
+    .card .music-wrapper video { 
+      width: 100% !important; 
+      height: auto !important;
+      max-height: 100% !important;
+      object-fit: contain !important;
+      aspect-ratio: 16 / 9 !important;
+      border-radius: 12px; 
+      margin-bottom: 25px;
+      display: block !important;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      background: #000;
+    }
+    
+    .card .music-wrapper p { 
+      margin: 25px 0 0 0;
+      text-align: left;
+      line-height: 1.6;
+      color: #ddd;
+    }
+
+    /* 複数曲エリア */
+    .music-list-container {
+      margin: 20px 0;
+      background: rgba(0, 0, 0, 0.5); 
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 208, 255, 0.15);
+    }
+
+    .music-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+    .music-item:last-child {
+      border-bottom: none; 
+    }
+
+    /* 現在選択されている曲（黄色エリア3）のハイライト記述 */
+    .music-item.active {
+      background: rgba(0, 208, 255, 0.15);
+      border-left: 3px solid #00d0ff;
+    }
+
+    .music-title {
+      color: #888; /* 通常時は少し暗く */
+      font-size: 0.95rem;
+      font-weight: bold;
+      text-align: left;
+      padding-right: 15px;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+    /* アクティブな曲のタイトルを目立たせる */
+    .music-item.active .music-title {
+      color: #00d0ff;
+      text-shadow: 0 0 5px rgba(0, 208, 255, 0.6);
+    }
+
+    /* DOWNLOADボタン */
+    .music-item .download-link {
+      display: inline-block !important;
+      width: auto !important;
+      min-width: 110px !important;
+      text-align: center !important;
+      margin: 0 !important;           
+      padding: 8px 15px !important;
+      font-size: 0.8rem !important;
+      white-space: nowrap !important;
+      box-sizing: border-box !important;
+      color: #00d0ff;
+      border: 1px solid #00d0ff;
+      text-decoration: none;
+      border-radius: 4px;
+      background: rgba(0,0,0,0.3);
+      transition: 0.2s;
+    }
+    .music-item .download-link:hover {
+      background: #00d0ff;
+      color: #000;
+    }
+
+    /* 下部ナビゲーションボタン */
+    .fixed-footer-nav {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 15px;
+      z-index: 1000;
+      width: max-content;
+    }
+    
+    .fixed-footer-nav a {
+      display: inline-block;
+      padding: 10px 20px;
+      color: #00d0ff;
+      border: 2px solid #00d0ff;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      background: rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 10px #00d0ff, 0 0 20px #00d0ff inset;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+    
+    .fixed-footer-nav a:hover {
+      background: #00d0ff;
+      color: #000;
+      box-shadow: 0 0 20px #00d0ff, 0 0 30px #00d0ff inset;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        width: 90vw !important;
+      }
+      .nav-side-zone {
+        width: 10vw; /* スマホでは誤タップ防止でクリック判定を狭める */
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="bg-slider" id="bgSlider"></div>
+
+<div class="nav-side-zone nav-left" onclick="changeTrack(-1)">◀</div>
+<div class="nav-side-zone nav-right" onclick="changeTrack(1)">▶</div>
+
+<div class="gallery">
+  <div class="card" style="width: min(850px, 95vw);">
+    <div class="content">
+      
+      <h2 id="mainTitle">01. 愛殺</h2>
+
+      <div class="music-wrapper">
+        
+        <video id="mainVideo" src="02-1.webm" controls></video>
+
+        <div class="music-list-container">
+          
+          <div class="music-item active" id="item-0">
+            <span class="music-title">01. 愛殺</span>
+            <a href="愛殺01.aac" target="_blank" class="download-link">DOWNLOAD</a>
+          </div>
+
+          <div class="music-item" id="item-1">
+            <span class="music-title">02. 愛殺 -Sacrifice-</span>
+            <a href="愛殺02.aac" target="_blank" class="download-link">DOWNLOAD</a>
+          </div>
+
+          <div class="music-item" id="item-2">
+            <span class="music-title">03. 愛殺 -Caged Bird-</span>
+            <a href="愛殺03.aac" target="_blank" class="download-link">DOWNLOAD</a>
+          </div>
+
+          <div class="music-item" id="item-3">
+            <span class="music-title">04. 愛殺 -End of the World-</span>
+            <a href="愛殺04.aac" target="_blank" class="download-link">DOWNLOAD</a>
+          </div>
+        
+        </div>
+
+        <p>
+          世界はいつか消える。だからこそ、消える前の一瞬にすべてを賭ける。ネオンの光、溶ける氷、青白い画面の光景が織りなす現代の孤独の中で、語り手は「君」という毒に身を委ねる。依存と独占欲が混ざり合い、愛は自己を溶かしていく。生きることよりも、君と溺れる刹那を選ぶ者たちの物語。
+        </p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="fixed-footer-nav">
+  <a href="../../../index.html">トップページ</a>
+  <a href="../../../music.html">音楽素材</a>
+</div>
+
+<script>
+  // 各バージョンのデータ（タイトル、動画のパス、うっすら背景に流す画像のパス）
+  // ※画像や動画のパスは環境に合わせて適宜書き換えてください。
+  const tracks = [
+    {
+      title: "01. 愛殺",
+      video: "02-1.webm",
+      bg: "../../img/hero-miku.jpg" 
+    },
+    {
+      title: "02. 愛殺 -Sacrifice-",
+      video: "02-2.webm", // 必要に応じて実際の動画ファイル名に変えてください
+      bg: "../../img/hero-miku2.jpg" // 2曲目の時のうっすら背景画像
+    },
+    {
+      title: "03. 愛殺 -Caged Bird-",
+      video: "02-3.webm",
+      bg: "../../img/hero-miku3.jpg"
+    },
+    {
+      title: "04. 愛殺 -End of the World-",
+      video: "02-4.webm",
+      bg: "../../img/hero-miku4.jpg"
+    }
+  ];
+
+  let currentIndex = 0;
+
+  // 初期状態の設定
+  function initTrack() {
+    updateDOM();
+  }
+
+  // トラック変更処理（direction: 1 なら進む、-1 なら戻る）
+  function changeTrack(direction) {
+    currentIndex += direction;
+    
+    // ループ処理（最初と最後を繋ぐ）
+    if (currentIndex >= tracks.length) {
+      currentIndex = 0;
+    } else if (currentIndex < 0) {
+      currentIndex = tracks.length - 1;
+    }
+
+    updateDOM();
+  }
+
+  // 画面の表示（タイトル・動画・アクティブクラス・背景）を更新
+  function updateDOM() {
+    const currentData = tracks[currentIndex];
+
+    // 1. タイトルの変更
+    document.getElementById('mainTitle').innerText = currentData.title;
+
+    // 2. 動画の変更 (再生中だった場合は一度停止してソース差し替え)
+    const videoEl = document.getElementById('mainVideo');
+    videoEl.src = currentData.video;
+    videoEl.load();
+
+    // 3. リストのハイライト(activeクラス)の付け替え
+    for (let i = 0; i < tracks.length; i++) {
+      const item = document.getElementById(`item-${i}`);
+      if (i === currentIndex) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    }
+
+    // 4. 左右のうっすら背景画像の変更
+    document.getElementById('bgSlider').style.backgroundImage = `url('${currentData.bg}')`;
+  }
+
+  // ページ読み込み時に実行
+  window.onload = initTrack;
+</script>
+
+</body>
+</html>
