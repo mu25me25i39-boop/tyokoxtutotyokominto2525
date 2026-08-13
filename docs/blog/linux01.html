@@ -94,12 +94,12 @@
   </ul>
 
   <h3>■ デメリット</h3>
-  <p>Windows専用のソフト（特定の動画編集ソフト、Officeデスクトップ版、特殊な専用ツール等）や一部の周辺機器（専用ドライバを必要とするプリンター等）が使えない、または設定が難しい場合があります。また、カーネルレベルのAnti-Cheatを必須とする一部のPCゲームは動作しません。</p>
+  <p>Windows専用のソフト（特定の動画編集ソフト、Officeデスクトップ版、特殊な専用ツール等）や一部の周辺機器（専用ドライバを必要とするプリンター等）が使えない、または設定が難しい場合があります。また、カーネルレベルのAnti-Cheat（不正防止ソフト）を必須とする一部のPCゲームは動作しません。</p>
 
   <h3>■ 結論</h3>
   <p>Webブラウザ上で動作する「Microsoft 365 (Web版Office)」や「Google Workspace」の利用、動画視聴、生配信の閲覧、Web閲覧、プログラミングや開発が中心であれば、Linuxに乗り換えるメリットは絶大です。</p>
 
-  <p>※今回は、「安全性」「動作の軽快さ」「最新性」のバランスに優れた、汎用性の高いOSである<strong>Fedora Workstation (Fedora 44準拠)</strong>を導入します。</p>
+  <p>※今回は、「安全性」「動作の軽快さ」「最新性」のバランスに優れた、汎用性の高いOSである<strong>Fedora Workstation (Fedora 44準拠)</strong>を導入します。（※標準のデスクトップ環境はGNOMEです）</p>
 
   <h3>■ OS・セキュリティ環境の比較表</h3>
   <table style="width:100%; border-collapse: collapse; margin: 15px 0; font-size: 0.9rem; line-height: 1.5;">
@@ -179,13 +179,14 @@
   </ul>
 
   <h3>■ 手順</h3>
-  <h4>1. Rufus（書き込みソフト）のダウンロード</h4>
-  <p>公式サイト（<a href="https://rufus.ie/ja/" target="_blank" rel="noopener noreferrer">https://rufus.ie/ja/</a>）より最新のPortable版（rufus-x.xxp.exe）をダウンロードします。</p>
+  <h4>1. 書き込みソフト（Rufus / Fedora Media Writer）の準備</h4>
+  <p>Rufus公式サイト（<a href="https://rufus.ie/ja/" target="_blank" rel="noopener noreferrer">https://rufus.ie/ja/</a>）より最新のPortable版（rufus-x.xxp.exe）をダウンロードします。<br>
+  ※Fedora公式の書き込みツール「Fedora Media Writer」を使用することでも同様に作成可能です。</p>
 
   <h4>2. FedoraのISOイメージをダウンロードと整合性検証（推奨）</h4>
   <p>公式サイト（<a href="https://fedoraproject.org/workstation/download/" target="_blank" rel="noopener noreferrer">https://fedoraproject.org/workstation/download/</a>）より「Fedora Workstation Live ISO」をダウンロードします。</p>
   <p><strong>【セキュリティのワンポイント：イメージファイルの検証】</strong><br>
-  ダウンロードページにある「CHECKSUM」ファイルと照合し、PowerShellで `Get-FileHash ./Fedora-Workstation-Live-x86_64-xx.iso` を実行して、ハッシュ値（SHA256）が一致することを確認すると改ざんや破損を防げて確実です。</p>
+  ダウンロードページにある「CHECKSUM」ファイルと照合し、PowerShellで `Get-FileHash ./Fedora-Workstation-Live-x86_64-xx.iso` を実行してハッシュ値（SHA256）が一致することを確認します。さらに厳格化する場合はOpenPGP（GPG）署名の検証も行うことで、ファイルの破損や改ざんを確実に防止できます。</p>
 
   <h4>3. USBメモリにISOイメージを書き込む</h4>
   <ul>
@@ -193,7 +194,7 @@
     <li>Rufusを起動し、「デバイス」で挿入したUSBを選択します。</li>
     <li>「ブートの選択」で、ダウンロードしたFedoraのISOファイルを選択し、「スタート」をクリックします。</li>
   </ul>
-  <p>※「ISOイメージモード / DDイメージモード」を選択する画面が出た場合は「ISOイメージモード（推奨）」を選択します。<br>
+  <p>※「ISOイメージモード / DDイメージモード」を選択する画面が出た場合は、画面の案内に従い「ISOイメージモード（推奨）」を選択して実行します。<br>
   ※書き込み完了後、USBメモリを安全に取り外します。</p>
 
   <h4>4. 導入対象のPCをUSBから起動する</h4>
@@ -252,7 +253,8 @@
   <h4>● <a href="https://protonvpn.com/ja" target="_blank" rel="noopener noreferrer">Proton VPN</a>（Proton公式のLinuxアプリ）</h4>
   <p>通信の保護および公共Wi-Fi等での盗聴を防ぎます。（※Fedora 44環境における公式推奨セットアップ手順）</p>
 
-  <p>1. 公式リポジトリパッケージの登録</p>
+  <p>1. 公式リポジトリパッケージの登録<br>
+  <small>※URL内のパッケージバージョン（`1.0.4-1`等）は将来変更される可能性があるため、公式手順の最新状態をご確認ください。</small></p>
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
     <code>wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d' ' -f 3)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.4-1.noarch.rpm"</code>
@@ -276,7 +278,7 @@
 
   <p>【おすすめ推奨設定（セキュリティ重視構成）】<br>
   アプリを起動してログイン後、設定（Settings）より以下のように設定します。<br>
-  【NetShield：ON】【Kill switch：ON】【Split tunneling：OFF（※LinuxではKill Switchとの併用制限があるため）】【Protocol：WireGuard】【VPN Accelerator：ON】【IPv6：基本はデフォルト設定】【Auto connect：ON】</p>
+  【NetShield：ON】【Kill switch：ON（より厳格な遮断を求める場合は Advanced Kill Switch を推奨）】【Split tunneling：OFF（※LinuxではKill Switchとの併用制限があるため）】【Protocol：WireGuard】【VPN Accelerator：ON】【IPv6：基本はデフォルト設定】【Auto connect：ON】</p>
 
   <h4>● <a href="https://proton.me/ja/pass" target="_blank" rel="noopener noreferrer">Proton Pass</a></h4>
   <p>Firefoxのアドオンストア（<a href="https://addons.mozilla.org/ja/firefox/addon/proton-pass/" target="_blank" rel="noopener noreferrer">Proton Pass ページ</a>）より追加。暗号化されたパスワードマネージャー。パスワードの使い回しを防ぎ、アドレスの隠蔽（メールエイリアス機能）が可能です。</p>
@@ -318,7 +320,7 @@
   <p>PCを安全に保つため、必要に応じて以下のメンテナンスを行います。（※毎日起動時に実行する必要はありません）</p>
 
   <h3>■ ① 通常のシステム更新（週1回〜月1回程度）</h3>
-  <p>システムパッケージとFlatpakアプリを更新します。（通常の「ソフトウェア」アプリからの更新でも問題ありません）</p>
+  <p>システムパッケージとFlatpakアプリを更新します。（※重大な脆弱性が報じられた場合は、定期更新を待たずに即座に実行してください）</p>
 
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
@@ -369,6 +371,7 @@
   <p>どんなにセキュリティを高めても、SSDの突然の物理故障、PCの落下・破損、パスフレーズの紛失、ランサムウェア被害、人間による誤操作を防ぐことはできません。</p>
   <ul>
     <li><strong>3-2-1バックアップルール：</strong> 重要なデータは「<strong>3つ以上のコピー</strong>を作成し、<strong>2種類以上の異なる媒体</strong>に保存し、そのうち<strong>1つはPCから物理的・論理的に分離された場所（クラウドや取り外した外付けSSD）</strong>」に保管することを強く推奨します。</li>
+    <li><strong>復元テストの実施：</strong> バックアップを取るだけでなく、「実際にデータを復元して正常に開けるか」を定期的にテストしてください。データ破損による復元不能を防ぎます。</li>
     <li><strong>物理的切り離し：</strong> 外付けSSD/HDD等へバックアップを取る場合、ランサムウェア被害などによる同時破損を防ぐため、<strong>バックアップ完了後はPCから常時接続したままにせず必ず取り外して保管</strong>してください。</li>
     <li>Fedora標準搭載の「バックアップ（Déjà Dup）」ツールなどを利用すると、自動暗号化バックアップが簡単に構築できます。</li>
   </ul>
