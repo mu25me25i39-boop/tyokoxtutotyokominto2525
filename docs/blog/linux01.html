@@ -79,7 +79,7 @@
   <h3>■ メリット</h3>
   <ul>
     <li><strong>高度なアクセス制御と防御構造：</strong> Fedoraは強力な標準ファイアウォール（firewalld）や、システム侵入後の影響を最小限に抑える強制アクセス制御（SELinux）をデフォルトで標準稼働させています。重い常駐型サードパーティ製セキュリティソフトを追加せずとも、強固な権限分離構造を持っています。</li>
-    <li><strong>透明性とプライバシー保護：</strong> OS自体による不可視なログ・行動データの収集（テレメトリ）が極めて少なく、自らのPCのデータ制御権を取り戻せます。</li>
+    <li><strong>透明性とプライバシー保護：</strong> OSや利用するソフトウェアについて、収集されるデータや通信内容をユーザー自身が確認・選択しやすく、Windowsとは異なるプライバシー管理が可能です。</li>
     <li><strong>コスト・保守性の高さ：</strong> OS自体は完全に無料で利用できます。Windowsのようにライセンス購入費用がかからず、サポート終了時もPC本体を買い替えることなく、新しいバージョンのFedoraへ無料でアップグレードして使い続けられます。（※Fedoraは各バージョン約13ヶ月間サポートされます）</li>
     <li><strong>軽量で古いPCも復活：</strong> Windows 11では動作が重くカクつく低スペックパソコンでも、Linuxならサクサク動作します。PCの廃棄や無駄なパーツ増設（買い替え）を回避できます。</li>
   </ul>
@@ -107,7 +107,7 @@
         <td style="padding: 10px; border: 1px solid #30363d;"><strong>マルウェア防御</strong></td>
         <td style="padding: 10px; border: 1px solid #30363d;">◯（Microsoft Defender標準搭載）</td>
         <td style="padding: 10px; border: 1px solid #30363d;">◎（製品によって検知・防御機能を強化）</td>
-        <td style="padding: 10px; border: 1px solid #30363d;">◯〜◎（Linux向けは比較的小さいが適切な運用が必要）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">◯〜◎（Linux向けマルウェアはWindows向けと傾向が異なるが、適切な運用が必要）</td>
       </tr>
       <tr>
         <td style="padding: 10px; border: 1px solid #30363d;"><strong>アクセス制御・防御構造</strong></td>
@@ -191,7 +191,7 @@
   <ul>
     <li>Fedoraを入れたいPCにUSBメモリを挿入し、電源を入れます。</li>
     <li>電源オン直後に F12（または F2 / F11 / Delete ※メーカーによる）を連打し、ブートメニューを開きます。</li>
-    <li>ブートメニューから「USB Flash Drive」を選択して起動すると、Fedoraのライブ環境（お試し画面）が立ち上がります。</li>
+    <li>ブートメニューから「USB Flash Drive」を選択して起動すると、Fedoraのライブ環境（お試画面）が立ち上がります。</li>
   </ul>
 
   <h4>5. インストール手順に従う</h4>
@@ -214,7 +214,7 @@
   </ol>
 
   <p><strong>【重要：セキュリティと設定する2つのパスワードについて】</strong><br>
-  ・<strong>1つ目（ストレージ暗号化）：</strong> PCの紛失・盗難時にSSDを取り出されてデータを直接読み出されるリスクを防ぎます。解除情報を失うとデータ復旧は不可となります。<br>
+  ・<strong>1つ目（ストレージ暗号化）：</strong> PCの紛失・盗難時にSSDを取り出されてデータを直接読み出されるリスクを防ぎます。暗号化解除に必要な認証情報を失うと、暗号化されたストレージ上のデータへアクセスできなくなる可能性があります。重要なデータは必ず別媒体にもバックアップしてください。<br>
   ・<strong>2つ目（ユーザーアカウント）：</strong> 日常のログインや管理権限コマンド（sudo）の実行時に使用します。<br>
   ※セキュリティ上、2つのパスワードは<strong>必ず別々に設定することを強く推奨</strong>します。（※ユーザーパスワードは導入後に「設定 ＞ ユーザー」または `passwd` コマンドからいつでも変更可能です）</p>
 
@@ -259,7 +259,7 @@
 
   <h3>■ 有料セキュリティ・プライバシー ツール (Proton)</h3>
 
-  <h4>● <a href="https://protonvpn.com/ja" target="_blank" rel="noopener noreferrer">Proton VPN</a>（Fedora公式サポートアプリ）</h4>
+  <h4>● <a href="https://protonvpn.com/ja" target="_blank" rel="noopener noreferrer">Proton VPN</a>（Proton公式のLinuxアプリ）</h4>
   <p>通信の保護および公共Wi-Fi等での盗聴を防ぎます。（※Fedora 44環境における公式推奨セットアップ手順）</p>
 
   <p>1. 公式リポジトリパッケージの登録</p>
@@ -268,10 +268,10 @@
     <code>wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d' ' -f 3)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.4-1.noarch.rpm" && sudo dnf install ./protonvpn-stable-release-1.0.4-1.noarch.rpm -y</code>
   </div>
 
-  <p>2. パッケージ情報の更新とアプリ本体のインストール</p>
+  <p>2. パッケージキャッシュの更新とアプリ本体のインストール</p>
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>sudo dnf check-update --refresh && sudo dnf install proton-vpn-gnome-desktop -y</code>
+    <code>sudo dnf makecache --refresh && sudo dnf install proton-vpn-gnome-desktop -y</code>
   </div>
 
   <p>【おすすめ推奨設定（セキュリティ重視構成）】<br>
@@ -283,7 +283,8 @@
 
   <h3>■ オンライン確認ツール・外部サービス</h3>
   <ul>
-    <li><a href="https://www.virustotal.com/" target="_blank" rel="noopener noreferrer">VirusTotal</a>： ダウンロードしたファイルや不審なURLは、開く前にこちらへアップロード・入力して多角的に安全性を判定します。</li>
+    <li><a href="https://www.virustotal.com/" target="_blank" rel="noopener noreferrer">VirusTotal</a>： ダウンロードしたファイルや不審なURLは、開く前にこちらへアップロード・入力して多角的に安全性を判定します。<br>
+    <small style="color: #f85149;">※機密情報・個人情報・社内情報などを含むファイルは、利用規約や組織のポリシーを確認せずにアップロードしないでください。</small></li>
   </ul>
 
 </details>
