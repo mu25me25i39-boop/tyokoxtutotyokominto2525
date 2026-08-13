@@ -72,52 +72,64 @@
 
   <h3>■ デメリット</h3>
   <p>Windows専用のソフト（特定の動画編集ソフトやセキュリティソフトなど）や一部の周辺機器（プリンター等）が使えない、または設定が難しい場合があります。また、一部のPCゲーム（Anti-Cheat搭載ゲーム等）は動作しません。</p>
-<h3>■ セキュリティ・動作環境の比較表</h3>
-  <table style="width:100%; border-collapse: collapse; margin: 15px 0; font-size: 0.95rem;">
+<h3>■ OS・セキュリティ環境の比較表</h3>
+  <table style="width:100%; border-collapse: collapse; margin: 15px 0; font-size: 0.9rem; line-height: 1.5;">
     <thead>
       <tr style="background-color: #21262d; color: #f0f6fc; text-align: left;">
-        <th style="padding: 10px; border: 1px solid #30363d;">比較項目</th>
-        <th style="padding: 10px; border: 1px solid #30363d;">Windows 11<br>（標準機能のみ）</th>
-        <th style="padding: 10px; border: 1px solid #30363d;">Windows 11<br>（セキュリティソフト有）</th>
-        <th style="padding: 10px; border: 1px solid #30363d; background-color: #1f3a5f;">Linux (Fedora)<br>（推奨設定）</th>
+        <th style="padding: 10px; border: 1px solid #30363d; width: 22%;">比較項目</th>
+        <th style="padding: 10px; border: 1px solid #30363d; width: 26%;">Windows 11<br>（標準機能のみ）</th>
+        <th style="padding: 10px; border: 1px solid #30363d; width: 26%;">Windows 11<br>（セキュリティソフト有）</th>
+        <th style="padding: 10px; border: 1px solid #30363d; width: 26%; background-color: #1f3a5f;">Linux (Fedora)<br>（推奨設定）</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td style="padding: 10px; border: 1px solid #30363d;"><strong>マルウェア防御</strong></td>
-        <td style="padding: 10px; border: 1px solid #30363d;">△（Defender標準）</td>
-        <td style="padding: 10px; border: 1px solid #30363d;">◯（高い検知力）</td>
-        <td style="padding: 10px; border: 1px solid #30363d;">◎（標的自体が少なく強固）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">◯（Microsoft Defender標準搭載）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">◎（製品によって検知・防御機能を強化）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">◯〜◎（Linux向けは比較的小さいが適切な運用が必要）</td>
       </tr>
       <tr>
         <td style="padding: 10px; border: 1px solid #30363d;"><strong>アクセス制御・防御構造</strong></td>
-        <td style="padding: 10px; border: 1px solid #30363d;">△（一般的）</td>
-        <td style="padding: 10px; border: 1px solid #30363d;">◯（ソフト依存）</td>
-        <td style="padding: 10px; border: 1px solid #30363d;">◎（SELinux + firewalld標準）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">◯（UAC、Windows Security等）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">◯〜◎（導入製品・設定に依存）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">◎（SELinux、firewalld等を標準利用）</td>
+      </tr>
+      <tr>
+        <td style="padding: 10px; border: 1px solid #30363d;"><strong>ユーザー権限管理</strong></td>
+        <td style="padding: 10px; border: 1px solid #30363d;">◯（UAC・管理者権限）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">◯（Windowsの権限構造に従う）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">◎（sudo・root権限の明確な分離）</td>
       </tr>
       <tr>
         <td style="padding: 10px; border: 1px solid #30363d;"><strong>プライバシー保護</strong></td>
-        <td style="padding: 10px; border: 1px solid #30363d;">×（OSテレメトリ/ログ収集多）</td>
-        <td style="padding: 10px; border: 1px solid #30363d;">×（OSによるテレメトリは継続）</td>
-        <td style="padding: 10px; border: 1px solid #30363d;">◎（トラッキングほぼ無し）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">△（テレメトリ等のデータ収集あり）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">△（セキュリティソフト側のデータ収集も確認が必要）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">◯〜◎（OSの構成や利用サービスを自分で選択・管理可能）</td>
       </tr>
       <tr>
         <td style="padding: 10px; border: 1px solid #30363d;"><strong>動作の軽さ・PC負荷</strong></td>
-        <td style="padding: 10px; border: 1px solid #30363d;">◯（標準的）</td>
-        <td style="padding: 10px; border: 1px solid #30363d;">×（常駐スキャン等で重くなりやすい）</td>
-        <td style="padding: 10px; border: 1px solid #30363d;">◎（非常に軽量・サクサク）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">◯（一般的）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">△〜◯（常駐保護による負荷が発生する場合あり）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">◎（比較的軽量。デスクトップ環境・構成による）</td>
       </tr>
       <tr>
         <td style="padding: 10px; border: 1px solid #30363d;"><strong>コスト・サポート</strong></td>
-        <td style="padding: 10px; border: 1px solid #30363d;">◯（ライセンス料/期限有）</td>
-        <td style="padding: 10px; border: 1px solid #30363d;">×（ソフトの年間更新料が発生）</td>
-        <td style="padding: 10px; border: 1px solid #30363d;">◎（完全無料・永続更新可能）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">◯（Windowsライセンスが必要）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">△（製品によって有料更新が発生）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">◎（OS自体は無料、長期的に利用可能）</td>
       </tr>
       <tr>
         <td style="padding: 10px; border: 1px solid #30363d;"><strong>ソフトウェア互換性</strong></td>
-        <td style="padding: 10px; border: 1px solid #30363d;">◎（ほぼ全てのPCソフト）</td>
-        <td style="padding: 10px; border: 1px solid #30363d;">◎（ほぼ全てのPCソフト）</td>
-        <td style="padding: 10px; border: 1px solid #30363d;">△（Webアプリ中心 / 一部専用ソフト不可）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">◎（Windows向けソフトが非常に豊富）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">◎（Windows環境と同じ）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">△〜◯（対応ソフトは増加傾向だが、専用ソフトは一部非対応）</td>
+      </tr>
+      <tr>
+        <td style="padding: 10px; border: 1px solid #30363d;"><strong>総合的な評価</strong></td>
+        <td style="padding: 10px; border: 1px solid #30363d;"><strong>◎ 利便性・標準防御のバランス</strong><br><small>一般用途には十分強力</small></td>
+        <td style="padding: 10px; border: 1px solid #30363d;"><strong>◎ 高度な検知機能の追加</strong><br><small>コストと負荷のトレードオフ</small></td>
+        <td style="padding: 10px; border: 1px solid #30363d;"><strong>◎ 透明性・制御性の高さ</strong><br><small>適切な設定・運用により極めて強固</small></td>
       </tr>
     </tbody>
   </table>
