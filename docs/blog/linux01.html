@@ -53,6 +53,15 @@
       border-left: 3px solid #58a6ff;
     }
 
+    /* 免責・注意事項ボックス */
+    .warning-box {
+      background-color: #1c1917;
+      border: 1px solid #7c2d12;
+      border-radius: 6px;
+      padding: 15px;
+      margin: 25px 0 15px 0;
+    }
+
     /* スマホ画面（幅768px以下）での見出しサイズ調整 */
     @media (max-width: 768px) {
       .blog-article h1 {
@@ -107,13 +116,13 @@
         <td style="padding: 10px; border: 1px solid #30363d;"><strong>マルウェア防御</strong></td>
         <td style="padding: 10px; border: 1px solid #30363d;">◯（Microsoft Defender標準搭載）</td>
         <td style="padding: 10px; border: 1px solid #30363d;">◎（製品によって検知・防御機能を強化）</td>
-        <td style="padding: 10px; border: 1px solid #30363d;">◯〜◎（Linux向けマルウェアはWindows向けと傾向が異なるが、適切な運用が必要）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">◯〜◎（標準の権限分離・SELinux等による防御に加え、適切な更新・運用が必要）</td>
       </tr>
       <tr>
         <td style="padding: 10px; border: 1px solid #30363d;"><strong>アクセス制御・防御構造</strong></td>
         <td style="padding: 10px; border: 1px solid #30363d;">◯（UAC、Windows Security等）</td>
         <td style="padding: 10px; border: 1px solid #30363d;">◯〜◎（導入製品・設定に依存）</td>
-        <td style="padding: 10px; border: 1px solid #30363d;">◎（SELinux、firewalld等を標準利用）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">◎（SELinux、firewalld、Secure Boot等を活用した多層防御）</td>
       </tr>
       <tr>
         <td style="padding: 10px; border: 1px solid #30363d;"><strong>ユーザー権限管理</strong></td>
@@ -137,7 +146,7 @@
         <td style="padding: 10px; border: 1px solid #30363d;"><strong>コスト・サポート</strong></td>
         <td style="padding: 10px; border: 1px solid #30363d;">◯（Windowsライセンスが必要）</td>
         <td style="padding: 10px; border: 1px solid #30363d;">△（製品によって有料更新が発生）</td>
-        <td style="padding: 10px; border: 1px solid #30363d;">◎（OS自体は無料、長期的に利用可能）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">◎（OS自体は無料。定期的に新バージョンへアップグレード可能）</td>
       </tr>
       <tr>
         <td style="padding: 10px; border: 1px solid #30363d;"><strong>ソフトウェア互換性</strong></td>
@@ -149,7 +158,7 @@
         <td style="padding: 10px; border: 1px solid #30363d;"><strong>総合的な評価</strong></td>
         <td style="padding: 10px; border: 1px solid #30363d;"><strong>◎ 利便性・標準防御のバランス</strong><br><small>一般用途には十分強力</small></td>
         <td style="padding: 10px; border: 1px solid #30363d;"><strong>◎ 高度な検知機能の追加</strong><br><small>コストと負荷のトレードオフ</small></td>
-        <td style="padding: 10px; border: 1px solid #30363d;"><strong>◎ 透明性・制御性の高さ</strong><br><small>適切な設定・運用により極めて強固</small></td>
+        <td style="padding: 10px; border: 1px solid #30363d;"><strong>◎ 透明性・制御性の高さ</strong><br><small>SELinux、firewalld、Secure Boot等を活用した多層防御を構築可能</small></td>
       </tr>
     </tbody>
   </table>
@@ -189,7 +198,7 @@
 
   <h4>4. 導入対象のPCをUSBから起動する</h4>
   <p><strong>【セキュリティのワンポイント：Secure Boot（機能維持）】</strong><br>
-  UEFI対応PCでは、Secure Bootを可能な限り有効にしたままFedoraを導入してください。Secure Bootは起動時に許可された署名済みブートコンポーネントを検証し、OS起動前の改ざんに対する防御に役立ちます。特別な理由がない限り、Secure Bootを無効化する必要はありません。</p>
+  UEFI対応PCでは、Secure Bootを可能な限り有効にしたままFedoraを導入してください。Secure Bootは起動時に許可された署名済みブートコンポーネントを検証し、OS起動前の改ざんに対する防御に役立ちます。無効化するとこの保護機能が失われるため、特別な理由がない限り有効のまま使用します。</p>
   <ul>
     <li>Fedoraを入れたいPCにUSBメモリを挿入し、電源を入れます。</li>
     <li>電源オン直後に F12（または F2 / F11 / Delete ※メーカーによる）を連打し、ブートメニューを開きます。</li>
@@ -238,7 +247,7 @@
     <div class="defense-item"><strong>3-2-1バックアップ：</strong> システム障害・ランサムウェア被害・誤操作時の最終防衛線</div>
   </div>
 
-  <h3>■ 有料セキュリティ・プライバシー ツール (Proton)</h3>
+  <h3>■ プライバシー・通信保護ツール（Proton）</h3>
 
   <h4>● <a href="https://protonvpn.com/ja" target="_blank" rel="noopener noreferrer">Proton VPN</a>（Proton公式のLinuxアプリ）</h4>
   <p>通信の保護および公共Wi-Fi等での盗聴を防ぎます。（※Fedora 44環境における公式推奨セットアップ手順）</p>
@@ -267,7 +276,7 @@
 
   <p>【おすすめ推奨設定（セキュリティ重視構成）】<br>
   アプリを起動してログイン後、設定（Settings）より以下のように設定します。<br>
-  【NetShield：ON】【Kill switch：ON】【Split tunneling：OFF（※LinuxではKill Switchとの併用制限があるため）】【Protocol：WireGuard】【VPN Accelerator：ON】【IPv6：必要に応じて設定】【Auto connect：ON】</p>
+  【NetShield：ON】【Kill switch：ON】【Split tunneling：OFF（※LinuxではKill Switchとの併用制限があるため）】【Protocol：WireGuard】【VPN Accelerator：ON】【IPv6：基本はデフォルト設定】【Auto connect：ON】</p>
 
   <h4>● <a href="https://proton.me/ja/pass" target="_blank" rel="noopener noreferrer">Proton Pass</a></h4>
   <p>Firefoxのアドオンストア（<a href="https://addons.mozilla.org/ja/firefox/addon/proton-pass/" target="_blank" rel="noopener noreferrer">Proton Pass ページ</a>）より追加。暗号化されたパスワードマネージャー。パスワードの使い回しを防ぎ、アドレスの隠蔽（メールエイリアス機能）が可能です。</p>
@@ -348,14 +357,33 @@
   === Firewalld ===<br>
   running （※ファイアウォールが正常稼働中）</p>
 
+  <p><strong>【発展編：詳細なファイアウォール設定の確認】</strong><br>
+  現在適用されているゾーンや公開されているサービスを確認したい場合は、以下を実行します。外部から意図しないサービスが公開されていないことを確認できます。</p>
+
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>sudo firewall-cmd --get-active-zones && sudo firewall-cmd --list-all</code>
+  </div>
+
   <h3>■ ⑤ 最終防衛線：データバックアップ（3-2-1ルールの推奨）</h3>
   <p>どんなにセキュリティを高めても、SSDの突然の物理故障、PCの落下・破損、パスフレーズの紛失、ランサムウェア被害、人間による誤操作を防ぐことはできません。</p>
   <ul>
     <li><strong>3-2-1バックアップルール：</strong> 重要なデータは「<strong>3つ以上のコピー</strong>を作成し、<strong>2種類以上の異なる媒体</strong>に保存し、そのうち<strong>1つはPCから物理的・論理的に分離された場所（クラウドや取り外した外付けSSD）</strong>」に保管することを強く推奨します。</li>
+    <li><strong>物理的切り離し：</strong> 外付けSSD/HDD等へバックアップを取る場合、ランサムウェア被害などによる同時破損を防ぐため、<strong>バックアップ完了後はPCから常時接続したままにせず必ず取り外して保管</strong>してください。</li>
     <li>Fedora標準搭載の「バックアップ（Déjà Dup）」ツールなどを利用すると、自動暗号化バックアップが簡単に構築できます。</li>
   </ul>
 
 </details>
+
+<!-- 免責・注意事項 -->
+<div class="warning-box">
+  <h3 style="margin-top: 0; color: #f85149;">■ セキュリティについての重要な注意</h3>
+  <p style="margin-bottom: 0; font-size: 0.9rem; line-height: 1.6; color: #c9d1d9;">
+    本ガイドで紹介している設定や手順は、PC環境の安全性を高めるための「多層防御」のアプローチであり、マルウェア感染、フィッシング詐欺、アカウント乗っ取り、データ消失などを完全に防止することを保証するものではありません。<br>
+    OS・ソフトウェアを最新の状態に保つ、不審なリンクやファイルを不用意に開かない、管理者権限（sudo）を安易に与えない、パスワードを使い回さない、重要なデータを二重・三重にバックアップするといった基本的な運用ルールを継続することが同様に重要です。<br>
+    特に `sudo` を伴うコマンドはシステム全体へ影響を与えるため、内容や動作を理解したうえで慎重に実行してください。
+  </p>
+</div>
 
 <div class="back-row">
   <a href="../index.html" class="back-btn">ホーム</a>
