@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linux(Fedora)の導入ガイド | ラプラスのアーカイブ</title>
+
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="hero__overlay">
+    <h1 class="hero__title">Linux(Fedora)の導入</h1>
+    <p class="hero__text">deep character on / 2.34e-9122511</p>
+
+    <!-- ▼ 画像の上に置くアコーディオン（ボックスなし） -->
+    <div class="hero__accordion">
+
+      <details>
+        <summary>〈概要〉WindowsよりLinuxを選ぶ理由</summary>
+        <p><strong>【メリット】</strong><br>
+        ・<strong>セキュリティ・プライバシー面：</strong> Linuxは強固なファイアウォール（firewalld）や強制アクセス制御（SELinux）を標準備えています。Windowsのように重い常駐型サードパーティ製セキュリティソフトを入れずとも高い防御力を持っています。ネットワーク防御、ブラウザ分離・隔離、トラッキング防止にも優れ、OS自体によるログ追跡も少ないのが特徴です。<br><br>
+        ・<strong>種類が豊富：</strong> 初心者向けの「Linux Mint」や、最新技術と安定性を兼ね備えた「Fedora」など、用途に合わせて選べます。<br><br>
+        ・<strong>料金面・サポート期限：</strong> 完全に無料で導入・アップデートが可能です。Windowsのように購入費用がかからず、OSのサポート終了による強制的な買い替えリスクもありません。<br><br>
+        ・<strong>軽量で古いPCも復活：</strong> Windows 11では動作が重くカクつく低スペックパソコンでも、Linuxならサクサク動作します。PCの廃棄や無駄なパーツ増設を回避できます。<br><br>
+        <strong>【デメリット】</strong><br>
+        Windows専用ソフトや一部周辺機器が使えない、または設定が難しい場合があります。また、一部のPCゲーム（Anti-Cheat搭載等）は動作しません。<br><br>
+        <strong>【結論】</strong><br>
+        Webブラウザ利用（Office Web版、Google Workspace）、動画視聴、事務作業、プログラミングや開発が中心であれば、乗り換えるメリットは絶大です。今回は「安全性」「動作の軽快さ」「最新性」のバランスが最も優れている万能かつ強力なOS、<strong>Fedora Workstation</strong>を導入します。</p>
+      </details>
+
+      <details>
+        <summary>〈手順〉Fedora Workstation の導入方法</summary>
+        <p>※Windows環境で作業を行います。<br><br>
+        <strong>【必要なもの】</strong><br>
+        ・作業用のWindows PC<br>
+        ・8GB以上のUSBメモリ（内部データは全消去されるため事前バックアップ必須）<br>
+        ・Fedoraを導入したいパソコン<br><br>
+        <strong>1. Rufus（書き込みソフト）のダウンロード</strong><br>
+        公式サイト（<a href="https://rufus.ie/ja/" target="_blank" rel="noopener">rufus.ie</a>）より最新のPortable版をダウンロードします。<br><br>
+        <strong>2. FedoraのISOイメージをダウンロード</strong><br>
+        公式サイト（<a href="https://fedoraproject.org/workstation/download/" target="_blank" rel="noopener">fedoraproject.org</a>）より「Fedora Workstation Live ISO」をダウンロードします。<br><br>
+        <strong>3. USBメモリにISOイメージを書き込む</strong><br>
+        ・USBを接続し、Rufusで「デバイス」を選択。<br>
+        ・「ブートの選択」でダウンロードしたISOファイルを選択し「スタート」をクリック。<br>
+        ※画面指示が出た場合は「ISOイメージモード（推奨）」を選択します。<br><br>
+        <strong>4. 導入対象のPCをUSBから起動する</strong><br>
+        ・対象PCにUSBを挿し、電源オン直後に F12（または F2 / F11 / Delete）を連打してブートメニューを開き、「USB Flash Drive」を選択します。<br><br>
+        <strong>5. インストール手順に従う</strong><br>
+        ・「Install to Hard Drive」をクリック ＞ 言語：「日本語」 ＞ インストール先SSD/HDDを選択。<br>
+        ・暗号化設定 (LUKS)：「データを暗号化する」にチェックしパスフレーズ設定（任意）。<br>
+        ・「サードパーティのリポジトリを有効にする」にチェックを入れてインストールを開始します。</p>
+      </details>
+
+      <details>
+        <summary>〈設定〉ツールの追加・セキュリティ設定</summary>
+        <p><strong>～ ClamAV + ClamTk（ウイルススキャン機能） ～</strong><br>
+        ターミナルを開いて実行します。<br>
+        ・パッケージインストール：<br>
+        <code>sudo dnf install clamav clamav-update clamtk -y</code><br>
+        ・初回定義更新：<br>
+        <code>sudo freshclam</code><br><br>
+
+        <strong>～ ブラウザ（Firefox）のおすすめ拡張機能 ～</strong><br>
+        ・<strong>uBlock Origin:</strong> 広告・トラッカー遮断<br>
+        ・<strong>Privacy Badger:</strong> 未知のトラッカー自動検知<br>
+        ・<strong>ClearURLs:</strong> 追跡用パラメータ削除<br>
+        ・<strong>Malwarebytes Browser Guard:</strong> 詐欺・フィッシングブロック<br><br>
+
+        <strong>～ 有料セキュリティ・プライバシー ツール ～</strong><br>
+        ・<strong>Proton VPN（公式Linuxアプリ）</strong><br>
+        【コマンド】<br>
+        <code>wget https://repo.protonvpn.com/fedora-$(rpm -E %fedora)-relative/protonvpn-stable-release/protonvpn-stable-release-1.0.3-1.noarch.rpm</code><br>
+        <code>sudo dnf install ./protonvpn-stable-release-1.0.3-1.noarch.rpm -y</code><br>
+        <code>sudo dnf check-update --refresh && sudo dnf install proton-vpn-gnome-desktop -y</code><br>
+        【推奨設定】<br>
+        NetShield:ON / Kill switch:ON / Protocol:WireGuard / VPN Accelerator:ON / Auto connect:ON 等<br><br>
+
+        ・<strong>Proton Pass</strong><br>
+        Firefoxアドオンストアより検索して追加。エンドツーエンド暗号化パスワードマネージャー。<br><br>
+
+        <strong>～ オンライン確認ツール ～</strong><br>
+        ・<a href="https://www.virustotal.com/" target="_blank" rel="noopener">VirusTotal</a>：怪しいファイルやURLを一括判定。</p>
+      </details>
+
+      <details>
+        <summary>〈コマンド〉日常・週1メンテナンス</summary>
+        <p><strong>① 日常の起動時に使う「爆速メンテナンス」</strong><br>
+        <code>sudo dnf upgrade --refresh -y && flatpak update -y && sudo dnf autoremove -y && sudo dnf clean all && flatpak remove --unused -y</code><br><br>
+
+        <strong>② 週1回または不安な時に使う「フルチェック＋ウイルススキャン」</strong><br>
+        <code>sudo dnf upgrade --refresh -y && flatpak update -y && sudo dnf autoremove -y && sudo dnf clean all && flatpak remove --unused -y && rm -f ~/scan_result.log ~/clamav_scan.log && sudo freshclam && clamscan -r -i ~ -l ~/scan_result.log</code><br>
+        ※最後「Infected files: 0」なら安全です。<br><br>
+
+        <strong>③ セキュリティ機能（SELinux / ファイアウォール）の動作確認</strong><br>
+        <code>echo -e "=== SELinux ===\n$(getenforce)\n\n=== Firewalld ===\n$(sudo firewall-cmd --state)"</code><br>
+        ※正常時：SELinux (Enforcing) / Firewalld (running)</p>
+      </details>
+
+    </div>
+  </div>
+</header>
+
+</body>
+</html>
