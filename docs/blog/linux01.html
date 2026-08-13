@@ -42,8 +42,8 @@
     /* スマホ画面（幅768px以下）での見出しサイズ調整 */
     @media (max-width: 768px) {
       .blog-article h1 {
-        font-size: 1.6rem;
-        line-height: 1.3;
+        font-size: 1.5rem !important;
+        line-height: 1.35;
       }
       .blog-article h1 br {
         display: inline;
@@ -118,15 +118,27 @@
   </ul>
 
   <h4>5. インストール手順に従う</h4>
-  <ul>
-    <li>画面の「Install to Hard Drive」をクリックします。</li>
-    <li>言語選択: 「日本語」を選択して「続行」。</li>
-    <li>インストール先の設定: 内蔵ストレージ（SSD/HDD）を選択します。</li>
-    <li>暗号化設定 (LUKS): セキュリティを高める場合は「データを暗号化する」にチェックを入れ、起動パスフレーズを設定します。（※忘れるとデータ復旧不可になるため厳重に管理）</li>
-    <li>「サードパーティのリポジトリを有効にする」にチェック。</li>
-    <li>右下の「インストール開始」をクリックします。</li>
-    <li>インストール完了後、PCを再起動し、画面の指示に従ってUSBメモリを引き抜きます。</li>
-  </ul>
+  <ol>
+    <li><strong>インストーラーの起動：</strong> ライブ環境が立ち上がったら画面の「Install to Hard Drive」をクリックします。</li>
+    <li><strong>言語選択：</strong> 「日本語」を選択して「続行」をクリックします。</li>
+    <li><strong>インストール先と暗号化設定：</strong>
+      <ul>
+        <li>「インストール先」をクリックし、Fedoraを入れるストレージ（SSD/HDD）を選択します。</li>
+        <li><strong>【パスワード設定①】</strong> セキュリティを高める場合は「データを暗号化する」にチェックを入れ、パスフレーズを設定します。（※PC起動時に必須。忘れるとデータ復旧不可になるため厳重管理）</li>
+      </ul>
+    </li>
+    <li><strong>サードパーティリポジトリ：</strong> 「サードパーティのリポジトリを有効にする」にチェックを入れます。</li>
+    <li><strong>【パスワード設定②】ユーザーアカウント作成：</strong>
+      <ul>
+        <li>「ユーザー作成」をクリックし、ユーザー名と<strong>ログイン用パスワード</strong>（コマンド実行時にも使用）を設定します。（※インストーラー内で設定しない場合でも、再起動後の初回セットアップ画面で設定を求められます）</li>
+      </ul>
+    </li>
+    <li><strong>インストールの実行と再起動：</strong> 右下の「インストール開始」をクリックします。完了後、PCを再起動し、画面の指示に従ってUSBメモリを引き抜きます。</li>
+  </ol>
+
+  <p><strong>【重要：設定する2つのパスワードの違い】</strong><br>
+  ・<strong>1つ目（暗号化）：</strong> 電源を入れた直後の黒い画面で、ストレージのロックを解除するために使います。<br>
+  ・<strong>2つ目（ユーザー）：</strong> デスクトップへのログインや、管理権限コマンド（sudo）の実行時に使います。</p>
 
 </details>
 
@@ -165,23 +177,18 @@
   <h4>● <a href="https://protonvpn.com/ja" target="_blank" rel="noopener noreferrer">Proton VPN</a>（公式Linuxアプリあり）</h4>
   <p>【インストール手順（ターミナルで実行）】</p>
   
-  <p>1. リポジトリ設定ファイルの取得</p>
+  <p>1. 公式リポジトリパッケージの登録</p>
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>wget https://repo.protonvpn.com/fedora-$(rpm -E %fedora)-relative/protonvpn-stable-release/protonvpn-stable-release-1.0.3-1.noarch.rpm</code>
+    <code>sudo dnf install -y https://repo.protonvpn.com/fedora-$(rpm -E %fedora)-relative/protonvpn-stable-release/protonvpn-stable-release-1.0.3-1.noarch.rpm</code>
   </div>
 
-  <p>2. リポジトリの登録</p>
-  <div class="command-box">
-    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>sudo dnf install ./protonvpn-stable-release-1.0.3-1.noarch.rpm -y</code>
-  </div>
-
-  <p>3. リフレッシュとアプリの導入</p>
+  <p>2. リフレッシュとアプリ本体の導入</p>
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
     <code>sudo dnf check-update --refresh && sudo dnf install proton-vpn-gnome-desktop -y</code>
   </div>
+  <p>※万が一1のコマンドで取得エラーが出る場合は、<a href="https://protonvpn.com/download-linux" target="_blank" rel="noopener noreferrer">Proton VPN 公式Linuxページ</a>より最新のRPMファイルをダウンロードしてください。</p>
 
   <p>【おすすめ推奨設定】<br>
   ProtonVPNの設定は起動して、左上の三本線から設定(Se...）をクリックして、以下の設定にする。<br>
