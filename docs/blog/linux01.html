@@ -178,6 +178,10 @@
     <li>Fedoraを導入したいパソコン</li>
   </ul>
 
+  <h3>■ 事前確認（ハードウェア互換性）</h3>
+  <p>特定のハードウェア（NVIDIA製GPUや、Broadcom製などの一部Wi-Fiチップセット）を搭載したPCでは、インストール直後に画面表示やWi-Fi接続に設定が必要となる場合があります。<br>
+  後述の「ライブ環境（お試し画面）」起動時に、Wi-Fiが認識されるか、画面描画に問題がないか事前にテストすることをおすすめします。（※NVIDIA GPU搭載機の場合は、インストール時の「サードパーティリポジトリ」有効化により公式ドライバの導入がスムーズになります）</p>
+
   <h3>■ 手順</h3>
   <h4>1. 書き込みソフト（Rufus / Fedora Media Writer）の準備</h4>
   <p>Rufus公式サイト（<a href="https://rufus.ie/ja/" target="_blank" rel="noopener noreferrer">https://rufus.ie/ja/</a>）より最新のPortable版（rufus-x.xxp.exe）をダウンロードします。<br>
@@ -216,7 +220,7 @@
         <li><strong>【パスワード設定①】</strong> セキュリティを高める場合は「データを暗号化する」にチェックを入れ、暗号化用パスフレーズを設定します。</li>
       </ul>
     </li>
-    <li><strong>サードパーティリポジトリ：</strong> 必要なソフトウェア（プロプライエタリなドライバや一部のコーデック等）を利用する場合に限り有効化します。不要な場合はチェックなしで進めます。</li>
+    <li><strong>サードパーティリポジトリ：</strong> 必要なソフトウェア（NVIDIAドライバや一部のプロプライエタリなコーデック等）を利用する場合に有効化します。不要な場合はチェックなしで進めます。</li>
     <li><strong>【パスワード設定②】ユーザーアカウント作成：</strong>
       <ul>
         <li>「ユーザー作成」をクリックし、ユーザー名と<strong>ログイン用パスワード</strong>（管理コマンド実行時にも使用）を設定します。</li>
@@ -246,6 +250,14 @@
     <div class="defense-item"><strong>Proton Pass：</strong> パスワードの安全な管理と使い回し防止</div>
     <div class="defense-item"><strong>ClamAV：</strong> ダウンロードファイル等のオンデマンド（手動）スキャン</div>
     <div class="defense-item"><strong>3-2-1バックアップ：</strong> システム障害・ランサムウェア被害・誤操作時の最終防衛線</div>
+  </div>
+
+  <h3>■ Flatpakエコシステムの拡張（Flathubの追加）</h3>
+  <p>Fedoraは標準でFlatpakパッケージに対応していますが、世界最大の統合リポジトリ「Flathub」を追加登録することで、さらに多くの安全にサンドボックス化されたアプリ（Spotify、Discord、VS Code等）をGUI（ソフトウェアセンター）から簡単に導入できるようになります。</p>
+
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo</code>
   </div>
 
   <h3>■ プライバシー・通信保護ツール（Proton）</h3>
