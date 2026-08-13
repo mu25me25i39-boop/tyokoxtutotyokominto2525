@@ -39,6 +39,20 @@
       background-color: #30363d;
     }
 
+    /* 役割分担ダイアグラム用スタイル */
+    .defense-box {
+      background-color: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 15px;
+      margin: 15px 0;
+    }
+    .defense-item {
+      margin-bottom: 8px;
+      padding-left: 10px;
+      border-left: 3px solid #58a6ff;
+    }
+
     /* スマホ画面（幅768px以下）での見出しサイズ調整 */
     @media (max-width: 768px) {
       .blog-article h1 {
@@ -64,15 +78,21 @@
 
   <h3>■ メリット</h3>
   <ul>
-    <li><strong>セキュリティ・プライバシー面：</strong> Linuxは強固なファイアウォール（firewalld）や強制アクセス制御（SELinux）を標準備えています。Windowsのように重い常駐型サードパーティ製セキュリティソフトを入れずとも高い防御力を持っています。ネットワーク防御、ブラウザ分離・隔離、トラッキング防止にも優れ、OS自体によるログ追跡も少ないのが特徴です。</li>
-    <li><strong>種類（ディストリビューション）が豊富：</strong> 初心者向けの「Linux Mint」や、最新技術と安定性を兼ね備えた「Fedora」など、用途に合わせて選べます。</li>
-    <li><strong>料金面・サポート期限：</strong> 完全に無料で導入・アップデートが可能です。Windowsのように購入費用がかからず、OSのサポート終了による強制的な買い替えリスクもありません。</li>
+    <li><strong>高度なアクセス制御と防御構造：</strong> Fedoraは強力な標準ファイアウォール（firewalld）や、システム侵入後の影響を最小限に抑える強制アクセス制御（SELinux）をデフォルトで標準稼働させています。重い常駐型サードパーティ製セキュリティソフトを追加せずとも、強固な権限分離構造を持っています。</li>
+    <li><strong>透明性とプライバシー保護：</strong> OS自体による不可視なログ・行動データの収集（テレメトリ）が極めて少なく、自らのPCのデータ制御権を取り戻せます。</li>
+    <li><strong>コスト・保守性の高さ：</strong> OS自体は完全に無料で利用できます。Windowsのようにライセンス購入費用がかからず、サポート終了時もPC本体を買い替えることなく、新しいバージョンのFedoraへ無料でアップグレードして使い続けられます。（※Fedoraは各バージョン約13ヶ月間サポートされます）</li>
     <li><strong>軽量で古いPCも復活：</strong> Windows 11では動作が重くカクつく低スペックパソコンでも、Linuxならサクサク動作します。PCの廃棄や無駄なパーツ増設（買い替え）を回避できます。</li>
   </ul>
 
   <h3>■ デメリット</h3>
-  <p>Windows専用のソフト（特定の動画編集ソフトやセキュリティソフトなど）や一部の周辺機器（プリンター等）が使えない、または設定が難しい場合があります。また、一部のPCゲーム（Anti-Cheat搭載ゲーム等）は動作しません。</p>
-<h3>■ OS・セキュリティ環境の比較表</h3>
+  <p>Windows専用のソフト（特定の動画編集ソフト、Officeデスクトップ版、特殊な専用ツール等）や一部の周辺機器（専用ドライバを必要とするプリンター等）が使えない、または設定が難しい場合があります。また、カーネルレベルのAnti-Cheatを必須とする一部のPCゲームは動作しません。</p>
+
+  <h3>■ 結論</h3>
+  <p>Webブラウザ上で動作する「Microsoft 365 (Web版Office)」や「Google Workspace」の利用、動画視聴、生配信の閲覧、Web閲覧、プログラミングや開発が中心であれば、Linuxに乗り換えるメリットは絶大です。</p>
+
+  <p>※今回は、Webブラウザ利用、事務作業、さらには開発において、「安全性」「動作の軽快さ」「最新性」のバランスが最も優れている万能かつ強力なOS、<strong>Fedora Workstation (Fedora 44準拠)</strong>を導入します。</p>
+
+  <h3>■ OS・セキュリティ環境の比較表</h3>
   <table style="width:100%; border-collapse: collapse; margin: 15px 0; font-size: 0.9rem; line-height: 1.5;">
     <thead>
       <tr style="background-color: #21262d; color: #f0f6fc; text-align: left;">
@@ -133,10 +153,6 @@
       </tr>
     </tbody>
   </table>
-  <h3>■ 結論</h3>
-  <p>Webブラウザ上で動作する「Microsoft 365 (Web版Office)」や「Google Workspace」の利用、動画視聴、生配信の閲覧、Web閲覧が中心であれば、Linuxに乗り換えるメリットは絶大です。</p>
-
-  <p>※今回は、Webブラウザ利用、動画視聴、事務作業、さらにはプログラミングや開発において、「安全性」「動作の軽快さ」「最新性」のバランスが最も優れている万能かつ強力なOS、<strong>Fedora Workstation</strong>を導入します。</p>
 
 </details>
 
@@ -144,7 +160,7 @@
 <details>
   <summary>2. Fedora Workstation の導入方法</summary>
 
-  <p>※Windows環境で作業を行います。</p>
+  <p>※Windows環境で準備作業を行います。</p>
 
   <h3>■ 必要なもの</h3>
   <ul>
@@ -157,8 +173,10 @@
   <h4>1. Rufus（書き込みソフト）のダウンロード</h4>
   <p>公式サイト（<a href="https://rufus.ie/ja/" target="_blank" rel="noopener noreferrer">https://rufus.ie/ja/</a>）より最新のPortable版（rufus-x.xxp.exe）をダウンロードします。</p>
 
-  <h4>2. FedoraのISOイメージをダウンロード</h4>
-  <p>公式サイト（<a href="https://fedoraproject.org/workstation/download/" target="_blank" rel="noopener noreferrer">https://fedoraproject.org/workstation/download/</a>）より【For Intel and AMD x86_64 systems】配下の「Fedora Workstation Live ISO」をダウンロードします。</p>
+  <h4>2. FedoraのISOイメージをダウンロードと整合性検証（推奨）</h4>
+  <p>公式サイト（<a href="https://fedoraproject.org/workstation/download/" target="_blank" rel="noopener noreferrer">https://fedoraproject.org/workstation/download/</a>）より「Fedora Workstation Live ISO」をダウンロードします。</p>
+  <p><strong>【セキュリティのワンポイント：イメージファイルの検証】</strong><br>
+  ダウンロードページにある「CHECKSUM」ファイルと照合し、ターミナルや PowerShellで `Get-FileHash ./Fedora-Workstation-Live-x86_64-xx.iso` を実行して、ハッシュ値（SHA256）が一致することを確認すると改ざんや破損を防げて確実です。</p>
 
   <h4>3. USBメモリにISOイメージを書き込む</h4>
   <ul>
@@ -166,8 +184,7 @@
     <li>Rufusを起動し、「デバイス」で挿入したUSBを選択します。</li>
     <li>「ブートの選択」で、ダウンロードしたFedoraのISOファイルを選択し、「スタート」をクリックします。</li>
   </ul>
-  <p>※途中で「ISOイメージモード / DDイメージモード」を選択する画面が出た場合は「ISOイメージモード（推奨）」を選択します。（うまく起動しない場合はDDモードをお試しください）<br>
-  ※「追加ファイルのダウンロードが必要」と表示された場合は「はい」を押します。<br>
+  <p>※「ISOイメージモード / DDイメージモード」を選択する画面が出た場合は「ISOイメージモード（推奨）」を選択します。<br>
   ※書き込み完了後、USBメモリを安全に取り外します。</p>
 
   <h4>4. 導入対象のPCをUSBから起動する</h4>
@@ -176,120 +193,135 @@
     <li>電源オン直後に F12（または F2 / F11 / Delete ※メーカーによる）を連打し、ブートメニューを開きます。</li>
     <li>ブートメニューから「USB Flash Drive」を選択して起動すると、Fedoraのライブ環境（お試し画面）が立ち上がります。</li>
   </ul>
-  
-<h4>5. インストール手順に従う</h4>
+
+  <h4>5. インストール手順に従う</h4>
   <ol>
-    <li><strong>インストーラーの起動：</strong> ライブ環境が立ち上がったら画面の「Install to Hard Drive」をクリックします。</li>
+    <li><strong>インストーラーの起動：</strong> 画面の「Install to Hard Drive」をクリックします。</li>
     <li><strong>言語選択：</strong> 「日本語」を選択して「続行」をクリックします。</li>
-    <li><strong>インストール先と暗号化設定</strong>
+    <li><strong>インストール先と暗号化設定：</strong>
       <ul>
         <li>「インストール先」をクリックし、Fedoraを入れるストレージ（SSD/HDD）を選択します。</li>
-        <li><strong>【パスワード設定①】</strong> セキュリティを高める場合は「データを暗号化する」にチェックを入れ、暗号化用パスフレーズを設定します。（※PC起動時に必須。忘れるとデータ復旧不可になるため厳重管理）</li>
+        <li><strong>【パスワード設定①】</strong> セキュリティを高める場合は「データを暗号化する」にチェックを入れ、暗号化用パスフレーズを設定します。</li>
       </ul>
     </li>
-    <li><strong>サードパーティリポジトリ：</strong> 「サードパーティのリポジトリを有効にする」にチェックを入れます。</li>
+    <li><strong>サードパーティリポジトリ：</strong> 必要なソフトウェア（プロプライエタリなドライバや一部のコーデック等）を利用する場合に限り有効化します。不要な場合はチェックなしで進めます。</li>
     <li><strong>【パスワード設定②】ユーザーアカウント作成：</strong>
       <ul>
-        <li>「ユーザー作成」をクリックし、ユーザー名と<strong>ログイン用パスワード</strong>（コマンド実行時にも使用）を設定します。（※インストーラー内で設定しない場合でも、再起動後の初回セットアップ画面で設定を求められます）</li>
+        <li>「ユーザー作成」をクリックし、ユーザー名と<strong>ログイン用パスワード</strong>（管理コマンド実行時にも使用）を設定します。</li>
       </ul>
     </li>
-    <li><strong>インストールの実行と再起動：</strong> 右下の「インストール開始」をクリックします。完了後、PCを再起動し、画面の指示に従ってUSBメモリを引き抜きます。</li>
+    <li><strong>インストールの実行と再起動：</strong> 「インストール開始」をクリックし、完了後PCを再起動してUSBメモリを取り外します。</li>
   </ol>
 
-  <p><strong>【設定する2つのパスワードについて】</strong><br>
-  ・<strong>1つ目（暗号化）：</strong> 電源を入れた直後の黒い画面で、ストレージのロックを解除するために使います。<br>
-  ・<strong>2つ目（ユーザー）：</strong> デスクトップへのログインや、管理権限コマンド（sudo）の実行時に使います。<br>
-  ※セキュリティ上、2つのパスワードは<strong>別々に設定することを強く推奨</strong>します。（※ユーザー用パスワードは、導入後に「設定 ＞ ユーザー」または `passwd` コマンドからいつでも変更可能です）</p>
+  <p><strong>【重要：セキュリティと設定する2つのパスワードについて】</strong><br>
+  ・<strong>1つ目（ストレージ暗号化）：</strong> PCの紛失・盗難時にSSDを取り出されてデータを直接読み出されるリスクを防ぎます。解除情報を失うとデータ復旧は不可となります。<br>
+  ・<strong>2つ目（ユーザーアカウント）：</strong> 日常のログインや管理権限コマンド（sudo）の実行時に使用します。<br>
+  ※セキュリティ上、2つのパスワードは<strong>必ず別々に設定することを強く推奨</strong>します。（※ユーザーパスワードは導入後に「設定 ＞ ユーザー」または `passwd` コマンドからいつでも変更可能です）</p>
+
 </details>
 
 <!-- 3 -->
 <details>
   <summary>3. ツールの追加・セキュリティ設定</summary>
 
-  <h3>■ ClamAV + ClamTk（ウイルススキャン機能の追加）</h3>
-  <p>LinuxはWindowsと異なり「常駐型の自動スキャン」は不要ですが、ファイル共有時などの念のためのチェック用に導入します。<br>
-  ターミナル（端末）を開いて、以下のコマンドを順に実行します。</p>
+  <h3>■ セキュリティの全体構造（多層防御の役割分担）</h3>
+  <div class="defense-box">
+    <div class="defense-item"><strong>SELinux / firewalld：</strong> システム全体のアクセス制限・ネットワークアクセス制御</div>
+    <div class="defense-item"><strong>ストレージ暗号化：</strong> PC紛失・盗難時の保存データ物理保護</div>
+    <div class="defense-item"><strong>Proton VPN（WireGuard / Kill Switch）：</strong> 通信の暗号化・盗聴防止・IPアドレス保護</div>
+    <div class="defense-item"><strong>Firefox + uBlock Origin：</strong> Web閲覧時の広告・不正スクリプト・トラッカーの遮断</div>
+    <div class="defense-item"><strong>Proton Pass：</strong> パスワードの安全な管理と使い回し防止</div>
+    <div class="defense-item"><strong>ClamAV：</strong> 受信ファイルや共有ファイルのオンデマンド（手動）スキャン</div>
+    <div class="defense-item"><strong>外部バックアップ：</strong> トラブル・故障・誤操作時の最終防衛線</div>
+  </div>
 
-  <p>・パッケージのインストール</p>
+  <h3>■ ClamAV + ClamTk（ファイル用スキャン機能の追加）</h3>
+  <p>一般的なデスクトップ利用ではWindowsのような常時リアルタイムスキャンを必須とする必要はありません。ただし、メール添付ファイルや外部から取得したファイルをチェックする補助対策（オンデマンドスキャン）として導入します。<br>
+  ターミナル（端末）を開いて、以下のコマンドを実行します。</p>
+
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
     <code>sudo dnf install clamav clamav-update clamtk -y</code>
   </div>
 
-  <p>・ウイルス定義データベースの手動初回更新</p>
+  <p>・ウイルス定義データベースの手動更新</p>
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
     <code>sudo freshclam</code>
   </div>
 
   <h3>■ ブラウザ（Firefox）のおすすめ拡張機能</h3>
-  <p>Firefoxの「アドオン（拡張機能）」検索から以下を導入します。</p>
+  <p>拡張機能を増やしすぎるとかえってブラウザが重くなったりトラブルの原因になります。必要最小限の構成が最も安全です。</p>
   <ul>
-    <li><a href="https://addons.mozilla.org/ja/firefox/addon/ublock-origin/" target="_blank" rel="noopener noreferrer"><strong>uBlock Origin</strong></a>: 強力な広告・トラッカー・悪質スクリプト遮断。</li>
-    <li><a href="https://addons.mozilla.org/ja/firefox/addon/privacy-badger17/" target="_blank" rel="noopener noreferrer"><strong>Privacy Badger</strong></a>: 行動分析による未知のトラッカー自動検知・ブロック。</li>
-    <li><a href="https://addons.mozilla.org/ja/firefox/addon/clearurls/" target="_blank" rel="noopener noreferrer"><strong>ClearURLs</strong></a>: URLに含まれる追跡用パラメータ（?utm_source=等）の自動削除。</li>
-    <li><a href="https://addons.mozilla.org/ja/firefox/addon/malwarebytes/" target="_blank" rel="noopener noreferrer"><strong>Malwarebytes Browser Guard</strong></a>: 詐欺・フィッシングサイトへの接続を強力ブロック。</li>
+    <li><a href="https://addons.mozilla.org/ja/firefox/addon/ublock-origin/" target="_blank" rel="noopener noreferrer"><strong>uBlock Origin</strong></a>: 必須。広範囲な広告・トラッカー・悪質スクリプトの遮断。</li>
+    <li><a href="https://addons.mozilla.org/ja/firefox/addon/clearurls/" target="_blank" rel="noopener noreferrer"><strong>ClearURLs</strong></a>: 必要に応じて。URLに含まれる追跡用パラメータ（?utm_source=等）の自動削除。</li>
   </ul>
 
-  <h3>■ 有料セキュリティ・プライバシー ツール</h3>
-  <p><a href="https://proton.me/ja" target="_blank" rel="noopener noreferrer">Proton</a>を利用しているユーザーはLinuxでも使える。</p>
+  <h3>■ 有料セキュリティ・プライバシー ツール (Proton)</h3>
 
-  <h4>● <a href="https://protonvpn.com/ja" target="_blank" rel="noopener noreferrer">Proton VPN</a>（公式Linuxアプリあり）</h4>
-  <p>【インストール手順（ターミナルで実行）】</p>
-  
+  <h4>● <a href="https://protonvpn.com/ja" target="_blank" rel="noopener noreferrer">Proton VPN</a>（Fedora公式サポートアプリ）</h4>
+  <p>通信の保護および公共Wi-Fi等での盗聴を防ぎます。（※Fedora 44環境における公式推奨セットアップ手順）</p>
+
   <p>1. 公式リポジトリパッケージの登録</p>
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>sudo dnf install -y https://repo.protonvpn.com/fedora-$(rpm -E %fedora)-relative/protonvpn-stable-release/protonvpn-stable-release-1.0.3-1.noarch.rpm</code>
+    <code>wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d' ' -f 3)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.4-1.noarch.rpm" && sudo dnf install ./protonvpn-stable-release-1.0.4-1.noarch.rpm -y</code>
   </div>
 
-  <p>2. リフレッシュとアプリ本体の導入</p>
+  <p>2. パッケージ情報の更新とアプリ本体のインストール</p>
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
     <code>sudo dnf check-update --refresh && sudo dnf install proton-vpn-gnome-desktop -y</code>
   </div>
-  <p>※万が一1のコマンドで取得エラーが出る場合は、<a href="https://protonvpn.com/download-linux" target="_blank" rel="noopener noreferrer">Proton VPN 公式Linuxページ</a>より最新のRPMファイルをダウンロードしてください。</p>
 
-  <p>【おすすめ推奨設定】<br>
-  ProtonVPNの設定は起動して、左上の三本線から設定(Se...）をクリックして、以下の設定にする。<br>
-  【NetShield：ON】【Kill switch：ON】【Port forwarding：OFF】【Split tunneling：OFF】【Protocol：WireGuard】【VPN Accelerator：ON】【Moderate NAT：OFF】【IPv6：ON】【Custom DNS servers：OFF】【Auto connect：ON】【Share anonymous crash reports：任意】【Beta access：OFF】</p>
+  <p>【おすすめ推奨設定（セキュリティ重視構成）】<br>
+  アプリを起動してログイン後、設定（Settings）より以下のように設定します。<br>
+  【NetShield：ON】【Kill switch：ON】【Split tunneling：OFF（※LinuxではKill Switchとの併用制限があるため）】【Protocol：WireGuard】【VPN Accelerator：ON】【IPv6：必要に応じて設定】【Auto connect：ON】</p>
 
-  <h4>● <a href="https://proton.me/ja/pass" target="_blank" rel="noopener noreferrer">Proton Pass</a>(ブラウザのアドオンと同じように追加可能)</h4>
-  <p>ブラウザ拡張機能版： Firefoxのアドオンストア（<a href="https://addons.mozilla.org/ja/firefox/addon/proton-pass/" target="_blank" rel="noopener noreferrer">Proton Pass アドオンページ</a>）より「Proton Pass」を検索して追加、エンドツーエンド暗号化パスワードマネージャー。複雑なパスワード生成や、本物のメールアドレスを隠す「メールエイリアス機能」で漏洩を防ぎます。</p>
+  <h4>● <a href="https://proton.me/ja/pass" target="_blank" rel="noopener noreferrer">Proton Pass</a></h4>
+  <p>Firefoxのアドオンストア（<a href="https://addons.mozilla.org/ja/firefox/addon/proton-pass/" target="_blank" rel="noopener noreferrer">Proton Pass ページ</a>）より追加。暗号化されたパスワードマネージャー。パスワードの使い回しを防ぎ、アドレスの隠蔽（メールエイリアス機能）が可能です。</p>
 
-  <h3>■ オンライン確認ツール</h3>
+  <h3>■ オンライン確認ツール・外部サービス</h3>
   <ul>
-    <li><a href="https://www.virustotal.com/" target="_blank" rel="noopener noreferrer">VirusTotal</a>： 受信した添付ファイルや怪しいURLは、事前に入力・アップロードすることで70社以上のセキュリティエンジン（ESET、カスペルスキー等）で安全性を一括判定できます。</li>
+    <li><a href="https://www.virustotal.com/" target="_blank" rel="noopener noreferrer">VirusTotal</a>： ダウンロードしたファイルや不審なURLは、開く前にこちらへアップロード・入力して多角的に安全性を判定します。</li>
   </ul>
 
 </details>
 
 <!-- 4 -->
 <details>
-  <summary>4. メンテナンスコマンド</summary>
+  <summary>4. メンテナンスと保守運用</summary>
 
-  <p>セキュリティ面で利用する為に、パソコン起動時または定期的に、ターミナル（端末）を開いて、以下のコマンドを順に実行してください。</p>
+  <p>PCを安全に保つため、必要に応じて以下のメンテナンスを行います。（※毎日起動時に実行する必要はありません）</p>
 
-  <h3>■ ① 日常の起動時に使う「爆速メンテナンス」（数秒で完了）</h3>
-  <p>システム更新・Flatpak更新・不要キャッシュの削除をまとめて行います。</p>
-
-  <div class="command-box">
-    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>sudo dnf upgrade --refresh -y && flatpak update -y && sudo dnf autoremove -y && flatpak remove --unused -y && sudo dnf clean all</code>
-  </div>
-
-  <h3>■ ② 週1回または不安な時に使う「フルチェック＋ウイルススキャン」（数分）</h3>
-  <p>システムの更新と掃除に加え、ホームディレクトリ内のウイルススキャンを実行します。</p>
+  <h3>■ ① 通常のシステム更新（週1回〜月1回程度）</h3>
+  <p>システムパッケージとFlatpakアプリを更新します。（通常の「ソフトウェア」アプリからの更新でも問題ありません）</p>
 
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>sudo dnf upgrade --refresh -y && sudo dnf autoremove -y && flatpak remove --unused -y && sudo dnf clean all && rm -f ~/scan_result.log ~/clamav_scan.log && sudo freshclam && clamscan -r -i ~ -l ~/scan_result.log</code>
+    <code>sudo dnf upgrade --refresh -y && flatpak update -y</code>
   </div>
 
-  <p><strong>【正常時の出力結果】</strong><br>
-  スキャン結果の最後で「Infected files: 0」と表示されれば安全です。</p>
+  <h3>■ ② ダウンロードファイルの安全性確認（不審なファイル取得時）</h3>
+  <p>ホームディレクトリ全体のフルスキャンは時間がかかるため、ダウンロードフォルダや特定の不審なファイルに対象を絞って実行するのが実用的です。</p>
 
-  <h3>■ ③ セキュリティ機能（SELinux / ファイアウォール）の動作確認コマンド</h3>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>sudo freshclam && clamscan -r -i ~/Downloads</code>
+  </div>
+
+  <p><strong>【実行結果の見方】</strong><br>
+  「Infected files: 0」と表示された場合、<strong>『今回のClamAVスキャンでは既知の検出対象は見つからなかった』</strong>ことを意味します。</p>
+
+  <h3>■ ③ システム掃除（月1回程度またはストレージ整理時）</h3>
+  <p>不要になった依存パッケージやキャッシュを削除します。</p>
+
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>sudo dnf autoremove -y && flatpak remove --unused -y && sudo dnf clean all</code>
+  </div>
+
+  <h3>■ ④ セキュリティ機能（SELinux / ファイアウォール）の動作確認</h3>
 
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
@@ -298,9 +330,16 @@
 
   <p><strong>【正常時の出力結果】</strong><br>
   === SELinux ===<br>
-  Enforcing （※最高レベルのアクセス制限が有効）<br><br>
+  Enforcing （※アクセス制限が正常有効）<br><br>
   === Firewalld ===<br>
   running （※ファイアウォールが正常稼働中）</p>
+
+  <h3>■ ⑤ 最終防衛線：データバックアップ（必須）</h3>
+  <p>どんなにセキュリティを高めても、SSDの突然の物理故障、PCの落下・破損、パスフレーズの紛失、人間による誤操作を防ぐことはできません。</p>
+  <ul>
+    <li>重要なドキュメント、写真、設定ファイル等は、定期的に外付けSSD/HDDや信頼できるクラウドストレージに複製してください。</li>
+    <li>Fedora標準搭載の「バックアップ（Déjà Dup）」ツールなどを利用すると、自動暗号化バックアップが簡単に構築できます。</li>
+  </ul>
 
 </details>
 
