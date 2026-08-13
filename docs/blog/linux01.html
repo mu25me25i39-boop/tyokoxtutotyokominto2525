@@ -5,6 +5,252 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../assets/css/blog-article.css">
   <title>Linux(Fedora)の導入ガイド【2026年版】</title>
+  <style>
+    /* コマンド表示用カスタムスタイル */
+    .command-box {
+      position: relative;
+      background-color: #1a1d24;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 12px;
+      margin: 12px 0;
+    }
+    .command-box code {
+      color: #79c0ff;
+      font-family: monospace;
+      white-space: pre-wrap;
+      word-break: break-all;
+      display: block;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background-color: #21262d;
+      color: #c9d1d9;
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .copy-btn:hover {
+      background-color: #30363d;
+    }
+  </style>
+</head>
+
+<body class="theme-blue">
+
+<div class="blog-article">
+
+<h1>Linux(Fedora)の導入<br>Windowsから移行し、安全・軽快なPC環境を構築する方法</h1>
+
+<!-- 1 -->
+<details>
+  <summary>1. WindowsよりLinuxを選ぶ理由</summary>
+
+  <h3>■ メリット</h3>
+  <ul>
+    <li><strong>セキュリティ・プライバシー面：</strong> Linuxは強固なファイアウォール（firewalld）や強制アクセス制御（SELinux）を標準備えています。Windowsのように重い常駐型サードパーティ製セキュリティソフトを入れずとも高い防御力を持っています。ネットワーク防御、ブラウザ分離・隔離、トラッキング防止にも優れ、OS自体によるログ追跡も少ないのが特徴です。</li>
+    <li><strong>種類（ディストリビューション）が豊富：</strong> 初心者向けの「Linux Mint」や、最新技術と安定性を兼ね備えた「Fedora」など、用途に合わせて選べます。</li>
+    <li><strong>料金面・サポート期限：</strong> 完全に無料で導入・アップデートが可能です。Windowsのように購入費用がかからず、OSのサポート終了による強制的な買い替えリスクもありません。</li>
+    <li><strong>軽量で古いPCも復活：</strong> Windows 11では動作が重くカクつく低スペックパソコンでも、Linuxならサクサク動作します。PCの廃棄や無駄なパーツ増設（買い替え）を回避できます。</li>
+  </ul>
+
+  <h3>■ デメリット</h3>
+  <p>Windows専用のソフト（特定の動画編集ソフトやセキュリティソフトなど）や一部の周辺機器（プリンター等）が使えない、または設定が難しい場合があります。また、一部のPCゲーム（Anti-Cheat搭載ゲーム等）は動作しません。</p>
+
+  <h3>■ 結論</h3>
+  <p>Webブラウザ上で動作する「Microsoft 365 (Web版Office)」や「Google Workspace」の利用、動画視聴、生配信の閲覧、Web閲覧が中心であれば、Linuxに乗り換えるメリットは絶大です。</p>
+
+  <p>※今回は、Webブラウザ利用、動画視聴、事務作業、さらにはプログラミングや開発において、「安全性」「動作の軽快さ」「最新性」のバランスが最も優れている万能かつ強力なOS、<strong>Fedora Workstation</strong>を導入します。</p>
+
+</details>
+
+<!-- 2 -->
+<details>
+  <summary>2. Fedora Workstation の導入方法</summary>
+
+  <p>※Windows環境で作業を行います。</p>
+
+  <h3>■ 必要なもの</h3>
+  <ul>
+    <li>作業用のWindows PC</li>
+    <li>8GB以上のUSBメモリ（内部データは全消去されるため事前バックアップ必須）</li>
+    <li>Fedoraを導入したいパソコン</li>
+  </ul>
+
+  <h3>■ 手順</h3>
+  <h4>1. Rufus（書き込みソフト）のダウンロード</h4>
+  <p>公式サイト（<a href="https://rufus.ie/ja/" target="_blank" rel="noopener noreferrer">https://rufus.ie/ja/</a>）より最新のPortable版（rufus-x.xxp.exe）をダウンロードします。</p>
+
+  <h4>2. FedoraのISOイメージをダウンロード</h4>
+  <p>公式サイト（<a href="https://fedoraproject.org/workstation/download/" target="_blank" rel="noopener noreferrer">https://fedoraproject.org/workstation/download/</a>）より【For Intel and AMD x86_64 systems】配下の「Fedora Workstation Live ISO」をダウンロードします。</p>
+
+  <h4>3. USBメモリにISOイメージを書き込む</h4>
+  <ul>
+    <li>USBメモリをWindows PCに接続します。</li>
+    <li>Rufusを起動し、「デバイス」で挿入したUSBを選択します。</li>
+    <li>「ブートの選択」で、ダウンロードしたFedoraのISOファイルを選択し、「スタート」をクリックします。</li>
+  </ul>
+  <p>※途中で「ISOイメージモード / DDイメージモード」を選択する画面が出た場合は「ISOイメージモード（推奨）」を選択します。（うまく起動しない場合はDDモードをお試しください）<br>
+  ※「追加ファイルのダウンロードが必要」と表示された場合は「はい」を押します。<br>
+  ※書き込み完了後、USBメモリを安全に取り外します。</p>
+
+  <h4>4. 導入対象のPCをUSBから起動する</h4>
+  <ul>
+    <li>Fedoraを入れたいPCにUSBメモリを挿入し、電源を入れます。</li>
+    <li>電源オン直後に F12（または F2 / F11 / Delete ※メーカーによる）を連打し、ブートメニューを開きます。</li>
+    <li>ブートメニューから「USB Flash Drive」を選択して起動すると、Fedoraのライブ環境（お試し画面）が立ち上がります。</li>
+  </ul>
+
+  <h4>5. インストール手順に従う</h4>
+  <ul>
+    <li>画面の「Install to Hard Drive」をクリックします。</li>
+    <li>言語選択: 「日本語」を選択して「続行」。</li>
+    <li>インストール先の設定: 内蔵ストレージ（SSD/HDD）を選択します。</li>
+    <li>暗号化設定 (LUKS): セキュリティを高める場合は「データを暗号化する」にチェックを入れ、起動パスフレーズを設定します。（※忘れるとデータ復旧不可になるため厳重に管理）</li>
+    <li>「サードパーティのリポジトリを有効にする」にチェック。</li>
+    <li>右下の「インストール開始」をクリックします。</li>
+    <li>インストール完了後、PCを再起動し、画面の指示に従ってUSBメモリを引き抜きます。</li>
+  </ul>
+
+</details>
+
+<!-- 3 -->
+<details>
+  <summary>3. ツールの追加・セキュリティ設定</summary>
+
+  <h3>■ ClamAV + ClamTk（ウイルススキャン機能の追加）</h3>
+  <p>LinuxはWindowsと異なり「常駐型の自動スキャン」は不要ですが、ファイル共有時などの念のためのチェック用に導入します。<br>
+  ターミナル（端末）を開いて、以下のコマンドを順に実行します。</p>
+
+  <p>・パッケージのインストール</p>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>sudo dnf install clamav clamav-update clamtk -y</code>
+  </div>
+
+  <p>・ウイルス定義データベースの手動初回更新</p>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>sudo freshclam</code>
+  </div>
+
+  <h3>■ ブラウザ（Firefox）のおすすめ拡張機能</h3>
+  <p>Firefoxの「アドオン（拡張機能）」検索から以下を導入します。</p>
+  <ul>
+    <li><strong>uBlock Origin:</strong> 強力な広告・トラッカー・悪質スクリプト遮断。</li>
+    <li><strong>Privacy Badger:</strong> 行動分析による未知のトラッカー自動検知・ブロック。</li>
+    <li><strong>ClearURLs:</strong> URLに含まれる追跡用パラメータ（?utm_source=等）の自動削除。</li>
+    <li><strong>Malwarebytes Browser Guard:</strong> 詐欺・フィッシングサイトへの接続を強力ブロック。</li>
+  </ul>
+
+  <h3>■ 有料セキュリティ・プライバシー ツール</h3>
+  <p>Protonを利用しているユーザーはLinuxでも使える。</p>
+
+  <h4>● Proton VPN（公式Linuxアプリあり）</h4>
+  <p>【インストール手順（ターミナルで実行）】</p>
+  
+  <p>1. リポジトリ設定ファイルの取得</p>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>wget https://repo.protonvpn.com/fedora-$(rpm -E %fedora)-relative/protonvpn-stable-release/protonvpn-stable-release-1.0.3-1.noarch.rpm</code>
+  </div>
+
+  <p>2. リポジトリの登録</p>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>sudo dnf install ./protonvpn-stable-release-1.0.3-1.noarch.rpm -y</code>
+  </div>
+
+  <p>3. リフレッシュとアプリの導入</p>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>sudo dnf check-update --refresh && sudo dnf install proton-vpn-gnome-desktop -y</code>
+  </div>
+
+  <p>【おすすめ推奨設定】<br>
+  ProtonVPNの設定は起動して、左上の三本線から設定(Se...）をクリックして、以下の設定にする。<br>
+  【NetShield：ON】【Kill switch：ON】【Port forwarding：OFF】【Split tunneling：OFF】【Protocol：WireGuard】【VPN Accelerator：ON】【Moderate NAT：OFF】【IPv6：ON】【Custom DNS servers：OFF】【Auto connect：ON】【Share anonymous crash reports：任意】【Beta access：OFF】</p>
+
+  <h4>● Proton Pass(ブラウザのアドオンと同じように追加可能)</h4>
+  <p>ブラウザ拡張機能版： Firefoxのアドオンストアより「Proton Pass」を検索して追加、エンドツーエンド暗号化パスワードマネージャー。複雑なパスワード生成や、本物のメールアドレスを隠す「メールエイリアス機能」で漏洩を防ぎます。</p>
+
+  <h3>■ オンライン確認ツール</h3>
+  <ul>
+    <li><a href="https://www.virustotal.com/" target="_blank" rel="noopener noreferrer">VirusTotal</a>： 受信した添付ファイルや怪しいURLは、事前に入力・アップロードすることで70社以上のセキュリティエンジン（ESET、カスペルスキー等）で安全性を一括判定できます。</li>
+  </ul>
+
+</details>
+
+<!-- 4 -->
+<details>
+  <summary>4. メンテナンスコマンド</summary>
+
+  <p>セキュリティ面で利用する為に、パソコン起動時または定期的に、ターミナル（端末）を開いて、以下のコマンドを順に実行してください。</p>
+
+  <h3>■ ① 日常の起動時に使う「爆速メンテナンス」（数秒で完了）</h3>
+  <p>システム更新・Flatpak更新・不要キャッシュの削除をまとめて行います。</p>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>sudo dnf upgrade --refresh -y && flatpak update -y && sudo dnf autoremove -y && sudo dnf clean all && flatpak remove --unused -y</code>
+  </div>
+
+  <h3>■ ② 週1回または不安な時に使う「フルチェック＋ウイルススキャン」（数分）</h3>
+  <p>システムの更新と掃除に加え、ホームディレクトリ内のウイルススキャンを実行します。</p>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>sudo dnf upgrade --refresh -y && sudo dnf autoremove -y && sudo dnf clean all && flatpak remove --unused -y && rm -f ~/scan_result.log ~/clamav_scan.log && sudo freshclam && clamscan -r -i ~ -l ~/scan_result.log</code>
+  </div>
+
+  <p><strong>【正常時の出力結果】</strong><br>
+  スキャン結果の最後で「Infected files: 0」と表示されれば安全です。</p>
+
+  <h3>■ ③ セキュリティ機能（SELinux / ファイアウォール）の動作確認コマンド</h3>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>echo -e "=== SELinux ===\n$(getenforce)\n\n=== Firewalld ===\n$(sudo firewall-cmd --state)"</code>
+  </div>
+
+  <p><strong>【正常時の出力結果】</strong><br>
+  === SELinux ===<br>
+  Enforcing （※最高レベルのアクセス制限が有効）<br><br>
+  === Firewalld ===<br>
+  running （※ファイアウォールが正常稼働中）</p>
+
+</details>
+
+<div class="back-row">
+  <a href="../index.html" class="back-btn">ホーム</a>
+  <a href="../blog.html" class="back-btn">ブログ一覧</a>
+</div>
+
+</div>
+
+<!-- コピー機能用JavaScript -->
+<script>
+function copyCommand(btn) {
+  const code = btn.nextElementSibling.innerText;
+  navigator.clipboard.writeText(code).then(() => {
+    btn.innerText = '完了!';
+    setTimeout(() => {
+      btn.innerText = 'コピー';
+    }, 2000);
+  });
+}
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/blog-article.css">
+  <title>Linux(Fedora)の導入ガイド【2026年版】</title>
 </head>
 
 <body class="theme-blue">
