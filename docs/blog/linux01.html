@@ -84,6 +84,8 @@
 <!-- 1 -->
 <details>
   <summary>1. WindowsよりLinuxを選ぶ理由</summary>
+  
+  <p>※今回は、「安全性」「動作の軽快さ」「最新性」のバランスに優れた、汎用性の高いOSである<strong>Fedora Workstation (Fedora 44準拠)</strong>を導入します。（※標準のデスクトップ環境はGNOMEです）</p>
 
   <h3>■ メリット</h3>
   <ul>
@@ -99,7 +101,6 @@
   <h3>■ 結論</h3>
   <p>Webブラウザ上で動作する「Microsoft 365 (Web版Office)」や「Google Workspace」の利用、動画視聴、生配信の閲覧、Web閲覧、プログラミングや開発が中心であれば、Linuxに乗り換えるメリットは絶大です。</p>
 
-  <p>※今回は、「安全性」「動作の軽快さ」「最新性」のバランスに優れた、汎用性の高いOSである<strong>Fedora Workstation (Fedora 44準拠)</strong>を導入します。（※標準のデスクトップ環境はGNOMEです）</p>
 
   <h3>■ OS・セキュリティ環境の比較表</h3>
   <table style="width:100%; border-collapse: collapse; margin: 15px 0; font-size: 0.9rem; line-height: 1.5;">
@@ -178,9 +179,9 @@
     <li>Fedoraを導入したいパソコン</li>
   </ul>
 
-  <h3>■ 事前確認（ハードウェア互換性）</h3>
-  <p>特定のハードウェア（NVIDIA製GPUや、Broadcom製などの一部Wi-Fiチップセット）を搭載したPCでは、インストール直後に画面表示やWi-Fi接続に設定が必要となる場合があります。<br>
-  後述の「ライブ環境（お試し画面）」起動時に、Wi-Fiが認識されるか、画面描画に問題がないか事前にテストすることをおすすめします。（※NVIDIA GPU搭載機の場合は、インストール時の「サードパーティリポジトリ」有効化により公式ドライバの導入がスムーズになります）</p>
+<h3>■ 事前確認（お使いのPCとの相性チェック）</h3>
+<p>一部のPC（グラフィックボードやWi-Fiのパーツの種類によって）では、画面の表示やWi-Fi接続に少し設定が必要になることがあります。<br>
+後述の「お試し画面（ライブ環境）」が立ち上がった時に、画面がきれいに映るか、Wi-Fiに繋がるかを触って確認しておくと安心です。（※映像用パーツ（NVIDIA）が入っているPCの場合は、インストール途中で「サードパーティリポジトリ」をONにすると必要な設定がスムーズに行われます）</p>
 
   <h3>■ 手順</h3>
   <h4>1. 書き込みソフト（Rufus / Fedora Media Writer）の準備</h4>
@@ -189,9 +190,16 @@
 
   <h4>2. FedoraのISOイメージをダウンロードと整合性検証（推奨）</h4>
   <p>公式サイト（<a href="https://fedoraproject.org/workstation/download/" target="_blank" rel="noopener noreferrer">https://fedoraproject.org/workstation/download/</a>）より「Fedora Workstation Live ISO」をダウンロードします。</p>
-  <p><strong>【セキュリティのワンポイント：イメージファイルの検証】</strong><br>
-  ダウンロードページにある「CHECKSUM」ファイルと照合し、PowerShellで `Get-FileHash ./Fedora-Workstation-Live-x86_64-xx.iso` を実行してハッシュ値（SHA256）が一致することを確認します。さらに厳格化する場合はOpenPGP（GPG）署名の検証も行うことで、ファイルの破損や改ざんを確実に防止できます。</p>
 
+  <summary><strong>【安心チェック】ダウンロードしたファイルが壊れていないか調べる（任意）</strong></summary>
+  <p>ファイルが途中で壊れたり、偽物にすり替わったりしていないか心配な場合は、以下の方法で「ファイルの指紋（ハッシュ値）」をチェックできます。</p>
+  <ol>
+    <li>Windowsのスタートボタンを右クリックして「PowerShell」を開きます。</li>
+    <li><code>Get-FileHash ファイルの保存先パス</code> と入力してEnterキーを押します。<br>
+    <small>（例：<code>Get-FileHash C:\Users\ユーザー名\Downloads\Fedora-Workstation-Live-x86_64-40-1.14.iso</code>）</small></li>
+    <li>画面に表示された長い英数字（指紋データ）が、公式サイトのダウンロードページにある「CHECKSUM」に書かれた英数字とぴったり一致していれば、100%安全な本物のファイルです。</li>
+  </ol>
+  
   <h4>3. USBメモリにISOイメージを書き込む</h4>
   <ul>
     <li>USBメモリをWindows PCに接続します。</li>
