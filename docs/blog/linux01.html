@@ -264,93 +264,103 @@
 
 <!-- 3 -->
 <details>
-  <summary>3. ツールの追加・セキュリティ設定</summary>
+<h3>3. ツールの追加・セキュリティ設定</h3>
 
-  <h3>■ セキュリティの全体構造（多層防御の役割分担）</h3>
-  <div class="defense-box">
-    <div class="defense-item"><strong>Secure Boot：</strong> OS起動前のブートローダー改ざん防止・検証</div>
-    <div class="defense-item"><strong>ストレージ暗号化（LUKS）：</strong> PC紛失・盗難時の保存データ物理保護</div>
-    <div class="defense-item"><strong>SELinux / firewalld：</strong> システム全体のプロセス権限制限・ネットワーク制御</div>
-    <div class="defense-item"><strong>Proton VPN（WireGuard / Kill Switch）：</strong> 通信の暗号化・盗聴防止・IP保護</div>
-    <div class="defense-item"><strong>Firefox + uBlock Origin：</strong> Web閲覧時の広告・トラッカー・悪質コンテンツの遮断</div>
-    <div class="defense-item"><strong>Proton Pass：</strong> パスワードの安全な管理と使い回し防止</div>
-    <div class="defense-item"><strong>ClamAV：</strong> ダウンロードファイル等のオンデマンド（手動）スキャン</div>
-    <div class="defense-item"><strong>3-2-1バックアップ：</strong> システム障害・ランサムウェア被害・誤操作時の最終防衛線</div>
-  </div>
+<p>Fedoraの基本設定が完了したら、より便利で安全に使うためのツールを追加していきます。</p>
 
-  <h3>■ Flatpakエコシステムの拡張（Flathubの追加）</h3>
-  <p>Fedoraは標準でFlatpakパッケージに対応していますが、世界最大の統合リポジトリ「Flathub」を追加登録することで、さらに多くの安全にサンドボックス化されたアプリ（Spotify、Discord、VS Code等）をGUI（ソフトウェアセンター）から簡単に導入できるようになります。</p>
+---
 
-  <div class="command-box">
-    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo</code>
-  </div>
+<h4>■ アプリストアの拡張（Flathubの追加）</h4>
+<p>Fedora標準の「ソフトウェア」アプリで、SpotifyやDiscord、VS Codeなど人気のアプリをボタン一つで入れられるように設定します。<br>
+<small style="color: #8b949e;">※ターミナル（端末）で以下のコマンドを<b>最初の一度だけ</b>実行すれば完了です。</small></p>
 
-  <h3>■ プライバシー・通信保護ツール（Proton）</h3>
+<pre style="background: #1e1e1e; color: #d4d4d4; padding: 10px; border-radius: 5px;">flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo</pre>
 
-  <h4>● <a href="https://protonvpn.com/ja" target="_blank" rel="noopener noreferrer">Proton VPN</a>（Proton公式のLinuxアプリ）</h4>
-  <p>通信の保護および公共Wi-Fi等での盗聴を防ぎます。（※Fedora 44環境における公式推奨セットアップ手順）</p>
+---
 
-  <p>1. 公式リポジトリパッケージの登録<br>
-  <small>※URL内のパッケージバージョン（`1.0.4-1`等）は将来変更される可能性があるため、公式手順の最新状態をご確認ください。</small></p>
-  <div class="command-box">
-    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d' ' -f 3)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.4-1.noarch.rpm"</code>
-  </div>
+<h4>■ 快適・安全なネットサーフィン設定（Firefox拡張機能）</h4>
+<p>標準ブラウザのFirefoxに、無料のセキュリティ拡張機能を入れます。（入れすぎると重くなるため、以下の1つだけで十分です）</p>
 
-  <div class="command-box">
-    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>sudo dnf install ./protonvpn-stable-release-1.0.4-1.noarch.rpm -y</code>
-  </div>
+<ul>
+  <li><strong>uBlock Origin（必須レベル）：</strong> 悪質な広告や怪しいトラッカー（追跡機能）を強力にブロックします。Webページの読み込み速度も速くなります。</li>
+</ul>
 
-  <p>2. パッケージ情報の更新とアプリ本体のインストール</p>
-  <div class="command-box">
-    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>sudo dnf check-update --refresh</code>
-  </div>
+---
 
-  <div class="command-box">
-    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>sudo dnf install proton-vpn-gnome-desktop -y</code>
-  </div>
+<h4>■ 有料でおすすめのセキュリティツール（Proton）</h4>
+<p>より高度なプライバシー保護と安心感を求める方には、セキュリティに特化したスイス製の有料サービス<b>「Proton」</b>シリーズが最もおすすめです。（※Linuxとの相性も抜群です）</p>
 
-  <p>【おすすめ推奨設定（セキュリティ重視構成）】<br>
-  アプリを起動してログイン後、設定（Settings）より以下のように設定します。<br>
-  【NetShield：ON】【Kill switch：ON（より厳格な遮断を求める場合は Advanced Kill Switch を推奨）】【Split tunneling：OFF（※LinuxではKill Switchとの併用制限があるため）】【Protocol：WireGuard】【VPN Accelerator：ON】【IPv6：基本はデフォルト設定】【Auto connect：ON】</p>
+<p><strong>● Proton VPN（通信の保護）</strong><br>
+公共Wi-Fiでの盗聴防止や通信の暗号化に役立ちます。</p>
 
-  <h4>● <a href="https://proton.me/ja/pass" target="_blank" rel="noopener noreferrer">Proton Pass</a></h4>
-  <p>Firefoxのアドオンストア（<a href="https://addons.mozilla.org/ja/firefox/addon/proton-pass/" target="_blank" rel="noopener noreferrer">Proton Pass ページ</a>）より追加。暗号化されたパスワードマネージャー。パスワードの使い回しを防ぎ、アドレスの隠蔽（メールエイリアス機能）が可能です。</p>
+<p><strong>【導入の流れ】</strong><br>
+Linuxでは、Webから公式設定ファイルをダウンロードし、ターミナル（コマンド画面）で読み込ませてアプリをインストールします。（※以下のコマンドを順番に貼り付けるだけで完了します）</p>
 
-  <h3>■ ブラウザ（Firefox）のおすすめ拡張機能</h3>
-  <p>拡張機能を増やしすぎるとかえってブラウザが重くなったりトラブルの原因になります。必要最小限の構成が最も安全です。</p>
-  <ul>
-    <li><a href="https://addons.mozilla.org/ja/firefox/addon/ublock-origin/" target="_blank" rel="noopener noreferrer"><strong>uBlock Origin</strong></a>: 必須。広範囲な広告・トラッカー・悪質スクリプトの遮断。</li>
-    <li><a href="https://addons.mozilla.org/ja/firefox/addon/clearurls/" target="_blank" rel="noopener noreferrer"><strong>ClearURLs</strong></a>: 必要に応じて。URLに含まれる追跡用パラメータ（?utm_source=等）の自動削除。</li>
+<ol>
+  <li>
+    <strong>公式設定ファイルをダウンロード・登録する</strong>
+    <pre style="background: #1e1e1e; color: #d4d4d4; padding: 10px; border-radius: 5px; margin: 5px 0;">wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d' ' -f 3)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.4-1.noarch.rpm"</pre>
+    <pre style="background: #1e1e1e; color: #d4d4d4; padding: 10px; border-radius: 5px; margin: 5px 0;">sudo dnf install ./protonvpn-stable-release-1.0.4-1.noarch.rpm -y</pre>
+  </li>
+  <li>
+    <strong>アプリ本体をインストールする</strong>
+    <pre style="background: #1e1e1e; color: #d4d4d4; padding: 10px; border-radius: 5px; margin: 5px 0;">sudo dnf check-update --refresh</pre>
+    <pre style="background: #1e1e1e; color: #d4d4d4; padding: 10px; border-radius: 5px; margin: 5px 0;">sudo dnf install proton-vpn-gnome-desktop -y</pre>
+  </li>
+</ol>
+
+<p><small style="color: #8b949e;">※インストール後はアプリ一覧から起動してログインすればすぐに使えます。<br>
+おすすめ推奨設定：【NetShield：ON】【Kill switch：ON】【Protocol：WireGuard】【Auto connect：ON】</small></p>
+
+<p><strong>● Proton Pass（暗号化パスワード管理）</strong><br>
+Firefoxのアドオンストア（Proton Pass ページ）から追加します。パスワードの使い回しを防ぐほか、本物のメールアドレスを隠す使い捨てアドレス（エイリアス）機能が利用できます。</p>
+
+---
+
+<h4>■ ウイルス対策ツールの追加（ClamAV）※任意</h4>
+<p>LinuxはWindowsに比べてウイルス被害が極めて少ないですが、メールの添付ファイルや外部から取得したファイルを念のため手動チェックしたい場合は導入します。</p>
+
+<p><strong>1. インストール（ターミナルで実行）</strong></p>
+<pre style="background: #1e1e1e; color: #d4d4d4; padding: 10px; border-radius: 5px;">sudo dnf install clamav clamav-update clamtk -y</pre>
+
+<p><strong>2. ウイルス定義データの更新</strong></p>
+<pre style="background: #1e1e1e; color: #d4d4d4; padding: 10px; border-radius: 5px;">sudo freshclam</pre>
+
+<p><small>※ファイルやURLの安全性をサクッと調べたい場合は、ソフトを入れずにブラウザから無料で使えるWEBサービス<b>「VirusTotal」</b>を活用するのも手軽でおすすめです。</small></p>
+
+---
+
+<h3>4. 導入対象のPCをUSBから起動する</h3>
+
+<ol>
+  <li>Fedoraを入れたいPCに、作成したUSBメモリを挿し込みます。</li>
+  <li>PCの電源を入れ、すぐにキーボードの <strong>F12</strong>（または F2 / F11 / Delete ※メーカーによる）を連打してブートメニューを開きます。</li>
+  <li>画面に表示されたメニューから「USB (または Flash Drive)」を選択して起動します。</li>
+  <li>Fedoraのライブ環境（お試し画面）が立ち上がります。</li>
+</ol>
+
+<p><small style="color: #8b949e;">※Secure Boot（セキュリティ機能）は有効のままでOKです。Fedoraは標準で対応しているため、設定を変更（無効化）せずにそのまま作業を進められます。</small></p>
+
+<p><strong>※設定する2つのパスワードについて</strong><br>
+・<strong>1つ目（ストレージ暗号化）：</strong> PCを紛失・盗難された時に、中のデータを勝手に読み取られるのを防ぐパスワードです。（※忘れるとデータが開けなくなるため注意してください）<br>
+・<strong>2つ目（ユーザーアカウント）：</strong> 日常のログインや、設定を変更する時に使うパスワードです。<br>
+<small style="color: #8b949e;">※安全のため、2つのパスワードは<b>必ず別のもの</b>に設定してください。（※ユーザー用パスワードは後からいつでも変更可能です）</small></p>
+
+---
+
+<div style="background: #161b22; border: 1px solid #30363d; padding: 15px; border-radius: 6px; margin-top: 30px;">
+  <h4 style="margin-top: 0;">💡 まとめ：今回の設定で構築されたセキュリティ体制</h4>
+  <p style="font-size: 0.9em; line-height: 1.6;">ここまでの手順を進めることで、あなたのPCは以下のような重厚な防衛体制（多層防御）が整いました！</p>
+  
+  <ul style="font-size: 0.85em; padding-left: 20px;">
+    <li><strong>PC起動時・紛失時：</strong> Secure Boot ＋ ストレージ暗号化で物理的にガード</li>
+    <li><strong>システム内部：</strong> Fedora標準の強力な壁（SELinux / ファイアウォール）で侵入を防止</li>
+    <li><strong>ネット利用時：</strong> uBlock Origin ＋ Proton（VPN / Pass）で危険な広告や通信盗聴をシャットアウト</li>
+    <li><strong>ファイル確認：</strong> ClamAVやVirusTotalで怪しいファイルを事前チェック</li>
   </ul>
-
-  <h3>■ ClamAV + ClamTk（ファイル用スキャン機能の追加）</h3>
-  <p>一般的なデスクトップ利用ではWindowsのような常時リアルタイムスキャンを必須とする必要はありません。ただし、メール添付ファイルや外部から取得したファイルをチェックする補助対策（オンデマンドスキャン）として導入します。<br>
-  ターミナル（端末）を開いて、以下のコマンドを実行します。</p>
-
-  <div class="command-box">
-    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>sudo dnf install clamav clamav-update clamtk -y</code>
-  </div>
-
-  <p>・ウイルス定義データベースの手動更新</p>
-  <div class="command-box">
-    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>sudo freshclam</code>
-  </div>
-
-  <h3>■ オンライン確認ツール・外部サービス</h3>
-  <ul>
-    <li><a href="https://www.virustotal.com/" target="_blank" rel="noopener noreferrer">VirusTotal</a>： ダウンロードしたファイルや不審なURLは、開く前にこちらへアップロード・入力して多角的に安全性を判定します。<br>
-    <small style="color: #f85149;">※機密情報・個人情報・社内情報などを含むファイルは、利用規約や組織のポリシーを確認せずにアップロードしないでください。</small></li>
-  </ul>
-
+</div>
 </details>
-
+  
 <!-- 4 -->
 <details>
   <summary>4. メンテナンスと保守運用</summary>
