@@ -190,15 +190,33 @@
 
   <h4>2. FedoraのISOイメージをダウンロードと整合性検証（推奨）</h4>
   <p>公式サイト（<a href="https://fedoraproject.org/workstation/download/" target="_blank" rel="noopener noreferrer">https://fedoraproject.org/workstation/download/</a>）より「Fedora Workstation Live ISO」をダウンロードします。</p>
+<p><strong>【安心チェック：ファイルが正しくダウンロードできたか確認する（任意）】</strong><br>
+ファイルが途中で壊れたり、偽物にすり替わったりしていないか心配な方は確認できます。（※スキップしても次に進めます）</p>
 
-  <summary><strong>【安心チェック】ダウンロードしたファイルが壊れていないか調べる（任意）</strong></summary>
-  <p>ファイルが途中で壊れたり、偽物にすり替わったりしていないか心配な場合は、以下の方法で「ファイルの指紋（ハッシュ値）」をチェックできます。</p>
-  <ol>
-    <li>Windowsのスタートボタンを右クリックして「PowerShell」を開きます。</li>
-    <li><code>Get-FileHash ファイルの保存先パス</code> と入力してEnterキーを押します。<br>
-    <small>（例：<code>Get-FileHash C:\Users\ユーザー名\Downloads\Fedora-Workstation-Live-x86_64-40-1.14.iso</code>）</small></li>
-    <li>画面に表示された長い英数字（指紋データ）が、公式サイトのダウンロードページにある「CHECKSUM」に書かれた英数字とぴったり一致していれば、100%安全な本物のファイルです。</li>
-  </ol>
+<ol>
+  <li><strong>PowerShellを開く</strong><br>
+  Windowsの「スタートボタン」を右クリックして、出てきたメニューから「PowerShell」（またはTerminal）をクリックして開きます。</li>
+  
+  <li><strong>コマンドを入力する</strong><br>
+  画面が開いたら <code>Get-FileHash </code> と入力します。<br>
+  <small style="color: #f85149;">※ Get-FileHash と打ち、キーボードのスペースキーを半角で1回押します（全角スペースになるとエラーになるので注意してください）。</small></li>
+  
+  <li><strong>ファイルを画面にドラッグ＆ドロップする</strong><br>
+  ダウンロードしたFedoraのファイルを、PowerShellの画面内にマウスで引っ張って入れます（ドラッグ＆ドロップ）。すると、保存先のパスが自動入力されます。</li>
+  
+  <li><strong>Enterキーを押す</strong><br>
+  キーボードの Enter キーを押します。</li>
+  
+  <li><strong>結果を確認する</strong><br>
+  画像のように「Hash」の下に表示された長い英数字（例: <code>1620295F...</code>）が、公式サイトのダウンロードページにある「CHECKSUM」の英数字と一致していれば、ファイルは壊れておらず100%安全です。</li>
+</ol>
+  
+<!-- 画像挿入部分 -->
+<div style="margin: 20px 0;">
+  <img src="ここに画像のURLを入れてください" alt="PowerShellでのハッシュ値確認画面" style="max-width: 100%; height: auto; border: 1px solid #30363d; border-radius: 6px; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+</div>
+
+  
   
   <h4>3. USBメモリにISOイメージを書き込む</h4>
   <ul>
