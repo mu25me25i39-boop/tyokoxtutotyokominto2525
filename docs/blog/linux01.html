@@ -267,38 +267,50 @@
   <summary>3. ツールの追加・セキュリティ設定</summary>
   <div style="padding: 10px 0;">
 
-    <p>■ Flatpakエコシステムの拡張（Flathubの追加）</p>
-
+    <p><strong>■ ① Flatpakエコシステムの拡張（Flathubの追加）</strong></p>
     <p>Fedoraは標準でFlatpakパッケージに対応していますが、世界最大の統合リポジトリ「Flathub」を追加登録することで、さらに多くの安全にサンドボックス化されたアプリ（Spotify、Discord、VS Code等）をGUI（ソフトウェアセンター）から簡単に導入できるようになります。<br>
     <small style="color: #8b949e;">※以下のコマンドは<b>最初の一度だけ</b>実行すれば完了です（更新作業などは不要です）。</small></p>
 
-    <pre><code>flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo</code></pre>
+    <div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
+      <code style="color: #58a6ff; font-size: 0.9em;">flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo</code>
+      <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
+    </div>
 
     <br>
 
-    <p>■ 有料でおすすめのセキュリティツール（Proton）</p>
-
+    <p><strong>■ ② 有料でおすすめのセキュリティツール（Proton）</strong></p>
     <p>より高度なプライバシー保護と安心感を求める方には、セキュリティに特化したスイス製の有料サービス<b>「Proton」</b>シリーズが最もおすすめです。（※Linuxとの相性も抜群です）</p>
 
-    <p>● Proton VPN（Proton公式のLinuxアプリ）</p>
-
-    <p>通信の保護および公共Wi-Fi等での盗聴を防ぎます。（※Fedora 44環境における公式推奨セットアップ手順）</p>
+    <p><strong>● Proton VPN（Proton公式のLinuxアプリ）</strong><br>
+    通信の保護および公共Wi-Fi等での盗聴を防ぎます。（※Fedora 44環境における公式推奨セットアップ手順）</p>
 
     <p><strong>【導入の流れ】</strong><br>
-    Linuxでは、Webから公式設定ファイルをダウンロードし、ターミナル（コマンド画面）で読み込ませてアプリをインストールします。（※以下のコマンドを順番に貼り付けるだけで完了します）</p>
+    Linuxでは、Webから公式設定ファイルをダウンロードし、ターミナル（コマンド画面）で読み込ませてアプリをインストールします。（※以下のコマンドを順番に実行します）</p>
 
     <p>1. 公式リポジトリパッケージの登録<br>
-    <small style="color: #8b949e;">※URL内のパッケージバージョン（<code>1.0.4-1</code>等）は将来変更される可能性があるため、<a href="https://protonvpn.com/support/official-linux-vpn-fedora/" target="_blank" rel="noopener">公式手順</a>の最新状態をご確認ください。</small></p>
+    <small style="color: #8b949e;">※URL内のパッケージバージョン（<code>1.0.4-1</code>等）は将来変更される可能性があるため、<a href="https://protonvpn.com/support/official-linux-vpn-fedora/" target="_blank" rel="noopener" style="color: #58a6ff;">公式手順</a>の最新状態をご確認ください。</small></p>
 
-    <pre><code>wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d' ' -f 3)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.4-1.noarch.rpm"</code></pre>
+    <div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
+      <code style="color: #58a6ff; font-size: 0.9em;">wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d' ' -f 3)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.4-1.noarch.rpm"</code>
+      <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
+    </div>
 
-    <pre><code>sudo dnf install ./protonvpn-stable-release-1.0.4-1.noarch.rpm -y</code></pre>
+    <div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
+      <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf install ./protonvpn-stable-release-1.0.4-1.noarch.rpm -y</code>
+      <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
+    </div>
 
     <p>2. パッケージ情報の更新とアプリ本体のインストール</p>
 
-    <pre><code>sudo dnf check-update --refresh</code></pre>
+    <div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
+      <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf check-update --refresh</code>
+      <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
+    </div>
 
-    <pre><code>sudo dnf install proton-vpn-gnome-desktop -y</code></pre>
+    <div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
+      <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf install proton-vpn-gnome-desktop -y</code>
+      <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
+    </div>
 
     <p><strong>【おすすめ推奨設定（セキュリティ重視構成）】</strong><br>
     アプリを起動してログイン後、設定（Settings）より以下のように設定します。<br>
@@ -306,46 +318,47 @@
 
     <br>
 
-    <p>● Proton Pass</p>
-
-    <p>Firefoxのアドオンストア（<a href="https://addons.mozilla.org/ja/firefox/addon/proton-pass/" target="_blank" rel="noopener">Proton Pass ページ</a>）より追加。暗号化されたパスワードマネージャー。パスワードの使い回しを防ぎ、アドレスの隠蔽（メールエイリアス機能）が可能です。</p>
+    <p><strong>● Proton Pass</strong><br>
+    Firefoxのアドオンストア（<a href="https://addons.mozilla.org/ja/firefox/addon/proton-pass/" target="_blank" rel="noopener" style="color: #58a6ff;">Proton Pass ページ</a>）より追加。暗号化されたパスワードマネージャー。パスワードの使い回しを防ぎ、アドレスの隠蔽（メールエイリアス機能）が可能です。</p>
 
     <br>
 
-    <p>■ ブラウザ（Firefox）のおすすめ拡張機能</p>
-
+    <p><strong>■ ③ ブラウザ（Firefox）のおすすめ拡張機能</strong></p>
     <p>拡張機能を増やしすぎるとかえってブラウザが重くなったりトラブルの原因になります。必要最小限の構成が最も安全です。</p>
 
     <ul>
-      <li><strong><a href="https://addons.mozilla.org/ja/firefox/addon/ublock-origin/" target="_blank" rel="noopener">uBlock Origin</a>:</strong> 必須。広範囲な広告・トラッカー・悪質スクリプトの遮断。</li>
-      <li><strong><a href="https://addons.mozilla.org/ja/firefox/addon/clearurls/" target="_blank" rel="noopener">ClearURLs</a>:</strong> 必要に応じて。URLに含まれる追跡用パラメータ（<code>?utm_source=</code>等）の自動削除。</li>
+      <li><strong><a href="https://addons.mozilla.org/ja/firefox/addon/ublock-origin/" target="_blank" rel="noopener" style="color: #58a6ff;">uBlock Origin</a>:</strong> 必須。広範囲な広告・トラッカー・悪質スクリプトの遮断。</li>
+      <li><strong><a href="https://addons.mozilla.org/ja/firefox/addon/clearurls/" target="_blank" rel="noopener" style="color: #58a6ff;">ClearURLs</a>:</strong> 必要に応じて。URLに含まれる追跡用パラメータ（<code>?utm_source=</code>等）の自動削除。</li>
     </ul>
 
     <br>
 
-    <p>■ ClamAV + ClamTk（ファイル用スキャン機能の追加）※任意</p>
-
+    <p><strong>■ ④ ClamAV + ClamTk（ファイル用スキャン機能の追加）※任意</strong></p>
     <p>一般的なデスクトップ利用ではWindowsのような常時リアルタイムスキャンを必須とする必要はありません。ただし、メール添付ファイルや外部から取得したファイルをチェックする補助対策（オンデマンドスキャン）として導入します。</p>
 
     <p>ターミナル（端末）を開いて、以下のコマンドを実行します。</p>
 
-    <pre><code>sudo dnf install clamav clamav-update clamtk -y</code></pre>
+    <div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
+      <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf install clamav clamav-update clamtk -y</code>
+      <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
+    </div>
 
     <p>・ウイルス定義データベースの手動更新</p>
 
-    <pre><code>sudo freshclam</code></pre>
+    <div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
+      <code style="color: #58a6ff; font-size: 0.9em;">sudo freshclam</code>
+      <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
+    </div>
 
     <br>
 
-    <p>■ オンライン確認ツール・外部サービス</p>
-
-    <p><strong><a href="https://www.virustotal.com/" target="_blank" rel="noopener">VirusTotal</a>：</strong> ダウンロードしたファイルや不審なURLは、開く前にこちらへアップロード・入力して多角的に安全性を判定します。<br>
+    <p><strong>■ ⑤ オンライン確認ツール・外部サービス</strong></p>
+    <p><strong><a href="https://www.virustotal.com/" target="_blank" rel="noopener" style="color: #58a6ff;">VirusTotal</a>：</strong> ダウンロードしたファイルや不審なURLは、開く前にこちらへアップロード・入力して多角的に安全性を判定します。<br>
     <small style="color: #8b949e;">※機密情報・個人情報・社内情報などを含むファイルは、利用規約や組織のポリシーを確認せずにアップロードしないでください。</small></p>
 
     <br>
 
-    <p>■ セキュリティの全体構造（多層防御の役割分担）</p>
-
+    <p><strong>■ ⑥ セキュリティの全体構造（多層防御の役割分担）</strong></p>
     <ul>
       <li><strong>Secure Boot：</strong> OS起動前のブートローダー改ざん防止・検証</li>
       <li><strong>ストレージ暗号化（LUKS）：</strong> PC紛失・盗難時の保存データ物理保護</li>
