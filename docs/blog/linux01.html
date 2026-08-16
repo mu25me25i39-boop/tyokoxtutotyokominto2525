@@ -85,7 +85,7 @@
 <details>
   <summary>1. WindowsよりLinuxを選ぶ理由</summary>
   
-  <p>※今回は、「安全性」「動作の軽快さ」「最新性」のバランスに優れた、汎用性の高いOSである<strong>Fedora Workstation (Fedora 44準拠)</strong>を導入します。（※標準のデスクトップ環境はGNOMEです）</p>
+  <p>※今回は、「安全性」「動作の軽快さ」「最新性」のバランスに優れた、汎用性の高いOSである<strong>Fedora Workstationを導入します。※Fedoraは定期的に新バージョンが公開されるため、実際の導入時は公式サイトの最新版を使用してください。</p>
 
   <h3>■ メリット</h3>
   <ul>
@@ -99,7 +99,7 @@
   <p>Windows専用のソフト（特定の動画編集ソフト、Officeデスクトップ版、特殊な専用ツール等）や一部の周辺機器（専用ドライバを必要とするプリンター等）が使えない、または設定が難しい場合があります。また、カーネルレベルのAnti-Cheat（不正防止ソフト）を必須とする一部のPCゲームは動作しません。</p>
 
   <h3>■ 結論</h3>
-  <p>Webブラウザ上で動作する「Microsoft 365 (Web版Office)」や「Google Workspace」の利用、動画視聴、生配信の閲覧、Web閲覧、プログラミングや開発が中心であれば、Linuxに乗り換えるメリットは絶大です。</p>
+  <p>Webブラウザ上で動作する「Microsoft 365 (Web版Office)」や「Google Workspace」の利用、動画視聴、生配信の閲覧、Web閲覧、プログラミングや開発が中心であれば、Linuxに乗り換えるメリットは大きいでしょう。</p>
 
 
   <h3>■ OS・セキュリティ環境の比較表</h3>
@@ -159,7 +159,7 @@
         <td style="padding: 10px; border: 1px solid #30363d;"><strong>総合的な評価</strong></td>
         <td style="padding: 10px; border: 1px solid #30363d;"><strong>◎ 利便性・標準防御のバランス</strong><br><small>一般用途には十分強力</small></td>
         <td style="padding: 10px; border: 1px solid #30363d;"><strong>◎ 高度な検知機能の追加</strong><br><small>コストと負荷のトレードオフ</small></td>
-        <td style="padding: 10px; border: 1px solid #30363d;"><strong>◎ 透明性・制御性の高さ</strong><br><small>SELinux、firewalld、Secure Boot等を活用した多層防御を構築可能</small></td>
+        <td style="padding: 10px; border: 1px solid #30363d;"><strong>◎ 高い制御性・カスタマイズ性</strong><br><small>SELinux、firewalld、Secure Boot等を活用した多層防御を構築可能</small></td>
       </tr>
     </tbody>
   </table>
@@ -208,7 +208,7 @@
   キーボードの Enter キーを押します。</li>
   
   <li><strong>結果を確認する</strong><br>
-  画像のように「Hash」の下に表示された長い英数字（例: <code>1620295F...</code>）が、公式サイトのダウンロードページにある「CHECKSUM」の英数字と一致していれば、ファイルは壊れておらず100%安全です。</li>
+  画像のように「Hash」の下に表示された長い英数字（例: <code>1620295F...</code>）が、公式サイトのダウンロードページにある「CHECKSUM」の英数字と一致していれば、ダウンロードしたファイルが、公式に公開されたISOと一致していることを確認できます。</li>
 </ol>
   
 <!-- 画像挿入部分 -->
@@ -268,7 +268,7 @@
   <div style="padding: 10px 0;">
 
     <p><strong>■ ① Flatpakエコシステムの拡張（Flathubの追加）</strong></p>
-    <p>Fedoraは標準でFlatpakパッケージに対応していますが、世界最大の統合リポジトリ「Flathub」を追加登録することで、さらに多くの安全にサンドボックス化されたアプリ（Spotify、Discord、VS Code等）をGUI（ソフトウェアセンター）から簡単に導入できるようになります。<br>
+    <p>Fedoraは標準でFlatpakパッケージに対応していますが、世界最大の統合リポジトリ「Flathub」を追加登録することで、さらに多くのFlatpakアプリを、サンドボックス機能を利用しながらGUIから簡単に導入できます。<br>
     <small style="color: #8b949e;">※以下のコマンドは<b>最初の一度だけ</b>実行すれば完了です（更新作業などは不要です）。</small></p>
 
     <div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
@@ -282,7 +282,7 @@
     <p>より高度なプライバシー保護と安心感を求める方には、セキュリティに特化したスイス製の有料サービス<b>「Proton」</b>シリーズが最もおすすめです。（※Linuxとの相性も抜群です）</p>
 
     <p><strong>● Proton VPN（Proton公式のLinuxアプリ）</strong><br>
-    通信の保護および公共Wi-Fi等での盗聴を防ぎます。（※Fedora 44環境における公式推奨セットアップ手順）</p>
+    通信経路を保護し、公共Wi-Fiなど信頼できないネットワーク上での通信を安全にするのに役立ちます。</p>
 
     <p><strong>【導入の流れ】</strong><br>
     Linuxでは、Webから公式設定ファイルをダウンロードし、ターミナル（コマンド画面）で読み込ませてアプリをインストールします。（※以下のコマンドを順番に実行します）</p>
@@ -294,6 +294,7 @@
       <code style="color: #58a6ff; font-size: 0.9em;">wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d' ' -f 3)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.4-1.noarch.rpm"</code>
       <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
     </div>
+    <p>※Proton VPNはバージョンによってインストール手順が変更される場合があるため、Proton公式のFedora向け最新手順に従ってインストールしてください。
 
     <div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
       <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf install ./protonvpn-stable-release-1.0.4-1.noarch.rpm -y</code>
