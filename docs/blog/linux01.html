@@ -279,39 +279,53 @@
     <p><strong>■ ② 有料でおすすめのセキュリティツール（Proton）</strong></p>
     <p>より高度なプライバシー保護と安心感を求める方には、セキュリティに特化したスイス製の有料サービス<b>「Proton」</b>シリーズが最もおすすめです。（※Linuxとの相性も抜群です）</p>
 
-    <p><strong>● Proton VPN（Proton公式のLinuxアプリ）</strong><br>
-    通信経路を保護し、公共Wi-Fiなど信頼できないネットワーク上での通信を安全にするのに役立ちます。</p>
+  <p><strong>● Proton VPN（Proton公式のLinuxアプリ）</strong><br>
+通信経路を保護し、公共Wi-Fiなど信頼できないネットワーク上での通信を安全にするのに役立ちます。</p>
 
-    <p><strong>【導入の流れ】</strong><br>
-    Linuxでは、Webから公式設定ファイルをダウンロードし、ターミナル（コマンド画面）で読み込ませてアプリをインストールします。（※以下のコマンドを順番に実行します）</p>
+<p><strong>【導入の流れ】</strong><br>
+Linuxでは、Proton公式のリポジトリを登録してアプリをインストールします。<br>
+<strong>※Proton VPNはバージョンによってインストール手順やパッケージ名が変更される場合があります。実際の導入時は、必ず<a href="https://protonvpn.com/support/official-linux-vpn-fedora/" target="_blank" rel="noopener" style="color: #58a6ff;">Proton公式のFedora向け最新手順</a>を確認してください。</strong></p>
 
-    <p>1. 公式リポジトリパッケージの登録<br>
-    <small style="color: #8b949e;">※URL内のパッケージバージョン（<code>1.0.4-1</code>等）は将来変更される可能性があるため、<a href="https://protonvpn.com/support/official-linux-vpn-fedora/" target="_blank" rel="noopener" style="color: #58a6ff;">公式手順</a>の最新状態をご確認ください。</small></p>
+<p><strong>1. Proton VPN公式リポジトリの登録</strong><br>
+<small style="color: #8b949e;">
+※以下のURLに含まれるバージョン番号は将来変更される可能性があります。<br>
+現在のバージョンが公式手順と異なる場合は、公式サイトに掲載されている最新のコマンドを使用してください。
+</small></p>
 
-    <div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
-      <code style="color: #58a6ff; font-size: 0.9em;">wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d' ' -f 3)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.4-1.noarch.rpm"</code>
-      <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
-    </div>
-    <div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
-      <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf install ./protonvpn-stable-release-1.0.4-1.noarch.rpm -y</code>
-      <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
-    </div>
-    <p>2. パッケージ情報の更新とアプリ本体のインストール</p>
+<div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
+  <code style="color: #58a6ff; font-size: 0.9em;">wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d' ' -f 3)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.4-1.noarch.rpm"</code>
+  <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
+</div>
 
-    <div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
-      <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf check-update --refresh</code>
-      <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
-    </div>
+<div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
+  <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf install ./protonvpn-stable-release-1.0.4-1.noarch.rpm -y</code>
+  <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
+</div>
 
-    <div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
-      <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf install proton-vpn-gnome-desktop -y</code>
-      <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
-    </div>
-    <p>※Proton VPNはバージョンによってインストール手順が変更される場合があるため、Proton公式のFedora向け最新手順に従ってインストールしてください。
-    <p><strong>【おすすめ推奨設定（セキュリティ重視構成）】</strong><br>
-    アプリを起動してログイン後、設定（Settings）より以下のように設定します。<br>
-    【NetShield：ON】【Kill switch：ON（より厳格な遮断を求める場合は Advanced Kill Switch を推奨）】【Split tunneling：OFF（※LinuxではKill Switchとの併用制限があるため）】【Protocol：WireGuard】【VPN Accelerator：ON】【IPv6：基本はデフォルト設定】【Auto connect：ON】</p>
+<p><strong>2. パッケージ情報を更新してProton VPNをインストール</strong></p>
 
+<div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
+  <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf check-update --refresh</code>
+  <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
+</div>
+
+<div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
+  <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf install proton-vpn-gnome-desktop -y</code>
+  <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
+</div>
+
+<p>
+<strong>※重要：</strong>
+上記のコマンドは掲載時点の例です。Proton側でバージョンやインストール方法が変更されている場合は、
+<a href="https://protonvpn.com/support/official-linux-vpn-fedora/" target="_blank" rel="noopener" style="color: #58a6ff;">Proton公式の最新手順</a>
+に掲載されているコマンドを使用してください。
+</p>
+
+<p><strong>【おすすめ推奨設定（セキュリティ重視構成）】</strong><br>
+アプリを起動してログイン後、設定（Settings）より以下のように設定します。<br>
+【NetShield：ON】【Kill switch：ON（より厳格な遮断を求める場合は Advanced Kill Switch を推奨）】【Split tunneling：OFF（※LinuxではKill Switchとの併用制限があるため）】【Protocol：WireGuard】【VPN Accelerator：ON】【IPv6：基本はデフォルト設定】【Auto connect：ON】</p>
+    
+    
     <p><strong>● Proton Pass</strong><br>
     Firefoxのアドオンストア（<a href="https://addons.mozilla.org/ja/firefox/addon/proton-pass/" target="_blank" rel="noopener" style="color: #58a6ff;">Proton Pass ページ</a>）より追加。暗号化されたパスワードマネージャー。パスワードの使い回しを防ぎ、アドレスの隠蔽（メールエイリアス機能）が可能です。</p>
 
