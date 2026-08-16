@@ -85,13 +85,13 @@
 <details>
   <summary>1. WindowsよりLinuxを選ぶ理由</summary>
   
-  <p>※今回は、「安全性」「動作の軽快さ」「最新性」のバランスに優れた、汎用性の高いOSである<strong>Fedora Workstationを導入します。※Fedoraは定期的に新バージョンが公開されるため、実際の導入時は公式サイトの最新版を使用してください。</p>
+  <p>※今回は、「安全性」「動作の軽快さ」「最新性」のバランスを重視し、汎用性の高いFedora Workstationを導入します。Fedoraは定期的に新しいバージョンが公開されるため、実際の導入時はFedora公式サイトに掲載されている最新版を使用してください。（※Fedoraの各バージョンは、リリース後およそ13か月間サポートされます。新しいバージョンが定期的にリリースされるため、長期間利用する場合は、サポート期間内に新しいFedoraへアップグレードしてください。）</p>
 
   <h3>■ メリット</h3>
   <ul>
-    <li><strong>高度なアクセス制御と防御構造：</strong> Fedoraは強力な標準ファイアウォール（firewalld）や、システム侵入後の影響を最小限に抑える強制アクセス制御（SELinux）をデフォルトで標準稼働させています。重い常駐型サードパーティ製セキュリティソフトを追加せずとも、強固な権限分離構造を持っています。</li>
+    <li><strong>高度なアクセス制御と防御構造：</strong> FedoraはSELinuxによる強制アクセス制御を標準で利用し、firewalldによるネットワークアクセス制御も利用できます。これらにより、アプリケーションやプロセスの権限を制限し、不要なネットワーク通信を制御する多層的な防御構成を構築できます。重い常駐型サードパーティ製セキュリティソフトを追加せずとも、強固な権限分離構造を持っています。</li>
     <li><strong>透明性とプライバシー保護：</strong> OSや利用するソフトウェアについて、収集されるデータや通信内容をユーザー自身が確認・選択しやすく、Windowsとは異なるプライバシー管理が可能です。</li>
-    <li><strong>コスト・保守性の高さ：</strong> OS自体は完全に無料で利用できます。Windowsのようにライセンス購入費用がかからず、サポート終了時もPC本体を買い替えることなく、新しいバージョンのFedoraへ無料でアップグレードして使い続けられます。（※Fedoraは各バージョン約13ヶ月間サポートされます）</li>
+    <li><strong>コスト・保守性の高さ：</strong> OS自体は無料で利用できます。Fedoraの各バージョンはリリース後およそ13か月間サポートされるため、長期間利用する場合は、サポート期間内に新しいFedoraへアップグレードして使い続けることができます。PCのハードウェアが新しいバージョンの動作要件を満たしている限り、OSの更新だけで継続利用できます。</li>
     <li><strong>柔軟性とカスタマイズ性：</strong> Windows 11では動作が重くなりやすいPCでも、Linuxではデスクトップ環境や構成を選択することで、より軽快に動作させられる場合があります。特に古いPCでは、軽量なデスクトップ環境を選ぶことで延命できる可能性があります。</li>
   </ul>
 
@@ -117,7 +117,7 @@
         <td style="padding: 10px; border: 1px solid #30363d;"><strong>マルウェア防御</strong></td>
         <td style="padding: 10px; border: 1px solid #30363d;">◯（Microsoft Defender標準搭載）</td>
         <td style="padding: 10px; border: 1px solid #30363d;">◎（製品によって検知・防御機能を強化）</td>
-        <td style="padding: 10px; border: 1px solid #30363d;">◯〜◎（標準の権限分離・SELinux等による防御に加え、適切な更新・運用が必要）</td>
+        <td style="padding: 10px; border: 1px solid #30363d;">◯〜◎（権限分離・SELinux等による防御。必要に応じてClamAV等を利用）</td>
       </tr>
       <tr>
         <td style="padding: 10px; border: 1px solid #30363d;"><strong>アクセス制御・防御構造</strong></td>
@@ -224,7 +224,7 @@
     <li>Rufusを起動し、「デバイス」で挿入したUSBを選択します。</li>
     <li>「ブートの選択」で、ダウンロードしたFedoraのISOファイルを選択し、「スタート」をクリックします。</li>
   </ul>
-  <p>※「ISOイメージモード / DDイメージモード」を選択する画面が出た場合は、画面の案内に従い「ISOイメージモード（推奨）」を選択して実行します。<br>
+  <p>※「ISOイメージモード / DDイメージモード」の選択画面が表示された場合は、まずISOイメージモードを選択して進めてください。正常に起動できない場合は、Fedora公式の作成方法やRufusの案内を確認してください。<br>
   ※書き込み完了後、USBメモリを安全に取り外します。</p>
 
 <h4>4. 導入対象のPCをUSBから起動する</h4>
@@ -234,7 +234,7 @@
   <li>画面に表示されたメニューから「USB (または Flash Drive)」を選択して起動します。</li>
   <li>Fedoraのライブ環境（お試し画面）が立ち上がります。</li>
 </ol>
-<p><small style="color: #8b949e;">※Secure Boot（セキュリティ機能）は有効のままでOKです。Fedoraは標準で対応しているため、設定を変更（無効化）せずにそのまま作業を進められます。</small></p>
+<p><small style="color: #8b949e;">※Secure Bootは、対応環境では有効のまま使用することを推奨します。FedoraはSecure Bootに対応しているため、通常は無効化する必要はありません。ただし、特定のサードパーティ製ドライバ等を使用する場合は、追加設定が必要になることがあります。</small></p>
 
   <h4>5. インストール手順に従う</h4>
   <ol>
@@ -243,7 +243,7 @@
     <li><strong>インストール先と暗号化設定：</strong>
       <ul>
         <li>「インストール先」をクリックし、Fedoraを入れるストレージ（SSD/HDD）を選択します。</li>
-        <li><strong>【パスワード設定①】</strong> セキュリティを高める場合は「データを暗号化する」にチェックを入れ、暗号化用パスフレーズを設定します。</li>
+        <li><strong>【パスワード設定①】</strong> 「インストール先」を選択し、FedoraをインストールするSSD/HDDを指定します。利用できる場合はストレージ暗号化を有効にし、暗号化に使用するパスフレーズを設定します。</li>
       </ul>
     </li>
     <li><strong>サードパーティリポジトリ：</strong> 必要なソフトウェア（NVIDIAドライバや一部のプロプライエタリなコーデック等）を利用する場合に有効化します。不要な場合はチェックなしで進めます。</li>
@@ -258,7 +258,7 @@
 <p><strong>※設定する2つのパスワードについて</strong><br>
 ・<strong>1つ目（ストレージ暗号化）：</strong> PCを紛失・盗難された時に、中のデータを勝手に読み取られるのを防ぐパスワードです。（※忘れるとデータが開けなくなるため注意してください）<br>
 ・<strong>2つ目（ユーザーアカウント）：</strong> 日常のログインや、設定を変更する時に使うパスワードです。<br>
-<small style="color: #8b949e;">※安全のため、2つのパスワードは<b>必ず別のもの</b>に設定してください。（※ユーザー用パスワードは後からいつでも変更可能です）</small></p>
+<small style="color: #8b949e;">※ストレージ暗号化用のパスフレーズとユーザーアカウントのパスワードは、それぞれ役割が異なります。特に暗号化用パスフレーズは忘れると暗号化されたデータへアクセスできなくなる可能性があるため、安全な方法で管理してください。（※ユーザー用パスワードは後からいつでも変更可能です）</small></p>
 
 </details>
 
@@ -268,7 +268,7 @@
   <div style="padding: 10px 0;">
 
     <p><strong>■ ① Flatpakエコシステムの拡張（Flathubの追加）</strong></p>
-    <p>Fedoraは標準でFlatpakパッケージに対応していますが、世界最大の統合リポジトリ「Flathub」を追加登録することで、さらに多くのFlatpakアプリを、サンドボックス機能を利用しながらGUIから簡単に導入できます。<br>
+    <p>FedoraはFlatpakに対応しています。Flathubを追加登録すると、Fedora標準リポジトリだけでは提供されていない多くのFlatpakアプリをGUIから導入できるようになります。<br>
     <small style="color: #8b949e;">※以下のコマンドは<b>最初の一度だけ</b>実行すれば完了です（更新作業などは不要です）。</small></p>
 
     <div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
@@ -279,53 +279,70 @@
     <p><strong>■ ② 有料でおすすめのセキュリティツール（Proton）</strong></p>
     <p>より高度なプライバシー保護と安心感を求める方には、セキュリティに特化したスイス製の有料サービス<b>「Proton」</b>シリーズが最もおすすめです。（※Linuxとの相性も抜群です）</p>
 
-  <p><strong>● Proton VPN（Proton公式のLinuxアプリ）</strong><br>
-通信経路を保護し、公共Wi-Fiなど信頼できないネットワーク上での通信を安全にするのに役立ちます。</p>
+    <p><strong>■ ⑩ Proton VPN（通信経路の保護）</strong></p>
+
+<p><strong>● Proton VPN（Proton公式のLinux GUIアプリ）</strong><br>
+通信経路を暗号化し、公共Wi-Fiなど信頼できないネットワークを利用する際の通信保護に役立ちます。VPN接続中は、インターネット上の通信元IPアドレスをVPNサーバーのものに置き換えることもできます。</p>
+
+<p>
+<strong>※重要：</strong>
+Proton VPNはFedora向けの公式Linuxアプリを提供しています。現在、Proton公式がGUIアプリを正式サポートしているのは、<strong>GNOMEデスクトップ環境で動作する最新の安定版Fedora</strong>です。現在の公式案内ではFedora 44が対象です。Fedoraのバージョンが変わった場合は、実際の導入時に必ず公式の最新手順を確認してください。
+</p>
+
+<p>
+<a href="https://protonvpn.com/support/official-linux-vpn-fedora/" target="_blank" rel="noopener" style="color: #58a6ff;">
+<strong>→ Proton公式：FedoraへのProton VPN GUIアプリ導入手順</strong>
+</a>
+</p>
 
 <p><strong>【導入の流れ】</strong><br>
-Linuxでは、Proton公式のリポジトリを登録してアプリをインストールします。<br>
-<strong>※Proton VPNはバージョンによってインストール手順やパッケージ名が変更される場合があります。実際の導入時は、必ず<a href="https://protonvpn.com/support/official-linux-vpn-fedora/" target="_blank" rel="noopener" style="color: #58a6ff;">Proton公式のFedora向け最新手順</a>を確認してください。</strong></p>
+Linuxでは、Proton公式リポジトリを登録したあと、DNFを使用してProton VPNアプリをインストールします。<br>
+以下はProton公式のFedora向け手順を基準にしたものです。</p>
 
 <p><strong>1. Proton VPN公式リポジトリの登録</strong><br>
 <small style="color: #8b949e;">
-※以下のURLに含まれるバージョン番号は将来変更される可能性があります。<br>
-現在のバージョンが公式手順と異なる場合は、公式サイトに掲載されている最新のコマンドを使用してください。
+このコマンドは、Fedoraのバージョンを自動的に読み取り、対応するProton VPNリポジトリ設定パッケージを取得します。<br>
+Proton側でパッケージのバージョン番号が更新された場合は、公式ページに掲載されている最新コマンドを使用してください。
 </small></p>
 
-<div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
+<div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace; overflow-x: auto;">
   <code style="color: #58a6ff; font-size: 0.9em;">wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d' ' -f 3)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.4-1.noarch.rpm"</code>
   <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
 </div>
 
-<div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
-  <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf install ./protonvpn-stable-release-1.0.4-1.noarch.rpm -y</code>
-  <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
-</div>
+<p><strong>2. Proton VPNリポジトリを登録し、パッケージ情報を更新する</strong></p>
 
-<p><strong>2. パッケージ情報を更新してProton VPNをインストール</strong></p>
-
-<div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
-  <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf check-update --refresh</code>
-  <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
-</div>
-
-<div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
-  <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf install proton-vpn-gnome-desktop -y</code>
+<div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace; overflow-x: auto;">
+  <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf install ./protonvpn-stable-release-1.0.4-1.noarch.rpm &amp;&amp; sudo dnf check-update --refresh</code>
   <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
 </div>
 
 <p>
-<strong>※重要：</strong>
-上記のコマンドは掲載時点の例です。Proton側でバージョンやインストール方法が変更されている場合は、
-<a href="https://protonvpn.com/support/official-linux-vpn-fedora/" target="_blank" rel="noopener" style="color: #58a6ff;">Proton公式の最新手順</a>
-に掲載されているコマンドを使用してください。
+<strong>※OpenPGPキーの確認が表示された場合：</strong><br>
+Proton公式の案内では、リポジトリ登録時にOpenPGPキーの受け入れを求められる場合があります。表示された内容を確認し、問題なければ <code>y</code> を入力してEnterキーを押します。
 </p>
 
-<p><strong>【おすすめ推奨設定（セキュリティ重視構成）】</strong><br>
-アプリを起動してログイン後、設定（Settings）より以下のように設定します。<br>
-【NetShield：ON】【Kill switch：ON（より厳格な遮断を求める場合は Advanced Kill Switch を推奨）】【Split tunneling：OFF（※LinuxではKill Switchとの併用制限があるため）】【Protocol：WireGuard】【VPN Accelerator：ON】【IPv6：基本はデフォルト設定】【Auto connect：ON】</p>
-    
-    
+<p><strong>3. Proton VPNアプリ本体をインストールする</strong></p>
+
+<div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace; overflow-x: auto;">
+  <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf install proton-vpn-gnome-desktop</code>
+  <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
+</div>
+
+<p>
+インストールが完了したら、アプリ一覧から<strong>Proton VPN</strong>を起動し、Protonアカウントでログインします。
+</p>
+
+<p>
+<strong>※重要：</strong>
+上記のパッケージ名やリポジトリパッケージのバージョン番号は、将来変更される可能性があります。導入時にエラーが発生した場合は、古いコマンドを繰り返し実行せず、まずProton公式のFedora向け最新手順を確認してください。
+</p>
+
+<p>
+<a href="https://protonvpn.com/support/official-linux-vpn-fedora/" target="_blank" rel="noopener" style="color: #58a6ff;">
+<strong>Proton公式の最新Fedora導入手順を確認する</strong>
+</a>
+</p>
     <p><strong>● Proton Pass</strong><br>
     Firefoxのアドオンストア（<a href="https://addons.mozilla.org/ja/firefox/addon/proton-pass/" target="_blank" rel="noopener" style="color: #58a6ff;">Proton Pass ページ</a>）より追加。暗号化されたパスワードマネージャー。パスワードの使い回しを防ぎ、アドレスの隠蔽（メールエイリアス機能）が可能です。</p>
 
