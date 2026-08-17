@@ -281,67 +281,52 @@
 
     <p><strong>■ ⑩ Proton VPN（通信経路の保護）</strong></p>
 
+<p><strong>■ ⑩ Proton VPN（通信経路の保護）</strong></p>
+
 <p><strong>● Proton VPN（Proton公式のLinux GUIアプリ）</strong><br>
 通信経路を暗号化し、公共Wi-Fiなど信頼できないネットワークを利用する際の通信保護に役立ちます。VPN接続中は、インターネット上の通信元IPアドレスをVPNサーバーのものに置き換えることもできます。</p>
 
-<p>
-<strong>※重要：</strong>
-Proton VPNはFedora向けの公式Linuxアプリを提供しています。現在、Proton公式がGUIアプリを正式サポートしているのは、<strong>GNOMEデスクトップ環境で動作する最新の安定版Fedora</strong>です。現在の公式案内ではFedora 44が対象です。Fedoraのバージョンが変わった場合は、実際の導入時に必ず公式の最新手順を確認してください。
-</p>
-
-<p>
-<a href="https://protonvpn.com/support/official-linux-vpn-fedora/" target="_blank" rel="noopener" style="color: #58a6ff;">
-<strong>→ Proton公式：FedoraへのProton VPN GUIアプリ導入手順</strong>
-</a>
-</p>
-
 <p><strong>【導入の流れ】</strong><br>
 Linuxでは、Proton公式リポジトリを登録したあと、DNFを使用してProton VPNアプリをインストールします。<br>
-以下はProton公式のFedora向け手順を基準にしたものです。</p>
+<strong>※Proton VPNはバージョンによってインストール手順やパッケージ名が変更される場合があります。実際の導入時は、必ず<a href="https://protonvpn.com/support/official-linux-vpn-fedora/" target="_blank" rel="noopener" style="color: #58a6ff;">Proton公式のFedora向け最新手順</a>を確認してください。</strong></p>
 
-<p><strong>1. Proton VPN公式リポジトリの登録</strong><br>
-<small style="color: #8b949e;">
-このコマンドは、Fedoraのバージョンを自動的に読み取り、対応するProton VPNリポジトリ設定パッケージを取得します。<br>
-Proton側でパッケージのバージョン番号が更新された場合は、公式ページに掲載されている最新コマンドを使用してください。
-</small></p>
+<p><strong>1. Proton VPN公式リポジトリの登録</strong></p>
 
-<div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace; overflow-x: auto;">
+<div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
   <code style="color: #58a6ff; font-size: 0.9em;">wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d' ' -f 3)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.4-1.noarch.rpm"</code>
   <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
 </div>
 
-<p><strong>2. Proton VPNリポジトリを登録し、パッケージ情報を更新する</strong></p>
+<p><strong>2. Proton VPNリポジトリを登録</strong></p>
 
-<div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace; overflow-x: auto;">
-  <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf install ./protonvpn-stable-release-1.0.4-1.noarch.rpm &amp;&amp; sudo dnf check-update --refresh</code>
+<div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
+  <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf install ./protonvpn-stable-release-1.0.4-1.noarch.rpm -y</code>
   <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
 </div>
 
-<p>
-<strong>※OpenPGPキーの確認が表示された場合：</strong><br>
-Proton公式の案内では、リポジトリ登録時にOpenPGPキーの受け入れを求められる場合があります。表示された内容を確認し、問題なければ <code>y</code> を入力してEnterキーを押します。
-</p>
+<p><strong>3. パッケージ情報を更新</strong></p>
 
-<p><strong>3. Proton VPNアプリ本体をインストールする</strong></p>
-
-<div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace; overflow-x: auto;">
-  <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf install proton-vpn-gnome-desktop</code>
+<div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
+  <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf check-update --refresh</code>
   <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
 </div>
 
-<p>
-インストールが完了したら、アプリ一覧から<strong>Proton VPN</strong>を起動し、Protonアカウントでログインします。
-</p>
+<p><strong>※「check-update」は更新を実行するコマンドではなく、利用可能な更新を確認するコマンドです。</strong></p>
 
-<p>
-<strong>※重要：</strong>
-上記のパッケージ名やリポジトリパッケージのバージョン番号は、将来変更される可能性があります。導入時にエラーが発生した場合は、古いコマンドを繰り返し実行せず、まずProton公式のFedora向け最新手順を確認してください。
-</p>
+<p><strong>4. Proton VPNアプリをインストール</strong></p>
 
-<p>
-<a href="https://protonvpn.com/support/official-linux-vpn-fedora/" target="_blank" rel="noopener" style="color: #58a6ff;">
-<strong>Proton公式の最新Fedora導入手順を確認する</strong>
-</a>
+<div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
+  <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf install proton-vpn-gnome-desktop -y</code>
+  <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
+</div>
+
+<p>インストール後、アプリ一覧から<strong>Proton VPN</strong>を起動してログインします。</p>
+
+<p><strong>※重要：</strong>上記のコマンドは掲載時点の例です。Proton側でバージョンやインストール方法が変更されている場合は、<a href="https://protonvpn.com/support/official-linux-vpn-fedora/" target="_blank" rel="noopener" style="color: #58a6ff;">Proton公式の最新手順</a>に掲載されているコマンドを使用してください。</p>
+
+<p><strong>【おすすめ設定（セキュリティ重視）】</strong><br>
+アプリを起動してログイン後、設定（Settings）より以下のように設定します。<br>
+<strong>【NetShield：ON】【Kill Switch：ON】【Advanced Kill Switch：より厳格にVPN未接続時の通信を遮断したい場合にON】【Split Tunneling：OFF】【Protocol：WireGuard】【VPN Accelerator：ON】【IPv6：基本はデフォルト】【Auto Connect：ON】</strong></p>
 </p>
     <p><strong>● Proton Pass</strong><br>
     Firefoxのアドオンストア（<a href="https://addons.mozilla.org/ja/firefox/addon/proton-pass/" target="_blank" rel="noopener" style="color: #58a6ff;">Proton Pass ページ</a>）より追加。暗号化されたパスワードマネージャー。パスワードの使い回しを防ぎ、アドレスの隠蔽（メールエイリアス機能）が可能です。</p>
