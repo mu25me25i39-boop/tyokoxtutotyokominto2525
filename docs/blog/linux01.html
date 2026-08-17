@@ -183,6 +183,15 @@
 <p>一部のPC（グラフィックボードやWi-Fiのパーツの種類によって）では、画面の表示やWi-Fi接続に少し設定が必要になることがあります。<br>
 後述の「お試し画面（ライブ環境）」が立ち上がった時に、画面がきれいに映るか、Wi-Fiに繋がるかを触って確認しておくと安心です。（※映像用パーツ（NVIDIA）が入っているPCの場合は、インストール途中で「サードパーティリポジトリ」をONにすると必要な設定がスムーズに行われます）</p>
 
+<p><strong>【ライブ環境で問題が起きた場合の簡易対処】</strong></p>
+<ul>
+  <li><strong>画面が真っ暗・ちらつく場合（特にNVIDIA）</strong><br>
+  → 起動時に「e」キーを押して、linux行の末尾に「<code>nomodeset</code>」を追加して起動を試す</li>
+  <li><strong>Wi-Fiが出てこない場合</strong><br>
+  → 有線LANで接続するか、スマートフォンのUSBテザリングで一時的にネット接続してインストールを進める</li>
+</ul>
+
+  
   <h3>■ 手順</h3>
   <h4>1. 書き込みソフト（Rufus / Fedora Media Writer）の準備</h4>
   <p>Rufus公式サイト（<a href="https://rufus.ie/ja/" target="_blank" rel="noopener noreferrer">https://rufus.ie/ja/</a>）より最新のPortable版（rufus-x.xxp.exe）をダウンロードします。<br>
@@ -278,45 +287,28 @@
 
     <p><strong>■ ② 有料でおすすめのセキュリティツール（Proton）</strong></p>
     <p>より高度なプライバシー保護と安心感を求める方には、セキュリティに特化したスイス製の有料サービス<b>「Proton」</b>シリーズが最もおすすめです。（※Linuxとの相性も抜群です）</p>
+● Proton VPN（Proton公式のLinux GUIアプリ）
+<p>通信経路を暗号化し、公共Wi-Fiなど信頼できないネットワークを利用する際の通信保護に役立ちます。VPN接続中は、インターネット上の通信元IPアドレスをVPNサーバーのものに置き換えることもできます。</p>
 
-<p><strong>● Proton VPN（Proton公式のLinux GUIアプリ）</strong><br>
-通信経路を暗号化し、公共Wi-Fiなど信頼できないネットワークを利用する際の通信保護に役立ちます。VPN接続中は、インターネット上の通信元IPアドレスをVPNサーバーのものに置き換えることもできます。</p>
+<p>【導入の流れ】<br>
+実際の導入時は、必ずProton公式のFedora向け最新手順を確認してください。<br>
+<a href="https://protonvpn.com/support/official-linux-vpn-fedora" target="_blank" rel="noopener noreferrer">https://protonvpn.com/support/official-linux-vpn-fedora</a></p>
 
-<p><strong>【導入の流れ】</strong><br>
-Linuxでは、Proton公式リポジトリを登録したあと、DNFを使用してProton VPNアプリをインストールします。<br>
-<strong>※Proton VPNはバージョンによってインストール手順やパッケージ名が変更される場合があります。実際の導入時は、必ず<a href="https://protonvpn.com/support/official-linux-vpn-fedora/" target="_blank" rel="noopener" style="color: #58a6ff;">Proton公式のFedora向け最新手順</a>を確認してください。</strong></p>
+<p>（参考：掲載時点の例）</p>
 
-<p><strong>1. Proton VPN公式リポジトリの登録</strong></p>
+<p>1. Proton VPN公式リポジトリの登録</p>
+<pre><code>wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d' ' -f 3)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.4-1.noarch.rpm"</code></pre>
 
-<div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
-  <code style="color: #58a6ff; font-size: 0.9em;">wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d' ' -f 3)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.4-1.noarch.rpm"</code>
-  <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
-</div>
+<p>2. リポジトリを登録</p>
+<pre><code>sudo dnf install ./protonvpn-stable-release-*.noarch.rpm -y</code></pre>
 
-<p><strong>2. Proton VPNリポジトリを登録</strong></p>
+<p>3. パッケージ情報を更新</p>
+<pre><code>sudo dnf check-update --refresh</code></pre>
 
-<div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
-  <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf install ./protonvpn-stable-release-1.0.4-1.noarch.rpm -y</code>
-  <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
-</div>
+<p>4. Proton VPNアプリをインストール</p>
+<pre><code>sudo dnf install proton-vpn-gnome-desktop -y</code></pre>
 
-<p><strong>3. パッケージ情報を更新</strong></p>
-
-<div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
-  <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf check-update --refresh</code>
-  <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
-</div>
-
-<p><strong>※「check-update」は更新を実行するコマンドではなく、利用可能な更新を確認するコマンドです。</strong></p>
-
-<p><strong>4. Proton VPNアプリをインストール</strong></p>
-
-<div style="position: relative; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 15px; margin: 10px 0; font-family: monospace;">
-  <code style="color: #58a6ff; font-size: 0.9em;">sudo dnf install proton-vpn-gnome-desktop -y</code>
-  <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 3px 8px; font-size: 0.75em; border-radius: 4px; pointer-events: none;">コピー</span>
-</div>
-
-<p>インストール後、アプリ一覧から<strong>Proton VPN</strong>を起動してログインします。</p>
+<p>インストール後、アプリ一覧からProton VPNを起動してログインします。</p>
 
 <p><strong>※重要：</strong>上記のコマンドは掲載時点の例です。Proton側でバージョンやインストール方法が変更されている場合は、<a href="https://protonvpn.com/support/official-linux-vpn-fedora/" target="_blank" rel="noopener" style="color: #58a6ff;">Proton公式の最新手順</a>に掲載されているコマンドを使用してください。</p>
 
