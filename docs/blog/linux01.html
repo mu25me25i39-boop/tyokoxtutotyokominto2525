@@ -438,43 +438,41 @@
   </ul>
 
 </details>
-<details style="background-color: rgba(15, 23, 42, 0.6); border: 1px solid #3b82f6; border-radius: 8px; padding: 12px 16px; margin: 20px 0; color: #f8fafc; box-sizing: border-box; width: 100%;">
-  <summary style="cursor: pointer; font-weight: bold; color: #60a5fa; font-size: 1rem; outline: none;">
-    ■ セキュリティの全体構造と重要な注意点
-  </summary>
-  
-  <div style="margin-top: 1rem; color: #e2e8f0; line-height: 1.7; font-size: 0.95rem;">
-    <p style="margin-bottom: 0.75rem;">今回、構築した各セキュリティ機能は、単体ではなく重ね合わせる（多層防御）ことで真価を発揮します。</p>
+<!-- 5 -->
+<details>
+  <summary>セキュリティの全体構造と重要な注意点</summary>
 
-    <ul style="line-height: 1.8; padding-left: 1.2rem; margin-bottom: 1.25rem;">
-      <li><strong>Secure Boot：</strong> OS起動前のブートローダー改ざん防止・検証</li>
-      <li><strong>ストレージ暗号化（LUKS）：</strong> PC紛失・盗難時の保存データ物理保護</li>
-      <li><strong>SELinux / firewalld：</strong> システム全体のプロセス権限制限・ネットワーク制御</li>
-      <li><strong>Proton VPN（WireGuard / Kill Switch）：</strong> VPN経路の暗号化・通信経路の保護・IPアドレスの秘匿</li>
-      <li><strong>Firefox + uBlock Origin：</strong> Web閲覧時の広告・トラッカー・悪質コンテンツの遮断</li>
-      <li><strong>Proton Pass：</strong> パスワードの安全な管理と使い回し防止</li>
-      <li><strong>ClamAV：</strong> ダウンロードファイル等のオンデマンド（手動）スキャン</li>
-      <li><strong>3-2-1バックアップ：</strong> システム障害・ランサムウェア被害・誤操作時の最終防衛線</li>
-    </ul>
+  <div style="padding: 10px 0;">
+    <p>今回、構築した各セキュリティ機能は、単体ではなく重ね合わせる（多層防御）ことで真価を発揮します。</p>
 
-    <hr style="border: 0; border-top: 1px dashed #475569; margin: 1.25rem 0;">
+    <div class="defense-box">
+      <div class="defense-item"><strong>Secure Boot：</strong> OS起動前のブートローダー改ざん防止・検証</div>
+      <div class="defense-item"><strong>ストレージ暗号化（LUKS）：</strong> PC紛失・盗難時の保存データ物理保護</div>
+      <div class="defense-item"><strong>SELinux / firewalld：</strong> システム全体のプロセス権限制限・ネットワーク制御</div>
+      <div class="defense-item"><strong>Proton VPN（WireGuard / Kill Switch）：</strong> VPN経路の暗号化・通信経路の保護・IPアドレスの秘匿</div>
+      <div class="defense-item"><strong>Firefox + uBlock Origin：</strong> Web閲覧時の広告・トラッカー・悪質コンテンツの遮断</div>
+      <div class="defense-item"><strong>Proton Pass：</strong> パスワードの安全な管理と使い回し防止</div>
+      <div class="defense-item"><strong>ClamAV：</strong> ダウンロードファイル等のオンデマンド（手動）スキャン</div>
+      <div class="defense-item"><strong>3-2-1バックアップ：</strong> システム障害・ランサムウェア被害・誤操作時の最終防衛線</div>
+    </div>
 
-    <p style="color: #fbbf24; font-weight: bold; margin-bottom: 0.5rem;">【セキュリティについての重要な注意】</p>
-    <p style="margin-bottom: 0.75rem;">今回、紹介している設定や手順は、PC環境の安全性を高めるための「多層防御」のアプローチであり、マルウェア感染、フィッシング詐欺、アカウント乗っ取り、データ消失などを完全に防止することを保証するものではありません。</p>
+    <div class="warning-box">
+      <h3>■ セキュリティについての重要な注意</h3>
+      <p>今回紹介している設定や手順は、PC環境の安全性を高めるための「多層防御」のアプローチであり、マルウェア感染、フィッシング詐欺、アカウント乗っ取り、データ消失などを完全に防止することを保証するものではありません。</p>
 
-    <p style="margin-bottom: 0.5rem; color: #f3f4f6;"><strong>【運用上の重要ポイント】</strong></p>
-    <ul style="padding-left: 1.2rem; margin-top: 0; margin-bottom: 0.75rem;">
-      <li>OSやソフトウェアを常に最新の状態に保つ</li>
-      <li>不審なリンクやファイルを不用意に開かない</li>
-      <li>管理者権限（<code>sudo</code>）を安易に与えない</li>
-      <li>パスワードの使い回しを避ける</li>
-      <li>重要なデータは二重・三重にバックアップする（3-2-1ルール）</li>
-    </ul>
+      <p><strong>【運用上の重要ポイント】</strong></p>
+      <ul>
+        <li>OSやソフトウェアを常に最新の状態に保つ</li>
+        <li>不審なリンクやファイルを不用意に開かない</li>
+        <li>管理者権限（<code>sudo</code>）を安易に与えない</li>
+        <li>パスワードの使い回しを避ける</li>
+        <li>重要なデータは二重・三重にバックアップする（3-2-1ルール）</li>
+      </ul>
 
-    <p style="margin-bottom: 0; font-size: 0.9rem; color: #94a3b8;">※特に <code>sudo</code> を伴うコマンドはシステム全体へ大きな影響を与えるため、内容や動作をしっかりと理解したうえで慎重に実行してください。</p>
+      <p><small style="color: #8b949e;">※特に <code>sudo</code> を伴うコマンドはシステム全体へ大きな影響を与えるため、内容や動作をしっかりと理解したうえで慎重に実行してください。</small></p>
+    </div>
   </div>
 </details>
-
   
 <div class="back-row">
   <a href="../index.html" class="back-btn">ホーム</a>
