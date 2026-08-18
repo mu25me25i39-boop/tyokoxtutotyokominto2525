@@ -290,23 +290,43 @@
 ● Proton VPN（Proton公式のLinux GUIアプリ）
 <p>通信経路を暗号化し、公共Wi-Fiなど信頼できないネットワークを利用する際の通信保護に役立ちます。VPN接続中は、インターネット上の通信元IPアドレスをVPNサーバーのものに置き換えることもできます。</p>
 
-<p>【導入の流れ】<br>
-実際の導入時は、必ずProton公式のFedora向け最新手順を確認してください。<br>
+<p>【導入の流れ】</p>
+<p>実際の導入時は、必ずProton公式のFedora向け最新手順を確認してください。<br>
 <a href="https://protonvpn.com/support/official-linux-vpn-fedora" target="_blank" rel="noopener noreferrer">https://protonvpn.com/support/official-linux-vpn-fedora</a></p>
 
 <p>（参考：掲載時点の例）</p>
 
-<p>1. Proton VPN公式リポジトリの登録</p>
-<pre><code>wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d' ' -f 3)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.4-1.noarch.rpm"</code></pre>
+<div class="step-item" style="margin-bottom: 1rem;">
+  <p style="margin-bottom: 0.25rem;"><strong>1. Proton VPN公式リポジトリの登録</strong></p>
+  <div style="position: relative; display: flex; align-items: center; background-color: #1e1e1e; border-radius: 6px; padding: 0.5rem 1rem;">
+    <code id="cmd-1" style="color: #d4d4d4; font-family: monospace; white-space: pre-wrap; word-break: break-all; flex-grow: 1;">wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d' ' -f 3)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.4-1.noarch.rpm"</code>
+    <button onclick="copyToClipboard('cmd-1', this)" style="margin-left: 0.5rem; padding: 0.25rem 0.5rem; background-color: #3b82f6; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem; white-space: nowrap;">コピー</button>
+  </div>
+</div>
 
-<p>2. リポジトリを登録</p>
-<pre><code>sudo dnf install ./protonvpn-stable-release-*.noarch.rpm -y</code></pre>
+<div class="step-item" style="margin-bottom: 1rem;">
+  <p style="margin-bottom: 0.25rem;"><strong>2. リポジトリを登録</strong></p>
+  <div style="position: relative; display: flex; align-items: center; background-color: #1e1e1e; border-radius: 6px; padding: 0.5rem 1rem;">
+    <code id="cmd-2" style="color: #d4d4d4; font-family: monospace; white-space: pre-wrap; word-break: break-all; flex-grow: 1;">sudo dnf install ./protonvpn-stable-release-*.noarch.rpm -y</code>
+    <button onclick="copyToClipboard('cmd-2', this)" style="margin-left: 0.5rem; padding: 0.25rem 0.5rem; background-color: #3b82f6; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem; white-space: nowrap;">コピー</button>
+  </div>
+</div>
 
-<p>3. パッケージ情報を更新</p>
-<pre><code>sudo dnf check-update --refresh</code></pre>
+<div class="step-item" style="margin-bottom: 1rem;">
+  <p style="margin-bottom: 0.25rem;"><strong>3. パッケージ情報を更新</strong></p>
+  <div style="position: relative; display: flex; align-items: center; background-color: #1e1e1e; border-radius: 6px; padding: 0.5rem 1rem;">
+    <code id="cmd-3" style="color: #d4d4d4; font-family: monospace; white-space: pre-wrap; word-break: break-all; flex-grow: 1;">sudo dnf check-update --refresh</code>
+    <button onclick="copyToClipboard('cmd-3', this)" style="margin-left: 0.5rem; padding: 0.25rem 0.5rem; background-color: #3b82f6; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem; white-space: nowrap;">コピー</button>
+  </div>
+</div>
 
-<p>4. Proton VPNアプリをインストール</p>
-<pre><code>sudo dnf install proton-vpn-gnome-desktop -y</code></pre>
+<div class="step-item" style="margin-bottom: 1rem;">
+  <p style="margin-bottom: 0.25rem;"><strong>4. Proton VPNアプリをインストール</strong></p>
+  <div style="position: relative; display: flex; align-items: center; background-color: #1e1e1e; border-radius: 6px; padding: 0.5rem 1rem;">
+    <code id="cmd-4" style="color: #d4d4d4; font-family: monospace; white-space: pre-wrap; word-break: break-all; flex-grow: 1;">sudo dnf install proton-vpn-gnome-desktop -y</code>
+    <button onclick="copyToClipboard('cmd-4', this)" style="margin-left: 0.5rem; padding: 0.25rem 0.5rem; background-color: #3b82f6; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem; white-space: nowrap;">コピー</button>
+  </div>
+</div>
 
 <p>インストール後、アプリ一覧からProton VPNを起動してログインします。</p>
 
