@@ -16,6 +16,310 @@
 
 <!-- ▼ 1 -->
 <details>
+  <summary>1. 基礎と準備：Deep Webとの違いとTor Browserの正しい導入</summary>
+
+  <h3>■ Deep WebとDark Webの本質的違い</h3>
+  <table>
+    <tr>
+      <th>層</th>
+      <th>技術的特徴</th>
+      <th>アクセス方法</th>
+      <th>具体例</th>
+    </tr>
+    <tr>
+      <td>Surface Web</td>
+      <td>インデックス可能</td>
+      <td>通常ブラウザ</td>
+      <td>ニュースサイト、ブログ</td>
+    </tr>
+    <tr>
+      <td>Deep Web</td>
+      <td>認証・動的生成・意図的除外</td>
+      <td>通常ブラウザ+認証</td>
+      <td>オンラインバンク、学術DB、社内Wiki</td>
+    </tr>
+    <tr>
+      <td>Dark Web</td>
+      <td>匿名ネットワーク上のオーバーレイ</td>
+      <td>Tor/I2P/Freenet必須</td>
+      <td>.onionサイト、匿名掲示板</td>
+    </tr>
+  </table>
+
+  <h3>■ Tor Browser導入の落とし穴</h3>
+  <p><strong>絶対に避けるべき：</strong></p>
+  <ul>
+    <li>非公式サイト（torproject.org以外）のインストーラー（悪意コード混入の歴史あり）</li>
+    <li>Google Play/App Storeの非公式アプリ（「Tor Browser」名乗る偽物多数）</li>
+    <li>既存FirefoxにTorプラグインを入れる試み（匿名性破壊）</li>
+  </ul>
+
+  <p><strong>検証方法：</strong>公式サイトのHTTPS証明書確認（torproject.org）→ ダウンロード後、署名検証（PGP署名の確認推奨）</p>
+
+  <h3>■ 初回起動時の重要設定</h3>
+  <ul>
+    <li><strong>接続設定：</strong>「Torネットワークが検閲されている国」ではBridge自動設定を選択</li>
+    <li><strong>セキュリティレベル：</strong>初期設定はStandardだが、未知サイト閲覧時はSafestに変更（JavaScript無効化による攻撃表面積削減）</li>
+    <li><strong>ウィンドウサイズ：</strong>デフォルトの1000×1000px（または1000×900px）を維持。最大化すると画面解像度でフィンガープリント可能に</li>
+  </ul>
+
+</details>
+
+
+<!-- ▼ 2 -->
+<details>
+  <summary>2. 技術構造：オニオンルーティングと匿名化の限界</summary>
+
+  <h3>■ 多層暗号化の仕組み（なぜ「Onion」か）</h3>
+  <pre>
+【送信時の暗号化層構造】
+利用者が生成したパケット
+  ↓ [Exit Node用の鍵で暗号化] ← 最外层
+  ↓ [Middle Relay用の鍵で暗号化]
+  ↓ [Guard Node用の鍵で暗号化] ← 最内层（最初に解除）
+
+【各ノードの視界】
+Guard Node：利用者のIPは見えるが、中身は暗号化、目的地不明
+Middle Relay：前後のノードのみ認識、利用者IPも目的地も不明
+Exit Node：目的地（通常Webサイト）のみ見える、中身は復号済（HTTPSで保護されていない場合、平文が見える）
+  </pre>
+
+  <h3>■ Exit Nodeのリスクと対策</h3>
+  <p>Exit NodeはTorネットワークと通常インターネットの境界。悪意ある運営者が：</p>
+  <ul>
+    <li>平文通信（HTTP）を盗聴・改変</li>
+    <li>SSL Strip攻撃（HTTPSをHTTPに降格させる）</li>
+  </ul>
+  <p><strong>対策：</strong></p>
+  <ul>
+    <li>必ずTor+HTTPS（Tor BrowserのHTTPS-Only Modeは有効のままに）</li>
+    <li>機密データ送信時は.onionサイトを利用（Exit Node不要、完全にTor内完結）</li>
+  </ul>
+
+  <h3>■ Tor Bridgeの実践的活用</h3>
+  <p>BridgeはTor接続自体を隠す技術。以下の状況で必要：</p>
+  <ul>
+    <li>ISPがTor接続を検知・ブロックする国・地域</li>
+    <li>職場・学校のネットワークでTorが制限されている環境</li>
+    <li>「Tor利用者」としてマークされることを避けたい場合</li>
+  </ul>
+
+  <table>
+    <tr>
+      <th>方式</th>
+      <th>技術的特徴</th>
+      <th>設定方法</th>
+    </tr>
+    <tr>
+      <td>obfs4</td>
+      <td>パケット形状をランダム化しTor通信を隠蔽</td>
+      <td>Tor Browser設定 → 接続 → ブリッジ → obfs4をリクエスト</td>
+    </tr>
+    <tr>
+      <td>Snowflake</td>
+      <td>WebRTCを利用し、動的にボランティア中継を選択</td>
+      <td>設定 → ブリッジ → Snowflakeを選択（ブロック厳しい環境で有効）</td>
+    </tr>
+    <tr>
+      <td>meek</td>
+      <td>Azure/CloudFront等のドメインを借用（ドメインフロンティング）</td>
+      <td>高度な設定から選択（遅いが検出困難）</td>
+    </tr>
+  </table>
+
+  <h3>■ TorとVPNの組み合わせ論</h3>
+  <p>単純な「VPN+Tor=より安全」ではない。用途別の判断：</p>
+  <ul>
+    <li><strong>VPN→Tor：</strong>ISPに「VPN利用」は見せるが「Tor利用」は隠せる。VPN事業者が利用者のIPとTor利用を紐付け可能（ログ保持の場合）</li>
+    <li><strong>Tor→VPN：</strong>Exit NodeにVPNのIPが見える。悪意あるExit Nodeからの攻撃は防げるが、VPN事業者にTor利用と接続先が見える</li>
+    <li><strong>結論：</strong>通常はTor単独で十分。検閲回避が目的ならVPN→Tor、Exit Nodeの信頼性が気になるならTor→VPN</li>
+  </ul>
+
+</details>
+
+
+<!-- ▼ 3 -->
+<details>
+  <summary>3. 実践運用：フィンガープリント対策とTails OS</summary>
+
+  <h3>■ ブラウザフィンガープリントの脅威</h3>
+  <p>IP匿名化されていても、ブラウザ特性で特定可能：</p>
+  <ul>
+    <li><strong>Canvas Fingerprinting：</strong>HTML5 Canvasの描画結果の微妙な違い（フォント・GPU・OS依存）</li>
+    <li><strong>WebGL：</strong>グラフィックハードウェアの特性</li>
+    <li><strong>Screen Resolution：</strong>ウィンドウサイズ（Tor Browserは全ユーザー同じサイズに固定）</li>
+    <li><strong>Timezone：</strong>JavaScriptから取得可能（Tor BrowserはUTCに統一）</li>
+    <li><strong>User-Agent：</strong>Tor Browserは全ユーザー同一のUAを提示</li>
+  </ul>
+  <p><strong>重要：</strong>Tor Browserのabout:configを「高速化」や「便利機能追加」のために変更すると、これらの保護が破壊され、逆に目立つ存在になる。</p>
+
+  <h3>■ Tails OSの本質的役割と限界</h3>
+  <p>USBメモリから起動するLive OS。特徴：</p>
+  <ul>
+    <li><strong>Amnesic（健忘性）：</strong>シャットダウンでRAM上の全データ消去（スワップ無効化）</li>
+    <li><strong>Incognito（隠密性）：</strong>全通信をTor強制。直接接続不可</li>
+    <li><strong>分離：</strong>通常のOS（Windows/Mac）のマルウェア影響を受けない</li>
+  </ul>
+
+  <p><strong>永続化（Persistence）の落とし穴：</strong></p>
+  <p>Tailsは「全てが消える」が、USBに暗号化パーティション（Persistence）を作れば一部保存可能。しかし：</p>
+  <ul>
+    <li>Persistence有効化時、そのUSBを紛失・押収されると内容は復号可能</li>
+    <li>PersistenceにTor Browserのブックマークや設定を保存すると、利用パターンが記録される</li>
+    <li>「消える」ことへの過信は禁物（外部サービス側のログは残る）</li>
+  </ul>
+
+</details>
+
+
+<!-- ▼ 4 -->
+<details>
+  <summary>4. Onion Serviceとダークウェブの生態系・脅威分析</summary>
+
+  <h3>■ Onion Service（.onion）の技術的仕組み</h3>
+  <pre>
+【通常Web】
+利用者 → DNS問い合わせ → IPアドレス取得 → サーバー接続
+（サーバーIPが公開される）
+
+【Onion Service】
+サーバーが公開鍵・秘密鍵を生成 → 公開鍵のハッシュが.onionアドレス（例：3g2upl4pq6kufc4m.onion）
+利用者 → Torネットワーク内で暗号化された「Rendezvous Point」で接合 → 通信確立
+（サーバーのIPはTorネットワークに公開されない）
+  </pre>
+  <p><strong>利点：</strong>NAT越しでも動作、DDoS耐性（IP隠蔽）、双方の匿名性</p>
+
+  <h3>■ .onionアドレスの信憑性判断</h3>
+  <p>Onion Serviceは誰でも作れるため、フィッシングが横行：</p>
+  <ul>
+    <li><strong>Vanity Address（ vanity 生成）：</strong>facebookcorewwwi.onion のように、人間が読める文字列で始めるため計算リソースを消費。完全なランダム文字列よりは信頼性やや高いが、十分ではない</li>
+    <li><strong>確認方法：</strong>公式Surface Webサイトの「Onion Service」リンクから遷移、または複数の独立した信頼情報源で同一アドレスを確認</li>
+    <li><strong>HTTPS on Onion：</strong>技術的には不要（Tor内で暗号化済み）だが、サイト認証のために有効な場合も</li>
+  </ul>
+
+  <h3>■ ダークウェブの経済圏と攻撃チェーン</h3>
+  <p>現代のサイバー攻撃は分業化：</p>
+  <table>
+    <tr>
+      <th>役割</th>
+      <th>活動内容</th>
+      <th>ダークウェブでの取引形態</th>
+    </tr>
+    <tr>
+      <td>Initial Access Broker</td>
+      <td>企業ネットワークへの侵入権限を販売</td>
+      <td>アクセス権をRDP/VPN認証情報として販売</td>
+    </tr>
+    <tr>
+      <td>Ransomware Operator</td>
+      <td>ランサムウェア提供・アフィリエイト</td>
+      <td>RaaS（Ransomware as a Service）モデル</td>
+    </tr>
+    <tr>
+      <td>Data Seller</td>
+      <td>窃取データの販売</td>
+      <td>クレジットカード、個人情報、企業機密のバルク販売</td>
+    </tr>
+    <tr>
+      <td>Cash-out Specialist</td>
+      <td>暗号資産の換金・洗浄</td>
+      <td>ミキシングサービス、 OTC取引</td>
+    </tr>
+  </table>
+
+  <h3>■ 情報分析の実践的手法</h3>
+  <p>ダークウェブを直接巡回せず、安全に脅威を把握する方法：</p>
+  <ul>
+    <li><strong>脅威インテリジェンスフィード：</strong>Recorded Future、Flashpoint等の商用DB、またはOSINT（Have I Been Pwned等）</li>
+    <li><strong>流出データの検証：</strong>ダークウェブで「自社データ流出」の宣伝があっても、サンプルデータのハッシュ値や内容を検証（攻撃者が古いデータや別社データを流用する偽装あり）</li>
+    <li><strong>タイムスタンプ分析：</strong>フォーラムの投稿時刻から活動時間帯を推定（UTC基準か、特定タイムゾーンか）</li>
+  </ul>
+
+</details>
+
+
+<!-- ▼ 5 -->
+<details>
+  <summary>5. 応用とまとめ：正当な利用と技術的統合</summary>
+
+  <h3>■ 正当な利用シナリオ</h3>
+  <ul>
+    <li><strong>SecureDrop：</strong>ニュース機関（The New York Times、The Guardian等）が運用する内部告発システム。Tor+GPG暗号化で匿名性を保証</li>
+    <li><strong>検閲回避：</strong>特定地域でのSNS/ニュースブロック回避（Tor Browserの「New Identity」機能でブロック回避）</li>
+    <li><strong>セキュリティ研究：</strong>Onion Serviceをハニーポットとして利用し、攻撃者のTTP（戦術・技術・手順）を分析</li>
+  </ul>
+
+  <h3>■ 技術要素の統合的理解</h3>
+  <table>
+    <tr>
+      <th>層</th>
+      <th>技術</th>
+      <th>防御対象</th>
+    </tr>
+    <tr>
+      <td>ネットワーク層</td>
+      <td>Tor（3層中継）、Bridge</td>
+      <td>IP追跡、流量分析、検閲</td>
+    </tr>
+    <tr>
+      <td>アプリケーション層</td>
+      <td>Tor Browser、HTTPS</td>
+      <td>フィンガープリント、Exit Node盗聴、MITM</td>
+    </tr>
+    <tr>
+      <td>OS層</td>
+      <td>Tails OS、仮想化</td>
+      <td>マルウェア、フォレンジック、端末特定</td>
+    </tr>
+    <tr>
+      <td>サービス層</td>
+      <td>Onion Service</td>
+      <td>サーバーIP漏洩、DDoS、物理的特定</td>
+    </tr>
+  </table>
+
+  <h3>■ 最終的な注意事項</h3>
+  <ul>
+    <li><strong>匿名性 ≠ 免罪：</strong>Torは遅延と多層暗号化で追跡を困難にするが、不可能ではない（関連付け攻撃、エンドポイント汚染等）</li>
+    <li><strong>法的境界：</strong>多くの国でTor利用自体は合法だが、違法行為は匿名化されても違法</li>
+    <li><strong>継続的学習：</strong>Torプロトコルは継続的に更新（v3 Onion Serviceの導入等）。古い情報に依存しない</li>
+  </ul>
+
+  <p>
+    <strong>結論：</strong>ダークウェブは「闇の世界」ではなく、技術的な匿名化インフラである。
+    その特性を理解し、適切なオペセク（運用安全）と技術的知識を併せ持つことで、
+    プライバシー保護、言論の自由、セキュリティ研究のツールとして活用できる。
+  </p>
+
+</details>
+
+
+<div class="back-row">
+  <a href="../index.html" class="back-btn">ホーム</a>
+  <a href="../blog.html" class="back-btn">ブログ一覧</a>
+</div>
+
+</div>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/blog-article.css">
+  <title>ダークウェブ実践入門 ― 生態系・技術・アクセス・応用 ―</title>
+</head>
+
+<body class="theme-darkweb">
+
+<div class="blog-article">
+
+<h1>ダークウェブ実践入門<br>― 生態系・技術・アクセス・応用 ―</h1>
+
+
+<!-- ▼ 1 -->
+<details>
   <summary>1. 基礎概念：Deep Webとの違いとTorの位置づけ</summary>
 
   <table>
