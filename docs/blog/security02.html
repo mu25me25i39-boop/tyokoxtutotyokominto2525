@@ -60,13 +60,13 @@
 
 <!-- ▼ 2 -->
 <details>
-  <summary>2. Torを実際に開く：基本的な利用方法</summary>
+  <summary>2. Tor Browser：基本的な利用方法</summary>
 
-  <h3>■ Step 1：Tor Browserを入手する</h3>
+  <h3>■ 入手とインストール</h3>
 
   <p>
-    Torを利用する最も一般的な方法は<strong>Tor Browser</strong>を使用すること。
-    ダウンロードする場合は、公式のTor Projectから入手する。
+    <strong>Tor Browser</strong>はTor Project公式サイトからダウンロードする。
+    非公式サイトや正体不明の「匿名ブラウザ」の使用は避ける。
   </p>
 
   <p>
@@ -77,59 +77,37 @@
     </a>
   </p>
 
-  <p>
-    非公式サイトから配布されているTor Browserや、正体不明の
-    「匿名ブラウザ」などを使用するのは避けるべきである。
-  </p>
-
-  <h3>■ Step 2：Tor Browserを起動する</h3>
+  <h3>■ 起動と接続</h3>
 
   <p>
-    Tor Browserを起動すると、Torネットワークへの接続処理が行われる。
-    接続が完了すると、通常のWebブラウザに近い画面からWebサイトを閲覧できる。
+    起動するとTorネットワークへの接続処理が自動で行われる。
+    接続完了後は通常のブラウザと同様にWeb閲覧が可能。
   </p>
 
   <pre>
-【基本的な流れ】
-
-Tor Browser
-     ↓
-Torネットワークへ接続
-     ↓
-複数の中継ノード
-     ↓
-インターネット上のWebサイト
+【通信の流れ】
+Tor Browser → Torネットワーク → 複数の中継ノード → 対象Webサイト
   </pre>
 
-  <h3>■ Step 3：通常のWebサイトも利用できる</h3>
-
   <p>
-    Tor Browserは「.onion専用ブラウザ」ではない。
-    通常のWebサイトへアクセスすることもできる。
+    Tor Browserは.onionサイト以外にも通常のWebサイトへアクセス可能。
+    ただし、Tor使用時もログイン情報や行動パターンから身元が推測されるリスクは残る。
   </p>
 
-  <p>
-    ただし、Torを使用しているからといって完全な匿名性が保証されるわけではない。
-    利用者自身のログイン情報、投稿内容、ファイル、行動パターンなどから
-    身元が推測される可能性はある。
-  </p>
-
-  <h3>■ Step 4：セキュリティレベル</h3>
+  <h3>■ セキュリティレベル</h3>
 
   <p>
-    Tor BrowserにはWebサイト上のスクリプトなどを制限する
-    セキュリティレベルが用意されている。
+    右上の盾アイコンから3段階のセキュリティレベルを選択できる：
   </p>
 
   <ul>
     <li><strong>Standard</strong>：通常のWeb閲覧向け</li>
-    <li><strong>Safer</strong>：一部のWeb機能を制限</li>
-    <li><strong>Safest</strong>：機能を大きく制限し、セキュリティを優先</li>
+    <li><strong>Safer</strong>：一部のJavaScriptを無効化</li>
+    <li><strong>Safest</strong>：JavaScriptを原則無効化、セキュリティ最優先</li>
   </ul>
 
   <p>
-    特に未知のサイトを調査する場合は、Webページ上の機能を必要以上に
-    有効化しないことが重要である。
+    未知のサイトを調査する場合は、必要以上の機能を有効化しない。
   </p>
 
 </details>
