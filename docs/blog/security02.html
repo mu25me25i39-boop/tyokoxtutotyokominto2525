@@ -128,7 +128,7 @@ Tor Browserから通常のWebサイトへ接続する場合、
 <tr>
 <td>Guard Relay</td>
 <td>Tor回路の入口</td>
-<td>利用者からTorへの接続</td>
+<td>利用者側から見たTor回路の入口/td>
 <td>最終的なWebサイトまでの全体像</td>
 </tr>
 
@@ -143,7 +143,7 @@ Tor Browserから通常のWebサイトへ接続する場合、
 <td>Exit Relay</td>
 <td>通常のインターネットへの出口</td>
 <td>接続先のWebサイトへの通信</td>
-<td>通常、利用者の元IPアドレス</td>
+<td>Exit Relay自身が利用者の元IPを把握できない</td>
 </tr>
 </table>
 
@@ -209,7 +209,7 @@ Torが主に解決しようとしているのは、
 
 <p>
 <strong>Rendezvous Point（ランデブーポイント）</strong>は、
-利用者側のTor回路とサービス側のTor回路が合流するための中継地点である。
+利用者側とOnion Service側が、それぞれ構築したTor回路を介して接続するための中継地点である。
 </p>
 
 <p>
@@ -231,7 +231,7 @@ Torが主に解決しようとしているのは、
 <h2>v3 Onion Service</h2>
 
 <p>
-現在の主要なOnion Serviceはv3形式である。
+現在利用されているOnion Serviceでは、v3形式が標準となっている。
 非常に長い英数字のOnionアドレスを使用するが、
 これは単なる「ランダムなURL」ではない。
 </p>
