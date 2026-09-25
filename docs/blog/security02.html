@@ -633,6 +633,476 @@ Dark Webとは単純な「裏サイトの集合」ではない。
 </p>
 
 </details>
+<details>
+<summary>6. 実践 ― Tor Browserを使ってOnion Serviceへアクセスする</summary>
+
+<h2>この章で実際にやってみること</h2>
+
+<p>
+ここまでの章では、Dark Web、Tor、Onion Service、匿名性、Fingerprinting、OpSec、CTIについて説明してきた。
+</p>
+
+<p>
+この章では、実際に<strong>Tor Browserを導入して起動し、Torネットワークへ接続し、合法的に公開されているOnion Serviceへアクセスする</strong>。
+</p>
+
+<p>
+目的は危険なサイトを探すことではない。
+実際にTor Browserを操作することで、これまで学んだ「Tor」「Onion Service」「.onionアドレス」がどのようなものなのかを確認することが目的である。
+</p>
+
+<p>
+なお、Torを利用したからといって、利用者の行動まですべて匿名になるわけではない。
+個人アカウントへのログイン、個人情報の入力、ファイルの取り扱い、利用者自身の行動などによって、本人との関連付けが発生する可能性がある。
+</p>
+
+<h2>6-1. Tor Browserを入手する</h2>
+
+<p>
+Torを初めて利用する場合は、通常のWebブラウザから<strong>Tor Projectの公式サイト</strong>へアクセスする。
+</p>
+
+<p>
+Tor BrowserはWindows、macOS、Linux、Androidで提供されている。
+ダウンロードするときは、非公式な配布サイトや正体不明のファイル共有サイトではなく、Tor Projectの公式サイトを利用する。
+</p>
+
+<p>
+公式ダウンロード：
+<a href="https://www.torproject.org/download/" target="_blank" rel="noopener noreferrer">
+Tor Browser ― Tor Project
+</a>
+</p>
+
+<p>
+Tor Projectは、公式Webサイトからのダウンロードを最も安全で簡単な方法として案内している。
+また、必要に応じてダウンロードしたファイルの署名を検証することも推奨されている。
+</p>
+
+<h2>6-2. Windowsへインストールする</h2>
+
+<p>
+ここではWindows版を例にする。
+</p>
+
+<ol>
+<li>Tor Projectの公式ダウンロードページを開く。</li>
+<li>Windows版のTor Browserをダウンロードする。</li>
+<li>ダウンロードしたインストーラーを実行する。</li>
+<li>画面の指示に従ってインストールする。</li>
+<li>インストールが完了したらTor Browserを起動する。</li>
+</ol>
+
+<p>
+Tor Projectの公式手順でも、Windows版は専用のインストーラー（.exe）をダウンロードして実行し、インストールウィザードに従ってインストールする方法が案内されている。
+</p>
+
+<p>
+公式の手順：
+<a href="https://support.torproject.org/ja/tor-browser/getting-started/installing/" target="_blank" rel="noopener noreferrer">
+Tor Browserのインストール方法
+</a>
+</p>
+
+<h2>6-3. Tor Browserを起動する</h2>
+
+<p>
+Tor Browserを起動すると、Torネットワークへ接続するための画面が表示される。
+</p>
+
+<p>
+通常の環境では、接続を開始するボタンを押してTorネットワークへの接続を開始する。
+</p>
+
+<p>
+接続が完了すると、Tor Browserを使ってWebサイトへアクセスできるようになる。
+</p>
+
+<p>
+ここで重要なのは、<strong>Tor Browserは単なる「匿名モードのFirefox」ではない</strong>ということである。
+Tor BrowserはTorネットワークを利用するよう構成されており、さらにWebブラウザのフィンガープリンティング対策など、匿名性を考慮した設計が行われている。
+</p>
+
+<p>
+そのため、匿名性を重視する場合は、通常のFirefoxなどにTorの設定を自分で追加するのではなく、Tor Browserを使用する方が基本的な考え方として分かりやすい。
+</p>
+
+<h2>6-4. まず通常のWebサイトへアクセスする</h2>
+
+<p>
+Torへ接続できたら、最初に通常のWebサイトを開いてみる。
+</p>
+
+<p>
+例えば、Tor Projectの公式サイトなど、通常のWeb上に存在するサイトへアクセスする。
+</p>
+
+<p>
+この段階では、まだ「Dark Webへ入った」という意味ではない。
+Tor Browserは通常のインターネット上のWebサイトにもアクセスできる。
+</p>
+
+<p>
+つまり、
+</p>
+
+<p>
+<strong>
+Tor Browserを使うこと ＝ Dark Webだけを見ること
+</strong>
+</p>
+
+<p>
+ではない。
+</p>
+
+<p>
+Tor Browserは、Torネットワークを経由して通常のWebサイトへアクセスすることも、Onion Serviceへアクセスすることもできる。
+</p>
+
+<h2>6-5. Onion Serviceへアクセスする</h2>
+
+<p>
+次に、Torでしかアクセスできない<strong>Onion Service</strong>を開いてみる。
+</p>
+
+<p>
+Onion Serviceは、通常のWebサイトとは異なり、Torネットワークを通してのみアクセスできるサービスである。
+アドレスには<strong>.onion</strong>が使用される。
+</p>
+
+<p>
+現在のOnion Serviceのアドレスは、通常<strong>56文字の英数字＋「.onion」</strong>という形式になっている。
+</p>
+
+<p>
+実習では、正体不明のサイトを検索するのではなく、まずTor Projectが公式に案内しているOnion Serviceを利用する。
+</p>
+
+<p>
+Tor Projectは公式のOnion Service一覧を公開している。
+</p>
+
+<p>
+公式Onion Service一覧：
+<a href="https://onion.torproject.org/" target="_blank" rel="noopener noreferrer">
+Tor Project Onion Services
+</a>
+</p>
+
+<p>
+また、Tor Projectの公式サポートでは、接続確認用としてDuckDuckGoのOnion ServiceやTor Project自身のOnion Serviceも案内されている。
+</p>
+
+<p>
+公式サポート：
+<a href="https://support.torproject.org/ja/tor-browser/features/onion-services/" target="_blank" rel="noopener noreferrer">
+Tor BrowserでのOnion Serviceについて
+</a>
+</p>
+
+<h2>6-6. Onion Serviceへ接続したことを確認する</h2>
+
+<p>
+Onion Serviceを開いたら、アドレスバーを確認する。
+</p>
+
+<p>
+通常のWebサイトでは「.com」「.net」「.org」などのドメインが使用されるが、Onion Serviceでは「.onion」が使用される。
+</p>
+
+<p>
+また、Tor BrowserではOnion Serviceへ接続していることを示す<strong>オニオンアイコン</strong>がアドレスバーに表示される。
+</p>
+
+<p>
+この表示によって、現在の接続がOnion Serviceを利用していることを確認できる。
+</p>
+
+<table border="1" cellspacing="0" cellpadding="8">
+<tr>
+<th>確認する項目</th>
+<th>通常のWeb</th>
+<th>Onion Service</th>
+</tr>
+
+<tr>
+<td>アクセス経路</td>
+<td>通常のインターネット</td>
+<td>Torネットワーク</td>
+</tr>
+
+<tr>
+<td>アドレス</td>
+<td>.com、.net、.orgなど</td>
+<td>.onion</td>
+</tr>
+
+<tr>
+<td>サーバーのIPアドレス</td>
+<td>通常のWebでは公開される構成が一般的</td>
+<td>Onion Serviceではサービスの所在地・IPアドレスを隠せる</td>
+</tr>
+
+<tr>
+<td>アクセス方法</td>
+<td>一般的なWebブラウザからアクセス可能</td>
+<td>Torネットワークを通してアクセスする</td>
+</tr>
+</table>
+
+<p>
+Onion Serviceでは、サービスの所在地やIPアドレスを隠せる。また、利用者とOnion Serviceの間の通信はOnion Serviceの仕組みによってエンドツーエンドで暗号化される。
+</p>
+
+<h2>6-7. Onionアドレスを確認する</h2>
+
+<p>
+Onion Serviceのアドレスは、一般的なWebサイトのように人間が覚えやすい名前になっていないことが多い。
+</p>
+
+<p>
+例えば、長い英数字の文字列の末尾に<strong>.onion</strong>が付いた形式になっている。
+</p>
+
+<p>
+これは単なる「変なURL」ではない。
+Onionアドレスは暗号学的な情報と結び付いており、Torが正しいOnion Serviceへ接続していることを確認するためにも使用される。
+</p>
+
+<p>
+そのため、Onionアドレスは<strong>1文字でも間違えると接続できない</strong>。
+</p>
+
+<p>
+また、短い16文字形式のv2 Onion Serviceは現在のTorネットワークでは利用できない。
+現在使用されているのは56文字形式のv3 Onion Serviceである。
+</p>
+
+<h2>6-8. 実際に確認してみる</h2>
+
+<p>
+ここまで操作したら、次の項目を自分で確認してみる。
+</p>
+
+<table border="1" cellspacing="0" cellpadding="8">
+<tr>
+<th>確認項目</th>
+<th>確認する内容</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Tor BrowserがTorネットワークへ接続されているか</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>通常のWebサイトを開けるか</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>公式に案内されているOnion Serviceを開けるか</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>アドレスが「.onion」で終わっているか</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>アドレスバーにOnion Serviceを示す表示があるか</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>通常のWebサイトとOnion Serviceでアクセス方法が違うことを確認できたか</td>
+</tr>
+</table>
+
+<p>
+ここで、2章で説明した「通常のWebへの接続」と「Onion Serviceへの接続」の違いを実際の画面で確認できる。
+</p>
+
+<h2>6-9. Onion Serviceが開けない場合</h2>
+
+<p>
+Onion Serviceは、通常のWebサイトよりも「常に存在する」とは限らない。
+運営者がサービスを停止した場合や、一時的にオフラインになっている場合もある。
+</p>
+
+<p>
+また、Onionアドレスは非常に長いため、1文字でも入力を間違えると接続できない。
+</p>
+
+<p>
+接続できない場合は、まずアドレスを正確に確認する。
+それでも接続できない場合は、別の公式Onion Serviceを使って接続状態を確認する。
+</p>
+
+<p>
+Tor Projectも、Onion Serviceへ接続できない場合には56文字のアドレスが正確に入力されているか確認し、別の既知のOnion Serviceを試す方法を案内している。
+</p>
+
+<h2>6-10. 実践時にやってはいけないこと</h2>
+
+<p>
+Tor Browserを使えるようになったからといって、Dark Web上のあらゆるサイトを自由に調査してよいわけではない。
+</p>
+
+<p>
+特に学習目的であれば、まずは<strong>Tor Projectなどが公式に公開しているOnion Service</strong>を使うべきである。
+</p>
+
+<table border="1" cellspacing="0" cellpadding="8">
+<tr>
+<th>避ける行為</th>
+<th>理由</th>
+</tr>
+
+<tr>
+<td>正体不明のOnionアドレスを無差別に訪問する</td>
+<td>悪意のあるサイトや詐欺サイトに遭遇する可能性がある</td>
+</tr>
+
+<tr>
+<td>不審なファイルをダウンロードする</td>
+<td>マルウェアなどの危険がある</td>
+</tr>
+
+<tr>
+<td>個人情報を入力する</td>
+<td>Torを使っていても入力した個人情報そのものは匿名化されない</td>
+</tr>
+
+<tr>
+<td>普段使用している個人アカウントへ安易にログインする</td>
+<td>匿名通信と本人のアカウントが結び付く可能性がある</td>
+</tr>
+
+<tr>
+<td>違法なデータを保存・取得する</td>
+<td>法的問題や情報セキュリティ上の問題につながる可能性がある</td>
+</tr>
+
+<tr>
+<td>Tor Browserへ不要な拡張機能を追加する</td>
+<td>Fingerprintingなどの匿名性保護を損なう可能性がある</td>
+</tr>
+</table>
+
+<p>
+Tor ProjectもTor Browserについて、追加のプラグインやアドオンを入れないこと、Tor経由でTorrentを使用しないことなどを注意事項として案内している。
+</p>
+
+<h2>6-11. Torを終了する</h2>
+
+<p>
+実習が終了したら、通常のブラウザと同じようにTor Browserを終了する。
+</p>
+
+<p>
+Tor Browserは通常のブラウザとは異なり、匿名性を考慮した設計になっているが、終了しただけで「利用者のすべての痕跡が世界から消える」という意味ではない。
+</p>
+
+<p>
+特に、ダウンロードしたファイル、保存したデータ、スクリーンショット、外部アプリケーションで開いたファイルなどは、Tor Browserとは別に管理される場合がある。
+</p>
+
+<p>
+したがって、<strong>「Tor Browserを終了したから完全に痕跡がなくなった」と考えないこと</strong>が重要である。
+</p>
+
+<h2>6-12. 実践から学ぶこと</h2>
+
+<p>
+ここまでの操作によって、Torを単なる知識ではなく実際の環境として確認できる。
+</p>
+
+<table border="1" cellspacing="0" cellpadding="8">
+<tr>
+<th>これまで学んだ知識</th>
+<th>実際に確認したこと</th>
+</tr>
+
+<tr>
+<td>Torは匿名通信ネットワークである</td>
+<td>Tor BrowserからTorネットワークへ接続した</td>
+</tr>
+
+<tr>
+<td>通常のWebとOnion Serviceは異なる</td>
+<td>通常のWebサイトと.onionサイトを実際に開いた</td>
+</tr>
+
+<tr>
+<td>Onion ServiceはTor経由で利用する</td>
+<td>Tor BrowserからOnion Serviceへ接続した</td>
+</tr>
+
+<tr>
+<td>Onionアドレスは特殊な形式になっている</td>
+<td>56文字の英数字＋.onionという形式を確認した</td>
+</tr>
+
+<tr>
+<td>匿名性には限界がある</td>
+<td>個人情報の入力やアカウント利用によって本人との関連付けが起こり得ることを確認した</td>
+</tr>
+</table>
+
+<h2>6-13. 企業・CTI調査へ進む場合</h2>
+
+<p>
+ここまでの実習は、あくまでTorとOnion Serviceの基本を理解するためのものである。
+</p>
+
+<p>
+企業のCTIやインシデント対応としてDark Webを調査する場合は、単にサイトを見るだけでは不十分である。
+</p>
+
+<p>
+例えば、自社のメールアドレスや認証情報が流出しているという情報を発見した場合には、次のような流れで対応を考える。
+</p>
+
+<p>
+<strong>
+情報を発見
+→ 情報源を記録
+→ 真偽を確認
+→ 自社のログや資産情報と照合
+→ 影響範囲を判断
+→ 情報セキュリティ・CSIRT等へ報告
+→ 必要に応じて法務・個人情報管理部門へ連携
+→ 必要に応じて警察・監督官庁等へ相談・報告
+</strong>
+</p>
+
+<p>
+Dark Web上に「自社の情報らしきもの」が存在しただけで、それが直ちに事実だと判断してはいけない。
+5章で説明したように、古い情報の再掲、偽情報、別の情報との混同なども考えられるため、内部情報との照合が必要になる。
+</p>
+
+<p>
+また、実際の企業調査では、個人情報や漏えいデータの取得・保存・共有について、社内規程や法令、契約、調査目的などを確認する必要がある。
+</p>
+
+<p>
+特に、漏えいした個人情報を実際に取得する必要があるケースでは、必要性や取得範囲を慎重に検討する必要がある。
+単なる興味本位でデータを保存したり、第三者へ拡散したりするものではない。
+</p>
+
+<h2>6-14. この実践の目的</h2>
+
+<p>
+この章の目的は、「Dark Webには危険なサイトがある」という印象を持つことではない。
+</p>
+
+<p>
+<strong>
+Tor Browserを実際に操作し、通常のWebとOnion Serviceの違い
 
   <div class="back-row">
   <a class="back-btn" href="../index.html">ホーム</a>
