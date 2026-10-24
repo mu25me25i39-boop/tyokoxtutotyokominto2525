@@ -129,40 +129,40 @@
 
   <h4>・セーフ ブラウジングをON</h4>
   <p>
-    標準保護が過去のデータベースと照合するだけの受け身なのに対し、保護強化ではGoogleのクラウド脅威インテリジェンスと高速なデータ照合により、未知の危険サイトや悪質なダウンロードファイルを検知し、パスワード漏洩も入力時に検知して遮断します。
+    標準保護が過去のデータベースと照合するだけの受け身なのに対し、保護強化ではGoogleのクラウド脅威インテリジェンスとデータ照合により、未知の危険サイトや悪質なダウンロードファイルの検知を試みます。すべてを確実に検知・遮断するわけではありませんが、標準保護より検知範囲が広がります。
   </p>
 
   <hr>
 
   <h4>・常に安全な接続を使用する：ON（非公開サイトも警告）</h4>
   <p>
-    通信のすべてを暗号化（HTTPS）へと強制し、暗号化されていない古い通信（HTTP）を遮断します。ここでの「非公開サイト」には、社内イントラネットや自宅ルーターの管理画面なども含まれます。
+    暗号化されていないHTTP通信を検知し、HTTPS接続を優先させます。ここでの「非公開サイト」には、社内イントラネットや自宅ルーターの管理画面なども含まれます。
   </p>
 
   <p>
-    うっかり危険な非暗号化ページにアクセスしてしまっても警告で未然に防げる一方、通信の盗聴や改ざん（中間者攻撃）を根元から断ち切る強力な防衛となります。ただし、古い社内システムや暗号化未対応のローカル機器にアクセスする際は厳しくブロックされることがあるため、必要に応じて例外許可を行う運用上の注意が必要です。
+    暗号化されていない通信は、盗聴や改ざん（中間者攻撃）のリスクがあります。ただし、HTTP通信をすべて強制的に遮断するのではなく、警告や接続操作の確認が行われる場合があります。古い社内システムや暗号化未対応のローカル機器にアクセスする際は、必要に応じて例外許可を行う運用上の注意が必要です。
   </p>
 
   <hr>
 
   <h4>・データ侵害によりパスワードが漏洩した場合に警告する：ON</h4>
   <p>
-    ダークウェブ等で流出した危険なパスワードをログイン時に検知し、その場で即座に警告を表示します。パスワードやユーザー名は高度な暗号化（ゼロ知識証明）によって保護されているため、Googleを含む第三者に生データが知られることはありません。
+    ダークウェブ等で流出した危険なパスワードをログイン時に検知し、警告を表示します。使い回しているパスワードや過去に漏洩した認証情報をうっかり入力してしまっても、その場で気づいて変更できるため、不正ログインのリスク低減につながります。
   </p>
 
   <p>
-    使い回している危険なパスワードや過去に漏洩した認証情報をうっかり入力してしまってもその場で気づいて即座に変更できるため、不正ログインのリスクを未然に防ぎます。アカウント乗っ取りの大きな温床を塞ぐ、安全かつ必須の防衛策です。
+    なお、これはChromeが扱う認証情報の照合機能であり、外部パスワードマネージャーが採用するゼロ知識暗号化とは別の仕組みです。
   </p>
 
   <hr>
 
   <h4>・セキュア DNS を使用する：ON（Cloudflare 1.1.1.1 等を選択）</h4>
   <p>
-    Webサイトの住所を調べる通信（DNS lookup）をすべて暗号化し、プロバイダや通信上の第三者に「どのサイトを見ようとしているか」を盗聴・改ざんされないように守ります。
+    Webサイトの住所を調べる通信（DNS lookup）を暗号化し、プロバイダや通信上の第三者に閲覧先を把握されにくくします。あわせて、DNS経由の偽サイトへの誘導（DNSスプーフィング）のリスクを低減できますが、これだけで盗聴・改ざん・偽サイトへの誘導をすべて防げるわけではありません。
   </p>
 
   <p>
-    アクセス先の盗聴や偽サイトへの誘導（DNSスプーフィング）を遮断できる上、Cloudflareなどを選ぶことで通信速度や安定性も高まる場合があります。ただし、一部の特殊な公共Wi-Fiのログイン画面や社内専用ドメインがうまく開かなくなる場合があるため、通信トラブル時は一時的に「OSのデフォルト(使用可能な場合)」に戻して確認する運用を頭に入れておくと安心です。
+    一部の特殊な公共Wi-Fiのログイン画面や社内専用ドメインがうまく開かなくなる場合があるため、通信トラブル時は一時的に「OSのデフォルト(使用可能な場合)」に戻して確認する運用を頭に入れておくと安心です。
   </p>
 
   <hr>
@@ -183,11 +183,11 @@
 
   <h4>・Google の高度な保護機能プログラム：登録手順とキー管理</h4>
   <p>
-    Googleアカウントの「高度な保護機能プログラム」の画面（右上の「使ってみる」等）から進め、画面の指示に従ってPCやスマホ（Google Pixelなど）の生体認証を登録することで、従来の二段階認証よりもフィッシング耐性の高い「パスキー」主体の防衛網が構築されます。
+    Googleアカウントの「高度な保護機能プログラム」の画面（右上の「使ってみる」等）から進め、画面の指示に従ってPCやスマホ（Google Pixelなど）の生体認証を登録します。ここでの登録と、パスキーの登録・利用は同じ操作ではありません。高度な保護機能は保護レベルを引き上げる設定であり、その中でパスキー登録を促される形になります。
   </p>
 
   <p>
-    ここでパスキーを登録・運用する際のポイントは、「使っていない古いパスキーを放置しないこと」です。パスキーはアカウントに入るための暗号鍵そのものであるため、使わない古いものが残っていると、侵入経路が増えることと同じリスクになります。そのため、定期的に不要な古いキーは削除して整理することが重要です。削除しても、必要になればいつでもデバイスから再登録できるため、常に「把握している最小限の端末だけ」を維持するのが管理しやすい運用です。
+    パスキーを登録・運用する際のポイントは、「使っていない古いパスキーを放置しないこと」です。パスキーはアカウントに入るための暗号鍵そのものであるため、使わない古いものが残っていると、侵入経路が増えることと同じリスクになります。そのため、定期的に不要な古いキーは削除して整理することが重要です。削除しても、必要になればいつでもデバイスから再登録できるため、常に「把握している最小限の端末だけ」を維持するのが管理しやすい運用です。
   </p>
 
   <p>
@@ -310,7 +310,7 @@
   </p>
 
   <ol>
-    <li><strong>最優先：パスキーのみのログイン（パスワードでのログイン口を可能な限り封鎖する）</strong><br>※Googleの「高度な保護機能プログラム」等、パスワードログイン自体を無効化できるサービス</li>
+    <li><strong>最優先：パスキーのみのログイン（パスワードでのログイン口を可能な限り封鎖する）</strong><br>※Googleの「高度な保護機能プログラム」等、パスワードログイン自体を無効化できるサービスもある（※登録と無効化は別の操作）</li>
     <li><strong>推奨：パスキーの有効化（パスワード入力の手間と偽サイト被害を抑える）</strong></li>
     <li><strong>最低ライン：パスワード ＋ 二段階認証（認証アプリまたはパスキー）</strong></li>
   </ol>
@@ -491,7 +491,7 @@
   <summary>4. エンドポイント防衛（Windowsセキュリティソフトの選定と設定）</summary>
 
   <p>
-    OS（Windows）レベルの防衛において、最初の前提として押さえておくべき点があります。<strong>Windows 10は2025年10月に通常サポートを終了しています。</strong>Defenderやセキュリティソフトをどれだけ強化しても、OS自体の脆弱性（穴）は塞げません。基本はWindows 11への移行とし、延命が必要な場合はESU（拡張セキュリティ更新プログラム）の検討が必要です。
+    OS（Windows）レベルの防衛において、最初の前提として押さえておくべき点があります。<strong>Windows 10は2025年10月に通常サポートを終了しています。</strong>Defenderやセキュリティソフトをどれだけ強化しても、OS自体の脆弱性（穴）は塞げません。基本はWindows 11への移行とし、延命が必要な場合はESU（拡張セキュリティ更新プログラム）の検討が必要です。ただしESUは恒久的な解決策ではなく、あくまで移行までの一時的な対策です。
   </p>
 
   <p>
@@ -592,89 +592,179 @@
   <hr>
 
   <h3>■ 1. Windows Defender 高度ハードニング（完全無料・コマンド補強）</h3>
+
   <p>
-    有料ソフトを導入せず、標準のWindows Defenderのみで防衛環境を構築する場合は、画面上の設定（GUI）に加えてPowerShellコマンドによる「高度なハードニング」を実施します。
+    有料のウイルス対策ソフトを導入せず、Windows標準のMicrosoft Defenderを中心に防御を強化する方法です。GUIによる基本設定に加え、PowerShellでASR・PUA・ランサムウェア対策を設定します。
   </p>
 
-  <h4>・① 管理者権限でのPowerShell起動</h4>
   <p>
-    Windowsの検索バーに「PowerShell」と入力し、「管理者として実行」を選択してウィンドウを開きます。
+    ※設定によっては、正規のアプリや業務用ソフトがブロックされる場合があります。重要なファイルをバックアップし、設定変更の前後で動作を確認してください。
   </p>
+
+  <h4>・① 管理者権限でPowerShellを起動</h4>
+  <ol>
+    <li>Windowsの検索欄に「PowerShell」と入力する。</li>
+    <li>「Windows PowerShell」または「ターミナル」を右クリックし、「管理者として実行」を選択する。</li>
+    <li>管理者権限で起動したことを確認してから、以下のコマンドを実行する。</li>
+  </ol>
 
   <hr>
 
-  <h4>・② ASR（攻撃面の縮小）ルールの有効化（高強度防衛）</h4>
+  <h4>・② ASR（攻撃面の縮小）ルールによる防御強化</h4>
   <p>
-    ウイルスや悪意ある攻撃者が侵入時に悪用する「危険な挙動」を遮断します。メール添付ファイルのマクロから不正プログラムが自動起動する動きや、難読化された不審スクリプトの実行を水際でブロックします。
+    ASR（Attack Surface Reduction）は、マルウェアなどが悪用する危険な動作を制限する機能です。ここでは、Officeアプリからの不正なプロセス起動、難読化されたスクリプトの実行、Officeアプリから他のプロセスへのコード挿入を防ぐ3つのルールを設定します。
   </p>
 
-  <p>管理者PowerShellで以下のコマンドを実行します。</p>
+  <p><strong>【手順1：監査モードで影響を確認する】</strong></p>
+  <p>管理者PowerShellで、次の3行を実行します。各コマンドは独立した行に記載しています。</p>
 
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>Add-MpPreference -AttackSurfaceReductionRules_Ids D4F03759-478bf-474ba-b06f-47bfa14d2325 -AttackSurfaceReductionRules_Actions Enabled
-Add-MpPreference -AttackSurfaceReductionRules_Ids 5beb0106-19d1-4c19-b46c-c6c7c4b84b5e -AttackSurfaceReductionRules_Actions Enabled
-Add-MpPreference -AttackSurfaceReductionRules_Ids 75668c1f-73b5-4cf0-bb93-3ecf5cb7cc84 -AttackSurfaceReductionRules_Actions Enabled</code>
+    <code>Add-MpPreference -AttackSurfaceReductionRules_Ids "d4f940ab-401b-4efc-aadc-ad5f3c50688a" -AttackSurfaceReductionRules_Actions AuditMode
+Add-MpPreference -AttackSurfaceReductionRules_Ids "5beb7efe-fd9a-4556-801d-275e5ffc04cc" -AttackSurfaceReductionRules_Actions AuditMode
+Add-MpPreference -AttackSurfaceReductionRules_Ids "75668c1f-73b5-4cf0-bb93-3ecf5cb7cc84" -AttackSurfaceReductionRules_Actions AuditMode</code>
   </div>
 
   <p>
-    ※ASRにより業務用の特殊なExcelマクロ等がブロックされた場合は、「Windows セキュリティ」の履歴画面から該当ファイルを例外・除外登録します。ただし<strong>除外登録は、その分だけ監視対象から外れるため防御が弱まる行為</strong>です。安易に除外せず、まずは履歴やファイルの発行元を確認してから判断してください。
+    監査モードでは、ルールに該当する動作を検出・記録しますが、ルールによるブロックは行いません。普段使うExcelマクロ、業務ソフト、スクリプトなどを実際に使用し、検出状況を確認します。
+  </p>
+
+  <p><strong>【手順2：問題がなければブロックモードに切り替える】</strong></p>
+  <p>監査ログを確認し、必要な業務処理への影響がないことを確かめた後、次のコマンドを実行します。</p>
+
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>Add-MpPreference -AttackSurfaceReductionRules_Ids "d4f940ab-401b-4efc-aadc-ad5f3c50688a" -AttackSurfaceReductionRules_Actions Enabled
+Add-MpPreference -AttackSurfaceReductionRules_Ids "5beb7efe-fd9a-4556-801d-275e5ffc04cc" -AttackSurfaceReductionRules_Actions Enabled
+Add-MpPreference -AttackSurfaceReductionRules_Ids "75668c1f-73b5-4cf0-bb93-3ecf5cb7cc84" -AttackSurfaceReductionRules_Actions Enabled</code>
+  </div>
+
+  <p>
+    <code>Enabled</code> はブロックモードです。監査モードのコマンドを実行しただけではブロックされないため、影響を確認した後に切り替えます。
+  </p>
+
+  <p>
+    ※上記の2段階は、最初に監査モードのコマンドを実行し、確認後にブロックモードのコマンドを実行する手順です。最初から両方を連続実行しないでください。
+  </p>
+
+  <p>
+    <strong>注意：</strong> ASRの除外登録は、対象のファイルや動作に対する防御を弱める可能性があります。ブロックされた場合は、まずWindowsセキュリティの保護履歴やアプリの発行元を確認し、必要性が確認できた場合に限って除外を検討してください。
+  </p>
+
+  <p>
+    公式資料：<a href="https://learn.microsoft.com/ja-jp/defender-endpoint/attack-surface-reduction-rules-reference" target="_blank" rel="noopener">Microsoft Learn — ASRルールの参照</a>
   </p>
 
   <hr>
 
-  <h4>・③ PUA（迷惑・グレーソフト）ブロックの有効化</h4>
+  <h4>・③ PUA（不要な可能性のあるアプリ）のブロック</h4>
   <p>
-    明確なウイルスとは判定されないものの、PCを重くしたり不要な広告を表示したりするアドウェアや不審なツールの自動混入を防ぎます。
+    PUA（Potentially Unwanted Application）は、不要な広告表示や望ましくないソフトの導入などにつながる可能性があるアプリを指します。PUA保護を有効にし、不要なアプリが混入するリスクを低減します。
   </p>
 
-  <p>PowerShellで実行する場合：</p>
+  <p>管理者PowerShellで実行：</p>
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
     <code>Set-MpPreference -PUAProtection Enabled</code>
   </div>
 
-  <p>コマンドプロンプト（cmd：管理者）で実行する場合：</p>
+  <p>コマンドプロンプト（管理者）から実行する場合：</p>
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
     <code>powershell -Command "Set-MpPreference -PUAProtection Enabled"</code>
   </div>
 
+  <p>※PUA保護は、すべての迷惑ソフトや広告を検出できるわけではありません。</p>
+
   <hr>
 
-  <h4>・④ コントロールされたフォルダー アクセス（ランサムウェア強制ガード）</h4>
+  <h4>・④ コントロールされたフォルダー アクセス（ランサムウェア対策）</h4>
   <p>
-    「ドキュメント」や「デスクトップ」などの重要フォルダを、身代金ウイルス（ランサムウェア）による勝手な暗号化・書き換えから保護します。<strong>これはランサムウェアによる「書き込みのブロック」であり、前述のウイルス対策の「除外設定」とは別物</strong>です。
+    コントロールされたフォルダー アクセスは、信頼されていないアプリなどによる保護対象フォルダーへの不正な変更を制限し、ランサムウェアによるファイルの暗号化などの被害を抑える機能です。
   </p>
 
-  <p><strong>【画面（GUI）での設定手順】</strong></p>
+  <p><strong>【GUIで設定する場合】</strong></p>
   <ol>
-    <li>「設定」＞「プライバシーとセキュリティ」＞「Windows セキュリティ」を開く。</li>
-    <li>「ウイルスと脅威の防止」をクリックする。</li>
-    <li>下部にある「ランサムウェアの防止の管理」をクリックする。</li>
-    <li>「コントロールされたフォルダー アクセス」のスイッチを「オン」にする。<br>（※普段使う編集ソフトやゲームがファイルを保存できなくなった場合は、同画面内の「アプリをコントロールされたフォルダー アクセスで許可する」からアプリを追加してください）</li>
+    <li>「Windows セキュリティ」を開く。</li>
+    <li>「ウイルスと脅威の防止」を選択する。</li>
+    <li>「ランサムウェアの防止の管理」を開く。</li>
+    <li>「コントロールされたフォルダー アクセス」をオンにする。</li>
   </ol>
 
-  <p>PowerShell（コマンド）で一括有効化する場合：</p>
+  <p><strong>【PowerShellで監査モードにする場合】</strong></p>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>Set-MpPreference -EnableControlledFolderAccess AuditMode</code>
+  </div>
+
+  <p>まず監査モードで、普段使うアプリの動作への影響を確認します。問題がなければ、次のコマンドでブロックモードに切り替えます。</p>
+
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
     <code>Set-MpPreference -EnableControlledFolderAccess Enabled</code>
   </div>
 
+  <p>
+    有効化後、正規のアプリが保護フォルダーに保存できなくなった場合は、アプリの正当性を確認したうえで、Windowsセキュリティから許可を検討します。
+  </p>
+
+  <p>※この機能はすべてのランサムウェア被害を防ぐものではありません。バックアップも併用してください。</p>
+
+  <p>
+    公式資料：<a href="https://learn.microsoft.com/ja-jp/defender-endpoint/controlled-folder-access-configure" target="_blank" rel="noopener">Microsoft Learn — コントロールされたフォルダー アクセスの構成</a>
+  </p>
+
   <hr>
 
-  <h4>・⑤ Defenderの状態確認・更新コマンド</h4>
-  <p>保護状態の一括確認：</p>
+  <h4>・⑤ Defenderの状態確認・定義ファイルの更新</h4>
+  <p>設定を変更した後は、Defenderの保護状態を確認し、ウイルス定義を更新します。</p>
+
+  <p><strong>【保護状態の確認】</strong></p>
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>Get-MpComputerStatus | Select-Object RealTimeProtectionEnabled,AntivirusEnabled,AntivirusSignatureAge</code>
+    <code>Get-MpComputerStatus | Select-Object AntivirusEnabled,RealTimeProtectionEnabled,AntivirusSignatureAge</code>
   </div>
 
-  <p>定義ファイルを今すぐ手動で最新化：</p>
+  <ul>
+    <li><code>AntivirusEnabled</code>：ウイルス対策機能が有効か</li>
+    <li><code>RealTimeProtectionEnabled</code>：リアルタイム保護が有効か</li>
+    <li><code>AntivirusSignatureAge</code>：ウイルス定義が更新されてからの経過日数</li>
+  </ul>
+
+  <p><strong>【ウイルス定義の手動更新】</strong></p>
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
     <code>Update-MpSignature</code>
   </div>
+
+  <p><strong>【ASRルールの設定状態を確認する】</strong></p>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>$p = Get-MpPreference
+0..([math]::Min($p.AttackSurfaceReductionRules_Ids.Count,$p.AttackSurfaceReductionRules_Actions.Count)-1) | ForEach-Object {
+    [pscustomobject]@{
+        RuleGUID = $p.AttackSurfaceReductionRules_Ids[$_]
+        Action   = $p.AttackSurfaceReductionRules_Actions[$_]
+    }
+} | Format-Table -AutoSize</code>
+  </div>
+
+  <p>ASRの状態は、<code>1</code> がブロック、<code>2</code> が監査、<code>0</code> が無効です。設定した3つのGUIDと、それぞれの状態を確認してください。</p>
+
+  <hr>
+
+  <h4>・⑥ 運用上の注意</h4>
+  <ul>
+    <li>Windows Updateを継続し、OSとアプリを最新の状態に保つ。</li>
+    <li>重要なデータは、PCとは別の場所にもバックアップする。</li>
+    <li>不審なメールの添付ファイルやリンクを開かない。</li>
+    <li>Defenderの保護が無効になっていないか、定期的に確認する。</li>
+    <li>ASRやフォルダーアクセス制御によって正規のアプリがブロックされた場合、安易に機能全体を無効化せず、保護履歴とアプリの安全性を確認する。</li>
+  </ul>
+
+  <p>
+    これらの設定は防御を強化するものですが、すべての攻撃を防げるわけではありません。標準の保護機能、更新、バックアップ、慎重な操作を組み合わせることが重要です。
+  </p>
 
   <hr>
 
@@ -756,16 +846,16 @@ Add-MpPreference -AttackSurfaceReductionRules_Ids 75668c1f-73b5-4cf0-bb93-3ecf5c
 
   <hr>
 
-  <h3>■ 1. Android端末の選定：なぜGoogle Pixelが「何もしなくても強い」のか</h3>
+  <h3>■ 1. Android端末の選定：なぜGoogle Pixelが「標準状態でも強い」のか</h3>
   <p>
     Android選びで最も危険なのは、サポート期限が切れてセキュリティ更新が来なくなった古いモデルを使い続けることです。OSの穴（脆弱性）が放置され、危険なサイトを開いたりWi-Fiに繋いだだけで乗っ取られるリスクが生じます。
   </p>
 
   <h4>・Google Pixelが無難で強力な理由</h4>
   <ul>
-    <li><strong>初期状態（箱出し）で強い：</strong> 特別な知識や設定をしなくても、買ったそのままの状態で高い水準のセキュリティが確保されています。</li>
+    <li><strong>初期状態（箱出し）で強い：</strong> 特別な知識や設定をしなくても、買ったそのままの状態で高い水準のセキュリティ機能が確保されています。</li>
     <li><strong>長期かつ最速のセキュリティ更新：</strong> Androidの開発元であるGoogle純正のため、OSアップデートやセキュリティパッチが優先的かつ長期間（Pixel 8世代以降は最長7年間）提供されます。</li>
-    <li><strong>独自ハードウェア防御（Titan M2チップ）：</strong> 端末内部に専用のセキュリティ暗号化チップが組み込まれており、物理レベルで端末をガードします。</li>
+    <li><strong>独自ハードウェア防御（Titan M2チップ）：</strong> 端末内部に専用のセキュリティ暗号化チップが組み込まれており、ハードウェアによるセキュリティ保護を提供します。</li>
     <li><strong>ゲームや日常性能も「並み以上」：</strong> ゲーミング専用スマホほどの極端な排熱機構はありませんが、一般的なゲームや重いアプリであれば問題なく快適にプレイできる処理性能を備えています。</li>
   </ul>
 
@@ -792,7 +882,7 @@ Add-MpPreference -AttackSurfaceReductionRules_Ids 75668c1f-73b5-4cf0-bb93-3ecf5c
 
   <h3>■ 3. アプリ権限と「Pixel独自・ワンタップ遮断（カメラ/マイク）」</h3>
   <p>
-    アプリに不要な権限を許可しない設定に加え、Pixelなら「機内モード」感覚でカメラ・マイクを即座にブロックできます。
+    アプリに不要な権限を許可しない設定に加え、Pixelなら「機内モード」感覚でカメラ・マイクへのアクセスを即座にブロックできます。
   </p>
 
   <h4>・① 権限マネージャーでの個別オフ</h4>
@@ -805,7 +895,7 @@ Add-MpPreference -AttackSurfaceReductionRules_Ids 75668c1f-73b5-4cf0-bb93-3ecf5c
 
   <h4>・② Pixel機能：クイック設定で「カメラ・マイクを一発遮断」</h4>
   <p>
-    画面を上から下へスワイプして表示されるクイック設定パネルに「カメラへのアクセス」「マイクへのアクセス」のタイルを配置しておきます。これをタップして「オフ（ブロック中）」にするだけで、機内モードのように端末全体のカメラとマイクを瞬時に一元遮断でき、悪質アプリによる盗撮・盗聴を物理レベルで封じ込めることができます。
+    画面を上から下へスワイプして表示されるクイック設定パネルに「カメラへのアクセス」「マイクへのアクセス」のタイルを配置しておきます。これをタップして「オフ（ブロック中）」にするだけで、端末全体のカメラとマイクへのOSレベルのアクセスを瞬時に一元制限でき、悪質アプリによる盗撮・盗聴のリスクを抑えられます（※端末のあらゆる侵害を防げるわけではありません）。
   </p>
 
   <hr>
@@ -861,7 +951,7 @@ Add-MpPreference -AttackSurfaceReductionRules_Ids 75668c1f-73b5-4cf0-bb93-3ecf5c
   <h3>■ Android防衛のまとめ</h3>
   <ul>
     <li>更新が長く届き、普段使いからゲームまでこなせる「Google Pixel」を標準で使うのが無難</li>
-    <li>クイック設定でカメラ・マイクアクセスをワンタップ遮断できる機能を活用する</li>
+    <li>クイック設定でカメラ・マイクへのアクセスをワンタップ遮断できる機能を活用する</li>
     <li>PC用の有料セキュリティソフトがあればスマホにも連携させ、アプリロックや詐欺SMS・電話ブロックなどの追加防衛機能を活用する</li>
     <li>ストア外からAPKを入れた場合は「提供元不明の許可」を速やかにオフへ戻す</li>
   </ul>
@@ -877,7 +967,7 @@ Add-MpPreference -AttackSurfaceReductionRules_Ids 75668c1f-73b5-4cf0-bb93-3ecf5c
   </p>
 
   <div class="defense-box">
-    <div class="defense-item"><strong>ブラウザ強化（Chrome）：</strong> セーフブラウジング・HTTPS強制・セキュアDNS・漏洩警告による入口対策</div>
+    <div class="defense-item"><strong>ブラウザ強化（Chrome）：</strong> セーフブラウジング・HTTPS優先・セキュアDNS・漏洩警告による入口対策</div>
     <div class="defense-item"><strong>uBlock Origin Lite：</strong> 広告・トラッカー・悪質スクリプトの遮断</div>
     <div class="defense-item"><strong>パスワードマネージャー（Proton Pass / Bitwarden）：</strong> パスワードの個別管理と使い回し防止</div>
     <div class="defense-item"><strong>パスキー ＋ 2FA：</strong> フィッシング耐性の高い認証とアカウント防衛</div>
@@ -892,9 +982,9 @@ Add-MpPreference -AttackSurfaceReductionRules_Ids 75668c1f-73b5-4cf0-bb93-3ecf5c
 
     <p><strong>【運用上の重要ポイント】</strong></p>
     <ul>
-      <li>OSやソフトウェアを常に最新の状態に保つ（※Windows 10は2025年10月に通常サポート終了）</li>
+      <li>OSやソフトウェアを常に最新の状態に保つ（※Windows 10は2025年10月に通常サポート終了、ESUは移行までの一時対策）</li>
       <li>不審なリンクやファイルを不用意に開かない</li>
-      <li>管理者権限（<code>sudo</code> / 管理者実行）を安易に与えない</li>
+      <li>管理者権限（管理者実行）を安易に与えない</li>
       <li>パスワードの使い回しを避ける</li>
       <li>重要なデータは二重・三重にバックアップする（3-2-1ルール）</li>
     </ul>
