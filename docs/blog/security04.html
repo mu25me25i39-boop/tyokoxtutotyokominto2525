@@ -129,7 +129,7 @@
 
   <h4>・セーフ ブラウジングをON</h4>
   <p>
-    標準保護が過去のデータベースと照合するだけの受け身なのに対し、保護強化ではGoogleのクラウド脅威インテリジェンスとデータ照合により、未知の危険サイトや悪質なダウンロードファイルの検知を試みます。すべてを確実に検知・遮断するわけではありませんが、標準保護より検知範囲が広がります。
+    標準保護にも複数の脅威検知機能がありますが、保護強化ではGoogleのクラウド脅威インテリジェンスとデータ照合により、より広い範囲の脅威（未知の危険サイトや悪質なダウンロードファイル）の検知を試みます。すべてを確実に検知・遮断するわけではありませんが、標準保護より検知範囲が広がります。
   </p>
 
   <p>
@@ -187,15 +187,15 @@
 
   <h4>・Google の高度な保護機能プログラム：登録手順とキー管理</h4>
   <p>
-    Googleアカウントの「高度な保護機能プログラム」の画面（右上の「使ってみる」等）から進め、画面の指示に従ってPCやスマホ（Google Pixelなど）の生体認証を登録します。ここでの登録と、パスキーの登録・利用は同じ操作ではありません。高度な保護機能は保護レベルを引き上げる設定であり、その中でパスキー登録を促される形になります。
+    Googleアカウントの「高度な保護機能プログラム」の画面から進め、画面の指示に従ってPCやスマホ（Google Pixelなど）の生体認証を登録します。ここでの登録と、パスキーの登録・利用は同じ操作ではありません。高度な保護機能は保護レベルを引き上げる設定であり、その中でパスキー登録を促される形になります。
   </p>
 
   <p>
-    ※高度な保護機能への登録、パスキーの登録、パスワードログインの無効化はそれぞれ別の操作です。また、高度な保護機能を有効にしても、すべてのサービスでパスワードログインが無効になるわけではありません。
+    ※登録画面や案内内容は変更される可能性があるため、基本的には画面の指示に従ってください。また、高度な保護機能への登録、パスキーの登録、パスワードログインの無効化はそれぞれ別の操作です。高度な保護機能を有効にしても、すべてのサービスでパスワードログインが無効になるわけではありません。
   </p>
 
   <p>
-    パスキーを登録・運用する際のポイントは、「使っていない古いパスキーを放置しないこと」です。パスキーはアカウントに入るための暗号鍵そのものであるため、使わない古いものが残っていると、侵入経路が増えることと同じリスクになります。そのため、定期的に不要な古いキーは削除して整理することが重要です。削除しても、必要になればいつでもデバイスから再登録できるため、常に「把握している最小限の端末だけ」を維持するのが管理しやすい運用です。
+    パスキーは、アカウントへのログインに使用する重要な認証情報です。定期的に登録状況を確認し、紛失した端末や、すでに管理していない端末に関連するパスキーは、必要な復旧手段を確保したうえで削除を検討してください。現在使用しているパスキーを、不要だからという理由だけで削除する必要はありません。
   </p>
 
   <p>
@@ -225,7 +225,7 @@
 
   <h4>・Proton Pass / Bitwarden（パスワード管理：外部アドオンによる分離）</h4>
   <p>
-    Chrome等のブラウザ本体にパスワードを保存する運用は、ブラウザの脆弱性（ゼロデイ攻撃）や情報窃取型マルウェア（Stealer）の標的になりやすい面があります。そのため、ブラウザ側の保存機能を無効化し、閲覧環境と認証基盤を分離するために外部アドオンを採用します。
+    Chrome内蔵のパスワード管理機能も利用できますが、今回は端末やブラウザをまたいだ管理のしやすさ、個別パスワードの生成、自動入力によるフィッシング対策を重視し、専用のパスワードマネージャーを採用します。Proton PassやBitwardenなどを利用する場合は、マスターパスワードの保護、二段階認証、復旧手段の確保も忘れずに行ってください。
   </p>
 
   <p>
@@ -296,7 +296,7 @@
   </p>
 
   <p>
-    パスキーは公開鍵暗号を利用しており、認証情報がWebサイトの正当なドメイン（正しいURL）と結びついています。そのため、偽サイトに対して認証情報を誤って送信してしまうリスクを大幅に軽減できます。（※ただし、端末自体の盗難やマルウェア感染などのリスクは残ります）
+    パスキーは、正規サイトのドメインと認証情報が結び付く仕組みのため、パスワードと比べてフィッシング詐欺に強い認証方式です。ただし、端末の盗難、マルウェア感染、アカウント復旧手段の悪用などのリスクは残ります。
   </p>
 
   <hr>
@@ -314,13 +314,13 @@
 
   <h3>■ パスキー導入時の注意点と優先順位</h3>
   <p>
-    パスキーを登録すると「パスワード」と「パスキー」の2つのログイン入口が存在することになるため、一見セキュリティ上の窓口が増えるように見えます。しかし、パスキーの暗号構造が破られることはほとんどありません。そのため、各Webサイトの設定では以下の優先順位に従ってログイン環境を構築してください。
+    パスキーを登録すると「パスワード」と「パスキー」の2つのログイン入口が存在することになるため、一見セキュリティ上の窓口が増えるように見えます。しかし、パスキーは正規サイトのドメインと認証情報が結び付く仕組みのため、パスワードと比べてフィッシング詐欺に強い認証方式です。ただし、端末の盗難、マルウェア感染、アカウント復旧手段の悪用などのリスクは残ります。そのため、各Webサイトの設定では以下の優先順位に従ってログイン環境を構築してください。
   </p>
 
   <ol>
     <li><strong>最優先：パスキーのみのログイン（パスワードでのログイン口を可能な限り封鎖する）</strong><br>※Googleの「高度な保護機能プログラム」等、パスワードログイン自体を無効化できるサービスもある（※登録と無効化は別の操作）</li>
     <li><strong>推奨：パスキーの有効化（パスワード入力の手間と偽サイト被害を抑える）</strong></li>
-    <li><strong>最低ライン：パスワード ＋ 二段階認証（認証アプリまたはパスキー）</strong></li>
+    <li><strong>最低ライン：パスワード ＋ 二段階認証（認証アプリやセキュリティキーなど）</strong></li>
   </ol>
 
   <p>※「パスワードのみ」のログイン状態は放置しないようにしてください。</p>
@@ -364,7 +364,7 @@
 
   <h3>■ パスワード管理の唯一の注意点（デメリット）</h3>
   <p>
-    パスワードマネージャーは便利で安全ですが、「もし管理ソフト自体に突破されたら、保存しているすべてのパスワードが一気に知られてしまう」という最大のデメリット（単一障害点）があります。そのため、後述する「管理ソフト自体への二段階認証（2FA）の設定」や「マスターキーの厳重保管」を徹底し、金庫の扉を破られにくくする仕組みを作ることが不可欠です。
+    パスワードマネージャーは便利で安全ですが、「もし管理ソフト自体に突破されたら、保存しているすべてのパスワードが一気に知られてしまう」という最大のデメリット（単一障害点）があります。そのため、後述する「管理ソフト自体への二段階認証（2FA）の設定」や「マスターキーの厳重保管」を徹底し、金庫の扉を破られにくくする仕組みを作ることが不可欠です。なお、外部ツールも端末がマルウェアに感染すれば影響を受けます。
   </p>
 
   <hr>
@@ -628,31 +628,47 @@
   </p>
 
   <p><strong>【手順1：監査モードで影響を確認する】</strong></p>
-  <p>管理者PowerShellで、次の3行を実行します。各コマンドは独立した行に記載しています。</p>
+  <p>管理者PowerShellで、次の3つのコマンドを1行ずつ実行します。</p>
 
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>Add-MpPreference -AttackSurfaceReductionRules_Ids "d4f940ab-401b-4efc-aadc-ad5f3c50688a" -AttackSurfaceReductionRules_Actions AuditMode
-Add-MpPreference -AttackSurfaceReductionRules_Ids "5beb7efe-fd9a-4556-801d-275e5ffc04cc" -AttackSurfaceReductionRules_Actions AuditMode
-Add-MpPreference -AttackSurfaceReductionRules_Ids "75668c1f-73b5-4cf0-bb93-3ecf5cb7cc84" -AttackSurfaceReductionRules_Actions AuditMode</code>
+    <code>Add-MpPreference -AttackSurfaceReductionRules_Ids "d4f940ab-401b-4efc-aadc-ad5f3c50688a" -AttackSurfaceReductionRules_Actions AuditMode</code>
+  </div>
+
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>Add-MpPreference -AttackSurfaceReductionRules_Ids "5beb7efe-fd9a-4556-801d-275e5ffc04cc" -AttackSurfaceReductionRules_Actions AuditMode</code>
+  </div>
+
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>Add-MpPreference -AttackSurfaceReductionRules_Ids "75668c1f-73b5-4cf0-bb93-3ecf5cb7cc84" -AttackSurfaceReductionRules_Actions AuditMode</code>
   </div>
 
   <p>
-    ※GUIDはMicrosoftの更新で変わることがあるため、実行前に公式の一覧と照合してください。また、環境によっては1ルールずつ実行すると、どのルールが影響しているかを切り分けやすくなります。
+    ※3つは別々のコマンドです。1行ずつ実行してください。GUIDはMicrosoftの更新で変わることがあるため、実行前に公式の一覧と照合してください。環境によっては1ルールずつ実行すると、どのルールが影響しているかを切り分けやすくなります。
   </p>
 
   <p>
     監査モードでは、ルールに該当する動作を検出・記録しますが、ルールによるブロックは行いません。普段使うExcelマクロ、業務ソフト、スクリプトなどを実際に使用し、検出状況を確認します。
   </p>
 
-  <p><strong>【手順2：問題がなければブロックモードに切り替える】</strong></p>
-  <p>監査ログを確認し、必要な業務処理への影響がないことを確かめた後、次のコマンドを実行します。</p>
+  <p><strong>【手順2：監査結果を確認した後、ブロックモードへ変更する】</strong></p>
+  <p>監査ログを確認し、必要な業務処理への影響がないことを確かめた後、同じGUIDに対してアクションを <code>Enabled</code> にして再実行します。</p>
 
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>Add-MpPreference -AttackSurfaceReductionRules_Ids "d4f940ab-401b-4efc-aadc-ad5f3c50688a" -AttackSurfaceReductionRules_Actions Enabled
-Add-MpPreference -AttackSurfaceReductionRules_Ids "5beb7efe-fd9a-4556-801d-275e5ffc04cc" -AttackSurfaceReductionRules_Actions Enabled
-Add-MpPreference -AttackSurfaceReductionRules_Ids "75668c1f-73b5-4cf0-bb93-3ecf5cb7cc84" -AttackSurfaceReductionRules_Actions Enabled</code>
+    <code>Add-MpPreference -AttackSurfaceReductionRules_Ids "d4f940ab-401b-4efc-aadc-ad5f3c50688a" -AttackSurfaceReductionRules_Actions Enabled</code>
+  </div>
+
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>Add-MpPreference -AttackSurfaceReductionRules_Ids "5beb7efe-fd9a-4556-801d-275e5ffc04cc" -AttackSurfaceReductionRules_Actions Enabled</code>
+  </div>
+
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>Add-MpPreference -AttackSurfaceReductionRules_Ids "75668c1f-73b5-4cf0-bb93-3ecf5cb7cc84" -AttackSurfaceReductionRules_Actions Enabled</code>
   </div>
 
   <p>
@@ -660,7 +676,12 @@ Add-MpPreference -AttackSurfaceReductionRules_Ids "75668c1f-73b5-4cf0-bb93-3ecf5
   </p>
 
   <p>
-    ※上記の2段階は、最初に監査モードのコマンドを実行し、確認後にブロックモードのコマンドを実行する手順です。最初から両方を連続実行しないでください。
+    ※<code>Add-MpPreference</code> は、既存の設定にルールを追加・更新するコマンドです。既存のASR設定をすべてまとめて上書きしたい場合は <code>Set-MpPreference</code> を使いますが、その場合は他のルールまで消えてしまうおそれがあります。変更前に現在の設定を確認し、必要に応じて使い分けてください。
+  </p>
+
+  <p>
+    <strong>【GUIで設定する場合】</strong><br>
+    「Windows セキュリティ」＞「ウイルスと脅威の防止」＞「ランサムウェアの防止の管理」ではなく、ASRは「Windows セキュリティ」＞「ウイルスと脅威の防止」＞「ウイルスと脅威の防止の設定」＞「攻撃面の縮小」から、各ルールを個別に「監査」または「ブロック」に設定できます。コマンドに不安がある場合はGUIが安全です。
   </p>
 
   <p>
@@ -754,10 +775,16 @@ Add-MpPreference -AttackSurfaceReductionRules_Ids "75668c1f-73b5-4cf0-bb93-3ecf5
   </div>
 
   <p><strong>【ASRルールの設定状態を確認する】</strong></p>
+  <p>次の2つの処理を、分けて実行します。まず設定を変数に取得します。</p>
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>$p = Get-MpPreference
-0..([math]::Min($p.AttackSurfaceReductionRules_Ids.Count,$p.AttackSurfaceReductionRules_Actions.Count)-1) | ForEach-Object {
+    <code>$p = Get-MpPreference</code>
+  </div>
+
+  <p>続いて、取得した設定を一覧表示します。</p>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>0..([math]::Min($p.AttackSurfaceReductionRules_Ids.Count,$p.AttackSurfaceReductionRules_Actions.Count)-1) | ForEach-Object {
     [pscustomobject]@{
         RuleGUID = $p.AttackSurfaceReductionRules_Ids[$_]
         Action   = $p.AttackSurfaceReductionRules_Actions[$_]
@@ -773,8 +800,12 @@ Add-MpPreference -AttackSurfaceReductionRules_Ids "75668c1f-73b5-4cf0-bb93-3ecf5
 
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>(Get-MpPreference).AttackSurfaceReductionRules_Ids
-(Get-MpPreference).AttackSurfaceReductionRules_Actions</code>
+    <code>(Get-MpPreference).AttackSurfaceReductionRules_Ids</code>
+  </div>
+
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>(Get-MpPreference).AttackSurfaceReductionRules_Actions</code>
   </div>
 
   <hr>
@@ -848,11 +879,11 @@ Add-MpPreference -AttackSurfaceReductionRules_Ids "75668c1f-73b5-4cf0-bb93-3ecf5
 
   <p>
     <strong><a href="https://www.eset.com/jp/" target="_blank" rel="noopener">ESET</a>（スロバキア） / <a href="https://jp.norton.com/" target="_blank" rel="noopener">Norton</a>（ノートン / アメリカ）：</strong><br>
-    政治的・地政学的なリスク懸念が少なく、実績・動作の軽さ・安定性の面で無難な選択肢です。ESETは軽量さとノーログポリシーの信頼性、Nortonはクラウドバックアップ等の総合防衛力に長けています。
+    政治的・地政学的なリスク懸念が少なく、実績・動作の軽さ・安定性の面で無難な選択肢です。
   </p>
 
   <p>
-    ※いずれも評価は一般的な傾向であり、実際の検出・動作はバージョンや環境により異なります。
+    ※国や企業の背景だけで安全性を断定せず、検出性能、更新頻度、動作の軽さ、プライバシーポリシー、サポート期間、価格などを基準に比較検討してください。
   </p>
 
   <hr>
@@ -918,9 +949,9 @@ Add-MpPreference -AttackSurfaceReductionRules_Ids "75668c1f-73b5-4cf0-bb93-3ecf5
 
   <hr>
 
-  <h3>■ 3. アプリ権限と「Pixel独自・ワンタップ遮断（カメラ/マイク）」</h3>
+  <h3>■ 3. アプリ権限と「ワンタップ遮断（カメラ/マイク）」</h3>
   <p>
-    アプリに不要な権限を許可しない設定に加え、Pixelなら「機内モード」感覚でカメラ・マイクへのアクセスを即座にブロックできます。
+    アプリに不要な権限を許可しない設定に加え、対応するAndroid端末では「機内モード」感覚でカメラ・マイクへのアクセスを即座にブロックできます。
   </p>
 
   <h4>・① 権限マネージャーでの個別オフ</h4>
@@ -931,9 +962,9 @@ Add-MpPreference -AttackSurfaceReductionRules_Ids "75668c1f-73b5-4cf0-bb93-3ecf5
 
   <hr>
 
-  <h4>・② Pixel機能：クイック設定で「カメラ・マイクを一発遮断」</h4>
+  <h4>・② クイック設定で「カメラ・マイクを一発遮断」</h4>
   <p>
-    画面を上から下へスワイプして表示されるクイック設定パネルに「カメラへのアクセス」「マイクへのアクセス」のタイルを配置しておきます。これをタップして「オフ（ブロック中）」にするだけで、端末全体のカメラとマイクへのOSレベルのアクセスを瞬時に一元制限でき、悪質アプリによる盗撮・盗聴のリスクを抑えられます（※端末のあらゆる侵害を防げるわけではありません）。
+    対応するAndroid端末のクイック設定パネルに「カメラへのアクセス」「マイクへのアクセス」のタイルを配置しておきます。これをタップして「オフ（ブロック中）」にするだけで、端末全体のカメラとマイクへのOSレベルのアクセスを瞬時に一元制限でき、悪質アプリによる盗撮・盗聴のリスクを抑えられます（※端末のあらゆる侵害を防げるわけではありません）。
   </p>
 
   <hr>
@@ -949,7 +980,7 @@ Add-MpPreference -AttackSurfaceReductionRules_Ids "75668c1f-73b5-4cf0-bb93-3ecf5
     <li>Proton Pass / Bitwarden（パスワード自動入力管理）</li>
   </ul>
 
-  <p>有料セキュリティアプリ（カスペルスキー / ESET等）で利用できる場合がある機能：</p>
+  <p>有料セキュリティアプリ（カスペルスキー / ESET等）で「製品によっては」利用できる場合がある機能：</p>
   <ul>
     <li><strong>アプリロック（プライバシー保護）：</strong> LINE、写真、銀行アプリなどに個別の暗号キーや指紋認証を掛け、他人や盗難時に勝手に開かれないようガードする。</li>
     <li><strong>高度な盗難・遠隔追跡（アンチセフト）：</strong> GPS位置特定に加え、不正解除を試みた人物をインカメラでサイレント撮影したり、SIMカードが抜かれた際に端末を緊急ロックする機能。</li>
@@ -958,14 +989,14 @@ Add-MpPreference -AttackSurfaceReductionRules_Ids "75668c1f-73b5-4cf0-bb93-3ecf5
   </ul>
 
   <p>
-    ※これらの機能は一部の製品やプラン、Androidのバージョン・権限付与によって利用可否が異なります。導入前に各製品の仕様を確認してください。
+    ※これらはすべての製品に共通する機能ではなく、Androidのバージョン・権限付与・製品のプランによって利用可否が異なります。導入前に各製品の仕様を確認してください。
   </p>
 
   <hr>
 
   <h4>・スマホ探しの補足（Google標準 vs 有料ソフト）</h4>
   <p>
-    端末の位置検索や遠隔消去自体は、Google標準の「デバイスを探す（Find My Device）」だけでも無料で行えます。有料セキュリティアプリを入れると「犯人の顔写真撮影」や「SIM抜き取り時の自動ロック」などの防犯機能が追加される形になります。
+    端末の位置検索や遠隔消去自体は、Google標準の「デバイスを探す（Find My Device）」だけでも無料で行えます。有料セキュリティアプリを入れると、製品によっては「インカメラ撮影」や「SIM抜き取り時の自動ロック」などの防犯機能が追加される形になります。
   </p>
 
   <hr>
