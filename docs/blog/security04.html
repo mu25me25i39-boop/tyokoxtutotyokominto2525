@@ -437,9 +437,12 @@
 
   <p>管理者PowerShellで以下のコマンドを実行します。</p>
 
-  <pre><code>Add-MpPreference -AttackSurfaceReductionRules_Ids D4F03759-478bf-474ba-b06f-47bfa14d2325 -AttackSurfaceReductionRules_Actions Enabled
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>Add-MpPreference -AttackSurfaceReductionRules_Ids D4F03759-478bf-474ba-b06f-47bfa14d2325 -AttackSurfaceReductionRules_Actions Enabled
 Add-MpPreference -AttackSurfaceReductionRules_Ids 5beb0106-19d1-4c19-b46c-c6c7c4b84b5e -AttackSurfaceReductionRules_Actions Enabled
-Add-MpPreference -AttackSurfaceReductionRules_Ids 75668c1f-73b5-4cf0-bb93-3ecf5cb7cc84 -AttackSurfaceReductionRules_Actions Enabled</code></pre>
+Add-MpPreference -AttackSurfaceReductionRules_Ids 75668c1f-73b5-4cf0-bb93-3ecf5cb7cc84 -AttackSurfaceReductionRules_Actions Enabled</code>
+  </div>
 
   <p>
     （※業務用の特殊なExcelマクロ等がブロックされた場合は、「Windows セキュリティ」の履歴画面から該当ファイルを例外・除外登録することで正常稼働させることができます）
@@ -451,17 +454,23 @@ Add-MpPreference -AttackSurfaceReductionRules_Ids 75668c1f-73b5-4cf0-bb93-3ecf5c
   </p>
 
   <p>PowerShellで実行する場合：</p>
-  <pre><code>Set-MpPreference -PUAProtection Enabled</code></pre>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>Set-MpPreference -PUAProtection Enabled</code>
+  </div>
 
   <p>コマンドプロンプト（cmd：管理者）で実行する場合：</p>
-  <pre><code>powershell -Command "Set-MpPreference -PUAProtection Enabled"</code></pre>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>powershell -Command "Set-MpPreference -PUAProtection Enabled"</code>
+  </div>
 
   <h4>・④ コントロールされたフォルダー アクセス（ランサムウェア強制ガード）</h4>
   <p>
     「ドキュメント」や「デスクトップ」などの重要フォルダを、身代金ウイルス（ランサムウェア）による勝手な暗号化・書き換えから保護します。
   </p>
 
-  <p>画面（GUI）での設定手順：</p>
+  <p><strong>【画面（GUI）での設定手順】</strong></p>
   <ol>
     <li>「設定」＞「プライバシーとセキュリティ」＞「Windows セキュリティ」を開く。</li>
     <li>「ウイルスと脅威の防止」をクリックする。</li>
@@ -470,14 +479,23 @@ Add-MpPreference -AttackSurfaceReductionRules_Ids 75668c1f-73b5-4cf0-bb93-3ecf5c
   </ol>
 
   <p>PowerShell（コマンド）で一括有効化する場合：</p>
-  <pre><code>Set-MpPreference -EnableControlledFolderAccess Enabled</code></pre>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>Set-MpPreference -EnableControlledFolderAccess Enabled</code>
+  </div>
 
   <h4>・⑤ Defenderの状態確認・更新コマンド</h4>
   <p>保護状態の一括確認：</p>
-  <pre><code>Get-MpComputerStatus | Select-Object RealTimeProtectionEnabled,AntivirusEnabled,AntivirusSignatureAge</code></pre>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>Get-MpComputerStatus | Select-Object RealTimeProtectionEnabled,AntivirusEnabled,AntivirusSignatureAge</code>
+  </div>
 
   <p>定義ファイルを今すぐ手動で最新化：</p>
-  <pre><code>Update-MpSignature</code></pre>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>Update-MpSignature</code>
+  </div>
 
   <h3>■ 2. Defenderを使いながらさらに強化したい場合：「FFRI yarai」（国産・補助型）</h3>
   <p>
@@ -528,6 +546,18 @@ Add-MpPreference -AttackSurfaceReductionRules_Ids 75668c1f-73b5-4cf0-bb93-3ecf5c
     <li>PCだけでなく、Androidスマホも含めて所有端末を一括保護・管理する</li>
     <li>VPNやパスワードマネージャーは「どちらか1つ」に絞り、2重利用・複数併用は避ける（※より強力な保護を求めるならProton等を優先し、コスト・一括管理を重視するならセキュリティソフト標準機能で統一する）</li>
   </ul>
+
+  <script>
+  function copyCommand(btn) {
+    const code = btn.nextElementSibling.innerText;
+    navigator.clipboard.writeText(code).then(() => {
+      btn.innerText = '完了!';
+      setTimeout(() => {
+        btn.innerText = 'コピー';
+      }, 2000);
+    });
+  }
+  </script>
 
 </details>
 
