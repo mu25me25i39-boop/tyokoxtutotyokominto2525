@@ -132,6 +132,10 @@
     標準保護が過去のデータベースと照合するだけの受け身なのに対し、保護強化ではGoogleのクラウド脅威インテリジェンスとデータ照合により、未知の危険サイトや悪質なダウンロードファイルの検知を試みます。すべてを確実に検知・遮断するわけではありませんが、標準保護より検知範囲が広がります。
   </p>
 
+  <p>
+    ※保護強化は検知率を高めるものであり、すべての脅威を防ぐ保証ではありません。
+  </p>
+
   <hr>
 
   <h4>・常に安全な接続を使用する：ON（非公開サイトも警告）</h4>
@@ -184,6 +188,10 @@
   <h4>・Google の高度な保護機能プログラム：登録手順とキー管理</h4>
   <p>
     Googleアカウントの「高度な保護機能プログラム」の画面（右上の「使ってみる」等）から進め、画面の指示に従ってPCやスマホ（Google Pixelなど）の生体認証を登録します。ここでの登録と、パスキーの登録・利用は同じ操作ではありません。高度な保護機能は保護レベルを引き上げる設定であり、その中でパスキー登録を促される形になります。
+  </p>
+
+  <p>
+    ※高度な保護機能への登録、パスキーの登録、パスワードログインの無効化はそれぞれ別の操作です。また、高度な保護機能を有効にしても、すべてのサービスでパスワードログインが無効になるわけではありません。
   </p>
 
   <p>
@@ -524,6 +532,10 @@
     ネットバンキングの専用保護ブラウザ、より強力なランサムウェア保護、フィッシングサイトの検知など、OS標準機能より一歩踏み込んだ防衛機能を備えています。
   </p>
 
+  <p>
+    ※機能や効果は製品・プラン・環境により異なります。
+  </p>
+
   <hr>
 
   <h4>・オールインワン機能（パスワード管理・VPN）</h4>
@@ -624,6 +636,10 @@
 Add-MpPreference -AttackSurfaceReductionRules_Ids "5beb7efe-fd9a-4556-801d-275e5ffc04cc" -AttackSurfaceReductionRules_Actions AuditMode
 Add-MpPreference -AttackSurfaceReductionRules_Ids "75668c1f-73b5-4cf0-bb93-3ecf5cb7cc84" -AttackSurfaceReductionRules_Actions AuditMode</code>
   </div>
+
+  <p>
+    ※GUIDはMicrosoftの更新で変わることがあるため、実行前に公式の一覧と照合してください。また、環境によっては1ルールずつ実行すると、どのルールが影響しているかを切り分けやすくなります。
+  </p>
 
   <p>
     監査モードでは、ルールに該当する動作を検出・記録しますが、ルールによるブロックは行いません。普段使うExcelマクロ、業務ソフト、スクリプトなどを実際に使用し、検出状況を確認します。
@@ -751,6 +767,16 @@ Add-MpPreference -AttackSurfaceReductionRules_Ids "75668c1f-73b5-4cf0-bb93-3ecf5
 
   <p>ASRの状態は、<code>1</code> がブロック、<code>2</code> が監査、<code>0</code> が無効です。設定した3つのGUIDと、それぞれの状態を確認してください。</p>
 
+  <p>
+    ※環境によっては <code>AttackSurfaceReductionRules_Ids</code> が配列にならず単一値となり、うまく表形式で表示されない場合があります。その場合は、次のように個別に確認してください。
+  </p>
+
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>(Get-MpPreference).AttackSurfaceReductionRules_Ids
+(Get-MpPreference).AttackSurfaceReductionRules_Actions</code>
+  </div>
+
   <hr>
 
   <h4>・⑥ 運用上の注意</h4>
@@ -791,7 +817,11 @@ Add-MpPreference -AttackSurfaceReductionRules_Ids "75668c1f-73b5-4cf0-bb93-3ecf5
 
   <h3>■ 3. 有料の総合セキュリティソフト（選択肢と各国製の特徴）</h3>
   <p>
-    完全有料ソフトへ移行する場合、Windows Defenderは自動的に停止し、導入したソフトへ保護機能が一元化されます（※常駐ソフトの競合を防ぐため、他社製セキュリティソフトとの重複インストールは避けてください。また、前述したDefender専用のPowerShell設定コマンドも機能しなくなります）。
+    完全有料ソフトへ移行する場合、一般にはWindows Defenderは自動的に停止し、導入したソフトへ保護機能が一元化されます（※常駐ソフトの競合を防ぐため、他社製セキュリティソフトとの重複インストールは避けてください。また、前述したDefender専用のPowerShell設定コマンドも機能しなくなります）。
+  </p>
+
+  <p>
+    ※Defenderが自動で停止するかは、製品・Windowsのバージョン・設定によって異なります。停止しない場合は、競合を避けるために手動での調整が必要になることがあります。
   </p>
 
   <hr>
@@ -819,6 +849,10 @@ Add-MpPreference -AttackSurfaceReductionRules_Ids "75668c1f-73b5-4cf0-bb93-3ecf5
   <p>
     <strong><a href="https://www.eset.com/jp/" target="_blank" rel="noopener">ESET</a>（スロバキア） / <a href="https://jp.norton.com/" target="_blank" rel="noopener">Norton</a>（ノートン / アメリカ）：</strong><br>
     政治的・地政学的なリスク懸念が少なく、実績・動作の軽さ・安定性の面で無難な選択肢です。ESETは軽量さとノーログポリシーの信頼性、Nortonはクラウドバックアップ等の総合防衛力に長けています。
+  </p>
+
+  <p>
+    ※いずれも評価は一般的な傾向であり、実際の検出・動作はバージョンや環境により異なります。
   </p>
 
   <hr>
@@ -858,6 +892,10 @@ Add-MpPreference -AttackSurfaceReductionRules_Ids "75668c1f-73b5-4cf0-bb93-3ecf5
     <li><strong>独自ハードウェア防御（Titan M2チップ）：</strong> 端末内部に専用のセキュリティ暗号化チップが組み込まれており、ハードウェアによるセキュリティ保護を提供します。</li>
     <li><strong>ゲームや日常性能も「並み以上」：</strong> ゲーミング専用スマホほどの極端な排熱機構はありませんが、一般的なゲームや重いアプリであれば問題なく快適にプレイできる処理性能を備えています。</li>
   </ul>
+
+  <p>
+    ※標準状態でも万能ではなく、利用状況や設定によって保護の程度は変わります。あわせて基本的な設定を行うことで効果が高まります。
+  </p>
 
   <hr>
 
