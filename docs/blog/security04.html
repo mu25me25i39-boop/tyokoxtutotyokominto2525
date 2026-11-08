@@ -99,7 +99,7 @@
 
 <!-- 1 -->
 <details>
-  <summary>1. はじめに（対象環境と脅威の前提）</summary>
+  <summary>1.はじめに（対象環境と脅威の前提）</summary>
  
 
   <p>
@@ -366,7 +366,7 @@
 
 <!-- 4 -->
 <details>
-  <summary>4. パスワード管理と2段階認証（アカウント運用の全体ルール）</summary>
+  <summary>4.アカウント保護（パスワード管理・2段階認証・パスキー）</summary>
   <hr class="div-double">
 
   <p>
@@ -610,7 +610,7 @@
 
 <!-- 5 -->
 <details>
-  <summary>5. エンドポイント防衛（Windowsセキュリティソフトの選定と設定）</summary>
+  <summary>5. Windows防衛（PCのセキュリティ設定）</summary>
   <hr class="div-double">
 
   <p>
@@ -1030,7 +1030,7 @@ if ($p.AttackSurfaceReductionRules_Ids) {
 
 <!-- 6 -->
 <details>
-  <summary>6. Android（Googleスマホ）の端末選定とセキュリティ強化</summary>
+  <summary>6. Android防衛（端末選定と安全設定）</summary>
   <hr>
   <p>
     PC（Windows）の防衛を固めても、日常的に持ち歩くスマホのセキュリティが甘いと、そこからGoogleアカウントや個人情報が侵入されてしまいます。
@@ -1158,7 +1158,7 @@ if ($p.AttackSurfaceReductionRules_Ids) {
 
 <!-- 7 -->
 <details>
-  <summary>7. Wi-Fiルーター防衛：家中を汚染・踏み台から守る「最上流の関所」</summary>
+  <summary>7. Wi-Fiルーター防衛（家中を汚染・踏み台から守る）</summary>
   <hr class="div-double">
 
   <p>
@@ -1199,8 +1199,7 @@ if ($p.AttackSurfaceReductionRules_Ids) {
   <p>
     ルーターを導入したら、箱から出して設置した「その瞬間」に以下の初期設定を完了させます。
   </p>
-
-  <hr class="div-double">
+ <hr class="div-double">
   <h4>・【重要】物理的なセキュリティ（本体ラベルに注意）</h4>  <hr class="div-double">
   <p>
     ルーターの背面や底面には、Wi-Fiのパスワードや管理者のパスワードが書かれた「情報シール（ラベル）」が貼られています。
@@ -1243,15 +1242,15 @@ if ($p.AttackSurfaceReductionRules_Ids) {
       WPSを使用しない場合は無効にします。特にPIN方式は、実装や設定によって不正接続のリスクがあるため注意してください。外部インターネット側から管理画面へアクセスする「リモート管理」は、必要がなければOFFにします。
     </li>
   </ol>
-<div class="network-guide-section">
+<div class="network-guide-section"> <hr>
   <h3>■ 3. Wi-Fiの周波数帯（2.4GHz / 5GHz）とAtermのSSIDの見分け方</h3>
-  <hr class="div-double">
+  <hr>
   
   <p>
     AtermのSSIDには、周波数帯やプライマリ・セカンダリを示す文字が含まれる機種があります。ただし、SSIDの名称や表示されるネットワーク数は機種や設定（メッシュWi-Fiやバンドステアリングの有無など）によって異なります。以下は一般的な特徴と見分け方です。
   </p>
-
-  <h4>① 周波数帯の基本（2.4GHz と 5GHz）</h4>
+ <hr class="div-double">
+  <h4>① 周波数帯の基本（2.4GHz と 5GHz）</h4> <hr class="div-double">
   <ul>
     <li>
       <strong>2.4GHz帯：</strong>
@@ -1268,8 +1267,8 @@ if ($p.AttackSurfaceReductionRules_Ids) {
       </ul>
     </li>
   </ul>
-
-  <h4>② AtermにあるSSIDの一般的な見分け方（プライマリとセカンダリ）</h4>
+ <hr class="div-double">
+  <h4>② AtermにあるSSIDの一般的な見分け方（プライマリとセカンダリ）</h4> <hr class="div-double">
   <p>
     Atermでは、周波数帯ごとに「プライマリ（p）」や「セカンダリ（s）」などの記号がSSID名に含まれる場合があります。
   </p>
@@ -1279,13 +1278,13 @@ if ($p.AttackSurfaceReductionRules_Ids) {
   </ul>
 
   <div class="info-box">
-    <p><strong>💡 普段の接続のコツ：</strong><br>
+    <p><strong>普段の接続のコツ：</strong><br>
     電波が十分に届き、端末が対応している場合は5GHz帯（またはプライマリ側）が有力な選択肢となります。電波が届きにくい遠い部屋やスマート家電などでは2.4GHz帯を適宜利用するなど、環境に合わせて選択してください。</p>
   </div>
 
-
+ <hr>
   <h3 style="margin-top: 40px;">■ 4. ネットワーク分離（ゲストLAN・IoT家電の隔離）</h3>
-  <hr class="div-double">
+  <hr>
 
   <h4>ゲストネットワークとネットワークの適切な分離</h4>
   <p>
@@ -1296,9 +1295,6 @@ if ($p.AttackSurfaceReductionRules_Ids) {
   <p>
     来客には、メインのWi-Fiとは別の「ゲストSSID」を使用してもらいます。ゲストネットワークが無効になっている場合は、ルーターの管理画面から有効にし、ネットワーク分離機能が有効であることを確認してください。ゲスト用のSSIDやパスワードは、メインのWi-Fiとは別に管理します。なお、設定項目や分離機能の仕様は機種によって異なります。
   </p>
-
-
-  
   <hr>
   <h3>■ 5. 定期的な再起動とメンテナンス</h3>
   <hr>
@@ -1321,7 +1317,7 @@ if ($p.AttackSurfaceReductionRules_Ids) {
 
 <!-- 8 -->
 <details>
-  <summary>8. データ保護・バックアップ・データ消去の防衛</summary>
+  <summary>8. データ保護（バックアップと完全消去）</summary>
   <hr class="div-double">
 
   <p>
