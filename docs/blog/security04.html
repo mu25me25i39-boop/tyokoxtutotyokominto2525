@@ -821,40 +821,46 @@
   <p>
     公式資料：<a href="https://learn.microsoft.com/ja-jp/defender-endpoint/controlled-folder-access-configure" target="_blank" rel="noopener">Microsoft Learn — コントロールされたフォルダー アクセスの構成</a>
   </p>
+<div class="security-section">
+  <h4>⑤ Defenderの状態確認・定義ファイルの更新</h4>
+  <hr class="div-double">
+  
+  <p>設定を変更した後は、Windows Defenderの保護状態を確認し、ウイルス定義を最新の状態に更新します。</p>
 
-   <hr class="div-double">
-  <h4>・⑤ Defenderの状態確認・定義ファイルの更新</h4>  <hr class="div-double">
-  <p>設定を変更した後は、Defenderの保護状態を確認し、ウイルス定義を更新します。</p>
-
+  <!-- 1. 保護状態の確認 -->
   <p><strong>【保護状態の確認】</strong></p>
+  <p>現在の保護機能が正しく動作しているか確認します。</p>
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>Get-MpComputerStatus | Select-Object AntivirusEnabled,RealTimeProtectionEnabled,AntivirusSignatureAge</code>
+    <code>Get-MpComputerStatus | Select-Object AntivirusEnabled, RealTimeProtectionEnabled, AntivirusSignatureAge</code>
   </div>
-
-  <ul>
+  <ul class="status-descriptions">
     <li><code>AntivirusEnabled</code>：ウイルス対策機能が有効か</li>
-    <li><code>RealTimeProtectionEnabled</code>：リアルタイム保護が有効か</li>
+    <li><code>RealTimeProtectionEnabled</code>：リアルタイム保護が有効か（※他社製セキュリティソフトが入っている場合は無効になります）</li>
     <li><code>AntivirusSignatureAge</code>：ウイルス定義が更新されてからの経過日数</li>
   </ul>
 
+  <!-- 2. ウイルス定義の手動更新 -->
   <p><strong>【ウイルス定義の手動更新】</strong></p>
+  <p>ウイルス定義ファイルを強制的に手動でアップデートします。</p>
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
     <code>Update-MpSignature</code>
   </div>
+  <p class="note">※カスペルスキーなどの他社製ソフトが入っている環境では、このコマンドは動作しないか必要ありません。</p>
 
+  <!-- 3. ASRルールの設定状態を確認する -->
   <p><strong>【ASRルールの設定状態を確認する】</strong></p>
-  <p>次の2つの処理を、分けて実行します。まず設定を変数に取得します。</p>
+  <p>次の2つのステップに分けて、現在の設定状態を確認します。まず、設定を変数に取得します。</p>
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
     <code>$p = Get-MpPreference</code>
   </div>
 
-  <p>続いて、取得した設定を一覧表示します。</p>
+  <p>続いて、取得した設定を分かりやすい一覧表として表示します。</p>
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>0..([math]::Min($p.AttackSurfaceReductionRules_Ids.Count,$p.AttackSurfaceReductionRules_Actions.Count)-1) | ForEach-Object {
+    <code>0..([math]::Min($p.AttackSurfaceReductionRules_Ids.Count, $p.AttackSurfaceReductionRules_Actions.Count) - 1) | ForEach-Object {
     [pscustomobject]@{
         RuleGUID = $p.AttackSurfaceReductionRules_Ids[$_]
         Action   = $p.AttackSurfaceReductionRules_Actions[$_]
@@ -862,20 +868,34 @@
 } | Format-Table -AutoSize</code>
   </div>
 
-  <p>ASRの状態は、<code>1</code> がブロック、<code>2</code> が監査、<code>0</code> が無効です。設定した3つのGUIDと、それぞれの状態を確認してください。※表示された設定値は、各ルールのGUIDと対応させて確認してください。設定値が正しく表示されていても、組織の管理ポリシーなどによって設定が上書きされる場合があります。</p>
+  <div class="info-box">
+    <p><strong>💡 ASRの状態の目安：</strong></p>
+    <ul>
+      <li><code>1</code>：ブロック（有効）</li>
+      <li><code>2</code>：監査（記録のみ）</li>
+      <li><code>0</code>：無効</li>
+    </ul>
+    <p>※設定したGUIDとそれぞれの状態を照らし合わせて確認してください。組織のポリシー等で上書きされる場合があります。</p>
+  </div>
 
-  <p>
-    ※環境によっては <code>AttackSurfaceReductionRules_Ids</code> が配列にならず単一値となり、うまく表形式で表示されない場合があります。その場合は、次のように個別に確認してください。
-  </p>
-
+  <!-- 4. 配列にならず表形式にならない場合の個別確認 -->
+  <p><strong>【表形式で表示されない場合の個別確認】</strong></p>
+  <p>環境によっては <code>AttackSurfaceReductionRules_Ids</code> が配列として処理されず、表が崩れる場合があります。その場合は以下のコマンドで個別に確認してください。</p>
+  
+  <p>▼ ルールID（GUID）のリスト確認</p>
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
     <code>(Get-MpPreference).AttackSurfaceReductionRules_Ids</code>
   </div>
 
+  <p>▼ 動作アクション（数値）のリスト確認</p>
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
     <code>(Get-MpPreference).AttackSurfaceReductionRules_Actions</code>
+  </div>
+</div>
+   <hr class="div-double">
+
   </div>
   
   <hr class="div-double">
