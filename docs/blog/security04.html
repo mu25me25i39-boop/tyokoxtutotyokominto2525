@@ -822,6 +822,7 @@
     公式資料：<a href="https://learn.microsoft.com/ja-jp/defender-endpoint/controlled-folder-access-configure" target="_blank" rel="noopener">Microsoft Learn — コントロールされたフォルダー アクセスの構成</a>
   </p>
 <div class="security-section">
+  <div class="security-section">  <hr class="div-double">
   <h4>⑤ Defenderの状態確認・定義ファイルの更新</h4>
   <hr class="div-double">
   
@@ -836,9 +837,16 @@
   </div>
   <ul class="status-descriptions">
     <li><code>AntivirusEnabled</code>：ウイルス対策機能が有効か</li>
-    <li><code>RealTimeProtectionEnabled</code>：リアルタイム保護が有効か（※他社製セキュリティソフトが入っている場合は無効になります）</li>
+    <li><code>RealTimeProtectionEnabled</code>：リアルタイム保護が有効か（※カスペルスキー等の他社製セキュリティソフトが入っている場合は無効になります）</li>
     <li><code>AntivirusSignatureAge</code>：ウイルス定義が更新されてからの経過日数</li>
   </ul>
+
+  <p><strong>【リアルタイム保護をオンにする場合（他社製ソフトがない場合）】</strong></p>
+  <p>もしカスペルスキーなどの他社製ソフトが入っておらず、リアルタイム保護がオフになっている場合は、以下のコマンドで有効化します。</p>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>Set-MpPreference -DisableRealTimeMonitoring $false</code>
+  </div>
 
   <!-- 2. ウイルス定義の手動更新 -->
   <p><strong>【ウイルス定義の手動更新】</strong></p>
@@ -878,6 +886,21 @@
     <p>※設定したGUIDとそれぞれの状態を照らし合わせて確認してください。組織のポリシー等で上書きされる場合があります。</p>
   </div>
 
+  <!-- ASRルールをすべてブロックにする場合 -->
+  <p><strong>【監査や無効をすべてブロックにしたい場合】</strong></p>
+  <p>登録されているすべてのASRルールを一括で「ブロック（1）」に切り替えるには、以下のコマンドを実行します。</p>
+  <div class="command-box">
+    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+    <code>$p = Get-MpPreference
+if ($p.AttackSurfaceReductionRules_Ids) {
+    Set-MpPreference -AttackSurfaceReductionRules_Ids $p.AttackSurfaceReductionRules_Ids -AttackSurfaceReductionRules_Actions 1
+}</code>
+  </div>
+  <p class="note">
+    <strong>⚠️ 何か不具合（アプリの誤検知・動作不良）が起きた場合の補足：</strong><br>
+    ASRルールをすべて「ブロック」に強化すると、普段使っている開発ツールやインストーラー、業務アプリなどが不正な動作と誤検知されてブロックされる場合があります。もしアプリが動かなくなった場合は、該当するルールの設定を一時的に「2（監査）」に戻すか、無効化して動作確認を行ってください。
+  </p>
+
   <!-- 4. 配列にならず表形式にならない場合の個別確認 -->
   <p><strong>【表形式で表示されない場合の個別確認】</strong></p>
   <p>環境によっては <code>AttackSurfaceReductionRules_Ids</code> が配列として処理されず、表が崩れる場合があります。その場合は以下のコマンドで個別に確認してください。</p>
@@ -892,7 +915,7 @@
   <div class="command-box">
     <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
     <code>(Get-MpPreference).AttackSurfaceReductionRules_Actions</code>
- 
+
 
   </div>
   
