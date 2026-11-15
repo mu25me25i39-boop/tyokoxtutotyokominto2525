@@ -420,7 +420,7 @@
 
   <p>※端末側で生体認証を設定しただけでは、Googleへのパスキー登録や高度な保護機能の有効化は完了しません。また、端末の紛失に備え、アカウントの復旧手段も確保しておく必要があります。</p>
 
-  <p>詳しい登録手順、パスキーの管理方法、再設定用の電話番号・メールアドレスの確認については、後述の「■ 導入・運用の4ステップ」の4番目「Googleアカウントのセキュリティ向上」に掲載しています。</p>
+  <p>詳しい登録手順、パスキーの管理方法、再設定用の電話番号・メールアドレスの確認については、後述の「4.アカウント保護（パスワード管理・2段階認証・パスキー）ー導入・運用の4ステップー4.Googleアカウントのセキュリティ向上」に掲載しています。</p>
   <hr>
 
   <h3 style="color: #80d8ff;">■ 2. セキュリティ向上アドオンの導入</h3>
@@ -674,87 +674,45 @@
   <p>スマホ紛失時やパスワード管理ソフトからの締め出しを防ぐため、各サービス発行の緊急用復旧コード(リカバリーコード)はマスターパスワードと同様に紙などのオフラインで金庫等第三者に見られないように保管する。</p>
 
 </details>
+
 <!-- 5 -->
 <details>
   <summary>5. Windows保護（PCのセキュリティ設定）</summary>
   <hr class="div-double">
 
-  <p>
-    OS（Windows）レベルの保護において、最初の前提として押さえておくべき点があります。<strong>Windows 10は2025年10月に通常サポートを終了しています。</strong>Defenderやセキュリティソフトをどれだけ強化しても、OS自体の脆弱性（穴）は塞げません。基本はWindows 11への移行とし、延命が必要な場合はESU（拡張セキュリティ更新プログラム）の検討が必要です。ただしESUは恒久的な解決策ではなく、あくまで移行までの一時的な対策です。
-  </p>
+  <p>OS（Windows）レベルの保護において、最初の前提として押さえておくべき点があります。<strong>Windows 10は2025年10月に通常サポートを終了しています。</strong>Defenderやセキュリティソフトをどれだけ強化しても、OS自体の脆弱性（穴）は塞げません。</p>
 
-  <p>
-    その上で、最初の選択肢となるのが「セキュリティソフト（アンチウイルスソフト）」の運用方針です。
-  </p>
+  <p>個人向けのESU（拡張セキュリティ更新プログラム）も2026年10月13日で終了しており、個人が延命する手段はもうありません。法人向けには最大3年の延長がありますが、個人はWindows 11へ移すのが基本です。移行にはTPM 2.0とSecure Bootが要ります。多くの市販PCは対応していますが、古いPCは非対応です。対応可否はメーカーが公開している一覧で確認してください。</p>
+
+  <p>その上で、最初の選択肢となるのが「セキュリティソフト（アンチウイルスソフト）」の運用方針です。</p>
 
   <hr>
- <h3 style="color: #80d8ff;">■ Defender（無料）と有料セキュリティソフトの違い、および上位機能の扱い</h3>
+  <h3 style="color: #80d8ff;">■ Defender（無料）と有料セキュリティソフトの違い</h3>
   <hr>
 
-  <p>
-    Windows 10/11には、標準で「<a href="https://www.microsoft.com/ja-jp/windows/comprehensive-security" target="_blank" rel="noopener">Microsoft Defender</a>」が搭載されており、基本的なウイルス・マルウェア対策として十分に強力な保護を提供します。
-  </p>
+  <p>Windows 10/11には、標準で「<a href="https://www.microsoft.com/ja-jp/windows/comprehensive-security" target="_blank" rel="noopener">Microsoft Defender</a>」が搭載されており、基本的なウイルス・マルウェア対策として十分に強力な保護を提供します。</p>
 
-  <p>
-    一方で、有料のセキュリティソフトを導入・購入する主なメリットは、単なるPC単体の保護にとどまらず、「全方面のセキュリティをまとめて管理できる点」にあります。
-  </p>
-
-  <hr class="div-double">
-  <h4>・マルチデバイス（PC・スマホ）の一括管理</h4>  <hr class="div-double">
-  <p>
-    有料ソフトの多くは1ライセンスで複数台（3〜5台など）に対応しており、セキュリティが甘くなりがちなAndroidスマートフォンやタブレットもまとめて保護・一元管理できます。
-  </p>
-
-  <hr class="div-double">
-  <h4>・多層防御と高度な脅威対策</h4>  <hr class="div-double">
-  <p>
-    ネットバンキングの専用保護ブラウザ、より強力なランサムウェア保護、フィッシングサイトの検知など、OS標準機能より一歩踏み込んだ保護機能を備えています。
-  </p>
-
-  <p>
-    ※機能や効果は製品・プラン・環境により異なります。
-  </p>
-
-  <hr class="div-double">
-  <h4>・オールインワン機能（パスワード管理・VPN）</h4>  <hr class="div-double">
-  <p>
-    上位プランには、暗号化された「VPN（通信の保護）」や「パスワードマネージャー」、ダークウェブでの個人情報流出監視機能が同梱されています。別で専用ソフトを契約しなくても、まとめて防御環境を整えられます。
-  </p>
+  <p>一方で、有料のセキュリティソフトを導入する主なメリットは、PC単体の保護ではなく「全方面をまとめて管理できる点」にあります。PCとスマホの一括管理、ネットバンキングの専用保護ブラウザ、ランサムウェア対策の強化、VPNやパスワード管理の同梱などです。機能や効果は製品・プラン・環境により異なります。</p>
 
   <hr>
- <h3 style="color: #80d8ff;">■ セキュリティ保護の3つ選択</h3>
+  <h3 style="color: #80d8ff;">■ セキュリティ保護の3つの選択</h3>
   <hr>
-
-  <hr class="div-double">
-  <h4>1.完全無料 ＋ コマンドによる高度ハードニング</h4> <hr class="div-double">
-  <p>
-    内容：標準のWindows Defenderをそのまま使い、PowerShell等の設定（ASR・PUA・フォルダ保護）で保護力を引き上げる手法。追加費用は一切かかりません。
-  </p>
-  <hr class="div-double">
-  <h4>2.Defender ＋ 国産「FFRI yarai」の二重保護（上級・条件付き）</h4>  <hr class="div-double">
-  <p>
-    内容：個人向けとして紹介するなら、標準のDefenderを活かしつつ、未知のウイルスや標的型攻撃に強い国産の「<a href="https://www.ffri.jp/products/yaraihb" target="_blank" rel="noopener">FFRI yarai Home and Business Edition</a>」を導入する事です。
-  </p>
-  
-  <hr class="div-double">
-  <h4>3.有料の総合セキュリティソフトで全方面を一括保護（管理重視）</h4><hr class="div-double">
-  <p>
-    内容：カスペルスキー、ESET、ノートンなどの有料ソフトを導入し、PCだけでなくAndroidスマホも含めたマルチデバイスの保護、ネットバンキング保護、総合機能を1つのライセンスでまとめて管理する手法。
-  </p>
+  <ul>
+    <li><strong>完全無料＋コマンドによる高度ハードニング</strong>　追加費用は一切かかりません。標準のDefenderをASR・PUA・フォルダ保護で補強します。→ 後述1</li>
+    <li><strong>Defender＋国産「FFRI yarai」の二重保護</strong>　未知の攻撃への補強。対応エディションなど条件があります。→ 後述2</li>
+    <li><strong>有料の総合セキュリティソフトで一括保護</strong>　複数端末の管理と総合機能を1つのライセンスにまとめます。→ 後述3</li>
+  </ul>
 
   <hr>
- <h3 style="color: #80d8ff;">■ 1. Windows Defender 高度ハードニング（完全無料・コマンド補強）</h3>  <hr>
-  <hr class="div-double">
+  <h3 style="color: #80d8ff;">■ 1. Windows Defender 高度ハードニング（完全無料・コマンド補強）</h3>
+  <hr>
+  <p>有料のウイルス対策ソフトを導入せず、Windows標準のMicrosoft Defenderを中心に防御を強化する方法です。GUIによる基本設定に加え、PowerShellでASR・PUA・ランサムウェア対策を設定します。</p>
 
-  <p>
-    有料のウイルス対策ソフトを導入せず、Windows標準のMicrosoft Defenderを中心に防御を強化する方法です。GUIによる基本設定に加え、PowerShellでASR・PUA・ランサムウェア対策を設定します。
-  </p>
+  <p>※設定によっては、正規のアプリや業務用ソフトがブロックされる場合があります。重要なファイルをバックアップし、設定変更の前後で動作を確認してください。</p>
 
-  <p>
-    ※設定によっては、正規のアプリや業務用ソフトがブロックされる場合があります。重要なファイルをバックアップし、設定変更の前後で動作を確認してください。
-  </p>
   <hr class="div-double">
-  <h4>・① 管理者権限でPowerShellを起動</h4>  <hr class="div-double">
+  <h4>・① 管理者権限でPowerShellを起動</h4>
+  <hr class="div-double">
   <ol>
     <li>Windowsの検索欄に「PowerShell」と入力する。</li>
     <li>「Windows PowerShell」または「ターミナル」を右クリックし、「管理者として実行」を選択する。</li>
@@ -762,14 +720,11 @@
   </ol>
 
   <hr class="div-double">
-  <h4>・② ASR（攻撃面の縮小）ルールによる防御強化</h4>  <hr class="div-double">
-  <p>
-    ASR（Attack Surface Reduction）は、マルウェアなどが悪用する危険な動作を制限する機能です。ここでは、Officeアプリからの不正なプロセス起動、難読化されたスクリプトの実行、Officeアプリから他のプロセスへのコード挿入を防ぐ3つのルールを設定します。
-  </p>
+  <h4>・② ASR（攻撃対象領域の縮小）ルールによる防御強化</h4>
+  <hr class="div-double">
+  <p>ASR（Attack Surface Reduction）は、マルウェアなどが悪用する危険な動作を制限する機能です。ここでは、Officeアプリからの不正なプロセス起動、難読化されたスクリプトの実行、Officeアプリから他のプロセスへのコード挿入を防ぐ3つのルールを設定します。</p>
 
-  <p>
-    ※ASR（攻撃対象領域の縮小）ルールは、Windowsのエディションや管理環境によって設定方法が異なります。本記事ではPowerShellを使用する方法を紹介します。グループポリシーや組織向け管理ツールを利用する方法もあります。
-  </p>
+  <p>※ASRルールは、Windowsのエディションや管理環境によって設定方法が異なります。ここではPowerShellを使用する方法を紹介します。グループポリシーや組織向け管理ツールを利用する方法もあります。</p>
 
   <p><strong>【手順1：監査モードで影響を確認する】</strong></p>
   <p>管理者PowerShellで、次の3つのコマンドを1行ずつ実行します。</p>
@@ -789,13 +744,9 @@
     <code>Add-MpPreference -AttackSurfaceReductionRules_Ids "75668c1f-73b5-4cf0-bb93-3ecf5cb7cc84" -AttackSurfaceReductionRules_Actions AuditMode</code>
   </div>
 
-  <p>
-    ※3つは別々のコマンドです。1行ずつ実行してください。環境によっては1ルールずつ実行すると、どのルールが影響しているかを切り分けやすくなります。
-  </p>
+  <p>※3つは別々のコマンドです。1行ずつ実行してください。環境によっては1ルールずつ実行すると、どのルールが影響しているかを切り分けやすくなります。</p>
 
-  <p>
-    監査モードでは、ルールに該当する動作を検出・記録しますが、ルールによるブロックは行いません。普段使うExcelマクロ、業務ソフト、スクリプトなどを実際に使用し、検出状況を確認します。
-  </p>
+  <p>監査モードでは、ルールに該当する動作を検出・記録しますが、ルールによるブロックは行いません。普段使うExcelマクロ、業務ソフト、スクリプトなどを実際に使用し、検出状況を確認します。</p>
 
   <p><strong>【手順2：監査結果を確認した後、ブロックモードへ変更する】</strong></p>
   <p>監査ログを確認し、必要な業務処理への影響がないことを確かめた後、同じGUIDに対してアクションを <code>Enabled</code> にして再実行します。</p>
@@ -815,27 +766,18 @@
     <code>Add-MpPreference -AttackSurfaceReductionRules_Ids "75668c1f-73b5-4cf0-bb93-3ecf5cb7cc84" -AttackSurfaceReductionRules_Actions Enabled</code>
   </div>
 
-  <p>
-    <code>Enabled</code> はブロックモードです。監査モードのコマンドを実行しただけではブロックされないため、影響を確認した後に切り替えます。
-  </p>
+  <p><code>Enabled</code> はブロックモードです。監査モードのコマンドを実行しただけではブロックされないため、影響を確認した後に切り替えます。</p>
 
-  <p>
-    ※<code>Add-MpPreference</code> は、既存の設定にルールを追加・更新するコマンドです。既存のASR設定をすべてまとめて上書きしたい場合は <code>Set-MpPreference</code> を使いますが、その場合は他のルールまで消えてしまうおそれがあります。変更前に現在の設定を確認し、必要に応じて使い分けてください。
-  </p>
+  <p>※<code>Add-MpPreference</code> は、既存の設定にルールを追加・更新するコマンドです。既存のASR設定をすべてまとめて上書きしたい場合は <code>Set-MpPreference</code> を使いますが、その場合は他のルールまで消えてしまうおそれがあります。変更前に現在の設定を確認し、必要に応じて使い分けてください。</p>
 
-  <p>
-    <strong>注意：</strong> ASRの除外登録は、対象のファイルや動作に対する防御を弱める可能性があります。ブロックされた場合は、まずWindowsセキュリティの保護履歴やアプリの発行元を確認し、必要性が確認できた場合に限って除外を検討してください。
-  </p>
+  <p><strong>注意：</strong>ASRの除外登録は、対象のファイルや動作に対する防御を弱める可能性があります。ブロックされた場合は、まずWindowsセキュリティの保護履歴やアプリの発行元を確認し、必要性が確認できた場合に限って除外を検討してください。</p>
 
-  <p>
-    公式資料：<a href="https://learn.microsoft.com/ja-jp/defender-endpoint/attack-surface-reduction-rules-reference" target="_blank" rel="noopener">Microsoft Learn — ASRルールの参照</a>
-  </p>
+  <p>公式資料：<a href="https://learn.microsoft.com/ja-jp/defender-endpoint/attack-surface-reduction-rules-reference" target="_blank" rel="noopener">Microsoft Learn — ASRルールの参照</a></p>
 
   <hr class="div-double">
-  <h4>・③ PUA（不要な可能性のあるアプリ）のブロック</h4>  <hr class="div-double">
-  <p>
-    PUA（Potentially Unwanted Application）は、不要な広告表示や望ましくないソフトの導入などにつながる可能性があるアプリを指します。PUA保護を有効にし、不要なアプリが混入するリスクを低減します。
-  </p>
+  <h4>・③ PUA（不要な可能性のあるアプリ）のブロック</h4>
+  <hr class="div-double">
+  <p>PUA（Potentially Unwanted Application）は、不要な広告表示や望ましくないソフトの導入などにつながる可能性があるアプリを指します。PUA保護を有効にし、不要なアプリが混入するリスクを低減します。</p>
 
   <p>管理者PowerShellで実行：</p>
   <div class="command-box">
@@ -852,10 +794,9 @@
   <p>※PUA保護は、すべての迷惑ソフトや広告を検出できるわけではありません。</p>
 
   <hr class="div-double">
-  <h4>・④ コントロールされたフォルダー アクセス（ランサムウェア対策）</h4>  <hr class="div-double">
-  <p>
-    コントロールされたフォルダー アクセスは、信頼されていないアプリなどによる保護対象フォルダーへの不正な変更を制限し、ランサムウェアによるファイルの暗号化などの被害を抑える機能です。
-  </p>
+  <h4>・④ コントロールされたフォルダー アクセス（ランサムウェア対策）</h4>
+  <hr class="div-double">
+  <p>コントロールされたフォルダー アクセスは、信頼されていないアプリなどによる保護対象フォルダーへの不正な変更を制限し、ランサムウェアによるファイルの暗号化などの被害を抑える機能です。</p>
 
   <p><strong>【GUIで設定する場合】</strong></p>
   <ol>
@@ -878,160 +819,141 @@
     <code>Set-MpPreference -EnableControlledFolderAccess Enabled</code>
   </div>
 
-  <p>
-    有効化後、正規のアプリが保護フォルダーに保存できなくなった場合は、アプリの正当性を確認したうえで、Windowsセキュリティから許可を検討します。
-  </p>
+  <p>有効化後、正規のアプリが保護フォルダーに保存できなくなった場合は、アプリの正当性を確認したうえで、Windowsセキュリティから許可を検討します。</p>
 
   <p>※この機能はすべてのランサムウェア被害を防ぐものではありません。バックアップも併用してください。</p>
 
-  <p>
-    公式資料：<a href="https://learn.microsoft.com/ja-jp/defender-endpoint/controlled-folder-access-configure" target="_blank" rel="noopener">Microsoft Learn — コントロールされたフォルダー アクセスの構成</a>
-  </p>
-<div class="security-section">
-  <div class="security-section">  <hr class="div-double">
-  <h4>⑤ Defenderの状態確認・定義ファイルの更新</h4>
-  <hr class="div-double">
-  
-  <p>設定を変更した後は、Windows Defenderの保護状態を確認し、ウイルス定義を最新の状態に更新します。</p>
+  <p>公式資料：<a href="https://learn.microsoft.com/ja-jp/defender-endpoint/controlled-folder-access-configure" target="_blank" rel="noopener">Microsoft Learn — コントロールされたフォルダー アクセスの構成</a></p>
 
-  <!-- 1. 保護状態の確認 -->
-  <p><strong>【保護状態の確認】</strong></p>
-  <p>現在の保護機能が正しく動作しているか確認します。</p>
-  <div class="command-box">
-    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>Get-MpComputerStatus | Select-Object AntivirusEnabled, RealTimeProtectionEnabled, AntivirusSignatureAge</code>
-  </div>
-  <ul class="status-descriptions">
-    <li><code>AntivirusEnabled</code>：ウイルス対策機能が有効か</li>
-    <li><code>RealTimeProtectionEnabled</code>：リアルタイム保護が有効か（※カスペルスキー等の他社製セキュリティソフトが入っている場合は無効になります）</li>
-    <li><code>AntivirusSignatureAge</code>：ウイルス定義が更新されてからの経過日数</li>
-  </ul>
+  <div class="security-section">
+    <hr class="div-double">
+    <h4>・⑤ Defenderの状態確認・定義ファイルの更新</h4>
+    <hr class="div-double">
 
-  <p><strong>【リアルタイム保護をオンにする場合（他社製ソフトがない場合）】</strong></p>
-  <p>もしカスペルスキーなどの他社製ソフトが入っておらず、リアルタイム保護がオフになっている場合は、以下のコマンドで有効化します。</p>
-  <div class="command-box">
-    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>Set-MpPreference -DisableRealTimeMonitoring $false</code>
-  </div>
+    <p>設定を変更した後は、Defenderの保護状態を確認し、ウイルス定義を最新の状態に更新します。</p>
 
-  <!-- 2. ウイルス定義の手動更新 -->
-  <p><strong>【ウイルス定義の手動更新】</strong></p>
-  <p>ウイルス定義ファイルを強制的に手動でアップデートします。</p>
-  <div class="command-box">
-    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>Update-MpSignature</code>
-  </div>
-  <p class="note">※カスペルスキーなどの他社製ソフトが入っている環境では、このコマンドは動作しないか必要ありません。</p>
+    <p><strong>【保護状態の確認】</strong></p>
+    <p>現在の保護機能が正しく動作しているか確認します。</p>
+    <div class="command-box">
+      <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+      <code>Get-MpComputerStatus | Select-Object AntivirusEnabled, RealTimeProtectionEnabled, AntivirusSignatureAge</code>
+    </div>
+    <ul class="status-descriptions">
+      <li><code>AntivirusEnabled</code>：ウイルス対策機能が有効か</li>
+      <li><code>RealTimeProtectionEnabled</code>：リアルタイム保護が有効か（※他社製セキュリティソフトが入っている場合は無効になります）</li>
+      <li><code>AntivirusSignatureAge</code>：ウイルス定義が更新されてからの経過日数</li>
+    </ul>
 
-  <!-- 3. ASRルールの設定状態を確認する -->
-  <p><strong>【ASRルールの設定状態を確認する】</strong></p>
-  <p>次の2つのステップに分けて、現在の設定状態を確認します。まず、設定を変数に取得します。</p>
-  <div class="command-box">
-    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>$p = Get-MpPreference</code>
-  </div>
+    <p><strong>【リアルタイム保護をオンにする場合（他社製ソフトがない場合）】</strong></p>
+    <p>他社製ソフトが入っておらず、リアルタイム保護がオフになっている場合は、以下のコマンドで有効化します。</p>
+    <div class="command-box">
+      <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+      <code>Set-MpPreference -DisableRealTimeMonitoring $false</code>
+    </div>
 
-  <p>続いて、取得した設定を分かりやすい一覧表として表示します。</p>
-  <div class="command-box">
-    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>0..([math]::Min($p.AttackSurfaceReductionRules_Ids.Count, $p.AttackSurfaceReductionRules_Actions.Count) - 1) | ForEach-Object {
+    <p><strong>【ウイルス定義の手動更新】</strong></p>
+    <p>ウイルス定義ファイルを強制的に手動でアップデートします。</p>
+    <div class="command-box">
+      <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+      <code>Update-MpSignature</code>
+    </div>
+    <p class="note">※他社製ソフトが入っている環境では、このコマンドは動作しないか必要ありません。</p>
+
+    <p><strong>【ASRルールの設定状態を確認する】</strong></p>
+    <p>次の2つのステップに分けて、現在の設定状態を確認します。まず、設定を変数に取得します。</p>
+    <div class="command-box">
+      <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+      <code>$p = Get-MpPreference</code>
+    </div>
+
+    <p>続いて、取得した設定を一覧表として表示します。</p>
+    <div class="command-box">
+      <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+      <code>0..([math]::Min($p.AttackSurfaceReductionRules_Ids.Count, $p.AttackSurfaceReductionRules_Actions.Count) - 1) | ForEach-Object {
     [pscustomobject]@{
         RuleGUID = $p.AttackSurfaceReductionRules_Ids[$_]
         Action   = $p.AttackSurfaceReductionRules_Actions[$_]
     }
 } | Format-Table -AutoSize</code>
-  </div>
+    </div>
 
-  <div class="info-box">
-    <p><strong>ASRの状態の目安：</strong></p>
-    <ul>
-      <li><code>1</code>：ブロック（有効）</li>
-      <li><code>2</code>：監査（記録のみ）</li>
-      <li><code>0</code>：無効</li>
-    </ul>
-    <p>※設定したGUIDとそれぞれの状態を照らし合わせて確認してください。組織のポリシー等で上書きされる場合があります。</p>
-  </div>
+    <div class="info-box">
+      <p><strong>ASRの状態の目安：</strong></p>
+      <ul>
+        <li><code>1</code>：ブロック（有効）</li>
+        <li><code>2</code>：監査（記録のみ）</li>
+        <li><code>0</code>：無効</li>
+      </ul>
+      <p>※設定したGUIDとそれぞれの状態を照らし合わせて確認してください。組織のポリシー等で上書きされる場合があります。</p>
+    </div>
 
-  <!-- ASRルールをすべてブロックにする場合 -->
-  <p><strong>【監査や無効をすべてブロックにしたい場合】</strong></p>
-  <p>登録されているすべてのASRルールを一括で「ブロック（1）」に切り替えるには、以下のコマンドを実行します。</p>
-  <div class="command-box">
-    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>$p = Get-MpPreference
+    <p><strong>【監査や無効をすべてブロックにしたい場合】</strong></p>
+    <p>登録されているすべてのASRルールを一括で「ブロック（1）」に切り替えるには、以下のコマンドを実行します。</p>
+    <div class="command-box">
+      <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+      <code>$p = Get-MpPreference
 if ($p.AttackSurfaceReductionRules_Ids) {
     Set-MpPreference -AttackSurfaceReductionRules_Ids $p.AttackSurfaceReductionRules_Ids -AttackSurfaceReductionRules_Actions 1
 }</code>
+    </div>
+    <p class="note"><strong>何か不具合（アプリの誤検知・動作不良）が起きた場合の補足：</strong><br>
+      ASRルールをすべて「ブロック」に強化すると、普段使っている開発ツールやインストーラー、業務アプリなどが不正な動作と誤検知されてブロックされる場合があります。もしアプリが動かなくなった場合は、該当するルールの設定を一時的に「2（監査）」に戻すか、無効化して動作確認を行ってください。</p>
+
+    <p><strong>【表形式で表示されない場合の個別確認】</strong></p>
+    <p>環境によっては <code>AttackSurfaceReductionRules_Ids</code> が配列として処理されず、表が崩れる場合があります。その場合は以下のコマンドで個別に確認してください。</p>
+
+    <p>▼ ルールID（GUID）のリスト確認</p>
+    <div class="command-box">
+      <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+      <code>(Get-MpPreference).AttackSurfaceReductionRules_Ids</code>
+    </div>
+
+    <p>▼ 動作アクション（数値）のリスト確認</p>
+    <div class="command-box">
+      <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
+      <code>(Get-MpPreference).AttackSurfaceReductionRules_Actions</code>
+    </div>
+
+    <hr class="div-double">
+    <h4>・⑥ 運用上の注意</h4>
+    <hr class="div-double">
+    <ul>
+      <li>Windows Updateを継続し、OSとアプリを最新の状態に保つ。</li>
+      <li>重要なデータは、PCとは別の場所にもバックアップする。</li>
+      <li>不審なメールの添付ファイルやリンクを開かない。</li>
+      <li>Defenderの保護が無効になっていないか、定期的に確認する。</li>
+      <li>ASRやフォルダーアクセス制御によって正規のアプリがブロックされた場合、安易に機能全体を無効化せず、保護履歴とアプリの安全性を確認する。</li>
+    </ul>
+
+    <p>これらの設定は防御を強化するものですが、すべての攻撃を防げるわけではありません。標準の保護機能、更新、バックアップ、慎重な操作を組み合わせることが重要です。</p>
   </div>
-  <p class="note">
-    <strong>何か不具合（アプリの誤検知・動作不良）が起きた場合の補足：</strong><br>
-    ASRルールをすべて「ブロック」に強化すると、普段使っている開発ツールやインストーラー、業務アプリなどが不正な動作と誤検知されてブロックされる場合があります。もしアプリが動かなくなった場合は、該当するルールの設定を一時的に「2（監査）」に戻すか、無効化して動作確認を行ってください。
-  </p>
-
-  <!-- 4. 配列にならず表形式にならない場合の個別確認 -->
-  <p><strong>【表形式で表示されない場合の個別確認】</strong></p>
-  <p>環境によっては <code>AttackSurfaceReductionRules_Ids</code> が配列として処理されず、表が崩れる場合があります。その場合は以下のコマンドで個別に確認してください。</p>
-  
-  <p>▼ ルールID（GUID）のリスト確認</p>
-  <div class="command-box">
-    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>(Get-MpPreference).AttackSurfaceReductionRules_Ids</code>
-  </div>
-
-  <p>▼ 動作アクション（数値）のリスト確認</p>
-  <div class="command-box">
-    <button class="copy-btn" onclick="copyCommand(this)">コピー</button>
-    <code>(Get-MpPreference).AttackSurfaceReductionRules_Actions</code>
-
-
-  </div>
-  
-  <hr class="div-double">
-  <h4>・⑥ 運用上の注意</h4>  <hr class="div-double">
-  <ul>
-    <li>Windows Updateを継続し、OSとアプリを最新の状態に保つ。</li>
-    <li>重要なデータは、PCとは別の場所にもバックアップする。</li>
-    <li>不審なメールの添付ファイルやリンクを開かない。</li>
-    <li>Defenderの保護が無効になっていないか、定期的に確認する。</li>
-    <li>ASRやフォルダーアクセス制御によって正規のアプリがブロックされた場合、安易に機能全体を無効化せず、保護履歴とアプリの安全性を確認する。</li>
-  </ul>
-
-  <p>
-    これらの設定は防御を強化するものですが、すべての攻撃を防げるわけではありません。標準の保護機能、更新、バックアップ、慎重な操作を組み合わせることが重要です。
-  </p>
 
   <hr>
- <h3 style="color: #80d8ff;">■ 2. Defenderを使いながらさらに強化したい場合：「FFRI yarai」（国産・補助型）</h3>
+  <h3 style="color: #80d8ff;">■ 2. Defenderを使いながらさらに強化したい場合：「FFRI yarai」（国産・補助型）</h3>
   <hr>
-  <p>
-    日本はサイバー攻撃の標的にされやすく、個人のセキュリティ強化が急務となっています。標的型攻撃や未知の脅威に対し「標準のWindows Defenderをそのまま活かしつつ対策したい」という場合の選択肢が、国産の<a href="https://www.ffri.jp/products/yaraihb" target="_blank" rel="noopener">FFRI yarai</a>です。
-  </p>
-  <hr class="div-double">
-  <h4>・Defenderとの相性と相乗効果</h4>  <hr class="div-double">
-  <p>
-    通常、セキュリティソフトの2本刺しは競合・不具合を起こすため避けるのが基本ですが、FFRI yaraiは「Windows Defenderと併用・同居して動作すること」を前提とした「ふるまい検知型」エンジンを採用しています。ただし、対応エディションや導入条件があるため、導入前に確認が必要です。
-  </p>
+  <p>日本はサイバー攻撃の標的にされやすく、個人のセキュリティ強化が急務となっています。標的型攻撃や未知の脅威に対し「標準のWindows Defenderをそのまま活かしつつ対策したい」という場合の選択肢が、国産の<a href="https://www.ffri.jp/products/yaraihb" target="_blank" rel="noopener">FFRI yarai</a>です。</p>
 
   <hr class="div-double">
-  <h4>・未知の攻撃（ゼロデイ攻撃・標的型攻撃）の遮断</h4>  <hr class="div-double">
-  <p>
-    パターンファイル（定義データベース）に依存せず、プログラムの不審な動き（メモリ改ざんやプロセスハイジャック等）を未知のマルウェアや脆弱性攻撃をリアルタイムで検知・防御することを目指すため、標的型攻撃などへの補強となります。
-  </p>
-
-  <hr>
- <h3 style="color: #80d8ff;">■ 3. 有料の総合セキュリティソフト（選択肢と各国製の特徴）</h3>
-  <hr>
-  <p>
-    他社製ウイルス対策ソフトを導入すると、Microsoft Defender Antivirusのリアルタイム保護が自動的に無効化される場合があります。その場合、DefenderのASRルールなど、一部の機能は利用できなくなるため、導入後に保護状態を確認してください。
-  </p>
-
-  <p>
-    ※Defenderが自動で停止するかは、製品・Windowsのバージョン・設定によって異なります。停止しない場合は、競合を避けるために手動での調整が必要になることがあります。
-  </p>
+  <h4>・Defenderとの相性と相乗効果</h4>
   <hr class="div-double">
-  <h4>・各社総合ソフトの共通機能</h4>  <hr class="div-double">
-  <p>
-    主要な有料セキュリティソフト（上位プラン）には、以下のような機能が共通して搭載されていることが多く、PCとスマホ（Windows / Android）を一括保護できます。
-  </p>
+  <p>通常、セキュリティソフトの2本刺しは競合・不具合を起こすため避けるのが基本ですが、FFRI yaraiは「Windows Defenderと併用・同居して動作すること」を前提とした「ふるまい検知型」エンジンを採用しています。ただし、対応エディションや導入条件があるため、導入前に確認が必要です。</p>
+
+  <hr class="div-double">
+  <h4>・未知の攻撃（ゼロデイ攻撃・標的型攻撃）の遮断</h4>
+  <hr class="div-double">
+  <p>パターンファイル（定義データベース）に依存せず、プログラムの不審な動き（メモリ改ざんやプロセスハイジャック等）を未知のマルウェアや脆弱性攻撃をリアルタイムで検知・防御することを目指すため、標的型攻撃などへの補強となります。</p>
+
+  <hr>
+  <h3 style="color: #80d8ff;">■ 3. 有料の総合セキュリティソフト（選択肢と各国製の特徴）</h3>
+  <hr>
+  <p>他社製ウイルス対策ソフトを導入すると、Microsoft Defender Antivirusのリアルタイム保護が自動的に無効化される場合があります。その場合、DefenderのASRルールなど、一部の機能は利用できなくなるため、導入後に保護状態を確認してください。</p>
+
+  <p>※Defenderが自動で停止するかは、製品・Windowsのバージョン・設定によって異なります。停止しない場合は、競合を避けるために手動での調整が必要になることがあります。</p>
+
+  <hr class="div-double">
+  <h4>・各社総合ソフトの共通機能</h4>
+  <hr class="div-double">
+  <p>主要な有料セキュリティソフト（上位プラン）には、以下のような機能が共通して搭載されていることが多く、PCとスマホ（Windows / Android）を一括保護できます。</p>
 
   <ul>
     <li>マルウェア・ランサムウェアリアルタイム検知 / ネットバンキング専用保護ブラウザ</li>
@@ -1040,60 +962,36 @@ if ($p.AttackSurfaceReductionRules_Ids) {
     <li>漏洩モニタリング（ダークウェブ監視）</li>
   </ul>
 
-  <hr class="div-faint">  <hr class="div-double">
-  <h4>・2026年時点における主要製品の選定基準</h4>  <hr class="div-double">
-  <p>
-    <strong><a href="https://www.kaspersky.co.jp/" target="_blank" rel="noopener">Kaspersky</a>（カスペルスキー / ロシア）</strong><br>
-    挙動監視、ゼロデイ防御、検出精度において高い評価を持つ製品です。過去の地政学的・国際的な懸念（米国等での使用規制）についても、透明性検証センターの設立やデータ処理拠点の送出など改善策が進められています。「開発国などの背景を気にせず、技術力・防御力重視」で選ぶ場合の選択肢となります。
-  </p>
+  <hr class="div-double">
+  <h4>・2026年時点における主要製品の選定基準</h4>
+  <hr class="div-double">
+  <p><strong><a href="https://www.kaspersky.co.jp/" target="_blank" rel="noopener">Kaspersky</a>（カスペルスキー / ロシア）</strong><br>
+    挙動監視、ゼロデイ防御、検出精度において高い評価を持つ製品です。過去の地政学的・国際的な懸念（米国等での使用規制）についても、透明性検証センターの設立やデータ処理拠点の移転など改善策が進められています。「開発国などの背景を気にせず、技術力・防御力重視」で選ぶ場合の選択肢となります。</p>
 
-  <p>
-    <strong><a href="https://www.eset.com/jp/" target="_blank" rel="noopener">ESET</a>（スロバキア） / <a href="https://jp.norton.com/" target="_blank" rel="noopener">Norton</a>（ノートン / アメリカ）</strong><br>
-    政治的・地政学的なリスク懸念が少なく、実績・動作の軽さ・安定性の面で無難な選択肢です。
-  </p>
+  <p><strong><a href="https://www.eset.com/jp/" target="_blank" rel="noopener">ESET</a>（スロバキア） / <a href="https://jp.norton.com/" target="_blank" rel="noopener">Norton</a>（ノートン / アメリカ）</strong><br>
+    政治的・地政学的なリスク懸念が少なく、実績・動作の軽さ・安定性の面で無難な選択肢です。</p>
 
-  <p>
-    ※国や企業の背景だけで安全性を断定せず、検出性能、更新頻度、動作の軽さ、プライバシーポリシー、サポート期間、価格などを基準に比較検討してください。
-  </p>
- <hr>
- <h3 style="color: #80d8ff;">■ Proton等の専門ツールとの使い分け・重複利用の注意点</h3>
+  <p>※国や企業の背景だけで安全性を断定せず、検出性能、更新頻度、動作の軽さ、プライバシーポリシー、サポート期間、価格などを基準に比較検討してください。</p>
+
+  <hr class="div-double">
+  <h4>・Proton等の専門ツールとの重複利用を避ける</h4>
+  <hr class="div-double">
+  <p><a href="https://proton.me/" target="_blank" rel="noopener">Proton</a>（Proton Pass / Proton VPN）や<a href="https://bitwarden.com/" target="_blank" rel="noopener">Bitwarden</a>といった専門ツールをすでに導入している場合は、セキュリティソフト付属のVPNとパスワード管理はオフにします。</p>
+
+  <p>プライバシー保護や高度な暗号化の面では、専門ツールのほうが優れます。一方で、VPNの二重起動は接続障害の原因になり、パスワード管理を2つ持つと自動入力が壊れます。どちらか1つに絞ってください。</p>
+
+  <p>※Proton等の専用サブスクに投資している場合、付属機能を使わないと「もったいない」と感じるかもしれませんが、Protonを使わずにセキュリティソフト1本でまとめればコストは下がります。予算とこだわりに応じて選んでください。</p>
+
   <hr>
-  <p>
-    前項で解説した<a href="https://proton.me/" target="_blank" rel="noopener">Proton</a>（Proton Pass / Proton VPN）や<a href="https://bitwarden.com/" target="_blank" rel="noopener">Bitwarden</a>といった専門のセキュリティツールを既に導入している場合、またはそちらをメインで使いたい場合の運用ルールは以下の通りです。
-  </p>
-  <hr class="div-double">
-  <h4>・性能の比較とおすすめ</h4>  <hr class="div-double">
-  <p>
-    プライバシー保護や高度な暗号化（スイスの法律による保護、電子メールの別名生成等）においては、Proton等の専門ツールの方が専門性に優れる面があります。セキュリティにこだわる方はProton等を優先するのがおすすめです。
-  </p>
-
-  <hr class="div-double">
-  <h4>・どちらか1つに絞り、2重利用は避ける</h4>  <hr class="div-double">
-  <p>
-    セキュリティソフト付属の機能（VPNやPW管理）を使うか、Proton等の専門ツールを使うかは「どちらか1つに絞る」のが基本です。特にVPNの2重起動は、接続障害や不具合の原因になり得るため、Proton等を使う場合はセキュリティソフト側のVPN機能をオフにしてください。
-  </p>
-
-  <hr class="div-double">
-  <h4>・パスワードマネージャーの分散防止</h4>  <hr class="div-double">
-  <p>
-    パスワード管理ツールを2つ同時に使うと、どこに何を保存したか分からなくなり、自動入力の不具合など本末転倒な状態に陥ります。どちらか一方のみを有効化・インストールして運用してください。
-  </p>
-  <hr class="div-double">
-  <h4>・コストに関する考え方</h4>  <hr class="div-double">
-  <p>
-    Proton等の専用サブスクに投資している場合、セキュリティソフト付属のVPN/PW機能を使わないと「勿体ない」と感じるかもしれませんが、Protonを使わずにセキュリティソフト1本でまとめることで全体のコストを抑えることも可能です。ご自身の予算やこだわりレベルに応じて選択してください。
-  </p>
-  <hr>
- <h3 style="color: #80d8ff;">■ エンドポイント保護の運用ルール（まとめ）</h3>
+  <h3 style="color: #80d8ff;">■ エンドポイント保護の運用ルール（まとめ）</h3>
   <hr>
   <ul>
-    <li>常駐ソフトは「1本」に統一する（※例外として「Windows Defender ＋ FFRI yarai」の組み合わせのみ併用可能）</li>
+    <li>常駐ソフトは「1本」に統一する（※例外は「Windows Defender ＋ FFRI yarai」の組み合わせのみ）</li>
     <li>PCだけでなく、Androidスマホも含めて所有端末を一括保護・管理する</li>
-    <li>VPNやパスワードマネージャーは「どちらか1つ」に絞り、2重利用・複数併用は避ける（※より強力な保護を求めるならProton等を優先し、コスト・一括管理を重視するならセキュリティソフト標準機能で統一する）</li>
+    <li>VPNやパスワードマネージャーは「どちらか1つ」に絞る</li>
   </ul>
 
 </details>
-
 <!-- 6 -->
 <details>
   <summary>6. Android保護（端末選定と安全設定）</summary>
